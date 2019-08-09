@@ -7,4 +7,4 @@ Members:\
   Jonnel Salvador S. Dorotan\
   Jose Mari Gabon\
   Kurt Ronald Tan\
-  John Raymer Orale\
+  John Raymer Orale
