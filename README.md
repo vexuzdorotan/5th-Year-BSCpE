@@ -12,6 +12,7 @@
 ## Contents
 
 1. [Research Links](#Research)
+2. [Forums](#Forums)
 
 
 ## Research
@@ -19,3 +20,6 @@
 * [Linear Regression]
 * [Perceptron](https://towardsdatascience.com/6-steps-to-write-any-machine-learning-algorithm-from-scratch-perceptron-case-study-335f638a70f3)
 * [Gradient Descent](https://www.youtube.com/watch?v=sDv4f4s2SB8&feature=share)
+
+##Forums
+* [The Struggle To Find A Good Thesis Topic For Engineering Students Is Real](https://gineersnow.com/students/the-struggle-to-find-a-good-thesis-topic-for-engineering-students-is-real) - To all the engineering students who are having a hard time finding a good thesis topic, good luck. You’ll definitely need all the luck you can get.
