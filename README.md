@@ -2,12 +2,15 @@
 ### COE512 | Wednesday, 2:00 PM - 4:00 PM | Engr. Renato C. Salvo
 ### Bachelor of Science in Computer Engineering | Rizal Technological University
 
+```
 **Members:**
   * *Dorotan, Jonnel Salvador*
   * *Gabon, Jose Mari*
   * *Lamoste, John Cedric*
   * *Orale, John Raymer*
   * *Tan, Kurt Ronald*
+```
+
 ---
 ## Contents
 
