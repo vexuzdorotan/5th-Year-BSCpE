@@ -1,3 +1,4 @@
+# Design Project 1
 ## Contents
 
 1. [Research](#Research)
