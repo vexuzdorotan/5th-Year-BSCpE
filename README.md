@@ -1,5 +1,6 @@
 # Design Project 1 (Methods of Research)
 ### COE512 | Wednesday, 2:00 PM - 4:00 PM | Engr. Renato C. Salvo
+### Bachelor of Science in Computer Engineering | Rizal Technological University
 
 **Members:**
   * *Dorotan, Jonnel Salvador*
