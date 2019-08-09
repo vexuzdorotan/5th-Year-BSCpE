@@ -4,7 +4,8 @@ Wednesday, 2:00 PM - 4:00 PM\
 Engr. Renato C. Salvo
 
 Members:\
-  Jonnel Salvador S. Dorotan\
-  Jose Mari Gabon\
-  Kurt Ronald Tan\
-  John Raymer Orale
+  Dorotan, Jonnel Salvador\
+  Gabon, Jose Mari\
+  Lamoste, John Cedrick\
+  Orale, John Raymer\
+  Tan, Kurt Ronald
