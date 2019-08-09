@@ -1,7 +1,7 @@
 # Design Project 1
 ## Contents
 
-1. [Research](#Research)
+1. [Research Links](#Research)
 
 
 ## Research
