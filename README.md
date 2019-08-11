@@ -23,6 +23,7 @@ Bachelor of Science in Computer Engineering | Rizal Technological University
 ### Thesis
 - [Mobilarian: Computer Engineering / Electronics Engineering Thesis](https://www.mobilarian.com/showthread.php?t=1438493) - [Download] CoE/CpE/EcE/IT Thesis Titles, Documentation and Source Codes
 - [dlsu.edu.ph: Undergraduate Thesis Archive](https://www.dlsu.edu.ph/colleges/gcoe/academic-departments/electronics-communications-engineering/thesis-archive/) - This page lists all undergraduate theses in the Electronics Engineering (ECE) and Computer Engineering (CpE) programs.
+- [Top 20 Computer Engineering Projects](https://electronicsforu.com/electronics-projects/software-projects-ideas/computer-engineering-projects-ideas)
 
 ### AI
 - [Least Squares Regression](https://www.mathsisfun.com/data/least-squares-regression.html)
