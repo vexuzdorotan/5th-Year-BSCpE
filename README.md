@@ -41,7 +41,7 @@ Bachelor of Science in Computer Engineering | Rizal Technological University
 ### GitHub
 - [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) - Markdown is a lightweight and easy-to-use syntax for styling all forms of writing on the GitHub platform.
 
-First Header | Second Header
+Titles | Features
 ------------ | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+AUTO-FOLLOW GROCERY CART USING RF TAGGING | AUTO FOLLOW, BLOCKAGE DETECTION, RF PAIRING, MOTOR DRIVEN, NOTIFICATION FEATURES
+HOME AUTOMATION WITH MAPPING SYSTEM - ANDROID BASED | GRAPHICAL MAPPING SYSTEM, RELAY MODULE, ANDROID CONTROLLED SYSTEM, TIMER MODULE, WIRELESS SWITCHING
