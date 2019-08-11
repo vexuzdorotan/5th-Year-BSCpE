@@ -19,6 +19,7 @@ Bachelor of Science in Computer Engineering | Rizal Technological University
 1. [Forums for Tips and Guides](#Forums)
 1. [GitHub Guides](#GitHub)
 
+
 ### Thesis
 - [Mobilarian: Computer Engineering / Electronics Engineering Thesis](https://www.mobilarian.com/showthread.php?t=1438493) - [Download] CoE/CpE/EcE/IT Thesis Titles, Documentation and Source Codes
 - [dlsu.edu.ph: Undergraduate Thesis Archive](https://www.dlsu.edu.ph/colleges/gcoe/academic-departments/electronics-communications-engineering/thesis-archive/) - This page lists all undergraduate theses in the Electronics Engineering (ECE) and Computer Engineering (CpE) programs.
@@ -28,6 +29,10 @@ Bachelor of Science in Computer Engineering | Rizal Technological University
 - [Linear Regression]
 - [Perceptron](https://towardsdatascience.com/6-steps-to-write-any-machine-learning-algorithm-from-scratch-perceptron-case-study-335f638a70f3)
 - [Gradient Descent](https://www.youtube.com/watch?v=sDv4f4s2SB8&feature=share)
+
+
+### Implementation
+- [AI on Arduino](https://www.quora.com/How-do-you-implement-Artificial-Intelligence-in-an-Arduino-Project)
 
 ### Forums
 - [The Struggle To Find A Good Thesis Topic For Engineering Students Is Real](https://gineersnow.com/students/the-struggle-to-find-a-good-thesis-topic-for-engineering-students-is-real) - To all the engineering students who are having a hard time finding a good thesis topic, good luck. You’ll definitely need all the luck you can get.
