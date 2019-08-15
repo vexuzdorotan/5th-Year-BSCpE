@@ -15,6 +15,8 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 - *Tan, Kurt Ronald*
 ---
 
+![](https://miro.medium.com/max/400/0*RT6jF2VYVSVJIYEN.png)
+
 ## Contents
 1. [Information System Analysis and Design](#ISAD)
 1. [Artificial Intelligence](#AI)
@@ -22,8 +24,8 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 1. [Forums for Tips and Guides](#Forums)
 
 ### ISAD
-- [Public Firms in Mandaluyong - Google Map](https://www.google.com/maps/search/public+firms+in+mandaluyong/@14.5777446,121.0388393,16z)
-- [System Analysis and Design Tutorial](https://www.tutorialspoint.com/system_analysis_and_design/)
+- [Google Map: Public Firms in Mandaluyong](https://www.google.com/maps/search/public+firms+in+mandaluyong/@14.5777446,121.0388393,16z)
+- [TutorialsPoint: System Analysis and Design Tutorial](https://www.tutorialspoint.com/system_analysis_and_design/)
 - [How to get clients online](https://www.iwillteachyoutoberich.com/blog/how-to-get-clients/) - 6 ways to find freelance work fast
 - [Examples Management Systems in VB.Net](https://www.sourcecodester.com/visual-basic-net)
 
@@ -37,8 +39,9 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 - [Linear Regression]
 - [Perceptron](https://towardsdatascience.com/6-steps-to-write-any-machine-learning-algorithm-from-scratch-perceptron-case-study-335f638a70f3)
 - [Gradient Descent](https://www.youtube.com/watch?v=sDv4f4s2SB8&feature=share)
-- [AI on Arduino](https://www.quora.com/How-do-you-implement-Artificial-Intelligence-in-an-Arduino-Project)
+- [Quora: AI on Arduino](https://www.quora.com/How-do-you-implement-Artificial-Intelligence-in-an-Arduino-Project)
 
 ### Forums
-- [The Struggle To Find A Good Thesis Topic For Engineering Students Is Real](https://gineersnow.com/students/the-struggle-to-find-a-good-thesis-topic-for-engineering-students-is-real) - To all the engineering students who are having a hard time finding a good thesis topic, good luck. You’ll definitely need all the luck you can get.
+- [GineersNow: The Struggle To Find A Good Thesis Topic For Engineering Students Is Real](https://gineersnow.com/students/the-struggle-to-find-a-good-thesis-topic-for-engineering-students-is-real) - To all the engineering students who are having a hard time finding a good thesis topic, good luck. You’ll definitely need all the luck you can get.
 - [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) - Markdown is a lightweight and easy-to-use syntax for styling all forms of writing on the GitHub platform.
+- [Medium: 10 Things Every Programmer Should Know](https://medium.com/swlh/10-things-every-programmer-should-know-26ba37cfcaf4)
