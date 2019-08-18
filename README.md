@@ -44,6 +44,8 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 - [Fuzzy Logic Numberphile](https://youtu.be/r804UF8Ia4c)
 - [Concept of Fuzzy Logic](https://youtu.be/rln_kZbYaWc)
 - [GitHub: Fuzzy String Matching in Python](https://github.com/seatgeek/fuzzywuzzy)
+- [TutorialsPoint: Artificial Intelligence Tutorial](https://www.tutorialspoint.com/artificial_intelligence/index.htm)
+- [TutorialsPoint: Fuzzy Logic Tutorial](https://www.tutorialspoint.com/fuzzy_logic/index.htm)
 
 ### Forums
 - [GineersNow: The Struggle To Find A Good Thesis Topic For Engineering Students Is Real](https://gineersnow.com/students/the-struggle-to-find-a-good-thesis-topic-for-engineering-students-is-real) - To all the engineering students who are having a hard time finding a good thesis topic, good luck. You’ll definitely need all the luck you can get.
