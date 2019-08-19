@@ -47,6 +47,7 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 - [TutorialsPoint: Artificial Intelligence Tutorial](https://www.tutorialspoint.com/artificial_intelligence/index.htm)
 - [TutorialsPoint: Fuzzy Logic Tutorial](https://www.tutorialspoint.com/fuzzy_logic/index.htm)
 - [Polynomial Regression in Python](https://towardsdatascience.com/polynomial-regression-bbe8b9d97491)
+- [Fuzzy Logic Implementation (YouTube Video)](https://youtu.be/DnfWFgovIeU)
 
 ### Forums
 - [GineersNow: The Struggle To Find A Good Thesis Topic For Engineering Students Is Real](https://gineersnow.com/students/the-struggle-to-find-a-good-thesis-topic-for-engineering-students-is-real) - To all the engineering students who are having a hard time finding a good thesis topic, good luck. You’ll definitely need all the luck you can get.
