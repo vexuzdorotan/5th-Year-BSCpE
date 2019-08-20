@@ -28,6 +28,7 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 - [TutorialsPoint: System Analysis and Design Tutorial](https://www.tutorialspoint.com/system_analysis_and_design/)
 - [How to get clients online](https://www.iwillteachyoutoberich.com/blog/how-to-get-clients/) - 6 ways to find freelance work fast
 - [Examples Management Systems in VB.Net](https://www.sourcecodester.com/visual-basic-net)
+- [Payroll Management System](https://www.slideshare.net/RohitBhabal/payroll-management-system-70853065)
 
 ### DesPro
 - [Mobilarian: Computer Engineering / Electronics Engineering Thesis](https://www.mobilarian.com/showthread.php?t=1438493) - [Download] CoE/CpE/EcE/IT Thesis Titles, Documentation and Source Codes
