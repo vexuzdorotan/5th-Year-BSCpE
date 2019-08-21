@@ -49,6 +49,7 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 - [TutorialsPoint: Fuzzy Logic Tutorial](https://www.tutorialspoint.com/fuzzy_logic/index.htm)
 - [Polynomial Regression in Python](https://towardsdatascience.com/polynomial-regression-bbe8b9d97491)
 - [Fuzzy Logic Implementation (YouTube Video)](https://youtu.be/DnfWFgovIeU)
+- [Fuzzy Transform](https://www.google.com/url?sa=t&source=web&rct=j&url=http://irafm.osu.cz/research_report/114_rep114.pdf&ved=2ahUKEwi1nu6Z-JLkAhVLa94KHQU5DtYQFjANegQIDBAy&usg=AOvVaw3B4TZqYqMAGHRfV91zgKTU&cshid=1566356779663)
 
 ### Arduino
 - [Fuzzy Logic Library in Arduino](https://blog.zerokol.com/2012/09/arduinofuzzy-fuzzy-library-for-arduino.html?m=1)
