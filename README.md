@@ -53,8 +53,9 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 
 ### Arduino
 - [Fuzzy Logic Library in Arduino](https://blog.zerokol.com/2012/09/arduinofuzzy-fuzzy-library-for-arduino.html?m=1)
+- [Difference of Arduino and Raspberry Pi](https://www.google.com/amp/s/www.electronicshub.org/raspberry-pi-vs-arduino/%3famp)
 
-### Forums
+## Forums
 - [GineersNow: The Struggle To Find A Good Thesis Topic For Engineering Students Is Real](https://gineersnow.com/students/the-struggle-to-find-a-good-thesis-topic-for-engineering-students-is-real) - To all the engineering students who are having a hard time finding a good thesis topic, good luck. You’ll definitely need all the luck you can get.
 - [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) - Markdown is a lightweight and easy-to-use syntax for styling all forms of writing on the GitHub platform.
 - [Medium: 10 Things Every Programmer Should Know](https://medium.com/swlh/10-things-every-programmer-should-know-26ba37cfcaf4)
