@@ -24,7 +24,6 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 1. [Forums for Tips and Guides](#Forums)
 
 ### ISAD
-- [Google Map: Public Firms in Mandaluyong](https://www.google.com/maps/search/public+firms+in+mandaluyong/@14.5777446,121.0388393,16z)
 - [TutorialsPoint: System Analysis and Design Tutorial](https://www.tutorialspoint.com/system_analysis_and_design/)
 - [How to get clients online](https://www.iwillteachyoutoberich.com/blog/how-to-get-clients/) - 6 ways to find freelance work fast
 - [Examples Management Systems in VB.Net](https://www.sourcecodester.com/visual-basic-net)
@@ -36,22 +35,21 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 - [Top 20 Computer Engineering Projects](https://electronicsforu.com/electronics-projects/software-projects-ideas/computer-engineering-projects-ideas)
 
 ### AI
+- [TutorialsPoint: Artificial Intelligence Tutorial](https://www.tutorialspoint.com/artificial_intelligence/index.htm)
+- [TutorialsPoint: Fuzzy Logic Tutorial](https://www.tutorialspoint.com/fuzzy_logic/index.htm)
 - [Least Squares Regression](https://www.mathsisfun.com/data/least-squares-regression.html)
-- [Linear Regression]
 - [Perceptron](https://towardsdatascience.com/6-steps-to-write-any-machine-learning-algorithm-from-scratch-perceptron-case-study-335f638a70f3)
 - [Gradient Descent](https://www.youtube.com/watch?v=sDv4f4s2SB8&feature=share)
-- [Quora: AI on Arduino](https://www.quora.com/How-do-you-implement-Artificial-Intelligence-in-an-Arduino-Project)
 - [Rule Base of Fuzzy Logic](https://www.researchgate.net/post/What_is_the_best_method_to_defined_a_fuzzy_rule_base_for_fuzzy_logic_controllers/amp)
 - [Fuzzy Logic Numberphile](https://youtu.be/r804UF8Ia4c)
 - [Concept of Fuzzy Logic](https://youtu.be/rln_kZbYaWc)
 - [GitHub: Fuzzy String Matching in Python](https://github.com/seatgeek/fuzzywuzzy)
-- [TutorialsPoint: Artificial Intelligence Tutorial](https://www.tutorialspoint.com/artificial_intelligence/index.htm)
-- [TutorialsPoint: Fuzzy Logic Tutorial](https://www.tutorialspoint.com/fuzzy_logic/index.htm)
 - [Polynomial Regression in Python](https://towardsdatascience.com/polynomial-regression-bbe8b9d97491)
 - [Fuzzy Logic Implementation (YouTube Video)](https://youtu.be/DnfWFgovIeU)
 - [Fuzzy Transform](https://www.google.com/url?sa=t&source=web&rct=j&url=http://irafm.osu.cz/research_report/114_rep114.pdf&ved=2ahUKEwi1nu6Z-JLkAhVLa94KHQU5DtYQFjANegQIDBAy&usg=AOvVaw3B4TZqYqMAGHRfV91zgKTU&cshid=1566356779663)
 
 ### Arduino
+- [Quora: AI on Arduino](https://www.quora.com/How-do-you-implement-Artificial-Intelligence-in-an-Arduino-Project)
 - [Fuzzy Logic Library in Arduino](https://blog.zerokol.com/2012/09/arduinofuzzy-fuzzy-library-for-arduino.html?m=1)
 - [Difference of Arduino and Raspberry Pi](https://www.google.com/amp/s/www.electronicshub.org/raspberry-pi-vs-arduino/%3famp)
 
