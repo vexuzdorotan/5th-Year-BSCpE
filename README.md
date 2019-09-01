@@ -37,6 +37,7 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 ### AI
 - [TutorialsPoint: Artificial Intelligence Tutorial](https://www.tutorialspoint.com/artificial_intelligence/index.htm)
 - [TutorialsPoint: Fuzzy Logic Tutorial](https://www.tutorialspoint.com/fuzzy_logic/index.htm)
+- [A Fuzzy Logic Approach for the Determination of Cavendish Banana Shelf Life](https://www.semanticscholar.org/paper/A-Fuzzy-Logic-Approach-for-the-Determination-of-Taghoy-Villaverde/ce41a356ad7907394107cbc61765c7da3dbcc749)
 - [Least Squares Regression](https://www.mathsisfun.com/data/least-squares-regression.html)
 - [Perceptron](https://towardsdatascience.com/6-steps-to-write-any-machine-learning-algorithm-from-scratch-perceptron-case-study-335f638a70f3)
 - [Gradient Descent](https://www.youtube.com/watch?v=sDv4f4s2SB8&feature=share)
