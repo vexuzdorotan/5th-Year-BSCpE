@@ -8,21 +8,21 @@ input_std_picture.addEventListener("change", SeePicture);
 
 
 function SeePicture(){
-	std_picture.src = window.URL.createObjectURL(this.files[0]); 
+	std_picture.src = window.URL.createObjectURL(this.files[0]); //Previews the picture 
 }
 
 var submitForm = document.getElementById("sub_StdReg");
 
-function ValidateForm(body){
+function ValidateForm(body){ //Validate if Form is not Blank
 	var input = document.querySelectorAll("#"+body + " input");
 	var ifblank = 0;
 	console.log(input);
 	for(var i = 0; i < 11; i++){
-		if(i === 5){ continue;}
+		if(i === 5){ continue;} //5,9,10 are optional
 		if(i === 9){ continue;}
 		if(i === 10){ continue;}
 		if(input[i].value == ""){
-			ifblank++;
+			ifblank++; //Increments if the <input tag> is not filled
 		}
 	}
 
