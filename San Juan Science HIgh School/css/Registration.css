@@ -1,0 +1,12 @@
+input[type = "text"]{
+	/*font-size: 150em;*/
+}
+
+#h1_StdReg, #form_StdReg{
+	text-align: center;
+}
+
+#body_StdReg *{
+	font-weight: bold;
+} 
+
