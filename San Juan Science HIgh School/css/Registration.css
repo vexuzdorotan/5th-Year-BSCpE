@@ -1,12 +1,37 @@
 input[type = "text"]{
 	/*font-size: 150em;*/
+	/*width: 100%;*/
 }
 
-#h1_StdReg, #form_StdReg{
-	text-align: center;
+#fieldset_StdReg{
+	/*text-align: left;*/
+	width: 97.7%;
+	/*overflow-x: hidden;*/
+	display: block;
 }
 
 #body_StdReg *{
 	font-weight: bold;
 } 
 
+#fieldset_StdReg legend{
+	/*//font-size: ;*/
+}
+
+#firstCol{
+	width: 50%;
+	height: 100%;
+	float: left;
+	/*display: inline-block;*/
+}
+
+#SecondCol{
+	width: 50%;
+	height: 100%;
+	float: right;
+	/*display: inline;*/
+}
+
+/*#fieldset_StdReg:after{
+	clear: both;
+}*/

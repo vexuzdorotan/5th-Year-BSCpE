@@ -3,11 +3,13 @@
 <head>
 	<title>Student Registration</title>
    <link rel="stylesheet" type="text/css" href="css/Registration.css">
+   <link rel="stylesheet" type="text/css" href="css/Entire.css">
 </head>
 <body id = "body_StdReg" name = "body_StdReg">
-<h1 id="h1_StdReg">Student Registration</h1>
-<form action="Student_Registration.html" method="GET" id="form_StdReg" name="form_StdReg">
 
+<fieldset id="fieldset_StdReg" name="fieldset_StdReg">
+   <div id = "FirstCol">
+   <legend>STUDENT REGISTRATION</legend>
 	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
 	<p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
 	<p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>
@@ -20,7 +22,9 @@
 		<p><label for="City">City: </label><input type="text" id = "City" name = "City"></p>
 		<p><label for="Province">Province: </label><input type="text" id = "Province" name= " Province"></p>
 		<p><label for="ZipCode">Zip Code: </label><input type="text" id = "ZipCode" name = "ZipCode"></p>
-		<p><label for="Country">Country: </label><select id = "Country" name = "Country"></p>
+		<p><label for="Country">Country: </label>
+         <select id = "Country" name = "Country">
+      </p>
    			<option value="Afganistan">Afghanistan</option>
    			<option value="Albania">Albania</option>
    			<option value="Algeria">Algeria</option>
@@ -275,8 +279,12 @@
    <p><input type="radio" name="gender" value="female"> Female</p>
 
    <input type="submit" id = "sub_StdReg" name = "sub_StdReg">
-
+   </div>
+   
+   <div id="SecondCol">
+      <input type="submit" style="width: 100%;">
+   </div>
    <script type="text/javascript" src = "FormValidation.js"></script>
-</form>
+</fieldset>
 </body>
 </html>
