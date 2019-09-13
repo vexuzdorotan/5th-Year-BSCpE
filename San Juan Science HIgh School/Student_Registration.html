@@ -195,7 +195,7 @@
             <option value="Papua New Guinea">Papua New Guinea</option>
             <option value="Paraguay">Paraguay</option>
             <option value="Peru">Peru</option>
-            <option value="Phillipines">Philippines</option>
+            <option value="Phillipines" selected="selected">Philippines</option>
             <option value="Pitcairn Island">Pitcairn Island</option>
             <option value="Poland">Poland</option>
             <option value="Portugal">Portugal</option>
@@ -275,16 +275,18 @@
    </div>
 
    <label for="Gender">Gender: </label>
-   <p><input type="radio" name="gender" value="male"> Male</p>
+   <p><input type="radio" name="gender" value="male" checked="checked"> Male</p>
    <p><input type="radio" name="gender" value="female"> Female</p>
 
-   <input type="submit" id = "sub_StdReg" name = "sub_StdReg">
+   <button id = "sub_StdReg" name = "sub_StdReg">SUBMIT</button>
    </div>
    
    <div id="SecondCol">
-      <input type="submit" style="width: 100%;">
+      <label for="file">Upload Student's Photo</label>
+      <center><img src="pictures/faceless.png" id="profile" style="height: 200px; width: 200px" ></center>
+      <input type="file" name="file" accept=".gif,.jpg,.jpeg,.png">
    </div>
-   <script type="text/javascript" src = "FormValidation.js"></script>
 </fieldset>
+<script type="text/javascript" src = "js/Validation.js"></script>
 </body>
 </html>
