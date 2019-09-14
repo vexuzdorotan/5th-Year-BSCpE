@@ -19,9 +19,8 @@ input[type = "text"]{
 }
 
 #FirstCol{
-	width: 50%;
+	width: 75%;
 	height: 100%;
-	float: left;
 	/*display: inline-block;*/
 }
 
@@ -30,6 +29,68 @@ input[type = "text"]{
 	height: 100%;
 	float: right;
 	/*display: inline;*/
+}
+.container{
+	margin: 0 100px 0 100px;
+}
+
+.legend{
+	font-family: 'Rubik', sans-serif;
+	font-size: 40px;
+	margin: 50px 0 20px 0;
+}
+input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid gray;
+  color: gray;
+  margin-left: 15px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+}
+select{
+	border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid gray;
+  color: gray;
+  margin-left: 15px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+}
+label{
+  font-family: 'Titillium Web', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 15px;
+}
+
+.birthday {
+	width: 30%;
+	float: left;
+}
+.gender {
+	width: 50%;
+	float:left;
+}
+.name {
+	width: 75%;
+	display: block;
+	float: left;
+}
+#LastName{
+	width: 25%;
+}
+#FirstName{
+	width: 35%;
+}
+#MiddleName{
+	width: 25%;
+}
+.address{
+	float: left;
 }
 
 /*#fieldset_StdReg:after{
