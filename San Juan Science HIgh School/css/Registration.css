@@ -1,100 +1,32 @@
 input[type = "text"]{
-	/*font-size: 150em;*/
-	/*width: 100%;*/
+	
 }
 
-#fieldset_StdReg{
-	/*text-align: left;*/
+#fieldset_StdReg, #fieldset_EmpReg{
+	
 	width: 97.7%;
-	/*overflow-x: hidden;*/
+	
 	display: block;
 }
 
-#body_StdReg *{
+#body_StdReg *, #body_EmpReg *{
 	font-weight: bold;
 } 
 
 #fieldset_StdReg legend{
-	/*//font-size: ;*/
+	
 }
 
 #FirstCol{
-	width: 75%;
+	width: 50%;
 	height: 100%;
-	/*display: inline-block;*/
+	float: left;
+	
 }
 
 #SecondCol{
 	width: 50%;
 	height: 100%;
 	float: right;
-	/*display: inline;*/
-}
-.container{
-	margin: 0 100px 0 100px;
-}
-
-.legend{
-	font-family: 'Rubik', sans-serif;
-	font-size: 40px;
-	margin: 50px 0 20px 0;
-}
-input {
-  border: 0;
-  outline: 0;
-  background: transparent;
-  border-bottom: 1px solid gray;
-  color: gray;
-  margin-left: 15px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 14px;
-}
-select{
-	border: 0;
-  outline: 0;
-  background: transparent;
-  border-bottom: 1px solid gray;
-  color: gray;
-  margin-left: 15px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 14px;
-}
-label{
-  font-family: 'Titillium Web', sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 20px;
-  padding: 15px;
-}
-
-.birthday {
-	width: 30%;
-	float: left;
-}
-.gender {
-	width: 50%;
-	float:left;
-}
-.name {
-	width: 75%;
-	display: block;
-	float: left;
-}
-#LastName{
-	width: 25%;
-}
-#FirstName{
-	width: 35%;
-}
-#MiddleName{
-	width: 25%;
-}
-.address{
-	float: left;
-}
-
-/*EMPLOYEE*/
-
-#body_EmpReg *{
-	font-weight: bold;
+	
 }

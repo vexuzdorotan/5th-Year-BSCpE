@@ -1,12 +1,10 @@
-// function isFileImage(file) {
-//     return file && file['type'].split('/')[0] === 'image';
-// }
+
 
 var std_picture = document.querySelector("#SecondCol img");
 var input_std_picture = document.querySelector("#SecondCol input");
 input_std_picture.addEventListener("change", SeePicture);
 
-var image_StdReg = document.getElementById("file"); //input type = "file"
+var imageToUpload = document.getElementById("file"); //input type = "file"
 
 
 function SeePicture(){
@@ -14,12 +12,17 @@ function SeePicture(){
 }
 
 var sub_StdReg = document.getElementById("sub_StdReg");
+var sub_EmpReg = document.getElementById("sub_EmpReg");
+sub_StdReg.addEventListener("click", ValidateForm.bind(null, "body_StdReg"));
+
+
+
 
 function ValidateForm(body){ //Validate if Form is not Blank
 	var input = document.querySelectorAll("#"+body + " input");
 	var ifblank = 0;
 
-	file = image_StdReg.files[0];
+	//file = image_StdReg.files[0];
 	console.log(input);
 
 	for(var i = 0; i < 11; i++){
@@ -40,17 +43,17 @@ function ValidateForm(body){ //Validate if Form is not Blank
 			alert("STUDENT'S PICTURE IS NOT UPLOADED");
 		}
 		else{
-			UploadPhoto(image_StdReg);
+			UploadPhoto(imageToUpload);
 		}
 	}
 }
 
 function CheckIfUploaded(xhttp){
 	var json;
-	//json = JSON.parse(xhttp.responseText);
+	json = JSON.parse(xhttp.responseText);
 
 	if(json != null){
-		alert("PHOTO UPLOADED");
+		alert("REGISTRATION SUCCESSFUL");
 	}
 	else{
 		alert("PHOTO NOT UPLOADED");
@@ -58,8 +61,6 @@ function CheckIfUploaded(xhttp){
 	// console.log(xhttp.responseText);
 
 }
-
-sub_StdReg.addEventListener("click", ValidateForm.bind(null, "body_StdReg"));
 
 
 //IMAGE UPLOADING

@@ -8,6 +8,10 @@ $target_dir = "../pictures/student/";
 foreach ($_FILES['files']['tmp_name'] as $key => $value) {
     # code...
     $targetpath = $target_dir . basename($_FILES['files']['name'][$key]);
-    move_uploaded_file($value, $targetpath);
+    if(move_uploaded_file($value, $targetpath)){
+        echo true;
+    }
 }
+
+//SIZE IS NOT YET CONSIDERED
 ?>
