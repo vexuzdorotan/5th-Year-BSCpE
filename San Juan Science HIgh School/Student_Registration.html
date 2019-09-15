@@ -4,25 +4,42 @@
 	<title>Student Registration</title>
    <link rel="stylesheet" type="text/css" href="css/Registration.css">
    <link rel="stylesheet" type="text/css" href="css/Entire.css">
+   <link rel="stylesheet" type="text/css" href="css/all.css">
+   <link href="https://fonts.googleapis.com/css?family=Quicksand|Rubik|Titillium+Web:400,700&display=swap" rel="stylesheet">
 </head>
 <body id = "body_StdReg" name = "body_StdReg">
-
-<fieldset id="fieldset_StdReg" name="fieldset_StdReg">
-   <div id = "FirstCol">
-   <legend>STUDENT REGISTRATION</legend>
-	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
-	<p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
-	<p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>
-	<p><label for="Birthday">Birthday: </label><input type="date" id = "Birthday" name = "Birthday"/></p>
-		
-	<div id = "Address">
-      <p>Address</p>
-		<p><label for="StreetAdd1">Street Address 1: </label><input type="text" id = "StreetAdd1" name = "StreetAdd1"></p>
-		<p><label for="StreetAdd2">Street Address 2: </label><input type="text" id = "StreetAdd2" name = "StreetAdd2"></p>
-		<p><label for="City">City: </label><input type="text" id = "City" name = "City"></p>
-		<p><label for="Province">Province: </label><input type="text" id = "Province" name= " Province"></p>
-		<p><label for="ZipCode">Zip Code: </label><input type="text" id = "ZipCode" name = "ZipCode"></p>
-		<p><label for="Country">Country: </label>
+<div class="container">   
+   <legend><p class=legend>STUDENT REGISTRATION</p></legend>
+      <div class="name">
+      <label>Full Name</label></br>
+        <input placeholder="Last Name" type="text" id = "LastName" name = "LastName"/>
+	     <input placeholder="First Name" type="text" id = "FirstName" name = "FirstName"/>
+	     <input placeholder="Middle Name" type="text" id = "MiddleName" name = "MiddleName"/>
+   </div>
+   </br>
+   </br>
+   </br>
+   </br>
+   <div class="birthday">
+	  <label>Date of Birth</label></br><input type="date" id = "Birthday" name = "Birthday"/>
+   </div>
+   <div class="gender">
+   <label for="Gender">Gender</label><br/>
+      <select id = "Country" name = "Country">
+         <option value="Male">Male</option>
+         <option value="Female">Female</option>
+      </select>
+   </div>
+</div>
+   <!--
+   <div class="address">
+   <label>Address</label>
+	<p><label for="StreetAdd1"></label><input type="text" id = "StreetAdd1" name = "StreetAdd1"></p>
+	<p><label for="StreetAdd2">Street Address 2: </label><input type="text" id = "StreetAdd2" name = "StreetAdd2"></p>
+	<p><label for="City">City: </label><input type="text" id = "City" name = "City"></p>
+	<p><label for="Province">Province: </label><input type="text" id = "Province" name= " Province"></p>
+	<p><label for="ZipCode">Zip Code: </label><input type="text" id = "ZipCode" name = "ZipCode"></p>
+	<p><label for="Country">Country: </label>
          <select id = "Country" name = "Country">
       </p>
    			<option value="Afganistan">Afghanistan</option>
@@ -272,11 +289,9 @@
             <option value="Zambia">Zambia</option>
             <option value="Zimbabwe">Zimbabwe</option>
       </select>
-   </div>
+   
 
-   <label for="Gender">Gender: </label>
-   <p><input type="radio" name="gender" value="male" checked="checked"> Male</p>
-   <p><input type="radio" name="gender" value="female"> Female</p>
+   
 
    <button id = "sub_StdReg" name = "sub_StdReg">SUBMIT</button>
    </div>
@@ -305,8 +320,7 @@
          </select>
       </p>
 
-   </div>
-</fieldset>
+   </div>-->
 <script type="text/javascript" src = "js/Validation.js"></script>
 <script type="text/javascript" src = "js/ajax.js"></script>
 </body>
