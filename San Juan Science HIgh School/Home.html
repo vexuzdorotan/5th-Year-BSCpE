@@ -23,29 +23,41 @@
             <a class="navbar-brand menu hoverable bold" href="#">
                 <span class="fa fa-home"></span>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse">
+
+            <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link hoverable" href="#">About JuanSci<span class="fas arr-down fa-caret-down"></span></a>
+                    <li class="nav-item active dropdown">
+                         <a class="nav-link hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About JuanSci<span class="fas arr-down fa-caret-down"></span></a>
+                            <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="#">Action</a>
+                                  <a class="dropdown-item" href="#">Another action</a>
+                                  <a class="dropdown-item" href="#">Something else here</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link hoverable" href="#">News & Updates<span class="arr-down fas fa-caret-down"></span></a>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">News & Updates<span class="arr-down fas fa-caret-down"></span></a>
+                            <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="#">Action</a>
+                                  <a class="dropdown-item" href="#">Another action</a>
+                                  <a class="dropdown-item" href="#">Something else here</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link hoverable" href="#">Programs<span class="fas arr-down fa-caret-down"></span></a>
-                    </li>
-                
-                    <!--<li class="nav-item active"><a class="nav-link hoverable" href="#">Stakeholders</a>
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown03">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                        </div>-->
-                     </li>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Programs<span class="fas arr-down fa-caret-down"></span></a>
+                             <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="#">Action</a>
+                                  <a class="dropdown-item" href="#">Another action</a>
+                                  <a class="dropdown-item" href="#">Something else here</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
                      <li class="nav-item active">
                         <a class="nav-link hoverable" href="#">Transparency</a>
                     </li>
@@ -93,25 +105,17 @@
             </div>
 
         </div>
-    </div>
 
     <div class="footer row">
         <div class="col foottext">
             © 2019 - San Juan Science High School. All Rights Reserved
         </div>
         <div class="col footlogo float-right">
-            <span class="fab fa-google-plus-square"></span>
-            <span class="fab fa-twitter-square"></span>
-            <span class="fab fa-facebook-square"></span>
+            <a class="text-light" href="#"><span class="fab fa-google-plus-square"></span></a>
+            <a class="text-light" href="#"><span class="fab fa-twitter-square"></span></a>
+            <a class="text-light" href="https://web.facebook.com/San-Juan-City-Science-High-School-614122265693169/"><span class="fab fa-facebook-square"></span></a>
         </div>
     </div>
-
-
-
-         <!--   <p class="copyright">
-            © 2019 - San Juan Science High School. All Rights Reserved
-            
-        -->
 
     <script type="text/javascript" src="js\Home.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
