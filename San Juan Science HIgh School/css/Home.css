@@ -105,16 +105,16 @@
     margin-left:10px;
 }
 .arr-up {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 40px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  color: black; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  border-radius: 10px; /* Rounded corners */
+  display: none; 
+  position: fixed;
+  bottom: 40px; 
+  right: 30px; 
+  z-index: 99;
+  border: none; 
+  outline: none; 
+  color: black; 
+  cursor: pointer; 
+  border-radius: 10px; 
   font-size: 50px;
   opacity: 0.8;
 }
@@ -126,8 +126,7 @@
 }
 
 #myBtn:hover {
-  background-color: black; /* Add a dark-grey background on hover */
+  background-color: black; 
   z-index: 98;
   opacity: 0.8;
 }
-
