@@ -118,6 +118,9 @@
   font-size: 50px;
   opacity: 0.8;
 }
+#myBtn {
+    display: none;
+}
 
 #myBtn:hover {
   background-color: black; /* Add a dark-grey background on hover */
