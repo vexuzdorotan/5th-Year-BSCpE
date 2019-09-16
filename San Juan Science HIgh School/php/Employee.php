@@ -1,6 +1,6 @@
 <?php
 
-$target_dir = "../pictures/student/";
+$target_dir = "../pictures/employee/";
 
 //What does PHP receive?
 // if(empty(($_POST['sjajsaj']))){

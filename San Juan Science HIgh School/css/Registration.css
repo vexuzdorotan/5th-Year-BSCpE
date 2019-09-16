@@ -2,14 +2,14 @@ input[type = "text"]{
 	
 }
 
-#fieldset_StdReg, #fieldset_EmpReg{
+fieldset{
 	
 	width: 97.7%;
 	
 	display: block;
 }
 
-#body_StdReg *, #body_EmpReg *{
+body *{
 	font-weight: bold;
 } 
 

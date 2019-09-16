@@ -5,9 +5,9 @@
    <link rel="stylesheet" type="text/css" href="css/Registration.css">
    <link rel="stylesheet" type="text/css" href="css/Entire.css">
 </head>
-<body id = "body_StdReg" name = "body_StdReg">
+<body>
 
-<fieldset id="fieldset_StdReg" name="fieldset_StdReg">
+<fieldset>
    <div id = "FirstCol">
    <legend>STUDENT REGISTRATION</legend>
 	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
@@ -278,7 +278,7 @@
    <p><input type="radio" name="gender" value="male" checked="checked"> Male</p>
    <p><input type="radio" name="gender" value="female"> Female</p>
 
-   <button id = "sub_StdReg" name = "sub_StdReg">SUBMIT</button>
+   <button id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
    
    <div id="SecondCol">
@@ -297,8 +297,8 @@
          </select>
       </p>
       <p>
-         <label for="StdType">Type: </label>
-         <select id="StdType">
+         <label for="stdType">Type: </label>
+         <select id="stdType">
             <option selected="selected">Old</option>
             <option>New</option>
             <option>Transferee</option>
@@ -307,7 +307,7 @@
 
    </div>
 </fieldset>
-<script type="text/javascript" src = "js/Validation.js"></script>
 <script type="text/javascript" src = "js/ajax.js"></script>
+<script type="text/javascript" src = "js/Student.js"></script>
 </body>
 </html>

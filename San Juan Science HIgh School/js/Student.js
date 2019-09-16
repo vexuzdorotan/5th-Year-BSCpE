@@ -1,5 +1,3 @@
-
-
 var std_picture = document.querySelector("#SecondCol img");
 var input_std_picture = document.querySelector("#SecondCol input");
 input_std_picture.addEventListener("change", SeePicture);
@@ -11,16 +9,12 @@ function SeePicture(){
 	std_picture.src = window.URL.createObjectURL(this.files[0]); //Previews the picture 
 }
 
-var sub_StdReg = document.getElementById("sub_StdReg");
-var sub_EmpReg = document.getElementById("sub_EmpReg");
-sub_StdReg.addEventListener("click", ValidateForm.bind(null, "StdReg"));
-sub_EmpReg.addEventListener("click", ValidateForm.bind(null, "EmpReg"));
+var submitForm = document.getElementById("submitForm");
+// submitForm.addEventListener("click", ValidateForm.bind(null, "StdReg"));
+submitForm.addEventListener("click", ValidateForm);
 
-
-
-
-function ValidateForm(FormType){ //Validate if Form is not Blank
-	var input = document.querySelectorAll("#body_"+FormType + " input");
+function ValidateForm(){ //Validate if Form is not Blank
+	var input = document.querySelectorAll("body input");
 	var ifblank = 0;
 
 	//file = image_StdReg.files[0];
@@ -36,10 +30,10 @@ function ValidateForm(FormType){ //Validate if Form is not Blank
 		}
 	}
 
-	// if(ifblank != 0){ //If some fields are still blank
-	// 	alert("PLEASE FILL UP");	
-	// }
-	// else{
+	if(ifblank != 0){ //If some fields are still blank
+		alert("PLEASE FILL UP");	
+	}
+	else{
 
 		//console.log(imageToUpload.files[0]["name"]);
 		
@@ -47,11 +41,9 @@ function ValidateForm(FormType){ //Validate if Form is not Blank
 			alert("STUDENT'S PICTURE IS NOT UPLOADED");
 		}
 		else{
-			UploadPhoto(imageToUpload, FormType);
+			UploadPhoto(imageToUpload);
 		}
-	// }
-	// imageToUpload.files[0]["population"] = "student";
-	// console.log(imageToUpload.files[0]["population"]);
+	}
 }
 
 function CheckIfUploaded(xhttp){
@@ -71,7 +63,7 @@ function CheckIfUploaded(xhttp){
 
 //IMAGE UPLOADING
 
-function UploadPhoto(file, formType){
+function UploadPhoto(file){
 	//const xhr = new XMLHttpRequest();
 	const formData = new FormData();
 	var url;
@@ -80,14 +72,7 @@ function UploadPhoto(file, formType){
 		formData.append("files[]", fileToUpload);
 	}
 
-	if(formType = "StdReg"){
-		url = "php/Student.php";
-	}
-	else if(formType = "EmpReg"){
-		url = "php/Employee.php";
-	}
-	// var data = "formData=" + JSON.stringify(formData);
 	//xhr.open("post", "php/UploadPhoto.php");
 	//xhr.send(formData);
-	AJAX_FILES(formData, true, "post", url, true, CheckIfUploaded);
+	AJAX_FILES(formData, true, "post", "php/Student.php", true, CheckIfUploaded);
 }

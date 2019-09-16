@@ -5,9 +5,9 @@
    <link rel="stylesheet" type="text/css" href="css/Registration.css">
    <link rel="stylesheet" type="text/css" href="css/Entire.css">
 </head>
-<body id = "body_EmpReg" name = "body_EmpReg">
+<body>
 
-<fieldset id="fieldset_EmpReg" name="fieldset_EmpReg">
+<fieldset>
    <div id = "FirstCol">
    <legend>EMPLOYEE REGISTRATION</legend>
 	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
@@ -279,13 +279,13 @@
    <p><input type="radio" name="gender" value="male" checked="checked"> Male</p>
    <p><input type="radio" name="gender" value="female"> Female</p>
 
-   <button id = "sub_EmpReg" name = "sub_EmpReg">SUBMIT</button>
+   <button id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
 
    <div id="SecondCol">
       <label for="file">Upload Employee's Photo</label>
       <center><img src="pictures/faceless.png" id="profile" style="height: 200px; width: 200px" ></center>
-      <input type="file" name="file" accept=".gif,.jpg,.jpeg,.png">
+      <input type="file" id = "file" name="file" accept=".gif,.jpg,.jpeg,.png">
       <p>
          <label for="lbl_Position">Position: </label>
          <select id="txt_Position">
@@ -297,6 +297,7 @@
 
    </div>
 </fieldset>
-<script type="text/javascript" src = "js/Validation.js"></script>
+<script type="text/javascript" src = "js/ajax.js"></script>
+<script type="text/javascript" src = "js/Employee.js"></script>
 </body>
 </html>
