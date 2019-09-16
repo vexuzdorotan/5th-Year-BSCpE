@@ -1,3 +1,9 @@
+<?php
+   require 'php/ConnectToDB.php';
+   $stmt = $db->prepare("UPDATE student_records SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
+   $stmt->execute();
+   $stmt->closeCursor();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -275,8 +281,8 @@
    </div>
 
    <label for="Gender">Gender: </label>
-   <p><input type="radio" name="gender" id = "gender" value="male" checked="checked"> Male</p>
-   <p><input type="radio" name="gender" id = "gender" value="female"> Female</p>
+   <p><input type="radio" name="gender" id = "gender" value="Male" checked="checked"> Male</p>
+   <p><input type="radio" name="gender" id = "gender" value="Female"> Female</p>
 
    <button id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
@@ -297,8 +303,8 @@
          </select>
       </p>
       <p>
-         <label for="stdType">Type: </label>
-         <select id="stdType">
+         <label for="Type">Type: </label>
+         <select id="Type">
             <option selected="selected">Old</option>
             <option>New</option>
             <option>Transferee</option>
