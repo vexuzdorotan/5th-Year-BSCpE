@@ -121,6 +121,9 @@
 #myBtn {
     display: none;
 }
+.show {
+    display: block;
+}
 
 #myBtn:hover {
   background-color: black; /* Add a dark-grey background on hover */
