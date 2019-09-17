@@ -3,9 +3,18 @@ html, body{
 	height: 100%;
 	padding: 0;
 	margin: 0;
+	border: none;
 }
 
 body{
 	position: absolute;
 	overflow-x: hidden;
+}
+
+table, td, tbody, thead{
+	border: 0.1em black solid;
+}
+
+table{
+	border-collapse: collapse;
 }
