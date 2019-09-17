@@ -9,10 +9,11 @@
     <link rel="stylesheet" type="text/css" href="css\bootstrap.css" />
     <link rel="icon" href="pictures\logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js\jquery-3.4.1.js"></script>
 </head>
 <body class="bg">
 
-    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="arr-up fas fa-caret-square-up"></i></button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="arr-to-top fas fa-caret-square-up"></i></button>
     <div class="prim">
         <div class="header">
             <img src="pictures\logo.png" class="logo" />
@@ -20,17 +21,14 @@
             <p class="headtxt"> San Juan Science High School</p>
         </div>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand menu hoverable bold" href="#">
-                <span class="fa fa-home"></span>
-            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+          
             <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active dropdown">
-                         <a class="nav-link hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About JuanSci<span class="fas arr-down fa-caret-down"></span></a>
+                         <a class="navbar-brand hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About JuanSci<span class="fas arr-down fa-caret-down"></span></a>
                             <div class="dropdown-menu">
                                   <a class="dropdown-item" href="#">Action</a>
                                   <a class="dropdown-item" href="#">Another action</a>
@@ -40,7 +38,7 @@
                             </div>
                     </li>
                     <li class="nav-item active dropdown">
-                        <a class="nav-link hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">News & Updates<span class="arr-down fas fa-caret-down"></span></a>
+                        <a class="navbar-brand hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">News & Updates<span class="arr-down fas fa-caret-down"></span></a>
                             <div class="dropdown-menu">
                                   <a class="dropdown-item" href="#">Action</a>
                                   <a class="dropdown-item" href="#">Another action</a>
@@ -50,7 +48,7 @@
                             </div>
                     </li>
                     <li class="nav-item active dropdown">
-                        <a class="nav-link hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Programs<span class="fas arr-down fa-caret-down"></span></a>
+                        <a class="navbar-brand hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Programs<span class="fas arr-down fa-caret-down"></span></a>
                              <div class="dropdown-menu">
                                   <a class="dropdown-item" href="#">Action</a>
                                   <a class="dropdown-item" href="#">Another action</a>
@@ -59,19 +57,22 @@
                                   <a class="dropdown-item" href="#">Separated link</a>
                             </div>
                      <li class="nav-item active">
-                        <a class="nav-link hoverable" href="#">Transparency</a>
+                        <a class="navbar-brand hoverable" href="#">Transparency</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link hoverable" href="#">Contact Us</a>
+                        <a class="navbar-brand hoverable" href="#">Contact Us</a>
                     </li>
                 </ul>
-
-                <div class="search form-inline my-2 my-md-0">
-                    <input class="searchbox" type="text" placeholder="Search..."/>
-                    <button class="searchbtn" type="submit">
-                        <span class="fa fa-search searchicon"></span>
-                    </button>
+            </div>
+            <div class="search form-inline">
+              <div class="bg-dark rounded-pill border-dark shadow">
+                <div class="input-group">
+                  <input id="search" type="search" placeholder="Search..." aria-describedby="button-addon1" class="form-control rounded-pill rounded-right border-0 bg-light">
+                    <div class="input-group-append">
+                      <button id="button-addon1" type="submit" class="btn btn-link text-secondary"><i class="fa fa-search"></i></button>
+                    </div>
                 </div>
+              </div>
             </div>
         </div>
     </div>
@@ -106,7 +107,12 @@
 
         </div>
 
-    <div class="footer row">
+    <div class="important-links">
+      <h5 class="text-light pt-2 ml-5">IMPORTANT LINKS</h6>
+    </div>
+
+
+    <div class="footer text-light row">
         <div class="col foottext">
             © 2019 - San Juan Science High School. All Rights Reserved
         </div>
@@ -118,7 +124,6 @@
     </div>
 
     <script type="text/javascript" src="js\Home.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
