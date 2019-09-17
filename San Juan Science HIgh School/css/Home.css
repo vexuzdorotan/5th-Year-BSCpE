@@ -8,6 +8,10 @@
     width: 90%;
     height:1000px;
 }
+.navbar-brand{
+  font-size: 16px !important;
+  margin:2px !important;
+}
 .prim{
     display: block;
 }
@@ -56,24 +60,28 @@
 }
 
 .search {
-    float: right;
-    margin: 20px 10px 0 0;
+    right:20px;
+    top: 8px;
+    position: absolute;
     display:inline-block;
 }
 .searchbox {
     font-family:Calibri;
     font-size:15px;
-    border: 2px solid maroon;
+    border: 2px solid #B0B0B0;
     padding-left:10px;
-    height: 36px;
+    height: 37px;
     float:left;
     margin-top:0px;
     border-radius: 3px;
+    background-color: white;
 }
 .searchicon {
     padding:10px;
     float:right;
-    background-color: maroon;
+    color: white;
+    font-size: 17px;
+    background-color: #B0B0B0;
     border-radius: 3px;
 }
 .searchbtn {
