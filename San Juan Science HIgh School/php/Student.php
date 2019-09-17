@@ -7,7 +7,7 @@ require 'ConnectToDB.php';
 // }
 
 if(!empty($_FILES['files'])){
-	UPLOAD();
+	UPLOAD($target_dir);
 }
 else if(!empty($_POST['LastName'])){
 	Insert($db);
@@ -16,7 +16,7 @@ else if(!empty($_POST['LastName'])){
 
 
 //INSERT TO DB
-function Insert($db){
+function Insert($db, $target_dir){
 	$stmt = $db->prepare("INSERT into student_records(LastName, FirstName, MiddleName, Birthday, Street_Address1, Street_Address2, City, Province, Country, Gender, GradeLevel, Type, URL_Picture) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 	$stmt->bindValue(1, $_POST["LastName"]);
@@ -31,7 +31,7 @@ function Insert($db){
 	$stmt->bindValue(10, $_POST["Gender"]);
 	$stmt->bindValue(11, $_POST["GradeLevel"]);
 	$stmt->bindValue(12, $_POST["Type"]);
-	$stmt->bindValue(13, $GLOBALS['target_dir'] . $_POST["URL_Picture"]);
+	$stmt->bindValue(13, $target_dir . $_POST["URL_Picture"]);
 	$stmt->execute();	
 	$stmt = $db->prepare("UPDATE student_records SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
    	$stmt->execute();
@@ -41,11 +41,11 @@ function Insert($db){
 
 
 //Move files to a directory
-function UPLOAD(){
+function UPLOAD($target_dir){
 	foreach ($_FILES['files']['tmp_name'] as $key => $value) {
     	# code...
     	// $target_dir = "../pictures/student/";
-    	$targetpath = $GLOBALS['target_dir'] . basename($_FILES['files']['name'][$key]);
+    	$targetpath = $target_dir . basename($_FILES['files']['name'][$key]);
     	if(move_uploaded_file($value, $targetpath)){
         	echo true;
     	}

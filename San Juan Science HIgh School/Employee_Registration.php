@@ -1,13 +1,13 @@
 <?php
    require 'php/ConnectToDB.php';
-   $stmt = $db->prepare("UPDATE student_records SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
+   $stmt = $db->prepare("UPDATE employee_records SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
    $stmt->execute();
    $stmt->closeCursor();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Student Registration</title>
+	<title>Employee Registration</title>
    <link rel="stylesheet" type="text/css" href="css/Registration.css">
    <link rel="stylesheet" type="text/css" href="css/Entire.css">
 </head>
@@ -15,12 +15,12 @@
 
 <fieldset>
    <div id = "FirstCol">
-   <legend>STUDENT REGISTRATION</legend>
+   <legend>EMPLOYEE REGISTRATION</legend>
 	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
 	<p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
 	<p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>
 	<p><label for="Birthday">Birthday: </label><input type="date" id = "Birthday" name = "Birthday"/></p>
-		
+
 	<div id = "Address">
       <p>Address</p>
 		<p><label for="StreetAdd1">Street Address 1: </label><input type="text" id = "StreetAdd1" name = "StreetAdd1"></p>
@@ -281,39 +281,28 @@
    </div>
 
    <label for="Gender">Gender: </label>
-   <p><input type="radio" name="Gender" id = "Gender" value="Male" checked="checked"> Male</p>
-   <p><input type="radio" name="Gender" id = "Gender" value="Female"> Female</p>
+   <p><input type="radio" id = "Gender" name="Gender" value="male" checked="checked"> Male</p>
+   <p><input type="radio" id = "Gender" name="Gender" value="female"> Female</p>
 
    <button id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
-   
+
    <div id="SecondCol">
-      <label for="file">Upload Student's Photo</label>
+      <label for="file">Upload Employee's Photo</label>
       <center><img src="pictures/faceless.png" id="profile" style="height: 200px; width: 200px" ></center>
-      <input type="file" id="file" name="file" accept=".gif,.jpg,.jpeg,.png">
+      <input type="file" id = "file" name="file" accept=".gif,.jpg,.jpeg,.png">
       <p>
-      <label for="GradeLevel">Grade Level: </label>
-         <select id="GradeLevel">
-            <option selected="selected">Grade 7</option>
-            <option>Grade 8</option>
-            <option>Grade 9</option>
-            <option>Grade 10</option>
-            <option>Grade 11</option>
-            <option>Grade 12</option>
-         </select>
-      </p>
-      <p>
-         <label for="Type">Type: </label>
-         <select id="Type">
-            <option selected="selected">Old</option>
-            <option>New</option>
-            <option>Transferee</option>
+         <label for="lbl_Position">Position: </label>
+         <select id="Position">
+            <option selected="selected">Teacher</option>
+            <option>?</option>
+            <!-- Still an option, positions are still unknown -->
          </select>
       </p>
 
    </div>
 </fieldset>
 <script type="text/javascript" src = "js/ajax.js"></script>
-<script type="text/javascript" src = "js/Student.js"></script>
+<script type="text/javascript" src = "js/Employee.js"></script>
 </body>
 </html>

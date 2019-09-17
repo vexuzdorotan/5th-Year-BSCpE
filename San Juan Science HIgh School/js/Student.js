@@ -6,7 +6,6 @@ var imageToUpload = document.getElementById("file"); //input type = "file"
 
 //INFO
 var input = document.querySelectorAll("body input"); //Gets all input tags
-var boolean;
 
 function SeePicture(){
 	std_picture.src = window.URL.createObjectURL(this.files[0]); //Previews the picture 
@@ -67,7 +66,7 @@ function InsertInfo(){
 	}
 
 
-	var gender = document.querySelectorAll("#gender");
+	var gender = document.querySelectorAll("#Gender");
 	for (var i = 0, length = gender.length; i < length; i++){
  		if (gender[i].checked){
   			// do whatever you want with the checked radio
