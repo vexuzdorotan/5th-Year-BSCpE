@@ -9,10 +9,11 @@
     <link rel="stylesheet" type="text/css" href="css\bootstrap.css" />
     <link rel="icon" href="pictures\logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js\jquery-3.4.1.js"></script>
 </head>
 <body class="bg">
 
-    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="arr-up fas fa-caret-square-up"></i></button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="arr-to-top fas fa-caret-square-up"></i></button>
     <div class="prim">
         <div class="header">
             <img src="pictures\logo.png" class="logo" />
@@ -64,11 +65,15 @@
                 </ul>
             </div>
             <div class="search form-inline">
-                    <input class="searchbox" type="text" placeholder="Search..."/>
-                    <button class="searchbtn" type="submit">
-                        <span class="fa fa-search searchicon"></span>
-                    </button>
+              <div class="bg-dark rounded-pill border-dark shadow">
+                <div class="input-group">
+                  <input id="search" type="search" placeholder="Search..." aria-describedby="button-addon1" class="form-control rounded-pill rounded-right border-0 bg-light">
+                    <div class="input-group-append">
+                      <button id="button-addon1" type="submit" class="btn btn-link text-secondary"><i class="fa fa-search"></i></button>
+                    </div>
                 </div>
+              </div>
+            </div>
         </div>
     </div>
     <div class="mycontainer" >
@@ -102,7 +107,12 @@
 
         </div>
 
-    <div class="footer row">
+    <div class="important-links">
+      <h5 class="text-light pt-2 ml-5">IMPORTANT LINKS</h6>
+    </div>
+
+
+    <div class="footer text-light row">
         <div class="col foottext">
             © 2019 - San Juan Science High School. All Rights Reserved
         </div>
@@ -114,7 +124,6 @@
     </div>
 
     <script type="text/javascript" src="js\Home.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

@@ -20,11 +20,15 @@
     float:left;
     padding: 10px 0 10px 10px;
 }
+.important-links{
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+  background: #1c0004;
+}
 .footer{
     width: 100%;
-    margin-top: 20px;
-    color: white;
-    background-color: #272b30;
+    background-color: black;
 }
 .foottext{
     padding: 10px 0px 0px 50px;
@@ -50,6 +54,16 @@
      width: 100%;
      height:3vw;
 }
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+.form-control-underlined {
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
 .headtxt {
     font-family: Tw Cen MT;
     font-size: 5vw;
@@ -57,7 +71,7 @@
     float:left;
 }
 .search {
-    right:20px;
+    right:30px;
     top: 8px;
     position: absolute;
     display:inline-block;
@@ -65,12 +79,12 @@
 .searchbox {
     font-family:Calibri;
     font-size:15px;
-    border: 2px solid #808080;
+    border: 3px solid #555555;
     padding-left:10px;
     height: 37px;
     float:left;
     margin-top:0px;
-    border-radius: 3px;
+    border-radius: 4px;
     background-color: white;
 }
 .searchicon {
@@ -78,8 +92,8 @@
     float:right;
     color: white;
     font-size: 17px;
-    background-color: #808080;
-    border-radius: 3px;
+    background-color: #555555;
+    border-radius: 4px;
 }
 .searchbtn {
     border:none;
@@ -95,6 +109,7 @@
 .hoverable {
     padding: 0px 20px 10px 20px;
     margin-right: 10px;
+    transition: 0.3s;
 }
 .hoverable:hover {
     background-color: maroon;
@@ -109,18 +124,18 @@
 .arr-down {
     margin-left:10px;
 }
-.arr-up {
+.arr-to-top {
   display: none; 
   position: fixed;
   bottom: 40px; 
-  right: 30px; 
+  right: 20px; 
   z-index: 99;
   border: none; 
   outline: none; 
-  color: black; 
+  color: white; 
   cursor: pointer; 
   border-radius: 10px; 
-  font-size: 50px;
+  font-size: 40px;
   opacity: 0.8;
 }
 #myBtn {
@@ -128,6 +143,9 @@
 }
 .show {
     display: block;
+}
+.hide{
+  display: none;
 }
 
 #myBtn:hover {
