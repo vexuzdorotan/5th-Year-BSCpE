@@ -10,7 +10,7 @@ if(!empty($_FILES['files'])){
 	UPLOAD($target_dir);
 }
 else if(!empty($_POST['LastName'])){
-	Insert($db);
+	Insert($db, $target_dir);
 }
 
 
