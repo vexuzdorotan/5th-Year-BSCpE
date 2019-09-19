@@ -14,8 +14,8 @@
 <body>
 
 <fieldset>
-   <div id = "FirstCol">
-   <legend>STUDENT REGISTRATION</legend>
+   <div id = "FirstCol" class="A2">
+   <legend class="A2">STUDENT REGISTRATION</legend>
 	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
 	<p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
 	<p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>

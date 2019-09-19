@@ -53,7 +53,7 @@ function UPLOAD($target_dir){
     	// $target_dir = "../pictures/student/";
     	$targetpath = $target_dir . basename($_FILES['files']['name'][$key]);
     	if(move_uploaded_file($value, $targetpath)){
-        	echo true;
+        	echo $target_dir;
     	}
 	}
 }
