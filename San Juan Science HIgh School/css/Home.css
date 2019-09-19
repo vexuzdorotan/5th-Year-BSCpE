@@ -3,7 +3,7 @@
 }
 .mycontainer {
     margin: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: #efefef;
     width: 90%;
     height:1000px;
@@ -37,7 +37,7 @@
   font-family: Tw Cen MT;
 }
 .footer-two{
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100%;
   background: #1c0004;
 }
@@ -129,8 +129,9 @@ a.text-light:hover {
 }
 .slide{
     top:50px;
-    width: 70%;
+    width: 60%;
     margin:auto;
+    
 }
 .arr-down {
     margin-left:10px;
