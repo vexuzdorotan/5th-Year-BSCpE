@@ -1,5 +1,5 @@
 <?php
-	include 'ConnectToDB.php';
+	require 'ConnectToDB.php';
 	$whatToSearch = strtolower(substr($_POST['whatToSearch'], 6));
 
 	$stmt = $db->prepare("SELECT * from " . $whatToSearch . " WHERE ". $whatToSearch . "Num LIKE ?");

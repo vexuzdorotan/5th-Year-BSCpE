@@ -2,7 +2,6 @@ var std_picture = document.querySelector("#SecondCol img");
 var input_std_picture = document.querySelector("#SecondCol input");
 input_std_picture.addEventListener("change", SeePicture);
 
-
 var imageToUpload = document.getElementById("file"); //input type = "file"
 
 //INFO
@@ -16,14 +15,13 @@ var submitForm = document.getElementById("submitForm");
 // submitForm.addEventListener("click", ValidateForm.bind(null, "StdReg"));
 submitForm.addEventListener("click", ValidateForm);
 
+
 function ValidateForm(){ //Validate if Form has no Blanks in every required fields
-	// alert("HI");
-	// console.log("HI");
 	var ifblank = 0;
 
 	//file = image_StdReg.files[0];
-	//console.log(input);
-	//console.log(input[0].id);
+	console.log(input);
+	console.log(input[0].id);
 
 	for(var i = 0; i < 11; i++){
 		if(i === 5){ continue;} //5,9,10 are optional
@@ -78,7 +76,6 @@ function InsertInfo(){
  		}
 	}
 	console.log(data);
-	// console.log("HI");
 	UploadPhoto(imageToUpload);
 	
 	AJAX(data, true, "post", "php/Student.php", true, CheckIfRegistered);
@@ -93,7 +90,7 @@ function InsertInfo(){
 function CheckIfRegistered(xhttp){
 	//var json;
 	//json = JSON.parse(xhttp.responseText);
-
+	alert(xhttp.responseText);
 	console.log(xhttp.responseText);
 }
 
