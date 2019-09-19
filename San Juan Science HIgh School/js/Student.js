@@ -90,7 +90,7 @@ function InsertInfo(){
 function CheckIfRegistered(xhttp){
 	//var json;
 	//json = JSON.parse(xhttp.responseText);
-
+	alert(xhttp.responseText);
 	console.log(xhttp.responseText);
 }
 
