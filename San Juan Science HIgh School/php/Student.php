@@ -10,7 +10,7 @@ if(!empty($_FILES['files'])){
 	UPLOAD($target_dir);
 }
 else if(!empty($_POST['LastName'])){
-	Insert($db, $target_dir);
+	Insert($db);
 }
 
 
@@ -53,7 +53,7 @@ function UPLOAD($target_dir){
     	// $target_dir = "../pictures/student/";
     	$targetpath = $target_dir . basename($_FILES['files']['name'][$key]);
     	if(move_uploaded_file($value, $targetpath)){
-        	echo $target_dir;
+        	echo true;
     	}
 	}
 }
