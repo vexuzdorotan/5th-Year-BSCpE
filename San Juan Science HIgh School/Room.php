@@ -27,6 +27,7 @@
 		<option>Office</option>
 	</select></label></p>
 	<button id="CreateRoom">Create Room</button>
+	<!-- <button id="EditRoom">Edit Room</button> -->
 	<!-- <p><label for="SubName">Subject Name: <input type="text" name="SubName" id="SubName"/></label></p> -->
 	</div>
 	<div class="width50" style="float: right;">
@@ -64,6 +65,7 @@
 	</div>
 	</div>
 	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/cms.js"></script>
 	<script type="text/javascript" src="js/Room.js"></script>
 </body>
-</html>
+</html>  
