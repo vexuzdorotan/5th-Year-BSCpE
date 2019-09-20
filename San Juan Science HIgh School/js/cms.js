@@ -1,19 +1,21 @@
-var tag; //gets ID of selected tag
+var txt_search; //saves content of input type = search 
 
-function Search(tag){
-	this.tag = tag;
-	data = "whatToSearch=" + tag.id + "&value=" + tag.value;
+function SearchID(whatToSearch){
+	txt_search = whatToSearch;
+	data = "whatToSearch=" + whatToSearch.id + "&value=" + whatToSearch.value;
+	console.log(data);
 	AJAX(data, true, "post", "php/Search.php", true, CreateTable); 
 }
 // elem.childElementCount - counts child elements 
 
-function Create(tag){
-	var whatToCreate = tag.id;
+function Create(whatToCreate){
+	//whatToCreate = whatToCreate.id;
 	var data = "";
 	var content = {};
 	var error = 0;
-	var parent_id = whatToCreate.substr(6, whatToCreate.length-6); //gets the id of parent IDS are set manually in html 
+	var parent_id = whatToCreate.id.substr(6, whatToCreate.id.length-6); //gets the parent ID that is set manually in html 
 	console.log(parent_id);
+
 	data += "whatToCreate=" + parent_id;
 	var input = document.querySelectorAll("#" + parent_id + " input");
 
@@ -33,27 +35,71 @@ function Create(tag){
 		content[select[i].id] = select[i].options[select[i].selectedIndex].text; //getting text of <select> tag under parent_id
 	}
 
-
+	global_input = input; //Global variable copies local input
+	global_select = select;
 
 	if(error == 0){
 		content = JSON.stringify(content);
 		data += "&content=" + content;
-		AJAX(data, true, "post", "php/Create.php", true, CheckIfCreated);
-		Search(document.getElementById("Search" + parent_id));
+
+		if(whatToCreate.innerHTML == "Create " + parent_id){
+			AJAX(data, true, "post", "php/Create.php", true, CheckIfCreated);
+		}
+		else if(whatToCreate.innerHTML == "Update " + parent_id){
+			AJAX(data, true, "post", "php/Update.php", true, CheckIfUpdated);	
+		}
+		Search(txt_search);
 	}
 
 }
 
 function CheckIfCreated(xhttp){
 	if(xhttp.responseText != "Successful"){
-  		console.log(xhttp.responseText); //Other error 
+		var patt = new RegExp("duplicate", "i");
+		if(patt.test(xhttp.responseText)){
+			alert("ALREADY EXISTED");
+		}
+		else{
+  			console.log(xhttp.responseText); //Other error 
+  		}
 	} 	
 	else{
 		alert("CREATED");
 	}
 }
 
+function CheckIfUpdated(xhttp){
+	if(xhttp.responseText != "Successful"){
+  		console.log(xhttp.responseText); //Other error 
+	} 	
+	else{
+		alert("UPDATED");
+		Search(txt_search);
+	}
+}
 
+function ResetInput(whatToReset){
+	var disabled;
+	var parent_id = whatToReset.id.substr(6, whatToReset.id.length-6); //gets the id of parent IDS are set manually in html 
+	var input = document.querySelectorAll("#" + parent_id + " input");
+	var select = document.querySelectorAll("#" + parent_id + " select")
+	for(var i = 0; i < input.length; i++){
+		if(i == 0){
+			try{
+				disabled = input[i].getAttributeNode("disabled");
+				input[i].removeAttributeNode(disabled); //disabled input
+			}
+			catch(err){}
+		}
+		input[i].value = "";
+		input[i].style.backgroundColor = '';
+	}
+	for(var i = 0; i < select.length; i++){
+		select[i].selectedIndex = 0;
+	}
+	
+	whatToReset.innerHTML = "Create " + parent_id;
+}
 
 function CreateTable(xhttp){
 
@@ -66,15 +112,11 @@ function CreateTable(xhttp){
 	var class_btn2;
 	json = JSON.parse(xhttp.responseText);
 
-	var colNum = document.querySelector("#" + tag.id + "Table thead tr").childElementCount;
-	var tbody = document.querySelector("#" + tag.id + "Table tbody");
+	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;
+	var tbody = document.querySelector("#" + txt_search.id + "Table tbody");
 	RemoveChildNodes(tbody);
-	//console.log(colNum);
-	//console.log(json[0][colNum-1]);
+	console.log(json);
 	
-
-
-	// tbody.style.border = "2em pink solid";
 	for(var i=0; i < json.length; i++){
 		tr = document.createElement('tr');
 		for(var j = 0; j < colNum; j++){
@@ -85,7 +127,7 @@ function CreateTable(xhttp){
 				btn_Edit.innerHTML = "EDIT";
 				btn_Delete.innerHTML = "DELETE";
 				btn_Edit.addEventListener("click", Edit.bind(null, json[i]));
-				btn_Delete.addEventListener("click", Delete.bind(null, json[i][0], tag.id)); //Selects ID make sure that first column is ID
+				btn_Delete.addEventListener("click", Delete.bind(null, json[i][0], txt_search.id)); //Selects ID make sure that first column is ID
 				td.appendChild(btn_Edit);
 				td.appendChild(btn_Delete);
 				class_btn1 = document.createAttribute("class");
@@ -112,7 +154,7 @@ function RemoveChildNodes(parent_node){ //Remove childNodes
 
 function Edit(whatToEdit){ //whatToEdit is an array 
 	var parent_id;
-	parent_id = tag.id.substr(6, tag.id.length-6);
+	parent_id = txt_search.id.substr(6, txt_search.id.length-6);
 	var disabled; 
 	console.log(parent_id);
 	var input = document.querySelectorAll("#" + parent_id + " input");
@@ -150,7 +192,7 @@ function Delete(id, whatToDelete){
     	txt = "Deletion Cancelled!";
   	}
 	function CheckIfDeleted(xhttp){
-		Search(tag);
+		Search(txt_search);
 		console.log("Deleted");
 	}
 }
