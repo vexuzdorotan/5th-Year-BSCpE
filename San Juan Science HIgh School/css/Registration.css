@@ -3,14 +3,11 @@ input[type = "text"]{
 }
 
 fieldset{
-	
 	width: 97.7%;
-	
 	display: block;
 }
 
 body *{
-	font-weight: bold;
 } 
 
 #fieldset_StdReg legend{
@@ -20,13 +17,38 @@ body *{
 #FirstCol{
 	width: 50%;
 	height: 100%;
-	float: left;
-	
+	float: left;	
 }
 
 #SecondCol{
 	width: 50%;
 	height: 100%;
 	float: right;
-	
+}
+.logodesign{
+	width: 100%;
+}
+.my-container{
+	width: 80%;
+	margin: auto;
+}
+.header{
+	border-bottom: 2px solid maroon;
+}
+.menu{
+	margin-top: -15px;
+	font-size: 11px;
+	position: absolute;
+	right: 12%;
+}
+.menu a{ 
+	color: #212529;
+	padding: 2px 10px 2px 10px;
+	text-transform: uppercase;
+	transition: 0.3s;
+}
+.menu a:hover{
+	color: white;
+	background-color: maroon;
+	text-decoration: none;
 }

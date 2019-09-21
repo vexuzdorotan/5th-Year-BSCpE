@@ -8,14 +8,28 @@
 <html>
 <head>
 	<title>Student Registration</title>
-   <link rel="stylesheet" type="text/css" href="css/Registration.css">
-   <link rel="stylesheet" type="text/css" href="css/Entire.css">
+   <link rel="stylesheet" type="text/css" href="css/Registration.css"/>
+   <link rel="stylesheet" type="text/css" href="css/Entire.css"/>
+   <link rel="icon" href="pictures\logo.png" />
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
-
+<img src="pictures/logodesign.jpg" class="logodesign">
+<div class="my-container">
 <fieldset>
+   <div class="header mb-3">
+      <legend class="h4 pl-2 pt-3 pb-1 mb-0">STUDENT REGISTRATION</legend>
+      <div class="menu">
+         <a href="#">Administrator</a>
+         <span>|</span>
+         <a href="#">Menu</a>
+         <span>|</span>
+         <a href="#">Logout</a>
+      </div>
+   </div>
    <div id = "FirstCol">
-   <legend>STUDENT REGISTRATION</legend>
 	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
 	<p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
 	<p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>
@@ -313,6 +327,7 @@
 
    </div>
 </fieldset>
+<div class="my-container">
 <script type="text/javascript" src = "js/ajax.js"></script>
 <script type="text/javascript" src = "js/Student.js"></script>
 </body>
