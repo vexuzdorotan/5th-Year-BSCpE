@@ -1,11 +1,17 @@
 <?php
 	require 'ConnectToDB.php';
-	$whatToDelete = strtolower(substr($_POST['whatToDelete'], 6));
-	$stmt = $db->prepare("DELETE from " . $whatToDelete . " WHERE ". $whatToDelete . "Num = ?");
-	$stmt->bindValue(1, $_POST['id']);
-	$stmt->execute();
+	$table_name = strtolower($_POST['whatToDelete']);
+	$whatToDelete = $_POST['whatToDelete'];
 
-	// $row = $stmt->fetchAll();
+	if(is_numeric($_POST['value'])){
+		$stmt = $db->prepare("DELETE from " . $table_name . " WHERE ". $whatToDelete . "Num = ?");
+	}
+	else{
+		$stmt = $db->prepare("DELETE from " . $table_name . " WHERE ". $whatToDelete . "Name = ?");
+	}
+
+	$stmt->bindValue(1, $_POST['value']);
+	$stmt->execute();
 
 	// echo json_encode($row);
 ?>

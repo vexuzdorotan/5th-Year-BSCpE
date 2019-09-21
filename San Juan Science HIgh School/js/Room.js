@@ -3,7 +3,9 @@ var createRoom = document.getElementById("CreateRoom");
 var resetRoom = document.getElementById("ResetRoom");
 var createSection = document.getElementById("CreateSection");
 
-searchRoom.addEventListener("change", SearchID.bind(null, searchRoom));
+var parent_id = "Room";
+
+searchRoom.addEventListener("change", Search.bind(null, searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1)));
 createRoom.addEventListener("click", Create.bind(null, createRoom));
 resetRoom.addEventListener("click", ResetInput.bind(null, createRoom));
 

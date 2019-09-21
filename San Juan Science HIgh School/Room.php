@@ -35,11 +35,11 @@
 	<p><label for="SearchRoom"><input type="search" id="SearchRoom"></label></p>
 		<table id="SearchRoomTable">
 			<thead>
-				<td>Room Number</td>
-				<td>Room Name</td>
-				<td>Floor</td>
-				<td>Capacity</td>
-				<td>Type</td>
+				<td id="RoomNum">Room Number</td>
+				<td id="RoomName">Room Name</td>
+				<td id="Floor">Floor</td>
+				<td id="Capacity">Capacity</td>
+				<td id="RoomType">Type</td>
 				<td></td>
 			</thead>
 			<tbody>
@@ -69,6 +69,7 @@
 	</div>
 	</div> -->
 	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/utility.js"></script>
 	<script type="text/javascript" src="js/cms.js"></script>
 	<script type="text/javascript" src="js/Room.js"></script>
 </body>

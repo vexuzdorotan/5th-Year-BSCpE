@@ -23,9 +23,9 @@
 		<table id="SearchSectionTable">
 			<thead>
 				<!-- <td>Section Number</td> -->
-				<td>Section Name</td>
-				<td>GradeLevel</td>
-				<td>RoomNum</td>
+				<td id="SectionName">Section Name</td>
+				<td id="GradeLevel">GradeLevel</td>
+				<td id="RoomNum">RoomNum</td>
 				<!-- <td>Type</td> -->
 				<td></td>
 			</thead>
@@ -35,6 +35,7 @@
 		</table>
 	</div>
 	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/utility.js"></script>
 	<script type="text/javascript" src="js/cms.js"></script>
 	<script type="text/javascript" src="js/Section.js"></script>
 </body>
