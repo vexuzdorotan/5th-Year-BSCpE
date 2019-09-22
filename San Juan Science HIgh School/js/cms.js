@@ -103,18 +103,6 @@ function Search(whatToSearch, columnIDS){
 	AJAX(data, true, "post", "php/Search.php", true, CreateTable); 
 }
 
-function SearchWithJoin(){
-	// this.columnIDS = columnIDS;
-	txt_search = whatToSearch;
-	data = "whatToSearch=" + parent_id + "&value=" + whatToSearch.value;
-	// if(columnIDS != null){
-	data += "&columnIDS=" + JSON.stringify(columnIDS); 
-	console.log(columnIDS); 
-	// }
-	console.log(data);
-	AJAX(data, true, "post", "php/Search.php", true, CreateTable); 	
-}
-
 //Function to Create Table 
 function CreateTable(xhttp){
 
