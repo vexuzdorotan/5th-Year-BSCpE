@@ -1,4 +1,5 @@
 var txt_search; //saves content of input type = search 
+var columnIDS; //saves the name of table headers
 
 // elem.childElementCount - counts child elements 
 function Create(btn_Create){
@@ -34,10 +35,10 @@ function Create(btn_Create){
 		if(btn_Create.innerHTML == "Create " + parent_id){
 			AJAX(data, true, "post", "php/Create.php", true, CheckIfCreated);
 		}
-		else if(btn_Delete.innerHTML == "Update " + parent_id){
+		else if(btn_Create.innerHTML == "Update " + parent_id){
 			AJAX(data, true, "post", "php/Update.php", true, CheckIfUpdated);	
 		}
-		Search(txt_search);
+		Search(txt_search, columnIDS);
 	}
 
 }
@@ -63,7 +64,7 @@ function CheckIfUpdated(xhttp){
 	} 	
 	else{
 		alert("UPDATED");
-		Search(txt_search);
+		Search(txt_search, columnIDS);
 	}
 }
 
@@ -91,16 +92,30 @@ function ResetInput(whatToReset){
 }
 
 function Search(whatToSearch, columnIDS){
+	this.columnIDS = columnIDS;
 	txt_search = whatToSearch;
 	data = "whatToSearch=" + parent_id + "&value=" + whatToSearch.value;
-	if(columnIDS != null){
-		data += "&columnIDS=" + JSON.stringify(columnIDS); 
-		console.log(columnIDS);
-	}
+	// if(columnIDS != null){
+	data += "&columnIDS=" + JSON.stringify(columnIDS); 
+	console.log(columnIDS); 
+	// }
 	console.log(data);
 	AJAX(data, true, "post", "php/Search.php", true, CreateTable); 
 }
 
+function SearchWithJoin(){
+	// this.columnIDS = columnIDS;
+	txt_search = whatToSearch;
+	data = "whatToSearch=" + parent_id + "&value=" + whatToSearch.value;
+	// if(columnIDS != null){
+	data += "&columnIDS=" + JSON.stringify(columnIDS); 
+	console.log(columnIDS); 
+	// }
+	console.log(data);
+	AJAX(data, true, "post", "php/Search.php", true, CreateTable); 	
+}
+
+//Function to Create Table 
 function CreateTable(xhttp){
 
 	var json;
@@ -110,8 +125,9 @@ function CreateTable(xhttp){
 	var btn_Delete;
 	var class_btn1;
 	var class_btn2;
+	// console.log(xhttp.responseText);	
 	json = JSON.parse(xhttp.responseText);
-
+	var thead_td = document.querySelectorAll("#" + txt_search.id + "Table thead tr td");
 	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;
 	var tbody = document.querySelector("#" + txt_search.id + "Table tbody");
 	RemoveChildNodes(tbody);
@@ -121,7 +137,7 @@ function CreateTable(xhttp){
 		tr = document.createElement('tr');
 		for(var j = 0; j < colNum; j++){
 			td = document.createElement('td');
-			if(j == colNum-1){
+			if(j == colNum-1 && thead_td[colNum-1].innerHTML == ""){
 				btn_Delete = document.createElement('button');
 				btn_Edit = document.createElement('button');
 				btn_Edit.innerHTML = "EDIT";
@@ -176,7 +192,9 @@ function Edit(whatToEdit){ //whatToEdit is an array
 			}
 		}
 	}
-	btn_submit.innerHTML = "Update Room";
+	btn_submit.innerHTML = "Update " + parent_id;
+	Search(txt_search, columnIDS);
+	console.log(txt_search);
 }
 
 function Delete(whatToDelete){
@@ -191,7 +209,7 @@ function Delete(whatToDelete){
     	txt = "Deletion Cancelled!";
   	}
 	function CheckIfDeleted(xhttp){
-		Search(txt_search);
+		Search(txt_search, columnIDS);
 		console.log("Deleted");
 	}
 	// console.log(whatToDelete);
