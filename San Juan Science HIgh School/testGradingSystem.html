@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+    <!--<script type="text/javascript" src="../js/script.js"></script>-->
+
+</head>
+
+<body>
+    <h2>Form 138 of Jonnel Salvador S. Dorotan</h2>
+    <h3>REPORT ON STUDENT'S PROGRESS IN LEARNING</h3>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Learning Area</th>
+                <th>First Grading</th>
+                <th>Second Grading</th>
+                <th>Third Grading</th>
+                <th>Fourth Grading</th>
+                <th>Final Rating</th>
+                <th>Remarks</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Filipino</td>
+                <td id="rand"></td>
+                <td>75</td>
+                <td>75</td>
+                <td>75</td>
+                <td>75</td>
+                <td>75</td>
+            </tr>
+
+            <tr>
+                <td>English</td>
+                <td>75</td>
+                <td>75</td>
+                <td>75</td>
+                <td>74</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Mathematics</td>
+                <td>85</td>
+                <td>85</td>
+                <td>85</td>
+                <td>85</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Science</td>
+                <td>80</td>
+                <td>80</td>
+                <td>80</td>
+                <td>80</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Araling Panlipunan (AP)</td>
+                <td>80</td>
+                <td>80</td>
+                <td>80</td>
+                <td>80</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Technology and Livelihood Education (TLE)</td>
+                <td>81</td>
+                <td>82</td>
+                <td>83</td>
+                <td>84</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>MAPEH</td>
+                <td>87</td>
+                <td>87</td>
+                <td>87</td>
+                <td>87</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Edukasyon sa Pagpapakatao (EsP)</td>
+                <td>82</td>
+                <td>82</td>
+                <td>82</td>
+                <td>82</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <button value="Refresh Page" onClick="window.location.reload();">
+        Test: Refresh to Change Filipino First Grading and Check Remarks 
+    </button>
+
+    <script>
+        var i, j, sumVal;
+        var table = document.getElementById("table");
+
+        function randomNumber(minimum, maximum) {
+            return Math.round(Math.random() * (maximum - minimum) + minimum);
+        }
+
+        document.getElementById("rand").innerHTML = (randomNumber(70, 80));
+
+        for (i = 1; i <= 8; i++) {
+            sumVal = 0;
+            for (j = 1; j <= 4; j++) {
+                sumVal = sumVal + parseInt(table.rows[i].cells[j].innerHTML);
+            }
+
+            table.rows[i].cells[5].innerHTML = sumVal / 4;
+
+            if (sumVal / 4 >= 75) {
+                table.rows[i].cells[6].innerHTML = "Passed";
+            } else {
+                table.rows[i].cells[6].innerHTML = "Failed";
+            }
+        }
+    </script>
+</body>
+
+</html>
