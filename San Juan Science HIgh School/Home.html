@@ -10,23 +10,25 @@
     <link rel="icon" href="pictures\logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="js\jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="js\bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg">
 
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="arr-to-top fas fa-caret-square-up"></i></button>
     <div class="prim">
         <div class="header">
-            <img src="pictures\logo.png" class="logo" />
-            <div class="top"> </div>
-            <p><a class="headtxt" href="Home.html">San Juan Science High School</a></p>
+            <img src="pictures\logodesign2.jpg" class="logodesign" />
         </div>
-        <div class="navbar shadow h6 navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar shadow h6 navbar-expand-lg navbar-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
           
             <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="navbar-brand hoverable selected" href="#">Home</a>
+                    </li>
                     <li class="nav-item active dropdown">
                          <a class="navbar-brand hoverable" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About JuanSci<span class="fas arr-down fa-caret-down"></span></a>
                             <div class="dropdown-menu">
@@ -65,11 +67,11 @@
                 </ul>
             </div>
             <div class="search form-inline">
-              <div class="bg-dark rounded-pill border-dark shadow">
+              <div">
                 <div class="input-group">
-                  <input id="search" type="search" placeholder="Search..." aria-describedby="button-addon1" class="form-control rounded-pill rounded-right border-0 bg-light">
+                  <input id="search" type="search" placeholder="Search..." aria-describedby="button-addon1" class="form-control border-0 bg-light">
                     <div class="input-group-append">
-                      <button id="button-addon1" type="submit" class="btn btn-link text-secondary"><i class="fa fa-search"></i></button>
+                      <button id="button-addon1" type="submit" class="btn btn-link text-light searchbtn"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
               </div>
@@ -114,10 +116,7 @@
               <a class="text-light" href=#>TRANSPARENCY SEAL</a>
             </li>
             <li class="list-group-item p-2 ml-2 bg-transparent border-bottom h6">
-              <a class="text-light" href=#>PRIVACY POLICY</a>
-            </li>
-            <li class="list-group-item p-2 ml-2 bg-transparent border-bottom h6">
-              <a class="text-light" href=#>TERMS & CONDITIONS</a>
+              <a class="text-light" href="Portal.html">JUANSCI PORTAL</a>
             </li>
         </ul>
       </div>
@@ -135,7 +134,5 @@
     </div>
 
     <script type="text/javascript" src="js\Home.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
