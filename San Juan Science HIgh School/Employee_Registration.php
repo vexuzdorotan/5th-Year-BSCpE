@@ -10,25 +10,33 @@
 	<title>Employee Registration</title>
    <link rel="stylesheet" type="text/css" href="css/Registration.css">
    <link rel="stylesheet" type="text/css" href="css/Entire.css">
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+   <link rel="icon" href="pictures/logo.png">
 </head>
 <body>
-
-<fieldset>
+   <img src="pictures/logodesign.jpg" class="logodesign">
+<div class="header mb-3">
+      <legend class="h4 pl-2 pt-3 pb-1 mb-0">EMPLOYEE REGISTRATION</legend>
+      <div class="menu">
+         <a href="#">Administrator</a>|<a href="#">Menu</a>|<a href="#">Logout</a>
+      </div>
+   </div>
+<div class="my-container">
    <div id = "FirstCol">
-   <legend>EMPLOYEE REGISTRATION</legend>
-	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
-	<p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
-	<p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>
-	<p><label for="Birthday">Birthday: </label><input type="date" id = "Birthday" name = "Birthday"/></p>
-
-	<div id = "Address">
-      <p>Address</p>
-		<p><label for="StreetAdd1">Street Address 1: </label><input type="text" id = "StreetAdd1" name = "StreetAdd1"></p>
-		<p><label for="StreetAdd2">Street Address 2: </label><input type="text" id = "StreetAdd2" name = "StreetAdd2"></p>
-		<p><label for="City">City: </label><input type="text" id = "City" name = "City"></p>
-		<p><label for="Province">Province: </label><input type="text" id = "Province" name= " Province"></p>
-		<p style="display: none;"><label for="ZipCode">Zip Code: </label><input type="text" id = "ZipCode" name = "ZipCode"></p>
-		<p><label for="Country">Country: </label>
+   <p class="h5 pb-2">Employees's Name</p>
+   <p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
+   <p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
+   <p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>
+   <p><label for="Birthday" class="h5 pt-2">Birthday </label></p>
+   <p><input type="date" id = "Birthday" name = "Birthday"/></p>
+      
+	<p class="h5 pt-3 pb-2">Address</p>
+      <p><label for="StreetAdd1">Street Address 1: </label><input type="text" id = "StreetAdd1" name = "StreetAdd1"></p>
+      <p><label for="StreetAdd2">Street Address 2: </label><input type="text" id = "StreetAdd2" name = "StreetAdd2"></p>
+      <p><label for="City">City: </label><input type="text" id = "City" name = "City"></p>
+      <p><label for="Province">Province: </label><input type="text" id = "Province" name= " Province"></p>
+      <p style="display: none;"><label for="ZipCode">Zip Code: </label><input type="text" id = "ZipCode" name = "ZipCode"></p>
+      <p><label for="Country">Country: </label>
          <select id = "Country" name = "Country">
       </p>
    			<option value="Afganistan">Afghanistan</option>
@@ -278,20 +286,22 @@
             <option value="Zambia">Zambia</option>
             <option value="Zimbabwe">Zimbabwe</option>
       </select>
-   </div>
+   
+   <p>
+   <label for="Gender" class="h5 pt-3">Gender </label>
+      <input class="ml-3" type="radio" name="Gender" id = "Gender" value="Male" checked="checked"> Male
+         <input class="ml-3" type="radio" name="Gender" id = "Gender" value="Female"> Female</p>
 
-   <label for="Gender">Gender: </label>
-   <p><input type="radio" id = "Gender" name="Gender" value="male" checked="checked"> Male</p>
-   <p><input type="radio" id = "Gender" name="Gender" value="female"> Female</p>
-
-   <button id = "submitForm" name = "submitForm">SUBMIT</button>
+   
    </div>
 
    <div id="SecondCol">
-      <label for="file">Upload Employee's Photo</label>
-      <center><img src="pictures/faceless.png" id="profile" style="height: 200px; width: 200px" ></center>
-      <input type="file" id = "file" name="file" accept=".gif,.jpg,.jpeg,.png">
-      <p>
+      <div class="photo-div">
+         <p><label class="h5 m-0" for="file">Upload Employee's Photo</label></p>
+         <center><p><img src="pictures/faceless.png" id="profile" style="width: 200px; height: 200px" class="photo-upload shadow" ></p></center>
+         <input type="file" id="file" name="file" accept=".gif,.jpg,.jpeg,.png">
+      </div>
+      <p class="mt-3 mb-3">
          <label for="lbl_Position">Position: </label>
          <select id="Position">
             <option selected="selected">Teacher</option>
@@ -299,9 +309,11 @@
             <!-- Still an option, positions are still unknown -->
          </select>
       </p>
-
+   <button class="rounded-pill" id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
-</fieldset>
+   <div class="footer">
+      <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
+   </div>
 <script type="text/javascript" src = "js/ajax.js"></script>
 <script type="text/javascript" src = "js/Employee.js"></script>
 </body>

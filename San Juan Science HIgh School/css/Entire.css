@@ -18,3 +18,7 @@ table, td, tbody, thead{
 table{
 	border-collapse: collapse;
 }
+
+td{
+	text-align: center;
+}
