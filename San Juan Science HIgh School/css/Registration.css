@@ -3,9 +3,13 @@ input[type = "text"]{
 }
 
 fieldset{
+<<<<<<< HEAD
 	
 	width: 97.7%;
 	
+=======
+	width: 97.7%;
+>>>>>>> parent of 1759d76... updated student regi
 	display: block;
 }
 
@@ -20,13 +24,48 @@ body *{
 #FirstCol{
 	width: 50%;
 	height: 100%;
+<<<<<<< HEAD
 	float: left;
 	
+=======
+	float: left;	
+>>>>>>> parent of 1759d76... updated student regi
 }
 
 #SecondCol{
 	width: 50%;
 	height: 100%;
 	float: right;
+<<<<<<< HEAD
 	
 }
+=======
+}
+.logodesign{
+	width: 100%;
+}
+.my-container{
+	width: 80%;
+	margin: auto;
+}
+.header{
+	border-bottom: 2px solid maroon;
+}
+.menu{
+	margin-top: -15px;
+	font-size: 11px;
+	position: absolute;
+	right: 12%;
+}
+.menu a{ 
+	color: #212529;
+	padding: 2px 10px 2px 10px;
+	text-transform: uppercase;
+	transition: 0.3s;
+}
+.menu a:hover{
+	color: white;
+	background-color: maroon;
+	text-decoration: none;
+}
+>>>>>>> parent of 1759d76... updated student regi
