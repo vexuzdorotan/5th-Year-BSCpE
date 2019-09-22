@@ -1,40 +1,11 @@
 input[type = "text"]{
-	height: 25px !important;
-	width: 200px !important;
-	float: right;
-}
-input[type = "date"]{
-	height: 25px !important;
-	width: 140px !important;
-	box-sizing: border-box;
-	border: 1px solid #b5b5b5;
-}
-input[type = "file"]{
-	height: 28px !important;
-	width: 300px !important;
-	border: 1px solid #b5b5b5;
-	font-size: 14px;
-}
-#Country{
-	float: right;
-	width: 200px;
-}
-.bday-div{
-	float: left;
-}
-.gender-div{
-	float: right;
-	width: 150px;
-}
-.address-div{
-	float: left;
-}
-.photo-upload{
-	border: 1px solid gray;
-	border-radius: 10px;
+	
 }
 
-
+fieldset{
+	width: 97.7%;
+	display: block;
+}
 
 body *{
 } 
@@ -44,35 +15,31 @@ body *{
 }
 
 #FirstCol{
-	width: 350px;
+	width: 50%;
 	height: 100%;
-	float: left;
-	font-size: 14px;	
+	float: left;	
 }
 
 #SecondCol{
-	margin-left: 100px;
-	width: 310px;
-	float: left;
-	font-size: 14px;	
+	width: 50%;
+	height: 100%;
+	float: right;
 }
 .logodesign{
 	width: 100%;
 }
 .my-container{
-	width: 60%;
+	width: 80%;
 	margin: auto;
 }
 .header{
 	border-bottom: 2px solid maroon;
-	width: 80%;
-	margin: auto;
 }
 .menu{
 	margin-top: -15px;
 	font-size: 11px;
 	position: absolute;
-	right: 10%;
+	right: 12%;
 }
 .menu a{ 
 	color: #212529;
@@ -84,28 +51,4 @@ body *{
 	color: white;
 	background-color: maroon;
 	text-decoration: none;
-}
-.rounded-pill{
-	color: white;
-	font-weight: 500;
-	background-color: maroon;
-	border: none;
-	width: 80px;
-	height: 30px;
-	float: right;
-	margin-right: 50px;
-	transition: 0.3s;
-}
-.rounded-pill:hover{
-	background-color: white;
-	border: 2px solid maroon;
-	color: maroon;
-}
-.footer{
-	width: 100%;
-	margin:auto;
-	border-top: 1px solid black;
-	text-align: center;
-	font-size: 12px;
-	margin-top: 20px;
 }

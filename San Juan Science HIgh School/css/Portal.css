@@ -54,17 +54,3 @@ button{
 	text-align: center;
 	font-size: 12px;
 }
-.rounded-pill{
-	color: white;
-	font-weight: 500;
-	background-color: maroon;
-	border: none;
-	width: 80px;
-	height: 30px;
-	transition: 0.3s;
-}
-.rounded-pill:hover{
-	background-color: white;
-	border: 2px solid maroon;
-	color: maroon;
-}

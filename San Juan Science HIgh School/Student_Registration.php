@@ -17,39 +17,32 @@
 </head>
 <body>
 <img src="pictures/logodesign.jpg" class="logodesign">
+<div class="my-container">
+<fieldset>
    <div class="header mb-3">
       <legend class="h4 pl-2 pt-3 pb-1 mb-0">STUDENT REGISTRATION</legend>
       <div class="menu">
-         <a href="#">Administrator</a>|<a href="#">Menu</a>|<a href="#">Logout</a>
+         <a href="#">Administrator</a>
+         <span>|</span>
+         <a href="#">Menu</a>
+         <span>|</span>
+         <a href="#">Logout</a>
       </div>
    </div>
-   <div class="my-container">
-   <fieldset>
-   <div class="ml-3" id = "FirstCol">
-     <div class="name-div">
-      <p class="h5">Student's Name</p>
-      <p>
-	   <label for="LastName">Surname: </label><input type="text" id = "LastName" name = "LastName"/><br/>
-   	<label for="FirstName">Given Name: </label><input type="text" id = "FirstName" name = "FirstName"/><br/>
-   	<label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/>
-      </p>
-     </div>
-      <div class="bday-div">
-         <p class="h5">Birthday</p>
-         <p></label><input type="date" id = "Birthday" name = "Birthday"/></p>
-      </div>
-      <div class="gender-div">
-	     <p class="h5">Gender</p>
-         <p><input type="radio" name="Gender" id = "Gender" value="Male" checked="checked"> Male
-         <input class="ml-3" type="radio" name="Gender" id = "Gender" value="Female"> Female</p>
-      </div>
-	  <div class="address-div" id = "Address">
-      <p class="h5">Address</p>
-		<p><label for="StreetAdd1">Street Address 1: </label><input type="text" id = "StreetAdd1" name = "StreetAdd1">
-		<label for="StreetAdd2">Street Address 2: </label><input type="text" id = "StreetAdd2" name = "StreetAdd2">
-		<label for="City">City/Municipality: </label><input type="text" id = "City" name = "City">
-		<label for="Province">Province:<span class="text-light">- - - - -</span></label><input type="text" id = "Province" name= " Province">
-      <label for="Country">Country: </label>
+   <div id = "FirstCol">
+	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
+	<p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
+	<p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>
+	<p><label for="Birthday">Birthday: </label><input type="date" id = "Birthday" name = "Birthday"/></p>
+		
+	<div id = "Address">
+      <p>Address</p>
+		<p><label for="StreetAdd1">Street Address 1: </label><input type="text" id = "StreetAdd1" name = "StreetAdd1"></p>
+		<p><label for="StreetAdd2">Street Address 2: </label><input type="text" id = "StreetAdd2" name = "StreetAdd2"></p>
+		<p><label for="City">City: </label><input type="text" id = "City" name = "City"></p>
+		<p><label for="Province">Province: </label><input type="text" id = "Province" name= " Province"></p>
+		<p style="display: none;"><label for="ZipCode">Zip Code: </label><input type="text" id = "ZipCode" name = "ZipCode"></p>
+		<p><label for="Country">Country: </label>
          <select id = "Country" name = "Country">
       </p>
    			<option value="Afganistan">Afghanistan</option>
@@ -299,18 +292,21 @@
             <option value="Zambia">Zambia</option>
             <option value="Zimbabwe">Zimbabwe</option>
       </select>
-      <p style="display: none;"><label for="ZipCode">Zip Code: </label><input type="text" id = "ZipCode" name = "ZipCode">
-     </div>
+   </div>
+
+   <label for="Gender">Gender: </label>
+   <p><input type="radio" name="Gender" id = "Gender" value="Male" checked="checked"> Male</p>
+   <p><input type="radio" name="Gender" id = "Gender" value="Female"> Female</p>
+
+   <button id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
    
    <div id="SecondCol">
-      <div class="photo-div">
-         <p><label class="h5 m-0" for="file">Upload Student's Photo</label></p>
-         <center><p><img src="pictures/faceless.png" id="profile" style="width: 200px; height: 200px" class="photo-upload shadow" ></p></center>
-         <input type="file" id="file" name="file" accept=".gif,.jpg,.jpeg,.png">
-      </div>
+      <label for="file">Upload Student's Photo</label>
+      <center><img src="pictures/faceless.png" id="profile" style="height: 200px; width: 200px" ></center>
+      <input type="file" id="file" name="file" accept=".gif,.jpg,.jpeg,.png">
       <p>
-      <p><label for="GradeLevel">Grade Level: </label>
+      <label for="GradeLevel">Grade Level: </label>
          <select id="GradeLevel">
             <option selected="selected">Grade 7</option>
             <option>Grade 8</option>
@@ -319,21 +315,19 @@
             <option>Grade 11</option>
             <option>Grade 12</option>
          </select>
-
-         <label class="ml-3" for="Type">Type: </label>
+      </p>
+      <p>
+         <label for="Type">Type: </label>
          <select id="Type">
             <option selected="selected">Old</option>
             <option>New</option>
             <option>Transferee</option>
          </select>
       </p>
-      <button class="rounded-pill" id = "submitForm" name = "submitForm">SUBMIT</button>
+
    </div>
 </fieldset>
-<div class="footer">
-      <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
-   </div>
-</div>
+<div class="my-container">
 <script type="text/javascript" src = "js/ajax.js"></script>
 <script type="text/javascript" src = "js/Student.js"></script>
 </body>
