@@ -11,6 +11,7 @@
    <link rel="stylesheet" type="text/css" href="css/Registration.css">
    <link rel="stylesheet" type="text/css" href="css/Entire.css">
    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+   <link rel="icon" href="pictures/logo.png">
 </head>
 <body>
 <img src="pictures/logodesign.jpg" class="logodesign">
@@ -20,7 +21,7 @@
          <a href="#">Administrator</a>|<a href="#">Menu</a>|<a href="#">Logout</a>
       </div>
    </div>
-   <div class="my-container">
+<div class="my-container">
    <div id = "FirstCol">
    <p class="h5 pb-2">Student's Name</p>
 	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
@@ -319,7 +320,11 @@
       </p>
          <button class="rounded-pill" id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
-</fieldset>
+
+   <div class="footer">
+      <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
+   </div>
+<div>
 <script type="text/javascript" src = "js/ajax.js"></script>
 <script type="text/javascript" src = "js/Student.js"></script>
 </body>

@@ -15,6 +15,9 @@ input[type = "file"]{
 	border: 1px solid #b5b5b5;
 	font-size: 14px;
 }
+.logodesign{
+	width: 100%;
+}
 #Country{
 	float: right;
 	width: 200px;
@@ -99,9 +102,10 @@ font-size: 14px;
 }
 .footer{
 	width: 100%;
-	margin:auto;
 	border-top: 1px solid black;
 	text-align: center;
 	font-size: 12px;
 	margin-top: 20px;
+	float: left;
+	padding-bottom: 20px;
 }
