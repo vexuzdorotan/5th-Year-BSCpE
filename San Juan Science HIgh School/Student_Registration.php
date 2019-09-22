@@ -10,36 +10,28 @@
 	<title>Student Registration</title>
    <link rel="stylesheet" type="text/css" href="css/Registration.css">
    <link rel="stylesheet" type="text/css" href="css/Entire.css">
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
-<<<<<<< HEAD
-
-<fieldset>
-   <div id = "FirstCol">
-   <legend>STUDENT REGISTRATION</legend>
-=======
 <img src="pictures/logodesign.jpg" class="logodesign">
-<div class="my-container">
-<fieldset>
-   <div class="header mb-3">
+      <div class="header mb-3">
       <legend class="h4 pl-2 pt-3 pb-1 mb-0">STUDENT REGISTRATION</legend>
       <div class="menu">
-         <a href="#">Administrator</a>
-         <span>|</span>
-         <a href="#">Menu</a>
-         <span>|</span>
-         <a href="#">Logout</a>
+         <a href="#">Administrator</a>|<a href="#">Menu</a>|<a href="#">Logout</a>
       </div>
    </div>
+   <div class="my-container">
    <div id = "FirstCol">
->>>>>>> parent of 1759d76... updated student regi
+   <p class="h5 pb-2">Student's Name</p>
 	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
 	<p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
 	<p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>
-	<p><label for="Birthday">Birthday: </label><input type="date" id = "Birthday" name = "Birthday"/></p>
+
+	<p><label for="Birthday" class="h5 pt-2">Birthday </label></p>
+   <p><input type="date" id = "Birthday" name = "Birthday"/></p>
 		
-	<div id = "Address">
-      <p>Address</p>
+   
+      <p class="h5 pt-3 pb-2">Address</p>
 		<p><label for="StreetAdd1">Street Address 1: </label><input type="text" id = "StreetAdd1" name = "StreetAdd1"></p>
 		<p><label for="StreetAdd2">Street Address 2: </label><input type="text" id = "StreetAdd2" name = "StreetAdd2"></p>
 		<p><label for="City">City: </label><input type="text" id = "City" name = "City"></p>
@@ -294,21 +286,20 @@
             <option value="Zaire">Zaire</option>
             <option value="Zambia">Zambia</option>
             <option value="Zimbabwe">Zimbabwe</option>
-      </select>
-   </div>
+         </select>
+      </p>
+      <label for="Gender" class="h5 pt-3">Gender </label>
+      <input class="ml-3" type="radio" name="Gender" id = "Gender" value="Male" checked="checked"> Male
+         <input class="ml-3" type="radio" name="Gender" id = "Gender" value="Female"> Female</p>
 
-   <label for="Gender">Gender: </label>
-   <p><input type="radio" name="Gender" id = "Gender" value="Male" checked="checked"> Male</p>
-   <p><input type="radio" name="Gender" id = "Gender" value="Female"> Female</p>
-
-   <button id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
-   
    <div id="SecondCol">
-      <label for="file">Upload Student's Photo</label>
-      <center><img src="pictures/faceless.png" id="profile" style="height: 200px; width: 200px" ></center>
-      <input type="file" id="file" name="file" accept=".gif,.jpg,.jpeg,.png">
-      <p>
+      <div class="photo-div">
+         <p><label class="h5 m-0" for="file">Upload Student's Photo</label></p>
+         <center><p><img src="pictures/faceless.png" id="profile" style="width: 200px; height: 200px" class="photo-upload shadow" ></p></center>
+         <input type="file" id="file" name="file" accept=".gif,.jpg,.jpeg,.png">
+      </div>
+      <p class="mt-3 mb-3">
       <label for="GradeLevel">Grade Level: </label>
          <select id="GradeLevel">
             <option selected="selected">Grade 7</option>
@@ -318,22 +309,17 @@
             <option>Grade 11</option>
             <option>Grade 12</option>
          </select>
-      </p>
-      <p>
-         <label for="Type">Type: </label>
+
+         <label class="ml-3" for="Type">Type: </label>
          <select id="Type">
             <option selected="selected">Old</option>
             <option>New</option>
             <option>Transferee</option>
          </select>
       </p>
-
+         <button class="rounded-pill" id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
 </fieldset>
-<<<<<<< HEAD
-=======
-<div class="my-container">
->>>>>>> parent of 1759d76... updated student regi
 <script type="text/javascript" src = "js/ajax.js"></script>
 <script type="text/javascript" src = "js/Student.js"></script>
 </body>
