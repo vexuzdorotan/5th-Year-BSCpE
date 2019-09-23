@@ -1,10 +1,10 @@
 ﻿
 .mycontainer {
     margin: auto;
-    margin-top: 10px;
     background-color: #efefef;
     width: 90%;
     height:1000px;
+    margin-top:-8px;
 }
 .navbar-brand{
   font-size: 16px !important;
@@ -27,6 +27,7 @@
 .footer{
     width: 100%;
     background-color: black;
+    float: left;
 }
 .foottext{
     padding: 10px 0px 0px 50px;
@@ -44,6 +45,7 @@
   margin-top: 10px;
   width: 100%;
   background: #1c0004;
+  float: left;
 }
 .important-links{
   width: 350px;
@@ -85,7 +87,7 @@ a.text-light:hover {
   text-decoration: underline;
 }
 .search {
-    right:30px;
+  right: 30px;
     position: absolute;
     top:0px;
     display:inline;
@@ -99,7 +101,7 @@ a.text-light:hover {
     background-color: maroon !important;
 }
 .hoverable {
-    padding: 0px 20px 8px 20px !important;
+    padding: 0px 15px 8px 15px !important;
     margin-right: 10px;
     transition: 0.3s;
 }
@@ -109,9 +111,9 @@ a.text-light:hover {
     border-radius: 3px;
 }
 .slide{
-    top:50px;
-    width: 60%;
+    width:100%;
     margin:auto;
+    margin-top: -8px;
     
 }
 .arr-down {
@@ -138,11 +140,22 @@ a.text-light:hover {
     display: block;
 }
 .hide{
-  display: none;
+  display: none !important;
+;
 }
 
 #myBtn:hover {
   background-color: black; 
   z-index: 98;
   opacity: 0.8;
+}
+.content-div{
+  font-size: 12px !important;
+  padding:5% 0 0 5%;
+}
+.date{
+  font-size: 14px !important;
+  text-decoration: underline;
+  float: right;
+  margin-right: 20px;
 }

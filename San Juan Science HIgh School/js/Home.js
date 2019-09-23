@@ -28,17 +28,19 @@ function topFunction() {
   }, 20);
 
 } 
-var hidden = false;
-
+var hidden = true;
+$("#search").addClass("hide");
 $("#button-addon1").on("click", function (event) {
+
 	if(!hidden){
 	    $("#search").animate({width: "0px"}, 400)
 	    $("#search").fadeOut();
 	   hidden=true;
 	}
 	else{
+    $("#search").removeClass("hide");
 		$("#search").fadeIn();
-		$("#search").animate({width: "200px"}, 400)
+		$("#search").animate({width: "188px"}, 400)
 		hidden=false;
 	}
 
