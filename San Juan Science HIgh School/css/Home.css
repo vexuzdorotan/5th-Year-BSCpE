@@ -1,10 +1,9 @@
 ﻿
 .mycontainer {
     margin: auto;
-    background-color: #efefef;
+    background-color: white;
     width: 90%;
     height:1000px;
-    margin-top:-8px;
 }
 .navbar-brand{
   font-size: 16px !important;
@@ -151,11 +150,15 @@ a.text-light:hover {
 }
 .content-div{
   font-size: 12px !important;
-  padding:5% 0 0 5%;
+  margin-top: 30px;
+
 }
 .date{
   font-size: 14px !important;
   text-decoration: underline;
-  float: right;
   margin-right: 20px;
+}
+.news-img{
+  width: 300px;
+  float: left;
 }
