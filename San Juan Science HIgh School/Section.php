@@ -10,12 +10,12 @@
 	<h1>SECTION</h1>
 	<p><label for="SecName">Section Name: <input type="text" id="SectionName" required/></label></p>
 	<p>
-		<label for="">Room: <input type="text" id="RoomNum" disabled/></label>
-		<button onclick="openModal(this.id)" id="applRoom">&check;</button>
+		<label for="">Room: <input type="text" id="RoomNum" required/></label>
+		<button onclick="openModal(this.id, null)" id="applRoom">&check;</button>
 	</p>
 	<p>
 		<label for="">Adviser: <input type="text" id="Adviser" disabled/></label>
-		<button onclick="openModal(this.id)" id="applAdviser">&check;</button>
+		<button onclick="openModal(this.id, 'employee')" id="applAdviser">&check;</button>
 	</p>
 	<p><label for="">Population: <input type="text" id="Population" disabled/></label></p>
 	<p><label for="GradeLevel">For Grade: <select id="GradeLevel" name="GradeLevel">
@@ -37,19 +37,8 @@
 			</div>
 			<div id= "modal-body">
 				<p><label for="SearchRoom"><input type="search" id="SearchRoom"></label></p>
-				<table id="SearchRoomTable" style="width: 100%;">
-				<thead>
-				<td id="RoomNum">Room Number</td>
-				<td id="RoomName">Room Name</td>
-				<!-- <td id="Floor">Floor</td> -->
-				<td id="Capacity">Capacity</td>
-				<!-- <td id="RoomType">Type</td> -->
-				<!-- <td></td> -->
-			</thead>
-			<tbody>
-				<!-- <td></td> -->
-			</tbody>
-		</table>
+
+			
 			</div>
 			<div id="modal-footer">	
 			</div>
@@ -59,6 +48,7 @@
 		<p><label for="SearchSection"><input type="search" id="SearchSection"></label></p>
 		<table id="SearchSectionTable">
 			<thead>
+				<tr>
 				<!-- <td>Section Number</td> -->
 				<td id="SectionName">Section Name</td>
 				<td id="RoomNum">Room Number</td>
@@ -67,6 +57,7 @@
 				<td id="GradeLevel">GradeLevel</td>
 				<!-- <td>Type</td> -->
 				<td></td>
+				</tr>
 			</thead>
 			<tbody>
 				<!-- <td></td> -->

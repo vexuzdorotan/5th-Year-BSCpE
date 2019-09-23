@@ -38,7 +38,7 @@ function Create(btn_Create){
 		else if(btn_Create.innerHTML == "Update " + parent_id){
 			AJAX(data, true, "post", "php/Update.php", true, CheckIfUpdated);	
 		}
-		Search(txt_search, columnIDS);
+		// Search(txt_search, columnIDS);
 	}
 
 }
@@ -55,6 +55,7 @@ function CheckIfCreated(xhttp){
 	} 	
 	else{
 		alert("CREATED");
+		Search(txt_search, columnIDS);
 	}
 }
 
@@ -64,6 +65,8 @@ function CheckIfUpdated(xhttp){
 	} 	
 	else{
 		alert("UPDATED");
+		console.log(txt_search);
+		console.log(columnIDS);
 		Search(txt_search, columnIDS);
 	}
 }
@@ -92,19 +95,20 @@ function ResetInput(whatToReset){
 }
 
 function Search(whatToSearch, columnIDS){
+	// console.log(columnIDS);
 	this.columnIDS = columnIDS;
 	txt_search = whatToSearch;
 	data = "whatToSearch=" + parent_id + "&value=" + whatToSearch.value;
 	// if(columnIDS != null){
 	data += "&columnIDS=" + JSON.stringify(columnIDS); 
-	console.log(columnIDS); 
+	// console.log(columnIDS); 
 	// }
-	console.log(data);
-	AJAX(data, true, "post", "php/Search.php", true, CreateTable); 
+	// console.log(data);
+	AJAX(data, true, "post", "php/Search.php", true, CreateTBody); 
 }
 
 //Function to Create Table 
-function CreateTable(xhttp){
+function CreateTBody(xhttp){ //Create Table Body
 
 	var json;
 	var td;
@@ -118,8 +122,11 @@ function CreateTable(xhttp){
 	var thead_td = document.querySelectorAll("#" + txt_search.id + "Table thead tr td");
 	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;
 	var tbody = document.querySelector("#" + txt_search.id + "Table tbody");
+
+	// console.log("child count = " + tbody.childNodes.length);
+	// console.log(tbody);
+	// console.log(json);
 	RemoveChildNodes(tbody);
-	console.log(json);
 	
 	for(var i=0; i < json.length; i++){
 		tr = document.createElement('tr');
@@ -147,20 +154,17 @@ function CreateTable(xhttp){
 			tr.appendChild(td);
 		}
  		tbody.appendChild(tr);
+ 		// console.log(tbody);
 	}
-}
-
-function RemoveChildNodes(parent_node){ //Remove childNodes
-	while(Boolean(parent_node.firstChild.nextSibling)){
-		parent_node.removeChild(parent_node.firstChild.nextSibling);
-	}
+	// console.log(tbody.childNodes.length);
 }
 
 function Edit(whatToEdit){ //whatToEdit is an array 
 	var disabled; 
 	// console.log(parent_id);
 	var input = document.querySelectorAll("#" + parent_id + " input");
-	var btn_submit = document.querySelector("#" + parent_id + " button");
+	// var btn_submit = document.querySelector("#" + parent_id + " button");
+	var btn = document.querySelectorAll("#" + parent_id + " button");
 
 	for(var i = 0; i < input.length; i++){
 		if(i == 0){
@@ -180,7 +184,13 @@ function Edit(whatToEdit){ //whatToEdit is an array
 			}
 		}
 	}
-	btn_submit.innerHTML = "Update " + parent_id;
+	for(i = 0; i < btn.length; i++){
+		if(btn[i].innerHTML == "Create " + parent_id){
+			btn[i].innerHTML = "Update " + parent_id;		
+			break;
+		}
+	}
+	// btn_submit.innerHTML = "Update " + parent_id;
 	Search(txt_search, columnIDS);
 	console.log(txt_search);
 }

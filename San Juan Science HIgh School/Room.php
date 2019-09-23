@@ -35,12 +35,14 @@
 	<p><label for="SearchRoom"><input type="search" id="SearchRoom"></label></p>
 		<table id="SearchRoomTable">
 			<thead>
+				<tr>
 				<td id="RoomNum">Room Number</td>
 				<td id="RoomName">Room Name</td>
 				<td id="Floor">Floor</td>
 				<td id="Capacity">Capacity</td>
 				<td id="RoomType">Type</td>
 				<td></td>
+				</tr>
 			</thead>
 			<tbody>
 				<!-- <td></td> -->

@@ -16,6 +16,6 @@ function openModal(id){
 	modal_title.innerHTML = "Available " + id.substr(4, id.length-4) +"s";
 	parent_id = id.substr(4, id.length-4);
 	modal.style.display = "block";
-
 	// console.log(parent_id);
 }
+
