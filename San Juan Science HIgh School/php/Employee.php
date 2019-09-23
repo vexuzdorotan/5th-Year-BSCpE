@@ -15,7 +15,7 @@ else if(!empty($_POST['LastName'])){
 
 function Insert($db, $target_dir){
 	try{
-		$stmt = $db->prepare("INSERT into employee_records(LastName, FirstName, MiddleName, Birthday, Street_Address1, Street_Address2, City, Province, Country, Gender, Position, URL_Picture) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt = $db->prepare("INSERT into employee(LastName, FirstName, MiddleName, Birthday, Street_Address1, Street_Address2, City, Province, Country, Gender, Position, URL_Picture) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 
 		$stmt->bindValue(1, $_POST["LastName"]);
 		$stmt->bindValue(2, $_POST["FirstName"]);
@@ -31,13 +31,13 @@ function Insert($db, $target_dir){
 		// $stmt->bindValue(12, $_POST["Type"]);
 		$stmt->bindValue(12, $target_dir . $_POST["URL_Picture"]);
 		$stmt->execute();	
-		$stmt = $db->prepare("UPDATE employee_records SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
+		$stmt = $db->prepare("UPDATE employee SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
 	   	$stmt->execute();
 		$stmt->closeCursor();
 		echo "REGISTRATION SUCCESSFUL";
 	}
 	catch(Exception $e){
-		echo "REGISTRATION FAILED";
+		echo $e;
 	}
 }
 

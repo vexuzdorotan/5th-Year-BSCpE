@@ -56,3 +56,16 @@ function CreateTable(table_id, thead_id, thead_innerHTML, seperator, parentNode,
 	parentNode.appendChild(table);
 	console.log(parentNode);
 }
+
+
+function CreateInput(input_id, type, parentNode){	//Creates input tag with id 
+	var input = document.createElement("input");
+	var p = document.createElement("p");
+	var inputTYPE = document.createAttribute("type");
+	var inputID = document.createAttribute("id");
+	inputID.value = input_id;
+	inputTYPE.value = type;
+	input.setAttributeNode(inputID);
+	p.appendChild(input);
+	parentNode.appendChild(p);
+}

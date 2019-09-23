@@ -1,6 +1,6 @@
 <?php
    require 'php/ConnectToDB.php';
-   $stmt = $db->prepare("UPDATE student_records SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
+   $stmt = $db->prepare("UPDATE student SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
    $stmt->execute();
    $stmt->closeCursor();
 ?>

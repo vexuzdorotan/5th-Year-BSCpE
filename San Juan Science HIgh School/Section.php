@@ -11,11 +11,11 @@
 	<p><label for="SecName">Section Name: <input type="text" id="SectionName" required/></label></p>
 	<p>
 		<label for="">Room: <input type="text" id="RoomNum" required/></label>
-		<button onclick="openModal(this.id, null)" id="applRoom">&check;</button>
+		<button onclick="CreateModal(this.id, 'Room')" id="applRoom">&check;</button>
 	</p>
 	<p>
 		<label for="">Adviser: <input type="text" id="Adviser" disabled/></label>
-		<button onclick="openModal(this.id, 'employee')" id="applAdviser">&check;</button>
+		<button onclick="CreateModal(this.id, 'Employee')" id="applAdviser">&check;</button>
 	</p>
 	<p><label for="">Population: <input type="text" id="Population" disabled/></label></p>
 	<p><label for="GradeLevel">For Grade: <select id="GradeLevel" name="GradeLevel">
@@ -31,12 +31,12 @@
 		<!-- ENTER QTY OF BOOK -->
 	<div id="modal">
 		<div id="modal-content">
-			<span id="close" onclick="closeModal()">&times;</span>
+			<span id="close" onclick="closeModal(document.getElementById('modal-body'));">&times;</span>
 			<div id="modal-header">
 				<h2 id="modal-title"></h2>
 			</div>
 			<div id= "modal-body">
-				<p><label for="SearchRoom"><input type="search" id="SearchRoom"></label></p>
+				<!-- <p><label for="SearchRoom"><input type="search" id="SearchRoom"></label></p> -->
 
 			
 			</div>
@@ -63,7 +63,6 @@
 				<!-- <td></td> -->
 			</tbody>
 		</table>
-		<!-- <button id="CheckRoom">Check Room</button> -->
 	</div>
 	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/utility.js"></script>

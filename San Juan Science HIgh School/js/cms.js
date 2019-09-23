@@ -2,8 +2,8 @@ var txt_search; //saves content of input type = search
 var columnIDS; //saves the name of table headers
 
 // elem.childElementCount - counts child elements 
-function Create(btn_Create){
-	//whatToCreate = whatToCreate.id;
+
+function Create(btn_Create){ //Inserts to Database depends on the id of the button inside this argument
 	var data = "";
 	var content = {};
 	var error = 0;
@@ -119,13 +119,13 @@ function CreateTBody(xhttp){ //Create Table Body
 	var class_btn2;
 	// console.log(xhttp.responseText);	
 	json = JSON.parse(xhttp.responseText);
+	console.log(json);
 	var thead_td = document.querySelectorAll("#" + txt_search.id + "Table thead tr td");
 	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;
 	var tbody = document.querySelector("#" + txt_search.id + "Table tbody");
 
 	// console.log("child count = " + tbody.childNodes.length);
 	// console.log(tbody);
-	// console.log(json);
 	RemoveChildNodes(tbody);
 	
 	for(var i=0; i < json.length; i++){

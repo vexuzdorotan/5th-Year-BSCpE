@@ -9,3 +9,40 @@ function GetID is added to utility.js
 * You can now search through ids and name of the said table.
 * cms.js + utility.js can now make usable tables 
 	However this tables has no pagination yet. It is still under development. Maybe next release is when database caters more than 20 records.  
+
+
+Sep 23 2019
+
+*Created new table teachers
+*created a trigger whenever you register new teacher it is also created to teacher table
+PLEASE IMPORT new shsjs.sql
+name: shsjs(2).sql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Concat strings in DB
+SELECT CONCAT(FirstName , " " , LEFT(MiddleName, 1), " " ,LastName) FROM student;
+
+INSERT INTO teacher(EmployeeNum, Name) SELECT EmployeeNum, CONCAT(FirstName , " " , LEFT(MiddleName, 1), " " ,LastName) FROM employee ORDER BY EmployeeNum DESC LIMIT 1;
