@@ -1,10 +1,9 @@
 ﻿
 .mycontainer {
     margin: auto;
-    background-color: #efefef;
+    background-color: white;
     width: 90%;
     height:1000px;
-    margin-top:-8px;
 }
 .navbar-brand{
   font-size: 16px !important;
@@ -15,14 +14,7 @@
 .navbar-toggler-icon{
   font-size: 15px !important;
 }
-.prim{
-    display: block;
-}
-.logodesign{
-  width: 100%;  
-  top: 0;
-  left: 0;
-}
+
 
 .footer{
     width: 100%;
@@ -73,16 +65,7 @@ a.text-light:hover {
   border-radius: 0;
   padding-left: 0;
 }
-.headtxt {
-    font-family: Tw Cen MT;
-    font-size: 5vw;
-    margin: 0 0 0 20px;
-    float:left;
-    color: #343a40;
-}
-.headtxt:hover {
-  color:maroon;
-}
+
 .selected{
   text-decoration: underline;
 }
@@ -92,23 +75,35 @@ a.text-light:hover {
     top:0px;
     display:inline;
 }
+#search{
+  width: 0;
+  display: none;
+}
 .searchbtn{
   background-color: maroon !important;
 }
-
+.searchbtn:hover {
+    color: rgba(0, 0, 0, 0.5) !important;
+}
 .navbar {
     text-transform: uppercase;
     background-color: maroon !important;
 }
+.dropdown-item:hover{
+  background-color: rgba(128, 0, 0, 0.8) !important;
+  color: #f8f9fa !important;
+}
 .hoverable {
     padding: 0px 15px 8px 15px !important;
     margin-right: 10px;
-    transition: 0.3s;
+    font-weight: bold !important;
 }
 
 .hoverable:hover {
-    color: #dfdfdf !important;
-    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+.clicked{
+  color: rgba(0, 0, 0, 0.5) !important;
 }
 .slide{
     width:100%;
@@ -151,11 +146,15 @@ a.text-light:hover {
 }
 .content-div{
   font-size: 12px !important;
-  padding:5% 0 0 5%;
+  margin-top: 30px;
+
 }
 .date{
   font-size: 14px !important;
   text-decoration: underline;
-  float: right;
   margin-right: 20px;
+}
+.news-img{
+  width: 300px;
+  float: left;
 }
