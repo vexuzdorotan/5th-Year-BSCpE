@@ -1,0 +1,81 @@
+input[type = "text"]{
+	height: 25px !important;
+	width: 200px !important;
+}
+input[type = "number"]{
+	height: 25px !important;
+	width: 50px !important;
+	text-align: center !important;
+}	
+input[type = "search"]{
+	height: 25px !important;
+	width: 180px !important;
+	font-size: 14px !important;
+}	
+.my-container{
+	width: 62%;
+	margin: auto;
+	font-size: 14px !important;
+}
+.logodesign{
+	width: 100%;
+}
+
+.header{
+	border-bottom: 2px solid maroon;
+	width: 80%;
+	margin: auto;
+}
+.menu{
+	margin-top: -15px;
+	font-size: 11px;
+	position: absolute;
+	right: 10%;
+}
+.menu a{ 
+	color: #212529;
+	padding: 2px 10px 2px 10px;
+	text-transform: uppercase;
+	transition: 0.3s;
+}
+.menu a:hover{
+	color: white;
+	background-color: maroon;
+	text-decoration: none;
+}
+.rounded-pill{
+	color: white;
+	font-weight: 500;
+	background-color: maroon;
+	border: none;
+	height: 30px;	
+	transition: 0.3s;
+	width: 60px;
+	text-transform: uppercase;
+	float: right;
+	margin-top: 20px;
+	margin-right: 20px;
+}
+.rounded-pill:hover{
+	background-color: white;
+	border: 2px solid maroon;
+	color: maroon;
+}
+.footer{
+	width: 100%;
+	border-top: 1px solid black;
+	text-align: center;
+	font-size: 12px;
+	margin-top: 60px;
+	float: left;
+	padding-bottom: 20px;
+}
+.create-button{
+	width: 120px !important;
+}
+.dark{
+  color: #fff;
+  background-color: #343a40;
+  border-color: #454d55;
+  font-weight: bold;
+}
