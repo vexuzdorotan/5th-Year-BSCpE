@@ -31,7 +31,7 @@ function Create(btn_Create){ //Inserts to Database depends on the id of the butt
 	if(error == 0){
 		content = JSON.stringify(content);
 		data += "&content=" + content;
-
+		console.log(data);
 		if(btn_Create.innerHTML == "Create " + parent_id){
 			AJAX(data, true, "post", "php/Create.php", true, CheckIfCreated);
 		}
@@ -56,6 +56,7 @@ function CheckIfCreated(xhttp){
 	else{
 		alert("CREATED");
 		Search(txt_search, columnIDS);
+		ResetInput("create"+parent_id);
 	}
 }
 
@@ -68,10 +69,11 @@ function CheckIfUpdated(xhttp){
 		console.log(txt_search);
 		console.log(columnIDS);
 		Search(txt_search, columnIDS);
+		ResetInput("create"+parent_id);
 	}
 }
 
-function ResetInput(whatToReset){
+function ResetInput(whatToReset){//whatToReset - resets the button
 	var disabled;
 	// var parent_id = whatToReset.id.substr(6, whatToReset.id.length-6); //gets the id of parent IDS are set manually in html 
 	var input = document.querySelectorAll("#" + parent_id + " input");
@@ -94,11 +96,11 @@ function ResetInput(whatToReset){
 	whatToReset.innerHTML = "Create " + parent_id;
 }
 
-function Search(whatToSearch, columnIDS){
+function Search(table1, columnIDS){
 	// console.log(columnIDS);
 	this.columnIDS = columnIDS;
-	txt_search = whatToSearch;
-	data = "whatToSearch=" + parent_id + "&value=" + whatToSearch.value;
+	txt_search = table1;
+	data = "table1=" + parent_id + "&value=" + table1.value;
 	// if(columnIDS != null){
 	data += "&columnIDS=" + JSON.stringify(columnIDS); 
 	// console.log(columnIDS); 
@@ -109,7 +111,7 @@ function Search(whatToSearch, columnIDS){
 
 //Function to Create Table 
 function CreateTBody(xhttp){ //Create Table Body
-
+	try{
 	var json;
 	var td;
 	var tr;
@@ -117,15 +119,12 @@ function CreateTBody(xhttp){ //Create Table Body
 	var btn_Delete;
 	var class_btn1;
 	var class_btn2;
-	// console.log(xhttp.responseText);	
 	json = JSON.parse(xhttp.responseText);
 	console.log(json);
 	var thead_td = document.querySelectorAll("#" + txt_search.id + "Table thead tr td");
 	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;
 	var tbody = document.querySelector("#" + txt_search.id + "Table tbody");
 
-	// console.log("child count = " + tbody.childNodes.length);
-	// console.log(tbody);
 	RemoveChildNodes(tbody);
 	
 	for(var i=0; i < json.length; i++){
@@ -154,9 +153,13 @@ function CreateTBody(xhttp){ //Create Table Body
 			tr.appendChild(td);
 		}
  		tbody.appendChild(tr);
- 		// console.log(tbody);
 	}
-	// console.log(tbody.childNodes.length);
+	}
+	catch(err){
+		alert("CANNOT FIND");
+		console.log(xhttp.responseText);
+	}
+	// console.log(xhttp.responseText);
 }
 
 function Edit(whatToEdit){ //whatToEdit is an array 

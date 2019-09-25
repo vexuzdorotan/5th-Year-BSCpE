@@ -21,7 +21,7 @@
 	<p><label for="RoomName">Room Name: <input type="text" name="RoomName" id="RoomName" required/></label></p>
 	<p><label for="Floor">Floor: <input type="number" name="Floor" id="Floor" min = "1" required/></label></p>
 	<p><label for="Capacity">Capacity: <input type="number" name="Capacity" id="Capacity" min="5" max="50" required/></label></p>
-	<p><label for="RoomType">Room Type: <select id="RoomType" name="RoomType">
+	<p><label for="Type">Room Type: <select id="Type" name="Type">
 		<option selected="selected">Classroom</option>
 		<option>Laboratory</option>
 		<option>Office</option>
@@ -40,7 +40,7 @@
 				<td id="RoomName">Room Name</td>
 				<td id="Floor">Floor</td>
 				<td id="Capacity">Capacity</td>
-				<td id="RoomType">Type</td>
+				<td id="Type">Type</td>
 				<td></td>
 				</tr>
 			</thead>

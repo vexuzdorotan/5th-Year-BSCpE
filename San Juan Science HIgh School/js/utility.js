@@ -3,6 +3,7 @@ function GetID(node, offset){
 	for(var i = 0; i < node.length - offset; i++){
 		content[i] = node[i].id;
 	}
+	// console.log(content);
 	return content;
 }
 

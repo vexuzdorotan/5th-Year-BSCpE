@@ -15,7 +15,7 @@
 	</p>
 	<p>
 		<label for="">Adviser: <input type="text" id="Adviser" disabled/></label>
-		<button onclick="CreateModal(this.id, 'Employee')" id="applAdviser">&check;</button>
+		<button onclick="CreateModal(this.id, 'Teacher')" id="applAdviser">&check;</button>
 	</p>
 	<p><label for="">Population: <input type="text" id="Population" disabled/></label></p>
 	<p><label for="GradeLevel">For Grade: <select id="GradeLevel" name="GradeLevel">
@@ -36,9 +36,6 @@
 				<h2 id="modal-title"></h2>
 			</div>
 			<div id= "modal-body">
-				<!-- <p><label for="SearchRoom"><input type="search" id="SearchRoom"></label></p> -->
-
-			
 			</div>
 			<div id="modal-footer">	
 			</div>
