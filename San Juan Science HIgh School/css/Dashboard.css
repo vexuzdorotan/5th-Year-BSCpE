@@ -35,4 +35,12 @@ a{
 	margin-left: 1.50rem;
 	width: 90%;
 	color: #343a40;
+	transition: 0.3s;
+}
+a:hover{
+	color: maroon;
+}
+a.active:hover{
+	text-decoration: none;
+	color: #f8f9fa;
 }
