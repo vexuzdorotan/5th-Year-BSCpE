@@ -12,11 +12,12 @@
    <link rel="stylesheet" type="text/css" href="css/Entire.css">
    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
    <link rel="icon" href="pictures/logo.png">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <img src="pictures/logodesign.jpg" class="logodesign">
       <div class="header mb-3">
-      <legend class="h4 pl-2 pt-3 pb-1 mb-0">STUDENT REGISTRATION</legend>
+      <legend class="h4 pl-2 pt-3 mb-0">STUDENT REGISTRATION</legend>
       <div class="menu">
          <a href="#">Administrator</a>|<a href="#">Menu</a>|<a href="#">Logout</a>
       </div>

@@ -3,7 +3,6 @@
     margin: auto;
     background-color: white;
     width: 90%;
-    height:1000px;
 }
 .navbar-brand{
   font-size: 16px !important;
@@ -33,10 +32,10 @@
   font-family: Tw Cen MT;
 }
 .footer-two{
-  margin-top: 10px;
   width: 100%;
   background: #1c0004;
   float: left;
+  margin-top: 20px;
 }
 .important-links{
   width: 350px;
@@ -118,7 +117,7 @@ a.text-light:hover {
   position: fixed;
   bottom: 40px; 
   right: 20px; 
-  z-index: 99;
+  z-index: 1000 !important;
   border: none; 
   outline: none; 
   color: maroon; 
@@ -154,6 +153,6 @@ a.text-light:hover {
   margin-right: 20px;
 }
 .news-img{
-  width: 300px;
   float: left;
+  width: 300px;
 }

@@ -11,13 +11,13 @@
 <body>
 	<img src="pictures/logodesign.jpg" class="logodesign">
 	<div class="header mb-3">
-      <legend class="h4 pl-2 pt-3 pb-1 mb-0">MANAGE ROOMS</legend>
+      <legend class="h4 pl-2 pt-3 mb-0">MANAGE ROOMS</legend>
       <div class="menu">
          <a href="#">Administrator</a>|<a href="#">Menu</a>|<a href="#">Logout</a>
       </div>
    	</div>
    	<div class="my-container row">
-		<div class="col-4" id="Room">
+		<div class="col-12 col-xl-4" id="Room">
 			<p class="h5 pb-2">Create Room</p>
 			<p class="p-0 m-0"><label for="RoomNum">Room Number: <input type="text" name="RoomNum" id="RoomNum" required/></label></p>
 			<p><label for="RoomName">Room Name: <input type="text" name="RoomName" id="RoomName" required/></label></p>
@@ -34,12 +34,12 @@
 			<!-- <button id="EditRoom">Edit Room</button> -->
 			<!-- <p><label for="SubName">Subject Name: <input type="text" name="SubName" id="SubName"/></label></p> -->
 		</div>
-		<div class="col-8">
+		<div class="secondCol col col-xl-8">
 			<p class="h5 pb-2">List of Rooms
 			<label class="float-right" for="SearchRoom">
 				<input placeholder="Search for rooms.." class="mt-1 form-control rounded-0 bg-light" type="search" id="SearchRoom">
 			</label></p>
-			<table class="" id="SearchRoomTable">
+			<table id="SearchRoomTable">
 				<thead class="dark">
 					<tr>
 					<td scope="col" id="RoomNum">Room Number</td>
