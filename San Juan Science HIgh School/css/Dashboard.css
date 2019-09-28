@@ -1,11 +1,12 @@
 .my-container{
-	width: 90%;
+	width: 80%;
 	margin: auto;
 }
 .menu{
 	height: 500px;
-	width: 250px;
+	width: 230px;
 	border-right: 5px double maroon;
+	float: left;
 }
 ul{
 	list-style: none;
@@ -13,7 +14,6 @@ ul{
 li{
 	font-size: 1.50rem;
 	font-weight: 500;
-	padding: .25rem;
 }
 .sub-li{
 	font-size: 18px;
@@ -32,8 +32,7 @@ li{
 }
 a{
 	display: inline-block;
-	margin-left: 1.50rem;
-	width: 90%;
+	width: 100%;
 	color: #343a40;
 	transition: 0.3s;
 }
@@ -43,4 +42,18 @@ a:hover{
 a.active:hover{
 	text-decoration: none;
 	color: #f8f9fa;
+}
+.opt{
+	text-align: center;
+}
+.opt img{
+	width: 130px;
+	transition: 0.3s;
+}
+.a-opt:hover{
+	text-decoration: none;
+	color: black;
+}
+.a-opt:hover img{
+	width: 180px;
 }
