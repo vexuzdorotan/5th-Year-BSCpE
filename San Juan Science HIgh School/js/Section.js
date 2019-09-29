@@ -16,52 +16,62 @@ var theadHTML;
 
 var table1, table2;
 
-createSection.addEventListener("click", Create.bind(null, createSection));
-resetSection.addEventListener("click", ResetInput.bind(null, createSection));
+SearchWithQuery(
+	"Section",
+	"Teacher", 
+	GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
+	"Adviser=TeacherName",
+	"LEFT JOIN",
+	"teacher.SectionNum = section.SectionNum",
+	searchSection,
+	null,
+	CreateTBody
+)
+createSection.addEventListener("click", function(){
+	Create(
+		createSection, 
+		"Teacher", 
+		1, //If autoincrement
+		"SectionNum", //Foreign Key
+		"EmployeeNum", //fieldToUpdate
+		null
+	)
+	SearchSection();
+});
 
-searchSection.addEventListener("change", Search.bind(
-	null, 
-	searchSection, 
-	GetID(document.querySelectorAll("#SearchSectionTable thead td"), 1)
-));
+resetSection.addEventListener("click", function(){
+	ResetInput(createSection);
+	document.getElementById("Population").value = 0;
+});
 
-// searchSection.addEventListener("change", SearchWithQuery.bind(
-// 	null,
-// 	"Section",
-// 	"Teacher",
-// 	null,
-// 	GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
-// 	"INNER JOIN",
-// 	"section.Adviser = teacher.Name",
-// 	searchSection,
-// 	"WHERE section.SectionName IS NULL AND Type = 'Classroom'",
-// 	PickRoom
-// ));
+searchSection.addEventListener("change", SearchSection);
 
 
 // function CreateInput(input_id, type, parentNode){	//Creates input tag with id 
-function CreateModal(btn_id, title){ //Shows modal in html that is hidden then creates content
+function CreateModal(header, title){ //Shows modal in html that is hidden then creates content
 	if(title == 'Room'){
 		theadID = "RoomNum@RoomName@Capacity";
 		theadHTML = "Room Number@Room Name@Capacity";
 		CreateInput("SearchRoom", "search", modal_body);
 		CreateTable("SearchRoomTable", theadID, theadHTML, "@", modal_body, 0);
 		searchRoom = document.getElementById("SearchRoom");
+		SearchRoomSection();
 		// function SearchWithQuery(table1, table2, table2Column, columnNames, whatJoin, searchbox, otherQuery, callback){
 
-		searchRoom.addEventListener("change", SearchWithQuery.bind(
-			null,
-			"Room",
-			"Section",
-			null,
-			null,
-			GetID(document.querySelectorAll("#SearchRoomTable thead td"), 0),
-			"LEFT JOIN",
-			"room.RoomNum = section.RoomNum",
-			searchRoom,
-			"WHERE section.SectionName IS NULL AND Type = 'Classroom'",
-			PickRoom
-		));
+		searchRoom.addEventListener("change", SearchRoomSection);
+		function SearchRoomSection(){
+			SearchWithQuery(
+				"Room",
+				"Section",
+				GetID(document.querySelectorAll("#SearchRoomTable thead td"), 0),
+				null,
+				"LEFT JOIN",
+				"room.RoomNum = section.RoomNum",
+				searchRoom,
+				"section.SectionName IS NULL AND Type = 'Classroom'",
+				PickRoom
+			);
+		}
 	}
 
 	else if(title == 'Teacher'){
@@ -71,23 +81,24 @@ function CreateModal(btn_id, title){ //Shows modal in html that is hidden then c
 		CreateTable("SearchTeacherTable", theadID, theadHTML, "@", modal_body, 0);
 		columnIDS = GetID(document.querySelectorAll("#SearchTeacherTable thead td"), 0);
 		searchTeacher = document.getElementById("SearchTeacher");
-
-		searchTeacher.addEventListener("change", SearchWithQuery.bind(
-			null,
-			"Teacher",
-			"Section",
-			null,
-			null,
-			GetID(document.querySelectorAll("#SearchTeacherTable thead td"), 0),
-			"LEFT JOIN",
-			"teacher.SectionNum = section.SectionNum",
-			searchTeacher,
-			"WHERE teacher.SectionNum = 0",
-			PickAdviser
-		));
+		SearchTeacherSection();
+		searchTeacher.addEventListener("change", SearchTeacherSection);
+		function SearchTeacherSection(){
+			SearchWithQuery(
+				"Teacher",
+				"Section",
+				GetID(document.querySelectorAll("#SearchTeacherTable thead td"), 0),
+				null,
+				"LEFT JOIN",
+				"teacher.SectionNum = section.SectionNum",
+				searchTeacher,
+				"teacher.SectionNum IS NULL",
+				PickAdviser
+			);
+		}
 	}
 
-	openModal(btn_id, title);
+	openModal(header, title);
 }
 
 function PickRoom(xhttp){
@@ -97,7 +108,7 @@ function PickRoom(xhttp){
 	// var tbody = document.querySelector("#SearchRoomTable tbody");
 	for(var i = 0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("click", function(){
-			document.getElementById("RoomNum").value = this.childNodes[0].innerHTML;
+			document.getElementById("txt_RoomNum").value = this.childNodes[0].innerHTML;
 			// RemoveChildNodes(tbody); //Deletes whole table after click of a row
 
 			searchRoom.value = "";
@@ -121,7 +132,8 @@ function PickAdviser(xhttp){
 	// var tbody = document.querySelector("#SearchRoomTable tbody");
 	for(var i = 0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("click", function(){
-			document.getElementById("Adviser").value = this.childNodes[1].innerHTML;
+			document.getElementById("txt_TeacherName").value = this.childNodes[1].innerHTML;
+			document.getElementById("txt_TeacherEmployeeNum").value = this.childNodes[0].innerHTML;
 			// RemoveChildNodes(tbody); //Deletes whole table after click of a row
 
 			searchTeacher.value = "";
@@ -140,23 +152,16 @@ function PickAdviser(xhttp){
 	// console.log(columnIDS);
 }
 
-// function Pick(xhttp){
-// 	console.log("HEY");
-// }
-
-
-
-function SearchWithQuery(table1, table2, table1Column, table2Column, columnNames, whatJoin, compare, searchbox, otherQuery, callback){
-	// console.log(whatToSearch);
-	txt_search = searchbox;
-	// columnIDS = GetID(document.querySelectorAll("#SearchRoomTable thead td"), 0);
-	data = "table1=" + table1 + "&value=" + searchbox.value;
-	data += "&columnIDS=" + JSON.stringify(columnNames); 
-	data += "&table2=" + table2;
-	data += "&whatJoin=" + whatJoin; 
-	data += "&compareWhat=" + compare;
-	data += "&table2Column=" + table2Column;
-	data += "&whereQuery=" + otherQuery;
-	console.log(data);
-	AJAX(data, true, "post", "php/Search.php", true, callback); 
+function SearchSection(){
+	SearchWithQuery(
+		"Section",
+		"Teacher", 
+		GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
+		"Adviser=TeacherName",
+		"LEFT JOIN",
+		"teacher.SectionNum = section.SectionNum",
+		searchSection,
+		null,
+		CreateTBody
+	);
 }
