@@ -19,7 +19,7 @@
 <div class="header mb-3">
       <legend class="h4 pl-0 pt-3 mb-0">EMPLOYEE REGISTRATION</legend>
       <div class="menu">
-         <a href="#">Administrator</a>|<a href="#">Menu</a>|<a href="#">Logout</a>
+         <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
       </div>
    </div>
 <div class="my-container">
