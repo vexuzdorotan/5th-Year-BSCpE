@@ -11,6 +11,9 @@
 <body>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 66e46b2... Merge
 	<div style="width: 100%; height: 100%;">
 	<div style="width: 30%;float: left;" id="Room">
 	<h1>ROOM</h1>
@@ -22,6 +25,7 @@
 		<option selected="selected">Classroom</option>
 		<option>Laboratory</option>
 		<option>Office</option>
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of 5eb2f3c... Section is now finished
@@ -92,6 +96,8 @@
 		<option>Grade 9</option>
 		<option>Grade 10</option>
 >>>>>>> a65db69cdcbdd15f42972c9484a0f58500bf1b29
+=======
+>>>>>>> parent of 66e46b2... Merge
 	</select></label></p>
 	<button id="CreateRoom">Create Room</button>
 	<button id="ResetRoom">Reset</button>
