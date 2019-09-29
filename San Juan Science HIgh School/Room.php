@@ -12,6 +12,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 66e46b2... Merge
 =======
 >>>>>>> parent of 66e46b2... Merge
 	<div style="width: 100%; height: 100%;">
@@ -25,6 +28,7 @@
 		<option selected="selected">Classroom</option>
 		<option>Laboratory</option>
 		<option>Office</option>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
@@ -96,6 +100,8 @@
 		<option>Grade 9</option>
 		<option>Grade 10</option>
 >>>>>>> a65db69cdcbdd15f42972c9484a0f58500bf1b29
+=======
+>>>>>>> parent of 66e46b2... Merge
 =======
 >>>>>>> parent of 66e46b2... Merge
 	</select></label></p>
