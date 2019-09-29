@@ -4,18 +4,9 @@ var resetRoom = document.getElementById("ResetRoom");
 var createSection = document.getElementById("CreateSection");
 
 var parent_id = "Room";
-Search(searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1));
+
 searchRoom.addEventListener("change", Search.bind(null, searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1)));
-createRoom.addEventListener("click", function(){
-	Create( 
-		createRoom, 
-		null, 
-		0, //If autoincrement
-		null, //FK
-		null //ToUpdate
-	);
-	Search(searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1));
-});
+createRoom.addEventListener("click", Create.bind(null, createRoom));
 resetRoom.addEventListener("click", ResetInput.bind(null, createRoom));
 
 

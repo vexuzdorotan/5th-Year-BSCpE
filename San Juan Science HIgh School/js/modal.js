@@ -11,9 +11,9 @@ function closeModal(modalContent){
 	// console.log(parent_id);
 }
 
-function openModal(header, dbname){
+function openModal(string, dbname){
 	saved_id = parent_id;
-	modal_title.innerHTML = "Available " + header +"s";
+	modal_title.innerHTML = "Available " + string.substr(4, string.length-4) +"s";
 	parent_id = dbname;
 	modal.style.display = "block";
 	// console.log(parent_id);

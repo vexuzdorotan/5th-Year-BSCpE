@@ -3,16 +3,12 @@ var columnIDS; //saves the name of table headers
 
 // elem.childElementCount - counts child elements 
 
-function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate){ //Inserts to Database depends on the id of the button inside this argument
+function Create(btn_Create){ //Inserts to Database depends on the id of the button inside this argument
 	var data = "";
 	var content = {};
 	var error = 0;
 
 	data += "whatToCreate=" + parent_id;
-	data += "&table2=" + table2;
-	data += "&autoincrement=" + autoincrement;
-	data += "&foreignKey=" + FK;
-	data += "&fieldToUpdate=" + fieldToUpdate;
 	var input = document.querySelectorAll("#" + parent_id + " input");
 
 	for(var i = 0; i < input.length; i++){
@@ -59,7 +55,7 @@ function CheckIfCreated(xhttp){
 	} 	
 	else{
 		alert("CREATED");
-		// Search(txt_search, columnIDS);
+		Search(txt_search, columnIDS);
 		ResetInput("create"+parent_id);
 	}
 }
@@ -72,10 +68,9 @@ function CheckIfUpdated(xhttp){
 		alert("UPDATED");
 		console.log(txt_search);
 		console.log(columnIDS);
-		// Search(txt_search, columnIDS);
+		Search(txt_search, columnIDS);
 		ResetInput("create"+parent_id);
 	}
-	// console.log(xhttp.responseText);
 }
 
 function ResetInput(whatToReset){//whatToReset - resets the button
@@ -91,45 +86,27 @@ function ResetInput(whatToReset){//whatToReset - resets the button
 			}
 			catch(err){}
 		}
-		// if(!(input[i].value === "" || input[i].value === null)){
-		// 	if(Number.isNaN(input[i].value *1)){
-		// 		input[i].value = "";
-		// 	}
-		// 	else{
-		// 		input[i].value = 0;
-		// 	}
-		// }
 		input[i].value = "";
 		input[i].style.backgroundColor = '';
 	}
 	for(var i = 0; i < select.length; i++){
 		select[i].selectedIndex = 0;
 	}
-	console.log("HEY");
+	
 	whatToReset.innerHTML = "Create " + parent_id;
 }
 
 function Search(table1, columnIDS){
+	// console.log(columnIDS);
 	this.columnIDS = columnIDS;
 	txt_search = table1;
 	data = "table1=" + parent_id + "&value=" + table1.value;
+	// if(columnIDS != null){
 	data += "&columnIDS=" + JSON.stringify(columnIDS); 
-	AJAX(data, true, "post", "php/Search.php", true, CreateTBody); 
-}
-
-function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, compare, searchbox, otherQuery, callback){
-	// console.log(whatToSearch);
-	txt_search = searchbox;
-	// columnIDS = GetID(document.querySelectorAll("#SearchRoomTable thead td"), 0);
-	data = "table1=" + table1 + "&value=" + searchbox.value;
-	data += "&columnIDS=" + JSON.stringify(columnNames); 
-	data += "&table2=" + table2;
-	data += "&whatJoin=" + whatJoin; 
-	data += "&compareWhat=" + compare;
-	data += "&whereQuery=" + otherQuery;
-	data += "&correction=" + correction;
+	// console.log(columnIDS); 
+	// }
 	// console.log(data);
-	AJAX(data, true, "post", "php/Search.php", true, callback); 
+	AJAX(data, true, "post", "php/Search.php", true, CreateTBody); 
 }
 
 //Function to Create Table 
@@ -173,25 +150,19 @@ function CreateTBody(xhttp){ //Create Table Body
 			else{
 				td.innerHTML = json[i][j];
 			}
-			if(thead_td[j].style.display == "none"){
-				td.style.display = "none";
-			}	
 			tr.appendChild(td);
 		}
  		tbody.appendChild(tr);
 	}
-	// console.log(thead_td[2].style.display);
 	}
 	catch(err){
 		alert("CANNOT FIND");
 		console.log(xhttp.responseText);
-		console.log(err);
 	}
 	// console.log(xhttp.responseText);
 }
 
 function Edit(whatToEdit){ //whatToEdit is an array 
-	console.log(whatToEdit);	
 	var disabled; 
 	// console.log(parent_id);
 	var input = document.querySelectorAll("#" + parent_id + " input");
@@ -223,7 +194,7 @@ function Edit(whatToEdit){ //whatToEdit is an array
 		}
 	}
 	// btn_submit.innerHTML = "Update " + parent_id;
-	// Search(txt_search, columnIDS);	
+	Search(txt_search, columnIDS);
 	console.log(txt_search);
 }
 
