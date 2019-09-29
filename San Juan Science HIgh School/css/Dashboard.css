@@ -1,6 +1,12 @@
+body {
+	overflow:hidden !important;
+}	
 .my-container{
 	width: 80%;
 	margin: auto;
+}
+.logo{
+	width: 100%;
 }
 .menu{
 	height: 500px;
@@ -14,6 +20,9 @@ ul{
 li{
 	font-size: 1.50rem;
 	font-weight: 500;
+}
+.main-li{
+	padding: 10px 0 0 0;
 }
 .sub-li{
 	font-size: 18px;
@@ -56,4 +65,9 @@ a.active:hover{
 }
 .a-opt:hover img{
 	width: 180px;
+}	
+.border{
+	padding-top: .75rem;
+	border-radius: 10px;
+	border: 2px solid maroon !important;
 }

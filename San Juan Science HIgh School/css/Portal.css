@@ -1,7 +1,8 @@
-.logodesign{
+body {
+	overflow:hidden !important;
+}
+.logo{
 	width: 100%;
-	top: 0;
-	left: 0;
 }
 .mycontainer{
 	width: 70%;
