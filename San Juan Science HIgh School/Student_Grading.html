@@ -1,4 +1,3 @@
--
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,29 +16,43 @@
         }
         
         input {
-            text-align: right;
+            text-align: left;
+        }
+        
+        tbody tr {
+            font-style: bold;
+        }
+        
+        .mapeh {
+            font-weight: 100;
+            font-style: italic;
         }
     </style>
 </head>
 
 <body>
+    <img src="pictures/JuanSci-Header.jpg" alt="SJSHS Header" style="width: 60%">
+
     <h2>Form 138 of Jonnel Salvador S. Dorotan</h2>
     <h3>REPORT ON STUDENT'S PROGRESS IN LEARNING</h3>
     <table id="table">
         <thead>
             <tr>
-                <th>Learning Area</th>
-                <th>First Grading</th>
-                <th>Second Grading</th>
-                <th>Third Grading</th>
-                <th>Fourth Grading</th>
-                <th>Final Rating</th>
-                <th>Remarks</th>
+                <th rowspan="2">LEARNING AREAS</th>
+                <th colspan="4">Quarterly Rating</th>
+                <th rowspan="2">FINAL RATING</th>
+                <th rowspan="2">REMARKS</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
             </tr>
         </thead>
 
         <tbody>
-            <tr class="fil">
+            <tr id="fil">
                 <td>Filipino</td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
@@ -49,7 +62,7 @@
                 <td></td>
             </tr>
 
-            <tr class="eng">
+            <tr id="eng">
                 <td>English</td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
@@ -59,7 +72,7 @@
                 <td></td>
             </tr>
 
-            <tr class="math">
+            <tr id="math">
                 <td>Mathematics</td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
@@ -69,7 +82,7 @@
                 <td></td>
             </tr>
 
-            <tr class="sci">
+            <tr id="sci">
                 <td>Science</td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
@@ -79,7 +92,7 @@
                 <td></td>
             </tr>
 
-            <tr class="ap">
+            <tr id="ap">
                 <td>Araling Panlipunan (AP)</td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
@@ -89,7 +102,17 @@
                 <td></td>
             </tr>
 
-            <tr class="tle">
+            <tr id="esp">
+                <td>Edukasyon sa Pagpapakatao (EsP)</td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td id="espTotal">80</td>
+                <td></td>
+            </tr>
+
+            <tr id="tle">
                 <td>Technology and Livelihood Education (TLE)</td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
@@ -99,37 +122,75 @@
                 <td></td>
             </tr>
 
-            <tr class="mapeh">
+            <tr id="mapeh">
                 <td>MAPEH</td>
-                <td><input type="number" value=80 min="65" max="100" /></td>
-                <td><input type="number" value=80 min="65" max="100" /></td>
-                <td><input type="number" value=80 min="65" max="100" /></td>
-                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" disabled /></td>
+                <td><input type="number" value=80 min="65" max="100" disabled /></td>
+                <td><input type="number" value=80 min="65" max="100" disabled /></td>
+                <td><input type="number" value=80 min="65" max="100" disabled /></td>
                 <td id="mapehTotal">80</td>
                 <td></td>
             </tr>
 
-            <tr class="esp">
-                <td>Edukasyon sa Pagpapakatao (EsP)</td>
+            <tr id="music">
+                <td>&nbsp Music</td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
                 <td><input type="number" value=80 min="65" max="100" /></td>
-                <td id="espTotal">80</td>
+                <td id="musicTotal">80</td>
                 <td></td>
             </tr>
+
+            <tr id="arts">
+                <td>&nbsp Arts</td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td id="artsTotal">80</td>
+                <td></td>
+            </tr>
+
+            <tr id="pe">
+                <td>&nbsp Physical Education</td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td id="peTotal">80</td>
+                <td></td>
+            </tr>
+
+            <tr id="health">
+                <td>&nbsp Health</td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td><input type="number" value=80 min="65" max="100" /></td>
+                <td id="healthTotal">80</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td colspan="4">General Average</td>
+                <td id="gwa"></td>
+                <td></td>
+            </tr>
+
+
         </tbody>
     </table>
 
-    <hr>
-    <p>Grade inputs are only 65-100</p>
-    <p>To be added later:</p>
     <ul>
-        <li>No inputs on MAPEH, only computated.</li>
-        <li>MAPEH = (Music + Arts + PE)/3</li>
-        <li>Average on every quarter (grading).</li>
-        <li>GWA = SUM(Final Rating)/n</li>
+        <li>grade inputs are only 65-100</li>
+        <li>if grades >= 75 {passed}. else {failed}</li>
+        <li>mapeh = (music + arts + pe + health) / 4</li>
     </ul>
+
+
+    <img src="pictures/JuanSci-Footer.jpg" alt="SJSHS Header" style="width: 60%">
 
     <script src="js/Student_Grading.js" type="text/javascript"></script>
 </body>
