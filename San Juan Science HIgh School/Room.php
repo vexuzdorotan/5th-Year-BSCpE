@@ -19,11 +19,11 @@
    	<div class="my-container row">
 		<div class="col-12 col-xl-4" id="Room">
 			<p class="h5 pb-2">Create Room</p>
-			<p class="p-0 m-0"><label for="RoomNum">Room Number: <input type="text" name="RoomNum" id="RoomNum" required/></label></p>
-			<p><label for="RoomName">Room Name: <input type="text" name="RoomName" id="RoomName" required/></label></p>
-			<p"><label for="Floor">Floor: <input class="ml-2" type="number" name="Floor" id="Floor" min = "1" required/></label>
-			<label class="pl-3" for="Capacity">Capacity: <input class="ml-2" type="number" name="Capacity" id="Capacity" min="5" max="50" required/></label></p>
-			<p><label for="Type">Room Type: <select id="Type" name="Type">
+			<p class="p-0 m-0"><label for="txt_RoomNum">Room Number: <input type="text" name="txt_RoomNum" id="txt_RoomNum" required/></label></p>
+			<p><label for="txt_RoomName">Room Name: <input type="text" name="txt_RoomName" id="txt_RoomName" required/></label></p>
+			<p"><label for="txt_Floor">Floor: <input class="ml-2" type="number" name="txt_Floor" id="txt_Floor" min = "1" required/></label>
+			<label class="pl-3" for="txt_Capacity">Capacity: <input class="ml-2" type="number" name="txt_Capacity" id="txt_Capacity" min="5" max="50" required/></label></p>
+			<p><label for="txt_Type">Room Type: <select id="txt_Type" name="txt_Type">
 				<option selected="selected">Classroom</option>
 				<option>Laboratory</option>
 				<option>Office</option>
@@ -58,27 +58,9 @@
 			<button id="Las">Reset</button> -->
 		</div>
 		<div class="footer">
-      <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
-   </div>
+     		<p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
+   		</div>
 	</div>
-	<!-- <div class="width100" id="Section" style="height: 50%;">
-	<div class="width50">
-	<h1>SECTION</h1>
-	<p><label for="SectionName">Section Name: <input type="text" name="SecName" id="SecName" required/></label></p>
-	<p><label for="GradeLevel">For Grade: <select id="GradeLevel" name="GradeLevel">
-		<option selected="selected">Grade 7</option>
-		<option>Grade 8</option>
-		<option>Grade 9</option>
-		<option>Grade 10</option>
-	</select></label></p>
-	<p><label for="SectionRoom">Room: <input type="text" name="SecName" id="SecName" required disabled/></label></p>
-	<button id="CreateSection">Create Section</button>
-	<button id="ResetSection">Reset</button>
-	</div>
-	<div class="width50">
-		
-	</div>
-	</div> -->
 	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/utility.js"></script>
 	<script type="text/javascript" src="js/cms.js"></script>
