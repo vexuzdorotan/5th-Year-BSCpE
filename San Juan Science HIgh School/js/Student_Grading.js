@@ -221,9 +221,7 @@ function remarks() {
     }
 }
 
-window.onload = function() {
-    setGwa.initialize();
-}
+setGwa();
 
 // function randomNumber(min, max) {
 //     return Math.round(Math.random() * (max - min) + min);
