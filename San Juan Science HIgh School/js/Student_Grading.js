@@ -1,133 +1,217 @@
-var i, j, sumVal;
-var body = document.getElementsByTagName("body");
-var table = document.querySelector("#table");
-var inputGrades = document.querySelectorAll("tbody input");
+//var body = document.getElementsByTagName("body");
+// const table = document.querySelector("#table");
+// const inputGrades = document.querySelectorAll("tbody input");
 
-var fil = document.querySelectorAll(".fil input");
-var filTotal = document.querySelector("#filTotal");
+let i, j, sumVal;
 
-var eng = document.querySelectorAll(".eng input");
-var engTotal = document.querySelector("#engTotal");
+const fil = document.querySelectorAll("#fil input");
+const filTotal = document.querySelector("#filTotal");
 
-var math = document.querySelectorAll(".math input");
-var mathTotal = document.querySelector("#mathTotal");
+const eng = document.querySelectorAll("#eng input");
+const engTotal = document.querySelector("#engTotal");
 
-var sci = document.querySelectorAll(".sci input");
-var sciTotal = document.querySelector("#sciTotal");
+const math = document.querySelectorAll("#math input");
+const mathTotal = document.querySelector("#mathTotal");
 
-var ap = document.querySelectorAll(".ap input");
-var apTotal = document.querySelector("#apTotal");
+const sci = document.querySelectorAll("#sci input");
+const sciTotal = document.querySelector("#sciTotal");
 
-var tle = document.querySelectorAll(".tle input");
-var tleTotal = document.querySelector("#tleTotal");
+const ap = document.querySelectorAll("#ap input");
+const apTotal = document.querySelector("#apTotal");
 
-var mapeh = document.querySelectorAll(".mapeh input");
-var mapehTotal = document.querySelector("#mapehTotal");
+const esp = document.querySelectorAll("#esp input");
+const espTotal = document.querySelector("#espTotal");
 
-var esp = document.querySelectorAll(".esp input");
-var espTotal = document.querySelector("#espTotal");
+const tle = document.querySelectorAll("#tle input");
+const tleTotal = document.querySelector("#tleTotal");
+
+const mapeh = document.querySelectorAll("#mapeh input");
+const mapehTotal = document.querySelector("#mapehTotal");
+
+const music = document.querySelectorAll("#music input");
+const musicTotal = document.querySelector("#musicTotal");
+
+const arts = document.querySelectorAll("#arts input");
+const artsTotal = document.querySelector("#artsTotal");
+
+const pe = document.querySelectorAll("#pe input");
+const peTotal = document.querySelector("#peTotal");
+
+const health = document.querySelectorAll("#health input");
+const healthTotal = document.querySelector("#healthTotal");
+
+const gwa = document.querySelector('#gwa');
+
 
 //---------------------------------------------------------
 
 for (i = 0; i < fil.length; i++) {
-    fil[i].addEventListener("click", function() {
+    fil[i].addEventListener("change", function() {
 
-        var filSum = 0;
+        let filSum = 0;
         for (j = 0; j < fil.length; j++) {
             filSum += Number(fil[j].value);
         }
         filTotal.textContent = filSum / 4;
-        remarks();
+        setGwa();
     });
 }
 
 for (i = 0; i < eng.length; i++) {
-    eng[i].addEventListener("click", function() {
+    eng[i].addEventListener("change", function() {
 
-        var engSum = 0;
+        let engSum = 0;
         for (j = 0; j < eng.length; j++) {
             engSum += Number(eng[j].value);
         }
         engTotal.textContent = engSum / 4;
-        remarks();
+        setGwa();
     });
 }
 
 for (i = 0; i < math.length; i++) {
-    math[i].addEventListener("click", function() {
+    math[i].addEventListener("change", function() {
 
-        var mathSum = 0;
+        let mathSum = 0;
         for (j = 0; j < math.length; j++) {
             mathSum += Number(math[j].value);
         }
         mathTotal.textContent = mathSum / 4;
-        remarks();
+        setGwa();
     });
 }
 
 for (i = 0; i < sci.length; i++) {
-    sci[i].addEventListener("click", function() {
+    sci[i].addEventListener("change", function() {
 
-        var sciSum = 0;
+        let sciSum = 0;
         for (j = 0; j < sci.length; j++) {
             sciSum += Number(sci[j].value);
         }
         sciTotal.textContent = sciSum / 4;
-        remarks();
+        setGwa();
     });
 }
 
 for (i = 0; i < ap.length; i++) {
-    ap[i].addEventListener("click", function() {
+    ap[i].addEventListener("change", function() {
 
-        var apSum = 0;
+        let apSum = 0;
         for (j = 0; j < ap.length; j++) {
             apSum += Number(ap[j].value);
         }
         apTotal.textContent = apSum / 4;
-        remarks();
-    });
-}
-
-for (i = 0; i < tle.length; i++) {
-    tle[i].addEventListener("click", function() {
-
-        var tleSum = 0;
-        for (j = 0; j < tle.length; j++) {
-            tleSum += Number(tle[j].value);
-        }
-        tleTotal.textContent = tleSum / 4;
-        remarks();
-    });
-}
-
-for (i = 0; i < mapeh.length; i++) {
-    mapeh[i].addEventListener("click", function() {
-
-        var mapehSum = 0;
-        for (j = 0; j < mapeh.length; j++) {
-            mapehSum += Number(mapeh[j].value);
-        }
-        mapehTotal.textContent = mapehSum / 4;
-        remarks();
+        setGwa();
     });
 }
 
 for (i = 0; i < esp.length; i++) {
-    esp[i].addEventListener("click", function() {
+    esp[i].addEventListener("change", function() {
 
-        var espSum = 0;
+        let espSum = 0;
         for (j = 0; j < esp.length; j++) {
             espSum += Number(esp[j].value);
         }
         espTotal.textContent = espSum / 4;
-        remarks();
+        setGwa();
     });
 }
 
+for (i = 0; i < tle.length; i++) {
+    tle[i].addEventListener("change", function() {
+
+        let tleSum = 0;
+        for (j = 0; j < tle.length; j++) {
+            tleSum += Number(tle[j].value);
+        }
+        tleTotal.textContent = tleSum / 4;
+        setGwa();
+    });
+}
+
+for (i = 0; i < music.length; i++) {
+    music[i].addEventListener("change", function() {
+
+        let musicSum = 0;
+        for (j = 0; j < music.length; j++) {
+            musicSum += Number(music[j].value);
+        }
+        musicTotal.textContent = musicSum / 4;
+        setMapeh();
+        setGwa();
+    });
+}
+
+for (i = 0; i < arts.length; i++) {
+    arts[i].addEventListener("change", function() {
+
+        let artsSum = 0;
+        for (j = 0; j < arts.length; j++) {
+            artsSum += Number(arts[j].value);
+        }
+        artsTotal.textContent = artsSum / 4;
+        setMapeh();
+        setGwa();
+    });
+}
+
+for (i = 0; i < pe.length; i++) {
+    pe[i].addEventListener("change", function() {
+
+        let peSum = 0;
+        for (j = 0; j < pe.length; j++) {
+            peSum += Number(pe[j].value);
+        }
+        peTotal.textContent = peSum / 4;
+        setMapeh();
+        setGwa();
+    });
+}
+
+for (i = 0; i < health.length; i++) {
+    health[i].addEventListener("change", function() {
+
+        let healthSum = 0;
+        for (j = 0; j < health.length; j++) {
+            healthSum += Number(health[j].value);
+        }
+        healthTotal.textContent = healthSum / 4;
+        setMapeh();
+        setGwa();
+    });
+}
+
+function setMapeh() {
+    let mapehSum = 0;
+
+    for (i = 0; i < mapeh.length; i++) {
+        mapeh[i].value = (Number(music[i].value) + Number(arts[i].value) +
+            Number(pe[i].value) + Number(health[i].value)) / 4;
+    }
+
+    for (j = 0; j < mapeh.length; j++) {
+        mapehSum += Number(mapeh[j].value);
+    }
+    mapehTotal.textContent = mapehSum / 4;
+
+    setGwa();
+}
+
+function setGwa() {
+    let gwaSum = 0;
+
+    for (i = 2; i <= 9; i++) {
+        let finalRating = Number(table.rows[i].cells[5].innerHTML);
+        gwaSum += finalRating / 8;
+    }
+    gwa.textContent = gwaSum;
+
+    remarks();
+}
+
 function remarks() {
-    for (i = 1; i <= 8; i++) {
-        var finalRating = table.rows[i].cells[5].innerHTML;
+    for (i = 2; i <= 13; i++) {
+        let finalRating = table.rows[i].cells[5].innerHTML;
 
         if (finalRating >= 75) {
             table.rows[i].cells[6].innerHTML = "Passed";
@@ -136,7 +220,10 @@ function remarks() {
         }
     }
 }
-remarks();
+
+window.onload = function() {
+    setGwa.initialize();
+}
 
 // function randomNumber(min, max) {
 //     return Math.round(Math.random() * (max - min) + min);
