@@ -3,7 +3,7 @@ var columnIDS; //saves the name of table headers
 
 // elem.childElementCount - counts child elements 
 
-function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate){ //Inserts to Database depends on the id of the button inside this argument
+function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCallback, updateCallback){ //Inserts to Database depends on the id of the button inside this argument
 	var data = "";
 	var content = {};
 	var error = 0;
@@ -37,10 +37,10 @@ function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate){ //Inserts
 		data += "&content=" + content;
 		console.log(data);
 		if(btn_Create.innerHTML == "Create " + parent_id){
-			AJAX(data, true, "post", "php/Create.php", true, CheckIfCreated);
+			AJAX(data, true, "post", "php/Create.php", true, createCallback);
 		}
 		else if(btn_Create.innerHTML == "Update " + parent_id){
-			AJAX(data, true, "post", "php/Update.php", true, CheckIfUpdated);	
+			AJAX(data, true, "post", "php/Update.php", true, updateCallback);	
 		}
 		// Search(txt_search, columnIDS);
 	}
@@ -60,6 +60,7 @@ function CheckIfCreated(xhttp){
 	else{
 		alert("CREATED");
 		// Search(txt_search, columnIDS);
+		Search();
 		ResetInput("create"+parent_id);
 	}
 }
@@ -70,12 +71,10 @@ function CheckIfUpdated(xhttp){
 	} 	
 	else{
 		alert("UPDATED");
-		// console.log(txt_search);
-		// console.log(columnIDS);
 		// Search(txt_search, columnIDS);
+		Search();
 		ResetInput("create"+parent_id);
 	}
-	// console.log(xhttp.responseText);
 }
 
 function ResetInput(whatToReset){//whatToReset - resets the button
@@ -105,11 +104,10 @@ function ResetInput(whatToReset){//whatToReset - resets the button
 	for(var i = 0; i < select.length; i++){
 		select[i].selectedIndex = 0;
 	}
-	console.log("HEY");
 	whatToReset.innerHTML = "Create " + parent_id;
 }
 
-function Search(table1, columnIDS){
+function SearchWithoutQuery(table1, columnIDS){
 	this.columnIDS = columnIDS;
 	txt_search = table1;
 	data = "table1=" + parent_id + "&value=" + table1.value;
@@ -239,7 +237,8 @@ function Delete(whatToDelete){
     	txt = "Deletion Cancelled!";
   	}
 	function CheckIfDeleted(xhttp){
-		Search(txt_search, columnIDS);
+		// Search(txt_search, columnIDS);
+		Search();
 		console.log("Deleted");
 	}
 	// console.log(whatToDelete);

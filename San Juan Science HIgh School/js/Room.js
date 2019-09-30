@@ -4,18 +4,25 @@ var resetRoom = document.getElementById("ResetRoom");
 var createSection = document.getElementById("CreateSection");
 
 var parent_id = "Room";
-Search(searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1));
-searchRoom.addEventListener("change", Search.bind(null, searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1)));
+var Search = function(){
+	SearchWithoutQuery(
+		searchRoom, 
+		GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1)
+	);
+}
+Search();
+searchRoom.addEventListener("change", Search);
 createRoom.addEventListener("click", function(){
 	Create( 
 		createRoom, 
 		null, 
 		0, //If autoincrement
 		null, //FK
-		null //ToUpdate
+		null, //ToUpdate
+		CheckIfCreated,
+		CheckIfUpdated
 	);
-	Search(searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1));
-	// console.log("HEY");
+	// Search(searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1));
 });
 resetRoom.addEventListener("click", ResetInput.bind(null, createRoom));
 

@@ -16,17 +16,22 @@ var theadHTML;
 
 var table1, table2;
 
-SearchWithQuery(
-	"Section",
-	"Teacher", 
-	GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
-	"Adviser=TeacherName",
-	"LEFT JOIN",
-	"teacher.SectionNum = section.SectionNum",
-	searchSection,
-	null,
-	CreateTBody
-)
+var Search = function(){
+	SearchWithQuery(
+		"Section",
+		"Teacher", 
+		GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
+		"Adviser=TeacherName",
+		"LEFT JOIN",
+		"teacher.SectionNum = section.SectionNum",
+		searchSection,
+		null,
+		CreateTBody
+	);
+}
+
+Search();
+
 createSection.addEventListener("click", function(){
 	Create(
 		createSection, 
@@ -34,9 +39,10 @@ createSection.addEventListener("click", function(){
 		1, //If autoincrement
 		"SectionNum", //Foreign Key
 		"EmployeeNum", //fieldToUpdate
-		null
-	)
-	SearchSection();
+		null,
+		CheckIfCreated,
+		CheckIfUpdated
+	);
 });
 
 resetSection.addEventListener("click", function(){
@@ -44,8 +50,7 @@ resetSection.addEventListener("click", function(){
 	document.getElementById("Population").value = 0;
 });
 
-searchSection.addEventListener("change", SearchSection);
-
+searchSection.addEventListener("change", Search);
 
 // function CreateInput(input_id, type, parentNode){	//Creates input tag with id 
 function CreateModal(header, title){ //Shows modal in html that is hidden then creates content
@@ -150,18 +155,4 @@ function PickAdviser(xhttp){
 	// console.log(columnIDS);
 	columnIDS = GetID(document.querySelectorAll("#SearchSectionTable thead td"), 1);
 	// console.log(columnIDS);
-}
-
-function SearchSection(){
-	SearchWithQuery(
-		"Section",
-		"Teacher", 
-		GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
-		"Adviser=TeacherName",
-		"LEFT JOIN",
-		"teacher.SectionNum = section.SectionNum",
-		searchSection,
-		null,
-		CreateTBody
-	);
 }
