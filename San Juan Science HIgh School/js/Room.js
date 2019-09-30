@@ -15,6 +15,7 @@ createRoom.addEventListener("click", function(){
 		null //ToUpdate
 	);
 	Search(searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1));
+	// console.log("HEY");
 });
 resetRoom.addEventListener("click", ResetInput.bind(null, createRoom));
 

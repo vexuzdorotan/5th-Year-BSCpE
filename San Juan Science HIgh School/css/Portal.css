@@ -1,0 +1,71 @@
+body {
+	overflow:hidden !important;
+}
+.logo{
+	width: 100%;
+}
+.mycontainer{
+	width: 70%;
+	margin: auto;
+	height: 450px;
+	background-color: white;
+}
+.header-text{
+	font-size: 14px !important;
+	border-top: 2px solid maroon;
+}
+.header{
+	margin-top:40px;
+}
+.header-link{
+	font-size: 13px !important;
+	font-weight: 500;
+	color: #212529;
+}
+.separator{
+	margin: 0 10px 0 10px;
+	float: right;
+}
+input{
+	height: 25px !important;
+	width: 170px !important;
+	font-size: 13px !important;
+}
+.login-form{
+	width: 280px;
+	margin-top: 20%;
+	float: right;
+	margin-right: 10%;
+}
+select{
+	margin-left: 44px !important;
+}
+button{
+	height: 28px !important;
+	width: 80px !important;
+	margin-left: 35px !important;
+	background-color: maroon;
+	color: white;
+	display: inline-block !important;
+}
+.footer{
+	width: 70%;
+	margin:auto;
+	border-top: 1px solid black;
+	text-align: center;
+	font-size: 12px;
+}
+.rounded-pill{
+	color: white;
+	font-weight: 500;
+	background-color: maroon;
+	border: none;
+	width: 80px;
+	height: 30px;
+	transition: 0.3s;
+}
+.rounded-pill:hover{
+	background-color: white;
+	border: 2px solid maroon;
+	color: maroon;
+}

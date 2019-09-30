@@ -70,8 +70,8 @@ function CheckIfUpdated(xhttp){
 	} 	
 	else{
 		alert("UPDATED");
-		console.log(txt_search);
-		console.log(columnIDS);
+		// console.log(txt_search);
+		// console.log(columnIDS);
 		// Search(txt_search, columnIDS);
 		ResetInput("create"+parent_id);
 	}
