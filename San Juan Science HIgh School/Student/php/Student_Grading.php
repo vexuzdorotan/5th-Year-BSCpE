@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,34 +11,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SJSHS Student_Grading</title>
 
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        
-        input {
-            text-align: left;
-        }
-        
-        tbody tr {
-            font-style: bold;
-        }
-        
-        .mapeh {
-            font-weight: 100;
-            font-style: italic;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/Student_Grading.css">
 </head>
 
 <body>
-    <img src="pictures/JuanSci-Header.jpg" alt="SJSHS Header" style="width: 60%">
+    <img src="../img/JuanSci-Header.jpg" alt="SJSHS Header" style="width: 60%">
 
-    <h2>Form 138 of Jonnel Salvador S. Dorotan</h2>
     <h3>REPORT ON STUDENT'S PROGRESS IN LEARNING</h3>
+
     <table id="table">
         <thead>
             <tr>
@@ -189,10 +173,9 @@
         <li>mapeh = (music + arts + pe + health) / 4</li>
     </ul>
 
+    <img src="../img/JuanSci-Footer.jpg" alt="SJSHS Footer" style="width: 60%">
 
-    <img src="pictures/JuanSci-Footer.jpg" alt="SJSHS Footer" style="width: 60%">
-
-    <script src="js/Student_Grading.js" type="text/javascript"></script>
+    <script src="../js/Student_Grading.js" type="text/javascript"></script>
 </body>
 
 </html>

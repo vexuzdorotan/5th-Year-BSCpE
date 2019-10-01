@@ -1,0 +1,19 @@
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tbody tr {
+    font-style: bold;
+}
+
+input {
+    text-align: left;
+}
+
+.mapeh {
+    font-weight: 100;
+    font-style: italic;
+}
