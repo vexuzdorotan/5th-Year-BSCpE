@@ -1,11 +1,11 @@
 <?php
+//REVISIONS WILL BE MADE
 	require "ConnectToDB.php";
 	$whatToCreate = $_POST['whatToCreate'];
 	$autoincrement = $_POST['autoincrement'];
 	$foreignKey = $_POST['foreignKey'];
 	$fieldToUpdate = $_POST['fieldToUpdate'];
 	$fieldToUpdateVal = null;
-
 	$toBind = "";
 	$colVal = array(); //Column Value array() => Setting up null array
 	$j = 0; //Iterator

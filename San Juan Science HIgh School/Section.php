@@ -20,13 +20,13 @@
 		<button onclick="CreateModal('Adviser', 'Teacher')">&check;</button>
 	</p>
 	<p><label for="">Population: <input type="number" id="Population" disabled value="0"/></label></p>
-	<p><label for="GradeLevel">For Grade: <select id="GradeLevel" name="GradeLevel">
-		<option selected="selected">Grade 7</option>
-		<option>Grade 8</option>
-		<option>Grade 9</option>
-		<option>Grade 10</option>
+	<p><label for="GradeLevel">Grade Level: <select id="GradeLevel" name="GradeLevel">
+		<option selected="selected">7</option>
+		<option>8</option>
+		<option>9</option>
+		<option>10</option>
 	</select></label></p>
-	<button id="CreateSection">Create Section</button>
+	<button id="CreateSection">Create</button>
 	<button id="ResetSection">Reset</button>
 	</div>
 

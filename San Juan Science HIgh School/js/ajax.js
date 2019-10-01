@@ -6,7 +6,7 @@ function AJAX(data, out, method, url, async, cfunction){
     
     if(out === true){
         xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState == 4 && this.status == 200){
 
                 cfunction(this);
             }

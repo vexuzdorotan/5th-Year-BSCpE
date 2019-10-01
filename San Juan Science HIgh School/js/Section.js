@@ -16,7 +16,7 @@ var theadHTML;
 
 var table1, table2;
 
-var Search = function(){
+var Search = function(){ //set Search function inside cms.js
 	SearchWithQuery(
 		"Section",
 		"Teacher", 
@@ -30,6 +30,10 @@ var Search = function(){
 	);
 }
 
+var initialValue = function(){ //set initialValue of inputs
+	document.getElementById("Population").value = 0;
+}
+
 Search();
 
 createSection.addEventListener("click", function(){
@@ -39,15 +43,14 @@ createSection.addEventListener("click", function(){
 		1, //If autoincrement
 		"SectionNum", //Foreign Key
 		"EmployeeNum", //fieldToUpdate
-		null,
 		CheckIfCreated,
 		CheckIfUpdated
 	);
+	// document.getElementById("Population").value = 0;
 });
 
 resetSection.addEventListener("click", function(){
-	ResetInput(createSection);
-	document.getElementById("Population").value = 0;
+	ResetInput(initialValue);
 });
 
 searchSection.addEventListener("change", Search);

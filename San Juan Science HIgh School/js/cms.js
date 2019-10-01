@@ -36,10 +36,12 @@ function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCall
 		content = JSON.stringify(content);
 		data += "&content=" + content;
 		console.log(data);
-		if(btn_Create.innerHTML == "Create " + parent_id){
+		if(btn_Create.innerHTML == "Create"){
+			// if(btn_Create.innerHTML == "Create " + parent_id){
 			AJAX(data, true, "post", "php/Create.php", true, createCallback);
 		}
-		else if(btn_Create.innerHTML == "Update " + parent_id){
+		else if(btn_Create.innerHTML == "Update"){
+			// else if(btn_Create.innerHTML == "Update " + parent_id){
 			AJAX(data, true, "post", "php/Update.php", true, updateCallback);	
 		}
 		// Search(txt_search, columnIDS);
@@ -61,7 +63,8 @@ function CheckIfCreated(xhttp){
 		alert("CREATED");
 		// Search(txt_search, columnIDS);
 		Search();
-		ResetInput("create"+parent_id);
+		// ResetInput("create"+parent_id);
+		ResetInput(initialValue);
 	}
 }
 
@@ -73,22 +76,26 @@ function CheckIfUpdated(xhttp){
 		alert("UPDATED");
 		// Search(txt_search, columnIDS);
 		Search();
-		ResetInput("create"+parent_id);
+		// ResetInput("create"+parent_id);
+		ResetInput(initialValue);
 	}
 }
 
-function ResetInput(whatToReset){//whatToReset - resets the button
+function ResetInput(initialValue){//whatToReset - resets the button
 	var disabled;
 	// var parent_id = whatToReset.id.substr(6, whatToReset.id.length-6); //gets the id of parent IDS are set manually in html 
 	var input = document.querySelectorAll("#" + parent_id + " input");
-	var select = document.querySelectorAll("#" + parent_id + " select")
+	var select = document.querySelectorAll("#" + parent_id + " select");
+	var btn = document.querySelectorAll("#" + parent_id + " button");
 	for(var i = 0; i < input.length; i++){
 		if(i == 0){
 			try{
 				disabled = input[i].getAttributeNode("disabled");
 				input[i].removeAttributeNode(disabled); //disabled input
 			}
-			catch(err){}
+			catch(err){
+				// console.log(err);
+			}
 		}
 		// if(!(input[i].value === "" || input[i].value === null)){
 		// 	if(Number.isNaN(input[i].value *1)){
@@ -104,7 +111,20 @@ function ResetInput(whatToReset){//whatToReset - resets the button
 	for(var i = 0; i < select.length; i++){
 		select[i].selectedIndex = 0;
 	}
-	whatToReset.innerHTML = "Create " + parent_id;
+	// console.log(typeof callback);
+	// callback();
+	if(initialValue !== null){
+		initialValue();
+	}
+
+	for(i = 0; i < btn.length; i++){
+		if(btn[i].innerHTML == "Update"){
+			btn[i].innerHTML = "Create";		
+			// if(btn[i].innerHTML == "Create " + parent_id){
+			// btn[i].innerHTML = "Update " + parent_id;		
+			break;
+		}
+	}
 }
 
 function SearchWithoutQuery(table1, columnIDS){
@@ -214,13 +234,15 @@ function Edit(whatToEdit){ //whatToEdit is an array
 			}
 		}
 	}
+	//THIS CAN BE CHANGED
 	for(i = 0; i < btn.length; i++){
-		if(btn[i].innerHTML == "Create " + parent_id){
-			btn[i].innerHTML = "Update " + parent_id;		
+		if(btn[i].innerHTML == "Create"){
+			btn[i].innerHTML = "Update";		
+			// if(btn[i].innerHTML == "Create " + parent_id){
+			// btn[i].innerHTML = "Update " + parent_id;		
 			break;
 		}
 	}
-	// btn_submit.innerHTML = "Update " + parent_id;
 	// Search(txt_search, columnIDS);	
 	console.log(txt_search);
 }

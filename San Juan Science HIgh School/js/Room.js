@@ -1,7 +1,7 @@
 var searchRoom = document.getElementById("SearchRoom");
 var createRoom = document.getElementById("CreateRoom");
 var resetRoom = document.getElementById("ResetRoom");
-var createSection = document.getElementById("CreateSection");
+// var createSection = document.getElementById("CreateSection");
 
 var parent_id = "Room";
 var Search = function(){
@@ -10,6 +10,8 @@ var Search = function(){
 		GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1)
 	);
 }
+
+var initialValue = null;
 Search();
 searchRoom.addEventListener("change", Search);
 createRoom.addEventListener("click", function(){
@@ -24,7 +26,7 @@ createRoom.addEventListener("click", function(){
 	);
 	// Search(searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1));
 });
-resetRoom.addEventListener("click", ResetInput.bind(null, createRoom));
+resetRoom.addEventListener("click", ResetInput.bind(null, initialValue));
 
 
 

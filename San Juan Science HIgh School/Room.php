@@ -29,7 +29,8 @@
 				<option>Office</option>
 			</select></label></p>
 		
-			<button class="rounded-pill create-button" id="CreateRoom">Create Room</button>
+			<!-- <button class="rounded-pill create-button" id="CreateRoom">Create Room</button> -->
+			<button class="rounded-pill create-button" id="CreateRoom">Create</button>
 			<button class="rounded-pill reset-button" id="ResetRoom">Reset</button>
 			<!-- <button id="EditRoom">Edit Room</button> -->
 			<!-- <p><label for="SubName">Subject Name: <input type="text" name="SubName" id="SubName"/></label></p> -->

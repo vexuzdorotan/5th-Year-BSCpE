@@ -6,7 +6,7 @@
 
 	$table1 = strtolower($_POST['table1']);
 	$columns = "";
-	$columnIDS = json_decode($_POST['columnIDS'], null);
+	$columnIDS = json_decode($_POST['columnIDS'], true);
 	$preparedstatement = "";
 	$correction = "";
 	$temp = ""; //temporary container
@@ -84,14 +84,19 @@
 		$columns = substr($columns, 0, strlen($columns)- 1);
 		$preparedstatement = "SELECT " . $columns . " from " . $table1 . " WHERE ";
 	}
-
+	// echo json_encode($columnIDS);
 	if(count($arr_txt_searchbox) == 1){
-		if(is_numeric($_POST['value'])){
-			$preparedstatement .= $table1 . "." . $colNum . " LIKE ? LIMIT 20";//Preset to Table1
+		if($colNum == "" && $colName == ""){
+			$preparedstatement .= $table1 . "." . $columnIDS[0]. " LIKE ? LIMIT 20";
 		}
 		else{
-			$preparedstatement .= $table1 . "." . $colName . " LIKE ? LIMIT 20";
-		}
+			if(is_numeric($_POST['value'])){
+				$preparedstatement .= $table1 . "." . $colNum . " LIKE ? LIMIT 20";//Preset to Table1
+			}
+			else{
+				$preparedstatement .= $table1 . "." . $colName . " LIKE ? LIMIT 20";
+			}
+		}	
 		$stmt = $db->prepare($preparedstatement);
 		$stmt->bindValue(1, $_POST['value'] . "%");
 	}	

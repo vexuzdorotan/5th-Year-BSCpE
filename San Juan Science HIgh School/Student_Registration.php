@@ -304,12 +304,12 @@
       <p class="mt-3 mb-3">
       <label for="GradeLevel">Grade Level: </label>
          <select id="GradeLevel">
-            <option selected="selected">Grade 7</option>
-            <option>Grade 8</option>
-            <option>Grade 9</option>
-            <option>Grade 10</option>
-            <option>Grade 11</option>
-            <option>Grade 12</option>
+            <option selected="selected">7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <!-- <option>11</option> -->
+            <!-- <option>12</option> -->
          </select>
 
          <label class="ml-3" for="Type">Type: </label>
