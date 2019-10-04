@@ -33,6 +33,7 @@ if (isset($_POST['ID'])) {
 
 <body>
     <img src="../../pictures/logodesign.jpg" class="logodesign">
+
     <div class="header mb-3">
         <img src="../../pictures/JuanSci-Header.jpg" class="logodesign">
         <legend class="h4 pl-0 pt-3 mb-0">REPORT ON STUDENT'S PROGRESS IN LEARNING</legend>
@@ -46,10 +47,19 @@ if (isset($_POST['ID'])) {
         <button type="submit">Find Student Number</button>
     </form>
 
+    <!-- <label for="GradeLevel">Grade Level: </label>
+         <select id="GradeLevel">
+            <option selected="selected">7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+    </select> -->
+
     <div>
         <table>
             <thead>
                 <tr>
+                    <th>Student Number</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Gender</th>
@@ -61,6 +71,7 @@ if (isset($_POST['ID'])) {
             <?php if (isset($_POST['ID'])) {
                 while($row = $stmt->fetch()) { ?>
                     <tr>
+                        <td><?php echo $row['StudentNum']; ?></td>
                         <td><?php echo $row['FirstName']; ?></td>
                         <td><?php echo $row['LastName']; ?></td>
                         <td><?php echo $row['Gender']; ?></td>
@@ -223,12 +234,14 @@ if (isset($_POST['ID'])) {
             </tbody>
         </table>
     </div>
-
-    <ul>
-        <li>grade inputs are only 65-100</li>
-        <li>if grades >= 75 {passed}. else {failed}</li>
-        <li>mapeh = (music + arts + pe + health) / 4</li>
-    </ul>
+    
+    <div class="footnote">
+        <ul>
+            <li>grade inputs are only 65-100</li>
+            <li>if grades >= 75 {passed}. else {failed}</li>
+            <li>mapeh = (music + arts + pe + health) / 4</li>
+        </ul>
+    </div>
 
     <div class="footer">
         <img src="../../pictures/JuanSci-Footer.jpg" class="logodesign">

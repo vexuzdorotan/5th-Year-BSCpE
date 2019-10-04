@@ -200,6 +200,12 @@ function setGwa() {
     }
     gwa.textContent = gwaSum;
 
+    if (gwaSum >= 75) {
+        table.rows[14].cells[3].innerHTML = "Passed";
+    } else {
+        table.rows[14].cells[3].innerHTML = "Failed";
+    }
+
     remarks();
 }
 
