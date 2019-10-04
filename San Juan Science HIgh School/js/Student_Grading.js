@@ -1,8 +1,4 @@
-//var body = document.getElementsByTagName("body");
-// const table = document.querySelector("#table");
-// const inputGrades = document.querySelectorAll("tbody input");
-
-let i, j, sumVal;
+var i, j, sumVal;
 
 const fil = document.querySelectorAll("#fil input");
 const filTotal = document.querySelector("#filTotal");
@@ -42,8 +38,6 @@ const healthTotal = document.querySelector("#healthTotal");
 
 const gwa = document.querySelector('#gwa');
 
-
-//---------------------------------------------------------
 
 for (i = 0; i < fil.length; i++) {
     fil[i].addEventListener("change", function() {
@@ -206,6 +200,12 @@ function setGwa() {
     }
     gwa.textContent = gwaSum;
 
+    if (gwaSum >= 75) {
+        table.rows[14].cells[3].innerHTML = "Passed";
+    } else {
+        table.rows[14].cells[3].innerHTML = "Failed";
+    }
+
     remarks();
 }
 
@@ -222,27 +222,3 @@ function remarks() {
 }
 
 setGwa();
-
-// function randomNumber(min, max) {
-//     return Math.round(Math.random() * (max - min) + min);
-// }
-// document.getElementById("rand").innerHTML = (randomNumber(70, 80));
-
-// for (i = 1; i <= 8; i++) {
-//     sumVal = 0;
-
-//     for (i = 1; i <= 8; i++) {
-//         sumVal = 0;
-//         for (j = 1; j <= 4; j++) {
-//             sumVal = sumVal + Number(table.rows[i].cells[j]);
-//         }
-
-//         table.rows[i].cells[5].innerHTML = (sumVal / 4);
-
-//         if (sumVal / 4 >= 75) {
-//             table.rows[i].cells[6].innerHTML = "Passed";
-//         } else {
-//             table.rows[i].cells[6].innerHTML = "Failed";
-//         }
-//     }
-// }
