@@ -127,12 +127,17 @@ function ResetInput(initialValue){//whatToReset - resets the button
 	}
 }
 
-function SearchWithoutQuery(table1, columnIDS){
+function SearchWithoutQuery(table1, columnIDS, callback){
 	this.columnIDS = columnIDS;
 	txt_search = table1;
 	data = "table1=" + parent_id + "&value=" + table1.value;
 	data += "&columnIDS=" + JSON.stringify(columnIDS); 
-	AJAX(data, true, "post", "php/Search.php", true, CreateTBody); 
+	if(typeof callback === "function"){
+		AJAX(data, true, "post", "php/Search.php", true, callback);	
+	}
+	else{
+		AJAX(data, true, "post", "php/Search.php", true, CreateTBody); 
+	}
 }
 
 function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, compare, searchbox, otherQuery, callback){
@@ -163,7 +168,7 @@ function CreateTBody(xhttp){ //Create Table Body
 	json = JSON.parse(xhttp.responseText);
 	console.log(json);
 	var thead_td = document.querySelectorAll("#" + txt_search.id + "Table thead tr td");
-	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;
+	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;//childElementCount counts child of parent
 	var tbody = document.querySelector("#" + txt_search.id + "Table tbody");
 
 	RemoveChildNodes(tbody);

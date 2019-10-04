@@ -27,8 +27,4 @@ createRoom.addEventListener("click", function(){
 	// Search(searchRoom, GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1));
 });
 resetRoom.addEventListener("click", ResetInput.bind(null, initialValue));
-
-
-
-
 // createSection.addEventListener("click", Create.bind(null, createSection.id));

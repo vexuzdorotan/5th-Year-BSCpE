@@ -55,7 +55,7 @@ function CreateTable(table_id, thead_id, thead_innerHTML, seperator, parentNode,
 	table.appendChild(tbody);
 	table.style.width = "100%";
 	parentNode.appendChild(table);
-	console.log(parentNode);
+	// console.log(parentNode);
 }
 
 
