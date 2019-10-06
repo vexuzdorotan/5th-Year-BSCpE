@@ -37,47 +37,7 @@ const health = document.querySelectorAll("#health input");
 const healthTotal = document.querySelector("#healthTotal");
 
 const gwa = document.querySelector('#gwa');
-var input = document.querySelectorAll("body input");
 
-const StudentNum = document.getElementById("StudentNum");
-const GradeLevel = document.getElementById("GradeLevel");
-
-var submitForm = document.getElementById("submitForm");
-
-submitForm.addEventListener("click", function() {
-    InsertInfo();
-});
-
-function InsertInfo() {
-    i = 0;
-    var data = "";
-    data += "StudentNum=" + StudentNum.value + "&";
-    data += "GradeLevel=" + GradeLevel.textContent + "&";
-    data += "Quarter=1&";
-    data += "fil=" + fil[i].value + "&";
-    data += "eng=" + eng[i].value + "&";
-    data += "math=" + math[i].value + "&";
-    data += "sci=" + sci[i].value + "&";
-    data += "ap=" + ap[i].value + "&";
-    data += "esp=" + esp[i].value + "&";
-    data += "tle=" + tle[i].value + "&";
-    data += "mapeh=" + mapeh[i].value + "&";
-    data += "music=" + music[i].value + "&";
-    data += "arts=" + arts[i].value + "&";
-    data += "pe=" + pe[i].value + "&";
-    data += "health=" + health[i].value;
-
-    console.log(data);
-
-    AJAX(data, true, "post", "Create_Grade.php", true, CheckIfRegistered);
-}
-
-function CheckIfRegistered(xhttp) {
-    alert(xhttp.responseText);
-    console.log(xhttp.responseText);
-}
-
-setGwa();
 
 for (i = 0; i < fil.length; i++) {
     fil[i].addEventListener("change", function() {
@@ -260,3 +220,5 @@ function remarks() {
         }
     }
 }
+
+setGwa();
