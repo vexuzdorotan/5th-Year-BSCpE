@@ -34,7 +34,7 @@
 #modal-header{
   /*padding: 0%;*/
   padding: 0%;
-  border-bottom: double 0.5em #aaa;
+  border-bottom: double 0.5em maroon;
 }
 
 /*#modal-title{
@@ -42,7 +42,7 @@
 }*/
 /* The Close Button */
 #close {
-  color: #aaa;
+  color: maroon;
   float: right;
   font-size: 200%;
   font-weight: bold;
@@ -50,7 +50,7 @@
 
 #close:hover,
 #close:focus {
-  color: black;
+  color: #888;
   text-decoration: none;
   cursor: pointer;
 }
