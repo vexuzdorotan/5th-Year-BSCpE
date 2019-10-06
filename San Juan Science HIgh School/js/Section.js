@@ -21,7 +21,7 @@ var Search = function(){ //set Search function inside cms.js
 		"Section",
 		"Teacher", 
 		GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
-		"Adviser=TeacherName",
+		"Adviser=TeacherName", //Adviser is equivalent to TeacherName field 
 		"LEFT JOIN",
 		"teacher.SectionNum = section.SectionNum",
 		searchSection,
@@ -61,10 +61,9 @@ function CreateModal(header, title){ //Shows modal in html that is hidden then c
 		theadID = "RoomNum@RoomName@Capacity";
 		theadHTML = "Room Number@Room Name@Capacity";
 		CreateInput("SearchRoom", "search", modal_body);
-		CreateTable("SearchRoomTable", theadID, theadHTML, "@", modal_body, 0);
+		CreateTable("SearchRoomTable", theadID, theadHTML, "@", modal_body, 0, null);
 		searchRoom = document.getElementById("SearchRoom");
 		SearchRoomSection();
-		// function SearchWithQuery(table1, table2, table2Column, columnNames, whatJoin, searchbox, otherQuery, callback){
 
 		searchRoom.addEventListener("change", SearchRoomSection);
 		function SearchRoomSection(){
@@ -86,7 +85,7 @@ function CreateModal(header, title){ //Shows modal in html that is hidden then c
 		theadID = "EmployeeNum@Name";
 		theadHTML = "Employee Number@Name";
 		CreateInput("SearchTeacher", "search", modal_body);
-		CreateTable("SearchTeacherTable", theadID, theadHTML, "@", modal_body, 0);
+		CreateTable("SearchTeacherTable", theadID, theadHTML, "@", modal_body, 0, null);
 		columnIDS = GetID(document.querySelectorAll("#SearchTeacherTable thead td"), 0);
 		searchTeacher = document.getElementById("SearchTeacher");
 		SearchTeacherSection();

@@ -1,17 +1,28 @@
 <?php
 	require 'ConnectToDB.php';
-	$table_name = strtolower($_POST['whatToDelete']);
+	$table1 = strtolower($_POST['whatToDelete']);
 	$whatToDelete = $_POST['whatToDelete'];
-
-	if(is_numeric($_POST['value'])){
-		$stmt = $db->prepare("DELETE from " . $table_name . " WHERE ". $whatToDelete . "Num = ?");
+	if(isset($_POST['query'])){
+		$query = $_POST['query'];
+		$stmt = $db->prepare("DELETE from " . $table1 . " WHERE ". $query);
 	}
 	else{
-		$stmt = $db->prepare("DELETE from " . $table_name . " WHERE ". $whatToDelete . "Name = ?");
+		if(is_numeric($_POST['value'])){
+			$stmt = $db->prepare("DELETE from " . $table1 . " WHERE ". $whatToDelete . "Num = ?");
+		}
+		else{
+			$stmt = $db->prepare("DELETE from " . $table1 . " WHERE ". $whatToDelete . "Name = ?");
+		}
+		$stmt->bindValue(1, $_POST['value']);
+		// $stmt->execute();
 	}
 
-	$stmt->bindValue(1, $_POST['value']);
-	$stmt->execute();
-
+	try{
+		$stmt->execute();
+		$stmt->closeCursor();
+	}
+	catch(Exception $e){
+		echo "DELETION FAILED";
+	}
 	// echo json_encode($row);
 ?>

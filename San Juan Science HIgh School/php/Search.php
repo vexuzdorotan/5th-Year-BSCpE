@@ -37,7 +37,8 @@
 		}
 		foreach($columnIDS as $key => $value){
 			if($value !== ""){
-				if(strpos($value, $_POST['table2']) !== false){
+				if(strpos($value, $_POST['table2']) !== false && strpos($_POST['table1'], $_POST['table2']) === false){
+				// if(strpos($value, $_POST['table2']) !== false){
 					$temp = str_replace($_POST['table2'], "", $value);
 					if(strtolower($arr_txt_searchbox[0]) == strtolower($value)){//compares two strings case insensitive
 						$arr_txt_searchbox[0] = $table2 . "." . $temp;
@@ -65,7 +66,12 @@
 		}
 		// echo $arr_txt_searchbox[0];
 		$columns = substr($columns, 0, strlen($columns)- 1);
-		$preparedstatement = "SELECT " . $columns . " FROM " . $table1 ." " . $_POST['whatJoin'] . " ". $table2 ." ON " .$_POST['compareWhat'] . " WHERE " . $otherQuery;
+		if($table2 == "null"){
+			$preparedstatement = "SELECT " . $columns . " FROM " . $table1 . " WHERE " . $otherQuery;
+		}	
+		else{
+			$preparedstatement = "SELECT " . $columns . " FROM " . $table1 ." " . $_POST['whatJoin'] . " ". $table2 ." ON " .$_POST['compareWhat'] . " WHERE " . $otherQuery;
+		}
 	}
 	else{
 		foreach($columnIDS as $key => $value){
@@ -87,21 +93,32 @@
 	// echo json_encode($columnIDS);
 	if(count($arr_txt_searchbox) == 1){
 		if($colNum == "" && $colName == ""){
-			$preparedstatement .= $table1 . "." . $columnIDS[0]. " LIKE ? LIMIT 20";
+			// $preparedstatement .= $table1 . "." . $columnIDS[0]. " LIKE ? LIMIT 20";
+			$preparedstatement .= $table1 . "." . $columnIDS[0]. " LIKE ?";
 		}
 		else{
 			if(is_numeric($_POST['value'])){
-				$preparedstatement .= $table1 . "." . $colNum . " LIKE ? LIMIT 20";//Preset to Table1
+				// $preparedstatement .= $table1 . "." . $colNum . " LIKE ? LIMIT 20";//Preset to Table1
+				$preparedstatement .= $table1 . "." . $colNum . " LIKE ?";//Preset to Table1
 			}
 			else{
-				$preparedstatement .= $table1 . "." . $colName . " LIKE ? LIMIT 20";
+				// $preparedstatement .= $table1 . "." . $colName . " LIKE ? LIMIT 20";
+				$preparedstatement .= $table1 . "." . $colName . " LIKE ?";
 			}
-		}	
-		$stmt = $db->prepare($preparedstatement);
-		$stmt->bindValue(1, $_POST['value'] . "%");
+		}
+		try{	
+			$stmt = $db->prepare($preparedstatement);
+			$stmt->bindValue(1, $_POST['value'] . "%");
+		}
+		catch(Exception $e){
+			echo $preparedstatement;
+		}
+		// echo $preparedstatement;
+		//try-catch can be removed if debugging is done
 	}	
 	else{
-		$preparedstatement .= $arr_txt_searchbox[0] . " LIKE ? LIMIT 20";  
+		// $preparedstatement .= $arr_txt_searchbox[0] . " LIKE ? LIMIT 20";  
+		$preparedstatement .= $arr_txt_searchbox[0] . " LIKE ?";  
 		$stmt = $db->prepare($preparedstatement);
 		$stmt->bindValue(1, $arr_txt_searchbox[1] . "%");
 	}

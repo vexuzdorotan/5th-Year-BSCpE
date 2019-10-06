@@ -6,8 +6,10 @@ var resetRoom = document.getElementById("ResetRoom");
 var parent_id = "Room";
 var Search = function(){
 	SearchWithoutQuery(
+		parent_id,
 		searchRoom, 
-		GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1)
+		GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1),
+		null
 	);
 }
 

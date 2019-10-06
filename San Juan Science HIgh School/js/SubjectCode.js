@@ -6,6 +6,7 @@ var resetSubjectCode = document.getElementById("ResetSubjectCode");
 var parent_id = "SubjectCode";
 var Search = function(){
 	SearchWithoutQuery(
+		parent_id,
 		searchSubjectCode, 
 		GetID(document.querySelectorAll("#SearchSubjectCodeTable thead td"), 1)
 	);

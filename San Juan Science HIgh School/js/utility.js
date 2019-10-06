@@ -18,7 +18,7 @@ function RemoveChildNodes(parent_node){ //Remove childNodes
 	}
 }
 
-function CreateTable(table_id, thead_id, thead_innerHTML, seperator, parentNode, offset){ //
+function CreateTable(table_id, thead_id, thead_innerHTML, seperator, parentNode, offset, hiddenCol){ //
 
 	var table = document.createElement("table");
 	var id;
@@ -27,7 +27,9 @@ function CreateTable(table_id, thead_id, thead_innerHTML, seperator, parentNode,
 	var tr = document.createElement("tr");
 	var td;
 	var td_id;
-
+	if(hiddenCol !== null){
+		hiddenCol = hiddenCol.split(seperator);
+	}
 	thead_id = thead_id.split(seperator);
 	thead_innerHTML = thead_innerHTML.split(seperator);
 	// console.log(thead_id);
@@ -40,6 +42,15 @@ function CreateTable(table_id, thead_id, thead_innerHTML, seperator, parentNode,
 			td_id.value = thead_id[i];
 			td.setAttributeNode(td_id);
 			td.innerHTML = thead_innerHTML[i];
+			if(hiddenCol !== null){
+				for(var j = 0; j < hiddenCol.length; j++){
+					if(thead_id[i] == hiddenCol[j]){
+						// console.log("EQUAL");
+						td.style.display = "none";			
+						break;
+					}
+				}
+			}
 			// console.log(td);
 		}
 		else{

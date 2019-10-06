@@ -9,15 +9,16 @@
 	<div style="width: 50%; float: left;" id="Section">
 	<h1>SECTION</h1>
 	<p><input type="text" id="txt_SectionNum" style="display: none;"/>
-		<label for="">Section Name: <input type="text" id="txt_SectionName" required/></label></p>
+		<label for="">Section Name: <input type="text" id="txt_SectionName" required/></label>
+	</p>
 	<p>
-		<label for="">Room: <input type="search" id="txt_RoomNum" required/></label>
-		<button onclick="CreateModal('Room', 'Room')">&check;</button>
+		<label for="">Room: <input type="search" id="txt_RoomNum" disabled/></label>
+		<button onclick="CreateModal('Available Rooms', 'Room')">&check;</button>
 	</p>
 	<p>
 		<label for="">Adviser: <input type="search" id="txt_TeacherEmployeeNum" style="display: none;" />
 		<input type="search" id="txt_TeacherName" disabled/></label>
-		<button onclick="CreateModal('Adviser', 'Teacher')">&check;</button>
+		<button onclick="CreateModal('Available Teachers', 'Teacher')">&check;</button>
 	</p>
 	<p><label for="">Population: <input type="number" id="Population" disabled value="0"/></label></p>
 	<p><label for="GradeLevel">Grade Level: <select id="GradeLevel" name="GradeLevel">

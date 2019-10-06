@@ -3,7 +3,9 @@ var columnIDS; //saves the name of table headers
 
 // elem.childElementCount - counts child elements 
 
-function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCallback, updateCallback){ //Inserts to Database depends on the id of the button inside this argument
+function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCallback, updateCallback){
+	//Inserts to Database depends on the id of the button inside this argument
+	//Content is matched with inputs and selects only
 	var data = "";
 	var content = {};
 	var error = 0;
@@ -16,7 +18,11 @@ function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCall
 	var input = document.querySelectorAll("#" + parent_id + " input");
 
 	for(var i = 0; i < input.length; i++){
+		// console.log(input[i].type);
 		if(input[i].checkValidity()){	//CHECKS HTML 5 form Validation
+			if(input[i].type == "number" && input[i].value == ""){
+				input[i].value = 0;
+			}
 			content[input[i].id] = input[i].value;
 			input[i].style.backgroundColor = '';
 		}	
@@ -47,6 +53,20 @@ function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCall
 		// Search(txt_search, columnIDS);
 	}
 
+}
+
+function CreateWithPreset(table1 , content, autoincrement, callback){
+	var data;
+	data = "whatToCreate=" + table1;
+	data += "&table2=" + null;
+	data += "&autoincrement=" + autoincrement;
+	data += "&foreignKey=" + null;
+	data += "&fieldToUpdate=" + null;
+	console.log(content);
+	content = JSON.stringify(content)
+	data += "&content=" + content;
+
+	AJAX(data, true, "post", "php/Create.php", true, callback);
 }
 
 function CheckIfCreated(xhttp){
@@ -127,11 +147,13 @@ function ResetInput(initialValue){//whatToReset - resets the button
 	}
 }
 
-function SearchWithoutQuery(table1, columnIDS, callback){
-	this.columnIDS = columnIDS;
-	txt_search = table1;
-	data = "table1=" + parent_id + "&value=" + table1.value;
+function SearchWithoutQuery(table1, searchbox, columnIDS, callback){
+	var data;
+	// this.columnIDS = columnIDS;
+	txt_search = searchbox;
+	data = "table1=" + table1 + "&value=" + searchbox.value;
 	data += "&columnIDS=" + JSON.stringify(columnIDS); 
+	console.log(data);
 	if(typeof callback === "function"){
 		AJAX(data, true, "post", "php/Search.php", true, callback);	
 	}
@@ -141,7 +163,7 @@ function SearchWithoutQuery(table1, columnIDS, callback){
 }
 
 function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, compare, searchbox, otherQuery, callback){
-	// console.log(whatToSearch);
+	var data;
 	txt_search = searchbox;
 	// columnIDS = GetID(document.querySelectorAll("#SearchRoomTable thead td"), 0);
 	data = "table1=" + table1 + "&value=" + searchbox.value;
@@ -156,7 +178,7 @@ function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, comp
 }
 
 //Function to Create Table 
-function CreateTBody(xhttp){ //Create Table Body
+function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 	try{
 	var json;
 	var td;
@@ -212,13 +234,11 @@ function CreateTBody(xhttp){ //Create Table Body
 	}
 	// console.log(xhttp.responseText);
 }
-
+//EDIT AND DELETE IS FUNCTION OF BUTTONS INSIDE TBODY ONLY
 function Edit(whatToEdit){ //whatToEdit is an array 
 	console.log(whatToEdit);	
 	var disabled; 
-	// console.log(parent_id);
 	var input = document.querySelectorAll("#" + parent_id + " input");
-	// var btn_submit = document.querySelector("#" + parent_id + " button");
 	var btn = document.querySelectorAll("#" + parent_id + " button");
 
 	for(var i = 0; i < input.length; i++){
@@ -249,10 +269,10 @@ function Edit(whatToEdit){ //whatToEdit is an array
 		}
 	}
 	// Search(txt_search, columnIDS);	
-	console.log(txt_search);
+	// console.log(txt_search);
 }
 
-function Delete(whatToDelete){
+function Delete(whatToDelete){ //DELETES if you have ID
 	var r = confirm("Do you want to delete this?"); //confirm alert of js
 	var data;
 	//DELETE HAS PROBLEM
@@ -263,10 +283,32 @@ function Delete(whatToDelete){
   	else{
     	txt = "Deletion Cancelled!";
   	}
-	function CheckIfDeleted(xhttp){
+	// console.log(whatToDelete);
+}
+
+function DeleteRecord(table1, query){ //DELETES depending on the query
+	var r = confirm("Do you want to delete this?"); //confirm alert of js
+	var data;
+	//DELETE HAS PROBLEM
+	data = "whatToDelete=" + table1;
+	data += "&query=" + query;
+  	if(r == true){
+    	AJAX(data, true, "post", "php/Delete.php", true, CheckIfDeleted);
+  	} 
+  	else{
+    	// alert("Deletion Cancelled!");
+    	console.log("Deletion Cancelled!");
+  	}
+}
+
+function CheckIfDeleted(xhttp){
 		// Search(txt_search, columnIDS);
+	if(xhttp.responseText == ""){
 		Search();
 		console.log("Deleted");
+		alert("Deleted");
 	}
-	// console.log(whatToDelete);
+	else{
+		console.log(xhttp.responseText);
+	}
 }

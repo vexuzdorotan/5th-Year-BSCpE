@@ -9,7 +9,7 @@
 		table{
 			border-collapse: collapse;
 		}
-		*{
+		table *{
 			text-align: center;
 		}
 	</style>
@@ -28,6 +28,12 @@
 			</div>
 		</div>
 	</div>
+	<p><input type="text" id="txt_SectionNum" style="display: none;"/>
+		<label for="">Section Name: <input type="text" id="txt_SectionName" required/></label>
+		<button>&check;</button>
+	</p>
+	<p>Grade Level: <span id="txt_GradeLevel"></span></p>
+	<p>Adviser: <span id="txt_Adviser"></span></p>
 	<table>
 		<thead>
 			<tr>
@@ -132,6 +138,8 @@
 			
 		</tbody>
 	</table>
+	<!-- <button>SUBMIT</button> -->
+	<button>RESET</button>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/utility.js"></script>
 <script type="text/javascript" src="js/cms.js"></script>

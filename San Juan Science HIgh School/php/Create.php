@@ -32,7 +32,8 @@
 		else{
 			// if(str)
 			if($autoincrement == 1 && strpos($key, $whatToCreate) !== false && strpos($key, "Num") !== false){
-				
+				//strpos($key, "Num") !== false can be omitted later on
+				//strpos($key, $whatToCreate) !== false can be omitted later on
 			}
 			else{
 				$columns .= $key . ",";
