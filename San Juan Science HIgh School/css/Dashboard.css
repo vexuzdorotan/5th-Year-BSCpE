@@ -56,7 +56,7 @@ a.active:hover{
 	text-align: center;
 }
 .opt img{
-	width: 130px;
+	height: 130px;
 	transition: 0.3s;
 }
 .a-opt:hover{
@@ -64,8 +64,9 @@ a.active:hover{
 	color: black;
 }
 .a-opt:hover img{
-	width: 180px;
-}	
+	height: 160px;
+}
+	
 .border{
 	padding-top: .75rem;
 	border-radius: 10px;

@@ -18,7 +18,7 @@
    	</div>
    	<div class="my-container row">
 		<div class="col-12 col-xl-4" id="Room">
-			<p class="h5 pb-2">Create Room</p>
+			<p class="h5 pb-2">Room Details</p>
 			<p class="p-0 m-0"><label for="txt_RoomNum">Room Number: <input type="text" name="txt_RoomNum" id="txt_RoomNum" required/></label></p>
 			<p><label for="txt_RoomName">Room Name: <input type="text" name="txt_RoomName" id="txt_RoomName" required/></label></p>
 			<p"><label for="txt_Floor">Floor: <input class="ml-2" type="number" name="txt_Floor" id="txt_Floor" min = "1" required/></label>

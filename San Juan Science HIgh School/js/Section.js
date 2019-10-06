@@ -88,6 +88,7 @@ function CreateModal(header, title){ //Shows modal in html that is hidden then c
 		CreateInput("SearchTeacher", "search", modal_body);
 		CreateTable("SearchTeacherTable", theadID, theadHTML, "@", modal_body, 0);
 		columnIDS = GetID(document.querySelectorAll("#SearchTeacherTable thead td"), 0);
+
 		searchTeacher = document.getElementById("SearchTeacher");
 		SearchTeacherSection();
 		searchTeacher.addEventListener("change", SearchTeacherSection);
@@ -123,10 +124,12 @@ function PickRoom(xhttp){
 			closeModal(modal_body);
 		});
 		tbody_tr[i].addEventListener("mouseover", function(){
-			this.style.backgroundColor = "cyan";
+			this.style.backgroundColor = "maroon";
+			this.style.color = "white";
 		});
 		tbody_tr[i].addEventListener("mouseout", function(){
 			this.style.backgroundColor = "";
+			this.style.color = "";
 		});	
 	}
 	txt_search = searchSection;
@@ -148,10 +151,12 @@ function PickAdviser(xhttp){
 			closeModal(modal_body);
 		});
 		tbody_tr[i].addEventListener("mouseover", function(){
-			this.style.backgroundColor = "cyan";
+			this.style.backgroundColor = "maroon";
+			this.style.color = "white";
 		});
 		tbody_tr[i].addEventListener("mouseout", function(){
 			this.style.backgroundColor = "";
+			this.style.color = "";
 		});	
 	}
 	txt_search = searchSection;
