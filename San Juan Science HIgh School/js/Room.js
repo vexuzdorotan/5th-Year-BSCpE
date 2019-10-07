@@ -17,6 +17,9 @@ var initialValue = null;
 Search();
 searchRoom.addEventListener("change", Search);
 createRoom.addEventListener("click", function(){
+	if(document.getElementById("txt_RoomName").value == ""){
+		document.getElementById("txt_RoomName").value = document.getElementById("txt_RoomNum").value;
+	}
 	Create( 
 		createRoom, 
 		null, 
