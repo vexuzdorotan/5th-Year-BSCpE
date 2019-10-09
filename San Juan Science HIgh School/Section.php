@@ -2,9 +2,8 @@
 <html>
 <head>
 	<title>Section</title>
-	<link rel="stylesheet" type="text/css" href="css/Entire.css"/>
 	<link rel="stylesheet" type="text/css" href="css/modal.css"/>
-	<link rel="stylesheet" type="text/css" href="css/Section.css"/>
+	<link rel="stylesheet" type="text/css" href="css/merged-styles.css"/>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 	<link rel="icon" href="pictures\logo.png" />
 </head>
@@ -16,13 +15,13 @@
          <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
       </div>
    </div>
-   <div class="my-container row">
+   <div class="sec-container row">
 	<div class="col-xl-4" id="Section">
 		<p class="h5 pb-2">Section Details</p>
 		<p><input type="text" id="txt_SectionNum" style="display: none;"/>
 		<label for="">Section Name: <br/><input type="text" id="txt_SectionName" required/></label></p>
 	<p>
-		<label for="">Room: <input type="search" id="txt_RoomNum" disabled/></label>
+		<label for="">Room: <input class="mt-2 small" type="search" id="txt_RoomNum" disabled/></label>
 		<button onclick="CreateModal('Available Rooms', 'Room')">&check;</button>
 	</p>
 	<p>
@@ -30,15 +29,15 @@
 		<input type="search" id="txt_TeacherName" disabled/></label>
 		<button onclick="CreateModal('Available Teachers', 'Teacher')">&check;</button>
 	</p>
-	<p><label for="">Population: <input type="number" id="Population" disabled value="0"/></label></p>
-	<p><label for="GradeLevel">Grade Level: <select id="GradeLevel" name="GradeLevel">
+	<p class="mt-2"><label for="">Population: <input type="number" id="Population" disabled value="0"/></label>
+	<label class="ml-2" for="GradeLevel">Grade Level: <select id="GradeLevel" name="GradeLevel">
 		<option selected="selected">7</option>
 		<option>8</option>
 		<option>9</option>
 		<option>10</option>
 	</select></label></p>
-	<button class="rounded-pill create-button" id="CreateSection">Create</button>
-	<button class="rounded-pill" id="ResetSection">Reset</button>
+	<button class="mt-3 rounded-pill create-button" id="CreateSection">Create</button>
+	<button class="mt-3 rounded-pill" id="ResetSection">Reset</button>
 	</div>
 
 	<div id="modal">

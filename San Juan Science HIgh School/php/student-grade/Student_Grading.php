@@ -26,9 +26,8 @@ if (isset($_POST['ID'])) {
     <title>Student Grading</title>
 
     <link rel="icon" href="../../pictures/logo.png" />
-    <!-- <link rel="stylesheet" type="text/css" href="../../css/Entire.css"> -->
     <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../css/Student_Grading.css">
+    <link rel="stylesheet" type="text/css" href="../../css/merged-styles.css">
 </head>
 
 <body>
@@ -41,11 +40,11 @@ if (isset($_POST['ID'])) {
             <a href="#">Administrator</a>|<a href="../../Dashboard.html">Menu</a>|<a href="../../Portal.html">Logout</a>
         </div>
     </div>
-    <div class="my-container">
+    <div class="g-container">
         <div class="float-right">
             <form method="post">
-                <input type="text" name="ID" id="student_id_search">
-                <button type="submit">Find Student Number</button>
+                <input class="search-student" type="text" name="ID" id="student_id_search">
+                <button class="reg-btn" type="submit">Find Student Number</button>
             </form>
         </div>
 
@@ -58,10 +57,10 @@ if (isset($_POST['ID'])) {
         </select> -->
 
         <div class="pt-2">
-            <table>
+            <table class="g-table">
                 <thead>
                     <tr>
-                        <th>Student Number</th>
+                        <th>Student No.</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Gender</th>
@@ -88,7 +87,7 @@ if (isset($_POST['ID'])) {
         <br />
         <div class="row">
         <div class="col-9 p-0 m-0">
-            <table id="table">
+            <table class="g-table" id="table">
                 <thead>
                     <tr>
                         <th rowspan="2">LEARNING AREAS</th>

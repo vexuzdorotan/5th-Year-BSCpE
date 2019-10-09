@@ -4,7 +4,7 @@
 	<title>Room</title>
 	<link rel="stylesheet" type="text/css" href="css/Entire.css"/>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/Room.css" />
+	<link rel="stylesheet" type="text/css" href="css/merged-styles.css" />
     <link rel="icon" href="pictures\logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -16,13 +16,13 @@
          <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
       </div>
    	</div>
-   	<div class="my-container row">
+   	<div class="room-container row">
 		<div class="col-12 col-xl-4" id="Room">
 			<p class="h5 pb-2">Room Details</p>
-			<p class="p-0 m-0"><label for="txt_RoomNum">Room Number: <input type="text" name="txt_RoomNum" id="txt_RoomNum" required/></label></p>
-			<p><label for="txt_RoomName">Room Name: <input type="text" name="txt_RoomName" id="txt_RoomName" required/></label></p>
+			<p class="p-0 m-0"><label for="txt_RoomNum">Room Number: <input class="small" type="text" name="txt_RoomNum" id="txt_RoomNum" required/></label></p>
+			<p><label for="txt_RoomName">Room Name: <input class="float-left mb-2" type="text" name="txt_RoomName" id="txt_RoomName" required/></label></p>
 			<p"><label for="txt_Floor">Floor: <input class="ml-2" type="number" name="txt_Floor" id="txt_Floor" min = "1" required/></label>
-			<label class="pl-3" for="txt_Capacity">Capacity: <input class="ml-2" type="number" name="txt_Capacity" id="txt_Capacity" min="5" max="50" required/></label></p>
+			<label class="pl-3" for="txt_Capacity">Capacity: <input class="ml-2 mb-2" type="number" name="txt_Capacity" id="txt_Capacity" min="5" max="50" required/></label></p>
 			<p><label for="txt_Type">Room Type: <select id="txt_Type" name="txt_Type">
 				<option selected="selected">Classroom</option>
 				<option>Laboratory</option>
