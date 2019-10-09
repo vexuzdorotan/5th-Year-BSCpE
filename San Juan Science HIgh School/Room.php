@@ -18,8 +18,8 @@
    	</div>
    	<div class="room-container row">
 		<div class="col-12 col-xl-4" id="Room">
-			<p class="h5 pb-2">Room Details</p>
-			<p class="p-0 m-0"><label for="txt_RoomNum">Room Number: <input class="small" type="text" name="txt_RoomNum" id="txt_RoomNum" required/></label></p>
+			<p class="h5 mb-2">Room Details</p>
+			<p class="p-0 mt-4"><label for="txt_RoomNum">Room Number: <input class="small" type="text" name="txt_RoomNum" id="txt_RoomNum" required/></label></p>
 			<p><label for="txt_RoomName">Room Name: <input class="float-left mb-2" type="text" name="txt_RoomName" id="txt_RoomName" required/></label></p>
 			<p"><label for="txt_Floor">Floor: <input class="ml-2" type="number" name="txt_Floor" id="txt_Floor" min = "1" required/></label>
 			<label class="pl-3" for="txt_Capacity">Capacity: <input class="ml-2 mb-2" type="number" name="txt_Capacity" id="txt_Capacity" min="5" max="50" required/></label></p>
