@@ -64,8 +64,8 @@
 				<td id="SectionNum" style="display: none;">Section Name</td>
 				<td id="SectionName">Section Name</td>
 				<td id="RoomNum">Room Number</td>
-				<td id="TeacherEmployeeNum" style="display: none"></td>
-				<td id="TeacherName">Adviser</td>
+				<td id="Teacher.EmployeeNum" style="display: none"></td>
+				<td id="Teacher.Name">Adviser</td>
 				<td id="Population">Population</td>
 				<td id="GradeLevel">GradeLevel</td>
 				<!-- <td>Type</td> -->

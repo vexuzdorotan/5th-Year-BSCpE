@@ -7,7 +7,7 @@ var txt_SectionName = document.getElementById("txt_SectionName");
 var txt_SectionNum = document.getElementById("txt_SectionNum");
 var txt_Adviser = document.getElementById("txt_Adviser");
 
-var saved_id;
+var saved_id; //Useful when there is modal
 var parent_id = "Subject";
 var day;
 var time;
@@ -32,8 +32,12 @@ button[1].addEventListener("click", function(){ //RESET BUTTON
 		Search = function(){
 			RetrieveSectionSchedule();
 		}
-		query = "SectionNum = " + txt_SectionNum.value;
-		DeleteRecord("Subject", query);
+		query = "SubjectID LIKE '" + txt_SectionNum.value + "-%'";
+		// console.log(query);
+		DeleteRecord("sched", query, DeleteSubjID);
+		function DeleteSubjID(xhttp){
+			DeleteRecord("subject", query, null);
+		}
 	}
 	else{
 		alert("Select section first");
@@ -49,7 +53,7 @@ for(var i = 1; i < tr.length+1; i++){
 
 openSectionModal.addEventListener("click", function(){
 	this.style.backgroundColor = "";
-	theadID = "SectionNum@SectionName@GradeLevel@TeacherName";
+	theadID = "SectionNum@SectionName@GradeLevel@Teacher.Name";
 	theadHTML = "Section Number@Section Name@Grade Level@Adviser";
 	CreateInput("SearchSection", "search", modal_body);
 	document.querySelector("#SearchSection").className = "modal-search";
@@ -62,7 +66,7 @@ openSectionModal.addEventListener("click", function(){
 			"Section",
 			"Teacher", 
 			GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
-			null, //Adviser is equivalent to TeacherName field 
+			"Adviser=Teacher.Name", //Adviser is equivalent to TeacherName field 
 			"LEFT JOIN",
 			"teacher.SectionNum = section.SectionNum",
 			document.getElementById("SearchSection"),
@@ -71,6 +75,7 @@ openSectionModal.addEventListener("click", function(){
 		);
 	}
 	Search();
+	document.getElementById("SearchSection").addEventListener("change", Search);
 });
 
 function PickSection(xhttp){
@@ -79,6 +84,7 @@ function PickSection(xhttp){
 	for(var i = 0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("click", function(){
 			document.querySelector("#SearchSection").value = "";
+			// console.log(this);
 			closeModal(modal_body);
 			txt_SectionNum.value = this.childNodes[0].innerHTML;
 			txt_SectionName.value = this.childNodes[1].innerHTML;
@@ -96,20 +102,32 @@ function PickSection(xhttp){
 			this.style.color = "";
 		});	
 	}
+	// console.log(xhttp);
 }
 
 function RetrieveSectionSchedule(){
 	var columnNames = {};
-	columnNames[0] = "SubjectCode";
+	columnNames[3] = "Subject.SubjectCode";
 	columnNames[1] = "SubjectTime"; 
 	columnNames[2] = "SubjectDay";
-	columnNames[3] = "SectionNum";
+	columnNames[0] = "Subject.SectionNum";
 
-	// console.log(txt_search);
-	SearchWithoutQuery(
+	// SearchWithoutQuery(//Can be replaced by JOINING sched and subject
+	// 	"Sched",
+	// 	txt_SectionNum,
+	// 	columnNames,
+	// 	Retrieved
+	// );
+
+	SearchWithQuery(//Can be replaced by JOINING sched and subject
+		"Sched",
 		"Subject",
-		txt_SectionNum,
 		columnNames,
+		null,
+		"LEFT JOIN",
+		"subject.SubjectID = sched.SubjectID",
+		txt_SectionNum, //Equivalent to first columnName or columnIDS
+		null,
 		Retrieved
 	);
 	console.log(txt_SectionNum);
@@ -117,9 +135,10 @@ function RetrieveSectionSchedule(){
 
 function Retrieved(xhttp){
 	var json;
-	// console.log(xhttp.responseText);
+	// console.log(xhttp.responseText);		
 	json = JSON.parse(xhttp.responseText);
-	console.log(json);
+	// console.log(json);
+	// console.log(json.length);
 	for(var i = 1; i < tr.length+1; i++){
 		for(var j = 1; j < tr[0].childElementCount; j++){
 			table.rows[i].cells[j].innerHTML = "";
@@ -127,12 +146,15 @@ function Retrieved(xhttp){
 	}
 	try{
 		for(var i = 0; i < json.length; i++){
-			table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML = json[i][0];
+			// console.log(table.rows[GetParentRow(json[i][1])]);
+			// console.log(json[i]);
+			table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML = json[i][3];
+
 		}
-		// json[0] => SubjectCode
+		// json[3] => SubjectCode
 		// json[1] => Time //parentRow
 		// json[2] => Day //parentCol
-		// json[3] => SectionNum
+		
 	}
 	catch(err){
 		console.log(err);
@@ -167,6 +189,9 @@ function GetParentRow(child){ //Can be edited to make time dynamic
 	else if(child == "8:00-9:00"){
 		return 3;
 	}
+	else if(child == "9:00-9:20"){
+		return 4;
+	}
 	else if(child == "9:20-10:20"){
 		return 5;
 	}
@@ -175,6 +200,9 @@ function GetParentRow(child){ //Can be edited to make time dynamic
 	}
 	else if(child == "11:20-12:20"){
 		return 7;
+	}
+	else if(child == "12:20-1:00"){
+		return 8;
 	}
 	else if(child == "1:00-2:00"){
 		return 9;
@@ -195,8 +223,8 @@ function Get1stRowCell(i, j){
 	else{
 		parentCol = j;
 		parentRow = i;
-		// console.log(parentCol);
-		// console.log(parentRow);
+		console.log(parentCol);
+		console.log(parentRow);
 		time = table.rows[i].cells[0].innerHTML;
 		day = table.rows[0].cells[j].innerHTML;
 
@@ -234,27 +262,44 @@ function Get1stRowCell(i, j){
 }
 
 function PickSubjectCode(xhttp){
-	// console.log(xhttp.responseText);
 	CreateTBody(xhttp);
 	var tbody_tr = document.querySelectorAll("#SearchSubjectCodeTable tbody tr");
 	for(var i = 0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("click", function(){
+			subjectcode = this.childNodes[0].innerHTML;
+			frequency = this.childNodes[3].innerHTML;
 			// table.rows[parentRow].cells[parentCol].innerHTML = this.childNodes[0].innerHTML;
 			// document.querySelector("#SearchSubjectCode").value = "";
 			// closeModal(modal_body);
-			subjectcode = this.childNodes[0].innerHTML;
-			frequency = this.childNodes[3].innerHTML;
-			var content = {};
-			content['SubjectDay'] = day;
-			content['SubjectTime'] = time;
-			content['SubjectCode'] = this.childNodes[0].innerHTML;
-			content['SectionNum'] = txt_SectionNum.value;
- 			CreateWithPreset(
-				"subject", 
-				content,
-				1, 
-				SubjectCreated
+			// subjectcode = this.childNodes[0].innerHTML;
+			// frequency = this.childNodes[3].innerHTML;
+
+			// content['SubjectID'] = txt_SectionNum.value + "-" + this.childNodes[0].innerHTML;
+			// content['SubjectID'] = content['SubjectID'].replace(/ /g, "");
+			var columnNames = {};
+			columnNames[0] = "SubjectID";
+			SearchWithoutQuery(
+				"Subject",
+				(txt_SectionNum.value + "-" + subjectcode).replace(/ /g, ""), //SubjectDescription
+				columnNames,
+				CreateSubjectID
 			);
+			//<<<<<<<<<<<<<<Creating Schedule
+			// var content = {};
+			// content['SubjectDay'] = day;
+			// content['SubjectTime'] = time;
+			// content['SubjectCode'] = this.childNodes[0].innerHTML;
+			// content['SectionNum'] = txt_SectionNum.value;
+ 		// 	CreateWithPreset(
+			// 	"subject", 
+			// 	content,
+			// 	1, 
+			// 	SchedCreated
+			// );
+			//>>>>>>>>>>>>>>>>>
+
+			// CreateWithPreset(
+			// );
 		});
 		tbody_tr[i].addEventListener("mouseover", function(){
 			this.style.backgroundColor = "maroon";
@@ -269,7 +314,36 @@ function PickSubjectCode(xhttp){
 	// columnIDS = GetID(document.querySelectorAll("#SearchSectionTable thead td"), 1);
 }
 
-function SubjectCreated(xhttp){
+function CreateSubjectID(xhttp){
+	if(xhttp.responseText == "[]"){
+		var content = {};
+		content['SubjectCode'] = subjectcode;
+		content['SubjectID'] = (txt_SectionNum.value + "-" + subjectcode).replace(/ /g, "");
+		content['SectionNum'] = txt_SectionNum.value;
+		CreateWithPreset(
+			"Subject",
+			content,
+			0,
+			null
+		);
+	}
+	var content = {};
+	content['SubjectDay'] = day;
+	content['SubjectTime'] = time;
+	content['SubjectID'] = (txt_SectionNum.value + "-" + subjectcode).replace(/ /g, "");
+ 	CreateWithPreset(
+		"sched", 
+		content,
+		1, 
+		SchedCreated
+	);
+	// else{
+	// }
+	console.log(content);
+	console.log(xhttp.responseText);
+}
+
+function SchedCreated(xhttp){
 	var patt = new RegExp("Exceeds occurence", "i");
 	if(patt.test(xhttp.responseText)){
 		alert(subjectcode + " is only " +  frequency + "x a week");
@@ -279,6 +353,7 @@ function SubjectCreated(xhttp){
 		searchSubjectCode.value = "";
 		closeModal(modal_body);
 	}
+	console.log(xhttp.responseText);
 }
 
 function DeleteSched(){
@@ -286,12 +361,13 @@ function DeleteSched(){
 	Search = function(){
 		RetrieveSectionSchedule();
 	}
-	query = "SubjectCode = '" + table.rows[parentRow].cells[parentCol].innerHTML;
+	// query = "SubjectCode = '" + table.rows[parentRow].cells[parentCol].innerHTML;
+	query = "SubjectID = '" + (txt_SectionNum.value + "-" + table.rows[parentRow].cells[parentCol].innerHTML).replace(/ /g, "");
 	query += "' AND SubjectDay = '" + day;
-	query += "' AND SubjectTime = '" + time;
-	query += "' AND SectionNum = " + txt_SectionNum.value;
-		// console.log(query);
-	DeleteRecord("Subject", query);
+	query += "' AND SubjectTime = '" + time + "'";
+	// query += "' AND SectionNum = " + txt_SectionNum.value;
+	console.log(query);
+	DeleteRecord("Sched", query, null);
 }
 //tr.length => # of rows
 //tr[0].childElementCount => # of columns

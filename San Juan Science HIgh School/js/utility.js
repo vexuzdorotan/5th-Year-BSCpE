@@ -7,6 +7,14 @@ function GetID(node, offset){
 	return content;
 }
 
+function GetIDinString(node){
+	var content = "";
+	for(var i = 0; i < node.length; i++){
+		content += node[i].id + " "; 
+	}
+	return content;
+}
+
 function RemoveChildNodes(parent_node){ //Remove childNodes
 	try{
 		while(Boolean(parent_node.firstChild)){
