@@ -4,6 +4,7 @@ var resetRoom = document.getElementById("ResetRoom");
 // var createSection = document.getElementById("CreateSection");
 
 var parent_id = "Room";
+var tableName = 'room';
 var Search = function(){
 	SearchWithoutQuery(
 		parent_id,

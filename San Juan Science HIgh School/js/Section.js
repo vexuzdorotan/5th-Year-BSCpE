@@ -13,7 +13,7 @@ var saved_id;
 var theadID;
 var theadHTML;
 
-
+console.log(GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0));
 var table1, table2;
 
 var Search = function(){ //set Search function inside cms.js
@@ -21,7 +21,7 @@ var Search = function(){ //set Search function inside cms.js
 		"Section",
 		"Teacher", 
 		GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
-		"Adviser=TeacherName", //Adviser is equivalent to TeacherName field 
+		"Adviser=Teacher.Name", //Adviser is equivalent to TeacherName field 
 		"LEFT JOIN",
 		"teacher.SectionNum = section.SectionNum",
 		searchSection,

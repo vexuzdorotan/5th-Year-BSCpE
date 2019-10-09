@@ -47,12 +47,22 @@
 		$toBind = substr($toBind, 0, strlen($toBind)- 1);
 		$columns = substr($columns, 0, strlen($columns)- 1);
 		$preparedStatement = "INSERT INTO " . $table1 . "(" . $columns . ") VALUES(" . $toBind . ")";
-		$stmt = $db->prepare($preparedStatement);
-		for($i = 1; $i < $j+1; $i++){
-			$stmt->bindValue($i, $colVal[$i-1]);
-		}
-		$stmt->execute();
-		$stmt->closeCursor();
+		// try{
+			$stmt = $db->prepare($preparedStatement);
+			for($i = 1; $i < $j+1; $i++){
+				$stmt->bindValue($i, $colVal[$i-1]);
+			}
+			$stmt->execute();
+			$stmt->closeCursor();
+		// }
+		// catch(Exception $e){
+		// 	echo $columns;
+		// 	echo $preparedStatement;
+		// 	for($i = 1; $i < $j+1; $i++){
+		// 		echo ($colVal[$i-1]);
+		// 	}
+		// 	echo $e;
+		// }
 		if(!is_null($fieldToUpdateVal)){ //Checks if $fieldToUpdateVal is null
 			$preparedStatement = "UPDATE " . $table2 . " SET " . $table2 . ".".$foreignKey." = (SELECT ".$table1.".".$foreignKey." FROM ".$table1." ORDER BY ".$table1.".".$foreignKey." DESC LIMIT 1) WHERE ".$table2.".".$fieldToUpdate." = ".$fieldToUpdateVal;
 			$stmt = $db->prepare($preparedStatement);

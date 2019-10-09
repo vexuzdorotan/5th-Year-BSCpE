@@ -14,8 +14,13 @@
 	$txt_searchbox = preg_replace('/\s+/', '', $txt_searchbox); //Renoves all whitespaces;
 	$arr_txt_searchbox = explode("=", $txt_searchbox);
 
+	// var_dump($txt_searchbox);
+	// echo count($arr_txt_searchbox); //counts as 1
 	if(isset($_POST['correction'])){
 		if($_POST['correction'] != "null"){ //changes input to its id
+			// if(strpos($_POST['correction'], "DISTINCT" !== false){
+				
+			// }
 			$correction = $_POST['correction'];
 			$correction = explode("=", $correction);
 
@@ -30,16 +35,16 @@
 		$table2 = strtolower($_POST['table2']);
 		$otherQuery = $_POST['whereQuery'];
 		if($otherQuery == "null"){
-			$otherQuery = " ";
+			$otherQuery = "";
 		}
 		else{
 			$otherQuery .= " AND ";
 		}
 		foreach($columnIDS as $key => $value){
 			if($value !== ""){
-				if(strpos($value, $_POST['table2']) !== false && strpos($_POST['table1'], $_POST['table2']) === false){
+				if(strpos($value, $_POST['table2'] . ".") !== false && strpos($_POST['table1'], $_POST['table2']) === false){
 				// if(strpos($value, $_POST['table2']) !== false){
-					$temp = str_replace($_POST['table2'], "", $value);
+					$temp = str_replace($_POST['table2'] . ".", "", $value);
 					if(strtolower($arr_txt_searchbox[0]) == strtolower($value)){//compares two strings case insensitive
 						$arr_txt_searchbox[0] = $table2 . "." . $temp;
 					}
@@ -92,18 +97,19 @@
 	}
 	// echo json_encode($columnIDS);
 	if(count($arr_txt_searchbox) == 1){
-		if($colNum == "" && $colName == ""){
-			// $preparedstatement .= $table1 . "." . $columnIDS[0]. " LIKE ? LIMIT 20";
-			$preparedstatement .= $table1 . "." . $columnIDS[0]. " LIKE ?";
+		//IF NO BUGS ARE SEEN PLEASE IGNORE THESE
+		if($colNum != ""){
+			$preparedstatement .= $table1 . "." . $colNum . " LIKE ?";//Preset to Table1
+		}
+		elseif($colName != ""){
+			$preparedstatement .= $table1 . "." . $colName . " LIKE ?";
 		}
 		else{
-			if(is_numeric($_POST['value'])){
-				// $preparedstatement .= $table1 . "." . $colNum . " LIKE ? LIMIT 20";//Preset to Table1
-				$preparedstatement .= $table1 . "." . $colNum . " LIKE ?";//Preset to Table1
+			if(strpos($columnIDS[0], ".") !== false){
+				$preparedstatement .= $columnIDS[0] . " LIKE ?";
 			}
 			else{
-				// $preparedstatement .= $table1 . "." . $colName . " LIKE ? LIMIT 20";
-				$preparedstatement .= $table1 . "." . $colName . " LIKE ?";
+				$preparedstatement .= $table1 . "." . $columnIDS[0] . " LIKE ?";	
 			}
 		}
 		try{	

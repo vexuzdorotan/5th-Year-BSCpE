@@ -1,9 +1,13 @@
 <?php
+//ALL PHP FILES MUST BE SIMPLIFIED
 	require "ConnectToDB.php";
 	$whatToCreate = $_POST['whatToCreate'];
 	//
 	$table1 = strtolower($whatToCreate);
-	$autoincrement = $_POST['autoincrement'];
+
+	if(isset($_POST['autoincrement'])){
+		$autoincrement = $_POST['autoincrement'];
+	}
 	$foreignKey = $_POST['foreignKey'];
 	$fieldToUpdate = $_POST['fieldToUpdate'];
 	$fieldToUpdateVal = null;
@@ -51,8 +55,6 @@
 		}
 		$stmt->bindValue($j, $colVal[0]);
 		$stmt->execute();
-		// $stmt->closeCursor();
-		// echo $preparedStatement;
 		// "UPDATE " . $table2 . " SET " . $table2 . ".".$foreignKey." = (SELECT ".$table1.".".$foreignKey." FROM ".$table1." ORDER BY ".$table1.".".$foreignKey." DESC LIMIT 1) WHERE ".$table2.".".$fieldToUpdate." = ".$fieldToUpdateVal;
 		
 		if(!is_null($fieldToUpdateVal)){ //Checks if $fieldToUpdateVal is null
@@ -63,7 +65,6 @@
 			$preparedStatement = "UPDATE " . $table2 . " SET " . $table2 . ".".$foreignKey." = ". $colVal[0] ." WHERE ".$table2.".".$fieldToUpdate." = ".$fieldToUpdateVal;
 			$stmt = $db->prepare($preparedStatement);
 			$stmt->execute();
-			// echo $preparedStatement;
 		}
 		$stmt->closeCursor();
 		echo "Successful";

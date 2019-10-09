@@ -1,3 +1,7 @@
+//THIS MUST ALSO BE SIMPLIFIED
+//ALL FILES USING THIS SHOULD BE CHANGED
+
+
 var txt_search; //saves content of input type = search 
 var columnIDS; //saves the name of table headers
 
@@ -55,6 +59,11 @@ function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCall
 
 }
 
+// function Update(){
+
+// }
+
+
 function CreateWithPreset(table1 , content, autoincrement, callback){
 	var data;
 	data = "whatToCreate=" + table1;
@@ -65,8 +74,12 @@ function CreateWithPreset(table1 , content, autoincrement, callback){
 	console.log(content);
 	content = JSON.stringify(content)
 	data += "&content=" + content;
-
-	AJAX(data, true, "post", "php/Create.php", true, callback);
+	if(callback === null){
+		AJAX(data, false, "post", "php/Create.php", true, callback);
+	}
+	else{
+		AJAX(data, true, "post", "php/Create.php", true, callback);
+	}
 }
 
 function CheckIfCreated(xhttp){
@@ -150,10 +163,16 @@ function ResetInput(initialValue){//whatToReset - resets the button
 function SearchWithoutQuery(table1, searchbox, columnIDS, callback){
 	var data;
 	// this.columnIDS = columnIDS;
-	txt_search = searchbox;
-	data = "table1=" + table1 + "&value=" + searchbox.value;
+	data = "table1=" + table1;
+	if(typeof searchbox == "object"){
+		txt_search = searchbox;
+		data += "&value=" + searchbox.value;
+	}
+	else{
+		data += "&value=" + searchbox;
+	}
 	data += "&columnIDS=" + JSON.stringify(columnIDS); 
-	console.log(data);
+	// console.log(data);
 	if(typeof callback === "function"){
 		AJAX(data, true, "post", "php/Search.php", true, callback);	
 	}
@@ -166,7 +185,14 @@ function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, comp
 	var data;
 	txt_search = searchbox;
 	// columnIDS = GetID(document.querySelectorAll("#SearchRoomTable thead td"), 0);
-	data = "table1=" + table1 + "&value=" + searchbox.value;
+	console.log(typeof searchbox);
+	data = "table1=" + table1;
+	if(typeof searchbox == "object"){
+		data += "&value=" + searchbox.value;
+	}
+	else{
+		data += "&value=" + searchbox;
+	}
 	data += "&columnIDS=" + JSON.stringify(columnNames); 
 	data += "&table2=" + table2;
 	data += "&whatJoin=" + whatJoin; 
@@ -236,6 +262,7 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 }
 //EDIT AND DELETE IS FUNCTION OF BUTTONS INSIDE TBODY ONLY
 function Edit(whatToEdit){ //whatToEdit is an array 
+	//JUST copies the table depending on their order
 	console.log(whatToEdit);	
 	var disabled; 
 	var input = document.querySelectorAll("#" + parent_id + " input");
@@ -286,14 +313,19 @@ function Delete(whatToDelete){ //DELETES if you have ID
 	// console.log(whatToDelete);
 }
 
-function DeleteRecord(table1, query){ //DELETES depending on the query
+function DeleteRecord(table1, query, callback){ //DELETES depending on the query
 	var r = confirm("Do you want to delete this?"); //confirm alert of js
 	var data;
 	//DELETE HAS PROBLEM
 	data = "whatToDelete=" + table1;
 	data += "&query=" + query;
   	if(r == true){
-    	AJAX(data, true, "post", "php/Delete.php", true, CheckIfDeleted);
+  		if(typeof callback == "function"){
+  			AJAX(data, true, "post", "php/Delete.php", true, callback);
+  		}
+  		else{
+  			AJAX(data, true, "post", "php/Delete.php", true, CheckIfDeleted);
+  		}
   	} 
   	else{
     	// alert("Deletion Cancelled!");
@@ -311,4 +343,12 @@ function CheckIfDeleted(xhttp){
 	else{
 		console.log(xhttp.responseText);
 	}
+}
+
+function SimplifiedQuery(crud,query,searchbox,callback){
+	txt_search = searchbox;	
+	var data = "crud=" + crud;
+	data += "&query=" + query;
+
+	AJAX(data, true, "post", "php/Query.php", true, callback);
 }
