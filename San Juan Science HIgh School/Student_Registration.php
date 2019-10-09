@@ -8,7 +8,7 @@
 <html>
 <head>
 	<title>Student Registration</title>
-   <link rel="stylesheet" type="text/css" href="css/Registration.css">
+   <link rel="stylesheet" type="text/css" href="css/merged-styles.css">
    <link rel="stylesheet" type="text/css" href="css/Entire.css">
    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
    <link rel="icon" href="pictures/logo.png">
@@ -22,7 +22,7 @@
          <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
       </div>
    </div>
-<div class="my-container">
+<div class="regi-container">
    <div id = "FirstCol">
    <p class="h5 pb-2">Student's Name</p>
 	<p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
