@@ -1,10 +1,68 @@
-//THIS MUST ALSO BE SIMPLIFIED
-//ALL FILES USING THIS SHOULD BE CHANGED
-
-
 var txt_search; //saves content of input type = search 
 var columnIDS; //saves the name of table headers
 
+//NOTE:
+//columnIDS can be neglected
+//txt_search can be updated and removed however
+//It is used to make this code complicated
+//txt_search = searcbox (can be changed it is used by default by CreateTBody)
+
+//Use function SimplifiedQuery => If you want to direct the sql query, please initialized first the query. There is no binding
+//	you must concat ("+") the values you want
+
+//function Delete, Create, Edit, and ResetInput uses "parent_id". Please initialize this first
+//function Create => If your <input> and <select> tag is under the parent_id
+//	It can also Update however make sure that the btn_Create is html tag whose innerHTML is Create for Inserting
+//	or Update for Updating
+//
+//	Autoincrement = 0 (you must insert the id of the said table)
+//	Autoincrement = 1 (it is autoincremented)
+//	table2, FK, fieldToUpdate can be null
+// 	In using these, initialize the table name(table2), FK (same field of both table1(PK) and table2), and the fieldToUpdate 
+// 	(a field of table2) where we will update the value of FK of table2
+//	updatecallback => directs to that function if it is updated (you can set it or default it to CheckIfUpdated)
+//	createcallback => directs to this function if it is created (you can set it or default it to CheckIfCreated)
+
+
+//function CreateWithPreset => Same with function Create with no table2, FK, fieldToUpdate
+//	It just inserts data to database however you must have an object(having keys and their values)
+
+//function CheckIfCreated and CheckIfUpdated 
+//	both return the conditon if the query is successful or not
+//	must initialize Search and ResetInput(initialValue)
+
+
+//function ResetInput(inititalValue)
+//It resets all <input> and <select>. function initialValue must be set if you want to have inputs with that value or leave it null
+
+//function SearchWithoutQuery
+//initialize table1, the searchbox, columnIDS, and callback
+//table1 => table Name
+//searchbox => gets the value of it (Can have a search of A = B where A is a field name and B is the data)
+//columnIDS => the field to View
+//callback => function to call after ajax
+
+//function SearchWithQuery
+// function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, compare, searchbox, otherQuery, callback)
+//set table1 and table2
+//the columnNames
+//correction, corrects only one field to its equivalent db fieldname
+//whatJoin => can be left right or inner
+//otherQuery => the statement after "WHERE"
+//If both table has a common field just add "tableName." to it
+
+//function CreateTBody(xhttp)
+//If you want to have table same with database, just name the columns of the table same with db fieldname
+//Just creates a table with Edit and Delete Feature if the table columns has one column with no id
+
+//Edit just edits the record then changes the create button to Update
+//Delete deletes the record 
+//Both features require id of the record
+
+//DeleteRecord is same with Delete however it uses "WHERE" clause
+//if callback is a function then directs to callback however if not, CheckIfDeleted is used by default
+
+//parent_id is the table name (sql)
 // elem.childElementCount - counts child elements 
 
 function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCallback, updateCallback){
@@ -47,16 +105,14 @@ function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCall
 		data += "&content=" + content;
 		console.log(data);
 		if(btn_Create.innerHTML == "Create"){
-			// if(btn_Create.innerHTML == "Create " + parent_id){
 			AJAX(data, true, "post", "php/Create.php", true, createCallback);
 		}
 		else if(btn_Create.innerHTML == "Update"){
-			// else if(btn_Create.innerHTML == "Update " + parent_id){
 			AJAX(data, true, "post", "php/Update.php", true, updateCallback);	
 		}
 		// Search(txt_search, columnIDS);
 	}
-
+	// console.log(content);
 }
 
 // function Update(){
@@ -74,15 +130,19 @@ function CreateWithPreset(table1 , content, autoincrement, callback){
 	console.log(content);
 	content = JSON.stringify(content)
 	data += "&content=" + content;
+	// console.log(callback);
 	if(callback === null){
 		AJAX(data, false, "post", "php/Create.php", true, callback);
 	}
-	else{
+	else if(typeof callback == "function"){
 		AJAX(data, true, "post", "php/Create.php", true, callback);
+	}
+	else{
+
 	}
 }
 
-function CheckIfCreated(xhttp){
+function CheckIfCreated(xhttp){ //Can be used however Please initialized Search and ResetInput function and var inititalValue
 	if(xhttp.responseText != "Successful"){
 		var patt = new RegExp("duplicate", "i");
 		if(patt.test(xhttp.responseText)){
@@ -94,29 +154,24 @@ function CheckIfCreated(xhttp){
 	} 	
 	else{
 		alert("CREATED");
-		// Search(txt_search, columnIDS);
 		Search();
-		// ResetInput("create"+parent_id);
 		ResetInput(initialValue);
 	}
 }
 
-function CheckIfUpdated(xhttp){
+function CheckIfUpdated(xhttp){ //Can be used however Please initialized Search and ResetInput function and var inititalValue
 	if(xhttp.responseText != "Successful"){
   		console.log(xhttp.responseText); //Other error 
 	} 	
 	else{
 		alert("UPDATED");
-		// Search(txt_search, columnIDS);
 		Search();
-		// ResetInput("create"+parent_id);
 		ResetInput(initialValue);
 	}
 }
 
 function ResetInput(initialValue){//whatToReset - resets the button
 	var disabled;
-	// var parent_id = whatToReset.id.substr(6, whatToReset.id.length-6); //gets the id of parent IDS are set manually in html 
 	var input = document.querySelectorAll("#" + parent_id + " input");
 	var select = document.querySelectorAll("#" + parent_id + " select");
 	var btn = document.querySelectorAll("#" + parent_id + " button");
