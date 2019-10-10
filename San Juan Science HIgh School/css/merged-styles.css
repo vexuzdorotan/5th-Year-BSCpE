@@ -1,4 +1,10 @@
+
 input[type = "text"]{
+	height: 25px;
+	width: 200px;
+	float: right;
+}
+input[type = "textarea"]{
 	height: 25px !important;
 	width: 200px;
 	float: right;
@@ -20,7 +26,6 @@ input[type = "file"]{
 	border: 1px solid #b5b5b5;
 	font-size: 14px;
 }
-
 input[type = "search"]{
 	height: 25px !important;
 	width: 180px;
@@ -28,12 +33,42 @@ input[type = "search"]{
 	border: 1px solid #b5b5b5;
 	font-size: 14px !important;
 }
+.modal-search{
+    float:left;
+    width: 180px;
+    margin-bottom: 10px;
+}
+.maroon{
+    color: maroon !important;
+}
+.modal-button{
+    height: 28px;
+    width: 30px;
+    color: white;
+    background-color: maroon;
+    border:2px solid maroon;
+    font-size: 16px;
+    border-radius: 3px;
+}
+.modal-button:hover{
+    background-color: white;
+    color: maroon;
+}
 .small{
     margin-left: 10px;
     width: 95px !important;
 }
 table{
     width: 100%;
+}
+.s-table td{
+    width: 16.67%;
+}
+.sec-name{
+    width: 150px !important;
+    height: 28px !important;
+    padding-left: 10px;
+    margin-top:-4px;
 }
 .g-table{
     width: fit-content;

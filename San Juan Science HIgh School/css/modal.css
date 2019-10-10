@@ -17,6 +17,7 @@
 #modal-content{
   /*min-height: 30%;*/
   max-height: 97%;
+  overflow-y: hidden;
   /*overflow-y: scroll;*/
   background-color: #fefefe;
    /* 15% from the top and centered */

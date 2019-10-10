@@ -56,7 +56,9 @@ openSectionModal.addEventListener("click", function(){
 	theadID = "SectionNum@SectionName@GradeLevel@Teacher.Name";
 	theadHTML = "Section Number@Section Name@Grade Level@Adviser";
 	CreateInput("SearchSection", "search", modal_body);
+	document.querySelector("#SearchSection").className = "modal-search";
 	CreateTable("SearchSectionTable", theadID, theadHTML, "@", modal_body, 0, "SectionNum");
+	document.querySelector("thead").className = "dark";
 	openModal("Section", "Section");
 	// function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, compare, searchbox, otherQuery, callback){
 	Search = function(){
@@ -92,10 +94,12 @@ function PickSection(xhttp){
 			RetrieveSectionSchedule();
 		});
 		tbody_tr[i].addEventListener("mouseover", function(){
-			this.style.backgroundColor = "cyan";
+			this.style.backgroundColor = "maroon";
+			this.style.color = "white";
 		});
 		tbody_tr[i].addEventListener("mouseout", function(){
 			this.style.backgroundColor = "";
+			this.style.color = "";
 		});	
 	}
 	// console.log(xhttp);
@@ -298,10 +302,12 @@ function PickSubjectCode(xhttp){
 			// );
 		});
 		tbody_tr[i].addEventListener("mouseover", function(){
-			this.style.backgroundColor = "cyan";
+			this.style.backgroundColor = "maroon";
+			this.style.color = "white";
 		});
 		tbody_tr[i].addEventListener("mouseout", function(){
 			this.style.backgroundColor = "";
+			this.style.color = "";
 		});	
 	}
 	// txt_search = searchSection;

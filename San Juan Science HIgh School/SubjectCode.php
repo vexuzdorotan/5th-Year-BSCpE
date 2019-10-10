@@ -4,7 +4,7 @@
 	<title>Subject</title>
 	<link rel="stylesheet" type="text/css" href="css/Entire.css"/>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/Room.css" />
+	<link rel="stylesheet" type="text/css" href="css/merged-styles.css" />
 	<!-- Room.css must be renamed since it is used by other page -->
     <link rel="icon" href="pictures\logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,20 +17,20 @@
          <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
       </div>
    	</div>
-   	<div class="my-container row">
+   	<div class="room-container row">
 		<div class="col-12 col-xl-4" id="SubjectCode">
 			<p class="h5 pb-2">Create Subject</p>
-			<p class="p-0 m-0"><label for="txt_SubjectCode">Subject Code: <input type="text" name="txt_SubjectCode" id="txt_SubjectCode" required/></label></p>
-			<p><label for="txt_SubjectDescription">Description: <input type="textarea" name="txt_SubjectDescription" id="txt_SubjectDescription"/></label></p>
-			<p><label for="txt_Frequency">Frequency: <input type="number" min="0" id="txt_Frequency" name="txt_Frequency"></label></p>
-			<p><label for="txt_GradeLevel">Grade Level: <select id="txt_GradeLevel" name="txt_GradeLevel">
+			<p class="p-0 m-0"><label for="txt_SubjectCode">Subject Code:<br/><input type="text" name="txt_SubjectCode" id="txt_SubjectCode" required/></label></p>
+			<p><label for="txt_SubjectDescription">Description: <br/><input type="textarea" name="txt_SubjectDescription" id="txt_SubjectDescription"/></label></p>
+			<p class="mt-2"><label for="txt_Frequency">Frequency: <input type="number" min="0" id="txt_Frequency" name="txt_Frequency"></label></p>
+			<p class="mt-2"><label for="txt_GradeLevel">Grade Level: <select id="txt_GradeLevel" name="txt_GradeLevel">
 				<option selected="selected">7</option>
 				<option>8</option>
 				<option>9</option>
 				<option>10</option>
 			</select></label></p>
-			<button class="rounded-pill create-button" id="CreateSubjectCode" style="width: 200%;">Create</button>
-			<button class="rounded-pill reset-button" id="ResetSubjectCode">Reset</button>
+			<button class="rounded-pill mt-3 create-button" id="CreateSubjectCode" style="width: 200%;">Create</button>
+			<button class="rounded-pill mt-3 reset-button" id="ResetSubjectCode">Reset</button>
 		</div>
 		<div class="secondCol col col-xl-8">
 			<p class="h5 pb-2">List of Subject Codes

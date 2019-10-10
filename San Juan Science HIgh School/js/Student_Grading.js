@@ -37,8 +37,224 @@ const health = document.querySelectorAll("#health input");
 const healthTotal = document.querySelector("#healthTotal");
 
 const gwa = document.querySelector('#gwa');
+var input = document.querySelectorAll("body input");
+
+// -----
+
+var parent_id = "Student";
+var table = document.querySelector("table");
+var modal_body = document.getElementById("modal-body");
+
+var txt_GradeLevel = document.getElementById("txt_GradeLevel");
+var txt_SectionName = document.getElementById("txt_SectionName");
+var txt_SectionNum = document.getElementById("txt_SectionNum");
+var txt_Adviser = document.getElementById("txt_Adviser");
+
+var txt_StudentName = document.getElementById("txt_StudentName");
+var txt_StudentNum = document.getElementById("txt_StudentNum");
+
+var button = document.querySelectorAll("button");
+openSectionModal = button[0];
+openStudentModal = button[1];
 
 
+
+// SECTION
+openSectionModal.addEventListener("click", function() {
+    this.style.backgroundColor = "";
+    theadID = "SectionNum@SectionName@GradeLevel@Teacher.Name";
+    theadHTML = "Section Number@Section Name@Grade Level@Adviser";
+    CreateInput("SearchSection", "search", modal_body);
+    document.querySelector("#SearchSection").className = "modal-search";
+    CreateTable("SearchSectionTable", theadID, theadHTML, "@", modal_body, 0, "SectionNum");
+    document.querySelector("thead").className = "dark";
+    openModal("Section", "Section");
+    Search = function() {
+        SearchWithQuery(
+            "Section",
+            "Teacher",
+            GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
+            "Adviser=Teacher.Name",
+            "LEFT JOIN",
+            "teacher.SectionNum = section.SectionNum",
+            document.getElementById("SearchSection"),
+            null,
+            PickSection
+        );
+    }
+    Search();
+    document.getElementById("SearchSection").addEventListener("change", Search);
+});
+
+function PickSection(xhttp) {
+    CreateTBody(xhttp);
+    var tbody_tr = document.querySelectorAll("#SearchSectionTable tbody tr");
+    for (var i = 0; i < tbody_tr.length; i++) {
+        tbody_tr[i].addEventListener("click", function() {
+            document.querySelector("#SearchSection").value = "";
+            // console.log(this);
+            closeModal(modal_body);
+            txt_SectionNum.value = this.childNodes[0].innerHTML;
+            txt_SectionName.value = this.childNodes[1].innerHTML;
+            txt_GradeLevel.innerHTML = this.childNodes[2].innerHTML;
+            txt_Adviser.innerHTML = this.childNodes[3].innerHTML;
+        });
+        tbody_tr[i].addEventListener("mouseover", function() {
+            this.style.backgroundColor = "maroon";
+            this.style.color = "white";
+        });
+        tbody_tr[i].addEventListener("mouseout", function() {
+            this.style.backgroundColor = "";
+            this.style.color = "";
+        });
+    }
+    // console.log(xhttp);
+}
+
+//STUDENT
+openStudentModal.addEventListener("click", function() {
+    this.style.backgroundColor = "";
+    theadID = "StudentNum@FirstName@MiddleName@LastName";
+    theadHTML = "Student Number@First Name@Middle Name@Last Name";
+    CreateInput("SearchStudent", "search", modal_body);
+    document.querySelector("#SearchStudent").className = "modal-search";
+    CreateTable("SearchStudentTable", theadID, theadHTML, "@", modal_body, 0, "StudentNum");
+    document.querySelector("thead").className = "dark";
+    openModal("Student", "Student");
+    Search = function() {
+        SearchWithQuery(
+            "Student",
+            "Section",
+            GetID(document.querySelectorAll("#SearchStudentTable thead td"), 0),
+            null,
+            "LEFT JOIN",
+            "section.SectionNum = student.SectionNum",
+            document.getElementById("SearchStudent"),
+            null,
+            PickStudent
+        );
+    }
+    Search();
+    document.getElementById("SearchStudent").addEventListener("change", Search);
+});
+
+function PickStudent(xhttp) {
+    CreateTBody(xhttp);
+    var tbody_tr = document.querySelectorAll("#SearchStudentTable tbody tr");
+    for (var i = 0; i < tbody_tr.length; i++) {
+        tbody_tr[i].addEventListener("click", function() {
+            document.querySelector("#SearchStudent").value = "";
+            console.log(this);
+            closeModal(modal_body);
+            txt_StudentNum.value = this.childNodes[0].innerHTML;
+            txt_Student.innerHTML = this.childNodes[3].innerHTML + ", ";
+            txt_Student.innerHTML += this.childNodes[1].innerHTML + " ";
+            txt_Student.innerHTML += this.childNodes[2].innerHTML;
+            txt_StudentName.value = txt_Student.innerHTML;
+            //retrieveGrades();
+        });
+        tbody_tr[i].addEventListener("mouseover", function() {
+            this.style.backgroundColor = "maroon";
+            this.style.color = "white";
+        });
+        tbody_tr[i].addEventListener("mouseout", function() {
+            this.style.backgroundColor = "";
+            this.style.color = "";
+        });
+    }
+    // console.log(xhttp);
+}
+
+// function retrieveGrades() {
+//     retrieved();
+// }
+
+// function Retrieved(xhttp) {
+//     var json;
+//     // console.log(xhttp.responseText);		
+//     json = JSON.parse(xhttp.responseText);
+//     // console.log(json);
+//     // console.log(json.length);
+//     for (var i = 1; i < tr.length + 1; i++) {
+//         for (var j = 1; j < tr[0].childElementCount; j++) {
+//             table.rows[i].cells[j].innerHTML = "";
+//         }
+//     }
+//     try {
+//         for (var i = 0; i < json.length; i++) {
+//             // console.log(table.rows[GetParentRow(json[i][1])]);
+//             // console.log(json[i]);
+//             table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML = json[i][3];
+
+//         }
+
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
+
+// var Search = function() {
+//     let sst = document.querySelectorAll("#SearchStudentTable thead td");
+//     SearchWithoutQuery("student", searchStudent, GetID(sst, 1), null);
+// }
+// Search();
+// searchStudent.addEventListener("change", Search);
+
+// submitForm.addEventListener("click", function() {
+//     InsertGrades();
+// });
+
+// function RetrieveGrades() {
+//     var columnNames = {};
+//     columnNames[0] = "fil";
+//     columnNames[1] = "eng";
+//     columnNames[2] = "math";
+//     columnNames[3] = "sci";
+//     columnNames[4] = "ap";
+//     columnNames[5] = "esp";
+//     columnNames[6] = "tle";
+//     columnNames[7] = "mapeh";
+//     columnNames[8] = "music";
+//     columnNames[9] = "arts";
+//     columnNames[10] = "pe";
+//     columnNames[11] = "health";
+
+//     // console.log(txt_search);
+//     SearchWithoutQuery("tblstudentgrade", txt_SectionNum, columnNames, Retrieved);
+//     console.log(txt_SectionNum);
+// }
+
+// function InsertGrades() {
+//     i = 0;
+//     var data = "";
+//     data += "StudentNum=" + StudentNum.value + "&";
+//     data += "GradeLevel=" + GradeLevel.textContent + "&";
+//     data += "Quarter=1&";
+//     data += "fil=" + fil[i].value + "&";
+//     data += "eng=" + eng[i].value + "&";
+//     data += "math=" + math[i].value + "&";
+//     data += "sci=" + sci[i].value + "&";
+//     data += "ap=" + ap[i].value + "&";
+//     data += "esp=" + esp[i].value + "&";
+//     data += "tle=" + tle[i].value + "&";
+//     data += "mapeh=" + mapeh[i].value + "&";
+//     data += "music=" + music[i].value + "&";
+//     data += "arts=" + arts[i].value + "&";
+//     data += "pe=" + pe[i].value + "&";
+//     data += "health=" + health[i].value;
+
+//     console.log(data);
+
+//     AJAX(data, true, "post", "../php/Create_Grade.php", true, CheckIfRegistered);
+// }
+
+// function CheckIfRegistered(xhttp) {
+//     alert(xhttp.responseText);
+//     console.log(xhttp.responseText);
+// }
+
+
+setGwa();
 for (i = 0; i < fil.length; i++) {
     fil[i].addEventListener("change", function() {
 
@@ -220,5 +436,3 @@ function remarks() {
         }
     }
 }
-
-setGwa();
