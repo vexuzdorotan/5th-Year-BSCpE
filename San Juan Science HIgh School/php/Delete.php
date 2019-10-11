@@ -23,6 +23,7 @@
 	}
 	catch(Exception $e){
 		echo "DELETION FAILED";
+		// echo $e;
 	}
 	// echo json_encode($row);
 ?>

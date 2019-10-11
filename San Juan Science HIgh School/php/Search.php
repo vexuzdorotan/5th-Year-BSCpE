@@ -54,7 +54,13 @@
 					if(strtolower($arr_txt_searchbox[0]) == strtolower($value)){
 						$arr_txt_searchbox[0] = $table1 . "." . $arr_txt_searchbox[0];
 					}
-					$columns .= $table1.".".$value . ",";
+
+					if(strpos($value, ".") === false){
+						$columns .= $table1.".".$value . ",";
+					}
+					else{
+						$columns .= $value . ",";	
+					}
 
 					if(strpos($value, 'Name') !== false){ //GETS ONLY THE FIRST COLUMN with "Name"
 						if($colName == ""){

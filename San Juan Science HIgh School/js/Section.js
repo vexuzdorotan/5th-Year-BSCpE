@@ -12,23 +12,106 @@ var saved_id;
 
 var theadID;
 var theadHTML;
-
+var Search;
 console.log(GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0));
 var table1, table2;
 
-var Search = function(){ //set Search function inside cms.js
-	SearchWithQuery(
-		"Section",
-		"Teacher", 
-		GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
-		"Adviser=Teacher.Name", //Adviser is equivalent to TeacherName field 
-		"LEFT JOIN",
-		"teacher.SectionNum = section.SectionNum",
-		searchSection,
-		null,
-		CreateTBody
-	);
+// Search = function(){ //set Search function inside cms.js
+// 	// SearchWithQuery(
+// 	// 	"Section",
+// 	// 	"Teacher", 
+// 	// 	GetID(document.querySelectorAll("#SearchSectionTable thead td"), 0),
+// 	// 	// + "(SELECT COUNT(LRNNum) FROM student_section INNER JOIN section WHERE section.SectionNum = student_section.SectionNum)"
+// 	// 	"Adviser=Teacher.Name", //Adviser is equivalent to TeacherName field 
+// 	// 	"LEFT JOIN",
+// 	// 	"teacher.SectionNum = section.SectionNum",
+// 	// 	searchSection,
+// 	// 	null,
+// 	// 	CreateTBody
+// 	// );
+// }
+Search = function(){ //set Search function inside cms.js
+	var query = "";
+	var crud = "";
+	var basequery = query;
+	var nospaces;
+	var content;
+	query += "SELECT section.SectionNum,section.SectionName, RoomNum, teacher.EmployeeNum, teacher.Name, ";
+	query += "COUNT(LRNNum) AS Population, section.GradeLevel ";
+	query += "FROM section LEFT JOIN teacher ON teacher.SectionNum = section.SectionNum ";
+	query += "LEFT JOIN student_section ON student_section.SectionNum = section.SectionNum ";
+	crud = "SELECT";
+	basequery = query;
+	nospaces;
+	content;
+	nospaces = (searchSection.value).trim();
+	content = nospaces.split("=");
+	if(content.length > 1){
+		content[0] = content[0].replace(/ /g, "");
+		content[0] = content[0].replace("Number" , "Num");
+		content[1] = content[1].trim();
+			// console.log(content[0].toLowerCase() == "adviser");
+		if(content[0].toLowerCase() != "teacher" && content[0].toLowerCase() != "adviser"){
+			query += " WHERE " + "section." +content[0] + " LIKE '" + content[1]+ "%'";
+		}
+		else{
+			query += " WHERE " + "teacher.Name LIKE'" + content[1]+ "%'";
+		}
+	}
+	else if(content.length == 1){
+		// query += "AND " + "subject.SubjectID LIKE '" + content[0]+ "%'";	
+		query += "";
+	}
+	query += "GROUP BY section.SectionNum";
+	// query = basequery;
+	// console.log(query);
+	SimplifiedQuery(crud, query, searchSection, CreateTBody);
 }
+
+
+// searchSection.addEventListener('change', function(){
+// 	var query = "";
+// 	var crud = "";
+// 	var basequery = query;
+// 	var nospaces;
+// 	var content;
+// 	Search = function(){ //set Search function inside cms.js
+// 		query += "SELECT section.SectionNum,section.SectionName, RoomNum, teacher.EmployeeNum, teacher.Name, ";
+// 		query += "COUNT(LRNNum) AS Population, section.GradeLevel ";
+// 		query += "FROM section LEFT JOIN teacher ON teacher.SectionNum = section.SectionNum ";
+// 		query += "LEFT JOIN student_section ON student_section.SectionNum = section.SectionNum ";
+// 		crud = "SELECT";
+// 		basequery = query;
+// 		nospaces;
+// 		content;
+// 		nospaces = (searchSection.value).trim();
+// 		content = nospaces.split("=");
+// 		if(content.length > 1){
+// 			content[0] = content[0].replace(/ /g, "");
+// 			content[0] = content[0].replace("Number" , "Num");
+// 			content[1] = content[1].trim();
+// 			// console.log(content[0].toLowerCase() == "adviser");
+// 			if(content[0].toLowerCase() != "teacher" && content[0].toLowerCase() != "adviser"){
+// 				query += " WHERE " + "section." +content[0] + " LIKE '" + content[1]+ "%'";
+// 			}
+// 			else{
+// 				query += " WHERE " + "teacher.Name LIKE'" + content[1]+ "%'";
+// 			}
+// 		}
+// 		else if(content.length == 1){
+// 			// query += "AND " + "subject.SubjectID LIKE '" + content[0]+ "%'";	
+// 			query += "";
+// 		}
+// 		query += "GROUP BY section.SectionNum";
+// 		// query = basequery;
+// 		// console.log(query);
+// 		SimplifiedQuery(crud, query, searchSection, CreateTBody);
+// 	}
+// 	Search();
+// 	// SimplifiedQuery(crud, query, this, CreateTBody);
+// 	// console.log("HEY");
+// 	console.log(query);
+// });
 
 var initialValue = function(){ //set initialValue of inputs
 	document.getElementById("Population").value = 0;

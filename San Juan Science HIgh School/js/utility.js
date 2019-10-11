@@ -89,3 +89,10 @@ function CreateInput(input_id, type, parentNode){	//Creates input tag with id
 	p.appendChild(input);
 	parentNode.appendChild(p);
 }
+
+function EmptyNode(node){
+	for(var i = 0; i < node.length; i++){
+		node[i].innerHTML = "";
+		node[i].value = "";
+	}
+}

@@ -68,6 +68,7 @@
 				<td id="Teacher.Name">Adviser</td>
 				<td id="Population">Population</td>
 				<td id="GradeLevel">GradeLevel</td>
+				<!-- <td id="Population">Population</td> -->
 				<!-- <td>Type</td> -->
 				<td></td>
 				</tr>

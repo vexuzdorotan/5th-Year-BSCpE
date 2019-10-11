@@ -22,7 +22,7 @@
 			<p class="p-0 mt-4"><label for="txt_RoomNum">Room Number: <input class="small" type="text" name="txt_RoomNum" id="txt_RoomNum" required/></label></p>
 			<p><label for="txt_RoomName">Room Name: <input class="float-left mb-2" type="text" name="txt_RoomName" id="txt_RoomName" required/></label></p>
 			<p"><label for="txt_Floor">Floor: <input class="ml-2" type="number" name="txt_Floor" id="txt_Floor" min = "1" required/></label>
-			<label class="pl-3" for="txt_Capacity">Capacity: <input class="ml-2 mb-2" type="number" name="txt_Capacity" id="txt_Capacity" min="5" max="50" required/></label></p>
+			<!-- <label class="pl-3" for="txt_Capacity">Capacity: <input class="ml-2 mb-2" type="number" name="txt_Capacity" id="txt_Capacity" min="5" max="50" required/></label></p> -->
 			<p><label for="txt_Type">Room Type: <select id="txt_Type" name="txt_Type">
 				<option selected="selected">Classroom</option>
 				<option>Laboratory</option>
@@ -46,7 +46,7 @@
 					<td scope="col" id="RoomNum">Room Number</td>
 					<td scope="col" id="RoomName">Room Name</td>
 					<td scope="col" id="Floor">Floor</td>
-					<td scope="col" id="Capacity">Capacity</td>
+					<!-- <td scope="col" id="Capacity">Capacity</td> -->
 					<td scope="col" id="Type">Type</td>
 					<td scope="col"></td>
 					</tr>

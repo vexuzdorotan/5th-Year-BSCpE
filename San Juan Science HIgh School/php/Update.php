@@ -5,9 +5,9 @@
 	//
 	$table1 = strtolower($whatToCreate);
 
-	if(isset($_POST['autoincrement'])){
-		$autoincrement = $_POST['autoincrement'];
-	}
+	// if(isset($_POST['autoincrement'])){
+	// 	$autoincrement = $_POST['autoincrement'];
+	// }
 	$foreignKey = $_POST['foreignKey'];
 	$fieldToUpdate = $_POST['fieldToUpdate'];
 	$fieldToUpdateVal = null;
