@@ -9,9 +9,7 @@ body {
 	width: 100%;
 }
 .menu{
-	height: 500px;
-	width: 230px;
-	border-right: 5px double maroon;
+	width: 20%;
 	float: left;
 }
 ul{
@@ -24,10 +22,13 @@ li{
 .main-li{
 	padding: 10px 0 0 0;
 }
+.sub-div{
+	width: 80%;
+	float: right;
+}
 .sub-li{
 	font-size: 18px;
 	font-weight: 400;
-	padding: 0 !important;
 }
 .fas{
 	margin-right:5px;
@@ -45,30 +46,54 @@ a{
 	color: #343a40;
 	transition: 0.3s;
 }
-a:hover{
-	color: maroon;
+a.sub-li:hover{
+	background: maroon;
+	color: #f8f9fa;
+	padding:3px 0 3px 20px !important;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 a.active:hover{
 	text-decoration: none;
 	color: #f8f9fa;
 }
-.opt{
-	text-align: center;
+.content{
+	border-left: 5px double maroon;
+	width: 80%;
+	float: right;
 }
-.opt img{
-	height: 130px;
-	transition: 0.3s;
+.number{
+	font-size: 3.75rem;
+	font-weight: 500;
+	margin: 1.5rem 0 0 1.5rem;
 }
-.a-opt:hover{
-	text-decoration: none;
-	color: black;
+.title{
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin: 0 0 0 1.75rem;
 }
-.a-opt:hover img{
-	height: 160px;
+.subtitle{
+	margin: 0 0 0 1.75rem;
 }
-	
-.border{
-	padding-top: .75rem;
-	border-radius: 10px;
-	border: 2px solid maroon !important;
+.count{
+	width: 40%;
+	height: 200px;
+	margin:3% 0 0 5%;
+	float:left;
+	background-size: 220px;
+	background-position: right;
+	background-repeat: no-repeat;
+	background-position-y: 30px;
+}
+.student{
+	background-image: url("../pictures/students.png");
+}
+.teacher{
+	background-image: url("../pictures/teachers.png");
+}
+.room{
+	background-image: url("../pictures/rooms.png");
+}
+.section{
+	background-image: url("../pictures/sections.png");
 }
