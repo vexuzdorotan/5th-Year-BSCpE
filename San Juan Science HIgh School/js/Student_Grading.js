@@ -1,4 +1,4 @@
-var i, j, sumVal;
+let i, j, parent_id = "Student";
 
 const fil = document.querySelectorAll("#fil input");
 const filTotal = document.querySelector("#filTotal");
@@ -36,28 +36,30 @@ const peTotal = document.querySelector("#peTotal");
 const health = document.querySelectorAll("#health input");
 const healthTotal = document.querySelector("#healthTotal");
 
-const gwa = document.querySelector('#gwa');
-var input = document.querySelectorAll("body input");
+const average = document.querySelectorAll("#average input");
+const averageTotal = document.querySelector("#averageTotal");
 
 // -----
 
-var parent_id = "Student";
-var table = document.querySelector("table");
-var modal_body = document.getElementById("modal-body");
+const table = document.querySelector("table");
+const modal_body = document.getElementById("modal-body");
 
-var txt_GradeLevel = document.getElementById("txt_GradeLevel");
-var txt_SectionName = document.getElementById("txt_SectionName");
-var txt_SectionNum = document.getElementById("txt_SectionNum");
-var txt_Adviser = document.getElementById("txt_Adviser");
+const txt_GradeLevel = document.getElementById("txt_GradeLevel");
+const txt_SectionName = document.getElementById("txt_SectionName");
+const txt_SectionNum = document.getElementById("txt_SectionNum");
+const txt_Adviser = document.getElementById("txt_Adviser");
 
-var txt_StudentName = document.getElementById("txt_StudentName");
-var txt_StudentNum = document.getElementById("txt_StudentNum");
+const txt_StudentName = document.getElementById("txt_StudentName");
+const txt_StudentNum = document.getElementById("txt_StudentNum");
 
-var button = document.querySelectorAll("button");
+const tr = document.querySelectorAll("tbody tr");
+const button = document.querySelectorAll("button");
+
 openSectionModal = button[0];
 openStudentModal = button[1];
 
-
+//functions onLoad
+setAverage();
 
 // SECTION
 openSectionModal.addEventListener("click", function() {
@@ -121,6 +123,7 @@ openStudentModal.addEventListener("click", function() {
     CreateTable("SearchStudentTable", theadID, theadHTML, "@", modal_body, 0, "StudentNum");
     document.querySelector("thead").className = "dark";
     openModal("Student", "Student");
+
     Search = function() {
         SearchWithQuery(
             "Student",
@@ -135,6 +138,7 @@ openStudentModal.addEventListener("click", function() {
         );
     }
     Search();
+
     document.getElementById("SearchStudent").addEventListener("change", Search);
 });
 
@@ -151,7 +155,7 @@ function PickStudent(xhttp) {
             txt_Student.innerHTML += this.childNodes[1].innerHTML + " ";
             txt_Student.innerHTML += this.childNodes[2].innerHTML;
             txt_StudentName.value = txt_Student.innerHTML;
-            //retrieveGrades();
+            RetrieveGrades();
         });
         tbody_tr[i].addEventListener("mouseover", function() {
             this.style.backgroundColor = "maroon";
@@ -165,96 +169,67 @@ function PickStudent(xhttp) {
     // console.log(xhttp);
 }
 
-// function retrieveGrades() {
-//     retrieved();
-// }
+function RetrieveGrades() {
+    var columnNames = {};
+    columnNames[0] = "GradeID";
+    columnNames[1] = "StudentNum";
+    columnNames[2] = "GradeLevel";
+    columnNames[3] = "SubjectName";
+    columnNames[4] = "QtrFinalRemark";
+    columnNames[5] = "GradeRating";
 
-// function Retrieved(xhttp) {
-//     var json;
-//     // console.log(xhttp.responseText);		
-//     json = JSON.parse(xhttp.responseText);
-//     // console.log(json);
-//     // console.log(json.length);
-//     for (var i = 1; i < tr.length + 1; i++) {
-//         for (var j = 1; j < tr[0].childElementCount; j++) {
-//             table.rows[i].cells[j].innerHTML = "";
-//         }
-//     }
-//     try {
-//         for (var i = 0; i < json.length; i++) {
-//             // console.log(table.rows[GetParentRow(json[i][1])]);
-//             // console.log(json[i]);
-//             table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML = json[i][3];
+    SearchWithoutQuery("tblstudentgrade", txt_StudentNum, columnNames, Retrieved);
+    console.log(txt_StudentNum);
+}
 
-//         }
+function Retrieved(xhttp) {
+    var json;
+    // console.log(xhttp.responseText);		
+    json = JSON.parse(xhttp.responseText);
+    console.log(json);
+    console.log(json.length);
 
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
+    for (var i = 2; i < tr.length + 2; i++) {
+        for (var j = 1; j < tr[0].childElementCount; j++) {
+            table.rows[i].cells[j].innerHTML = "";
+        }
+    }
+    try {
+        for (var i = 0; i < json.length; i++) {
+            // console.log(table.rows[GetParentRow(json[i][1])]);
+            // console.log(json[i]);
+            table.rows[GetParentRow(json[i][3])].cells[GetParentCol(json[i][4])].innerHTML = json[i][5];
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
 
-// var Search = function() {
-//     let sst = document.querySelectorAll("#SearchStudentTable thead td");
-//     SearchWithoutQuery("student", searchStudent, GetID(sst, 1), null);
-// }
-// Search();
-// searchStudent.addEventListener("change", Search);
+function GetParentCol(child) {
+    if (child == "q1") return 1;
+    else if (child == "q2") return 2;
+    else if (child == "q3") return 3;
+    else if (child == "q4") return 4;
+    else if (child == "final") return 5;
+    else if (child == "remark") return 6;
+}
 
-// submitForm.addEventListener("click", function() {
-//     InsertGrades();
-// });
+function GetParentRow(child) {
+    if (child == "fil") return 2;
+    else if (child == "eng") return 3;
+    else if (child == "math") return 4;
+    else if (child == "sci") return 5;
+    else if (child == "ap") return 6;
+    else if (child == "esp") return 7;
+    else if (child == "tle") return 8;
+    else if (child == "mapeh") return 9;
+    else if (child == "music") return 10;
+    else if (child == "arts") return 11;
+    else if (child == "pe") return 12;
+    else if (child == "health") return 13;
+    else if (child == "average") return 14;
+}
 
-// function RetrieveGrades() {
-//     var columnNames = {};
-//     columnNames[0] = "fil";
-//     columnNames[1] = "eng";
-//     columnNames[2] = "math";
-//     columnNames[3] = "sci";
-//     columnNames[4] = "ap";
-//     columnNames[5] = "esp";
-//     columnNames[6] = "tle";
-//     columnNames[7] = "mapeh";
-//     columnNames[8] = "music";
-//     columnNames[9] = "arts";
-//     columnNames[10] = "pe";
-//     columnNames[11] = "health";
-
-//     // console.log(txt_search);
-//     SearchWithoutQuery("tblstudentgrade", txt_SectionNum, columnNames, Retrieved);
-//     console.log(txt_SectionNum);
-// }
-
-// function InsertGrades() {
-//     i = 0;
-//     var data = "";
-//     data += "StudentNum=" + StudentNum.value + "&";
-//     data += "GradeLevel=" + GradeLevel.textContent + "&";
-//     data += "Quarter=1&";
-//     data += "fil=" + fil[i].value + "&";
-//     data += "eng=" + eng[i].value + "&";
-//     data += "math=" + math[i].value + "&";
-//     data += "sci=" + sci[i].value + "&";
-//     data += "ap=" + ap[i].value + "&";
-//     data += "esp=" + esp[i].value + "&";
-//     data += "tle=" + tle[i].value + "&";
-//     data += "mapeh=" + mapeh[i].value + "&";
-//     data += "music=" + music[i].value + "&";
-//     data += "arts=" + arts[i].value + "&";
-//     data += "pe=" + pe[i].value + "&";
-//     data += "health=" + health[i].value;
-
-//     console.log(data);
-
-//     AJAX(data, true, "post", "../php/Create_Grade.php", true, CheckIfRegistered);
-// }
-
-// function CheckIfRegistered(xhttp) {
-//     alert(xhttp.responseText);
-//     console.log(xhttp.responseText);
-// }
-
-
-setGwa();
 for (i = 0; i < fil.length; i++) {
     fil[i].addEventListener("change", function() {
 
@@ -263,7 +238,7 @@ for (i = 0; i < fil.length; i++) {
             filSum += Number(fil[j].value);
         }
         filTotal.textContent = filSum / 4;
-        setGwa();
+        setAverage();
     });
 }
 
@@ -275,7 +250,7 @@ for (i = 0; i < eng.length; i++) {
             engSum += Number(eng[j].value);
         }
         engTotal.textContent = engSum / 4;
-        setGwa();
+        setAverage();
     });
 }
 
@@ -287,7 +262,7 @@ for (i = 0; i < math.length; i++) {
             mathSum += Number(math[j].value);
         }
         mathTotal.textContent = mathSum / 4;
-        setGwa();
+        setAverage();
     });
 }
 
@@ -299,7 +274,7 @@ for (i = 0; i < sci.length; i++) {
             sciSum += Number(sci[j].value);
         }
         sciTotal.textContent = sciSum / 4;
-        setGwa();
+        setAverage();
     });
 }
 
@@ -311,7 +286,7 @@ for (i = 0; i < ap.length; i++) {
             apSum += Number(ap[j].value);
         }
         apTotal.textContent = apSum / 4;
-        setGwa();
+        setAverage();
     });
 }
 
@@ -323,7 +298,7 @@ for (i = 0; i < esp.length; i++) {
             espSum += Number(esp[j].value);
         }
         espTotal.textContent = espSum / 4;
-        setGwa();
+        setAverage();
     });
 }
 
@@ -335,59 +310,7 @@ for (i = 0; i < tle.length; i++) {
             tleSum += Number(tle[j].value);
         }
         tleTotal.textContent = tleSum / 4;
-        setGwa();
-    });
-}
-
-for (i = 0; i < music.length; i++) {
-    music[i].addEventListener("change", function() {
-
-        let musicSum = 0;
-        for (j = 0; j < music.length; j++) {
-            musicSum += Number(music[j].value);
-        }
-        musicTotal.textContent = musicSum / 4;
-        setMapeh();
-        setGwa();
-    });
-}
-
-for (i = 0; i < arts.length; i++) {
-    arts[i].addEventListener("change", function() {
-
-        let artsSum = 0;
-        for (j = 0; j < arts.length; j++) {
-            artsSum += Number(arts[j].value);
-        }
-        artsTotal.textContent = artsSum / 4;
-        setMapeh();
-        setGwa();
-    });
-}
-
-for (i = 0; i < pe.length; i++) {
-    pe[i].addEventListener("change", function() {
-
-        let peSum = 0;
-        for (j = 0; j < pe.length; j++) {
-            peSum += Number(pe[j].value);
-        }
-        peTotal.textContent = peSum / 4;
-        setMapeh();
-        setGwa();
-    });
-}
-
-for (i = 0; i < health.length; i++) {
-    health[i].addEventListener("change", function() {
-
-        let healthSum = 0;
-        for (j = 0; j < health.length; j++) {
-            healthSum += Number(health[j].value);
-        }
-        healthTotal.textContent = healthSum / 4;
-        setMapeh();
-        setGwa();
+        setAverage();
     });
 }
 
@@ -404,29 +327,86 @@ function setMapeh() {
     }
     mapehTotal.textContent = mapehSum / 4;
 
-    setGwa();
+    setAverage();
 }
 
-function setGwa() {
-    let gwaSum = 0;
+for (i = 0; i < music.length; i++) {
+    music[i].addEventListener("change", function() {
 
-    for (i = 2; i <= 9; i++) {
-        let finalRating = Number(table.rows[i].cells[5].innerHTML);
-        gwaSum += finalRating / 8;
-    }
-    gwa.textContent = gwaSum;
-
-    if (gwaSum >= 75) {
-        table.rows[14].cells[3].innerHTML = "Passed";
-    } else {
-        table.rows[14].cells[3].innerHTML = "Failed";
-    }
-
-    remarks();
+        let musicSum = 0;
+        for (j = 0; j < music.length; j++) {
+            musicSum += Number(music[j].value);
+        }
+        musicTotal.textContent = musicSum / 4;
+        setMapeh();
+        setAverage();
+    });
 }
 
-function remarks() {
-    for (i = 2; i <= 13; i++) {
+for (i = 0; i < arts.length; i++) {
+    arts[i].addEventListener("change", function() {
+
+        let artsSum = 0;
+        for (j = 0; j < arts.length; j++) {
+            artsSum += Number(arts[j].value);
+        }
+        artsTotal.textContent = artsSum / 4;
+        setMapeh();
+        setAverage();
+    });
+}
+
+for (i = 0; i < pe.length; i++) {
+    pe[i].addEventListener("change", function() {
+
+        let peSum = 0;
+        for (j = 0; j < pe.length; j++) {
+            peSum += Number(pe[j].value);
+        }
+        peTotal.textContent = peSum / 4;
+        setMapeh();
+        setAverage();
+    });
+}
+
+for (i = 0; i < health.length; i++) {
+    health[i].addEventListener("change", function() {
+
+        let healthSum = 0;
+        for (j = 0; j < health.length; j++) {
+            healthSum += Number(health[j].value);
+        }
+        healthTotal.textContent = healthSum / 4;
+        setMapeh();
+        setAverage();
+    });
+}
+
+function setAverage() {
+    let averageSum = 0;
+
+    for (i = 0; i < average.length; i++) {
+        average[i].value = (
+            Number(fil[i].value) +
+            Number(eng[i].value) +
+            Number(math[i].value) +
+            Number(sci[i].value) +
+            Number(ap[i].value) +
+            Number(esp[i].value) +
+            Number(tle[i].value) +
+            Number(mapeh[i].value)
+        ) / 8;
+    }
+
+    for (j = 0; j < average.length; j++) {
+        averageSum += Number(average[j].value);
+    }
+    averageTotal.textContent = averageSum / 4;
+    setRemarks();
+}
+
+function setRemarks() {
+    for (i = 2; i <= 14; i++) {
         let finalRating = table.rows[i].cells[5].innerHTML;
 
         if (finalRating >= 75) {

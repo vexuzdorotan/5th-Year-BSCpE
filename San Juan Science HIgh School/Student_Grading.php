@@ -69,19 +69,19 @@
 
         <div class="row">
             <div class="col-9 p-0 m-0">
-                <table class="g-table">
+                <table id="gradeTable" class="g-table">
                     <thead>
                         <tr>
                             <th rowspan="2">LEARNING AREAS</th>
                             <th colspan="4">Quarterly Rating</th>
-                            <th rowspan="2">FINAL RATING</th>
-                            <th rowspan="2">REMARKS</th>
+                            <th id="final" rowspan="2">FINAL RATING</th>
+                            <th id="remark" rowspan="2">REMARKS</th>
                         </tr>
                         <tr>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                            <th>4</th>
+                            <th id="q1">1</th>
+                            <th id="q2">2</th>
+                            <th id="q3">3</th>
+                            <th id="q4">4</th>
                         </tr>
                     </thead>
 
@@ -206,10 +206,13 @@
                             <td></td>
                         </tr>
 
-                        <tr>
-                            <td></td>
-                            <td colspan="4">General Average</td>
-                            <td id="gwa"></td>
+                        <tr id="average">
+                            <td><b>AVERAGE</b></td>
+                            <td><input id="averageQ1" name="averageQ1" type="number" value=80 min="65" max="100" disabled/></td>
+                            <td><input id="averageQ2" name="averageQ2" type="number" value=80 min="65" max="100" disabled/></td>
+                            <td><input id="averageQ3" name="averageQ3" type="number" value=80 min="65" max="100" disabled/></td>
+                            <td><input id="averageQ4" name="averageQ4" type="number" value=80 min="65" max="100" disabled/></td>
+                            <td id="averageTotal">80</td>
                             <td></td>
                         </tr>
                     </tbody>
@@ -219,8 +222,23 @@
             <div class="col-3 p-0 m-0">
                 <p class="h6">Notes:</p>
                 <ul>
-                    <li>grade inputs are only 65-100</li>
-                    <li>if grades >= 75 (passed)<br/> else (failed)</li>
+                    <li>*added AVERAGE row</li>
+                    <li>*added tblstudentgrade to database</li>
+                    <li>*added retrieve grades from tblstudentgrade</li>
+                    <br />
+                    <li>This page is for ADVISER'S VIEW</li>
+                    <li>The purpose of this page is to:
+                        <ul>
+                            <li>retrieve grades inserted by OTHER SUBJECT TEACHERS</li>
+                            <li>compute QUARTERLY AVERAGE, FINAL RATING, and REMARKS</li>
+                            <li>insert QUARTERLY AVERAGE, FINAL RATING, and REMARKS to tblstudentgrade</li>
+                        </ul>
+                    </li>
+                    <li>The adviser cannot edit the grades encoded by the other subject teachers</li>
+                    <li>INPUT inside cells are just using to test computation of AVERAGE, FINAL RATING, and REMARKS.
+                    These will be deleted after the TEACHER PER SUBJECT'S VIEW page is done.</li>
+                    <li>"QtrFinalRemark" column on tblstudentgrade values: 0, 1, 65-100</li>
+                    <li>"QtrFinalRemark": if REMARKS = 1 {"PASSED"}; elif REMARKS = 0 {"FAILED"};</li>
                     <li>MAPEH = <br/>(Music + Arts + PE + Health) / 4</li>
                 </ul>
             </div>
@@ -231,7 +249,6 @@
             <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
         </div>
     </div>
-
 
     <script src="js/ajax.js" type="text/javascript"></script>
     <script src="js/utility.js" type="text/javascript"></script>
