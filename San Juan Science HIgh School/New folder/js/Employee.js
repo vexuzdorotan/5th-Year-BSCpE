@@ -75,7 +75,7 @@ function InsertInfo(){
 	console.log(data);
 	UploadPhoto(imageToUpload);
 	
-	AJAX(data, true, "post", "../php/Employee.php", true, CheckIfRegistered);
+	AJAX(data, true, "post", "php/Employee.php", true, CheckIfRegistered);
 	
 	// else{
 	// 	alert("PHOTO NOT UPLOADED");
@@ -119,5 +119,5 @@ function UploadPhoto(file){
 
 	//xhr.open("post", "php/UploadPhoto.php");
 	//xhr.send(formData);
-	AJAX_FILES(formData, false, "post", "../php/Employee.php", true, null);
+	AJAX_FILES(formData, false, "post", "php/Employee.php", true, null);
 }

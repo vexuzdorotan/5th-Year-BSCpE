@@ -1,4 +1,4 @@
-
+// console.log("ajax");
 
 function AJAX(data, out, method, url, async, cfunction){
     var xmlhttp;

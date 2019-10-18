@@ -105,10 +105,10 @@ function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCall
 		data += "&content=" + content;
 		console.log(data);
 		if(btn_Create.innerHTML == "Create"){
-			AJAX(data, true, "post", "../php/Create.php", true, createCallback);
+			AJAX(data, true, "post", "php/Create.php", true, createCallback);
 		}
 		else if(btn_Create.innerHTML == "Update"){
-			AJAX(data, true, "post", "../php/Update.php", true, updateCallback);	
+			AJAX(data, true, "post", "php/Update.php", true, updateCallback);	
 		}
 		// Search(txt_search, columnIDS);
 	}
@@ -132,10 +132,10 @@ function CreateWithPreset(table1 , content, autoincrement, callback){
 	data += "&content=" + content;
 	// console.log(callback);
 	if(callback === null){
-		AJAX(data, false, "post", "../php/Create.php", true, callback);
+		AJAX(data, false, "post", "php/Create.php", true, callback);
 	}
 	else if(typeof callback == "function"){
-		AJAX(data, true, "post", "../php/Create.php", true, callback);
+		AJAX(data, true, "post", "php/Create.php", true, callback);
 	}
 	else{
 
@@ -360,7 +360,7 @@ function Delete(whatToDelete){ //DELETES if you have ID
 	//DELETE HAS PROBLEM
 	data = "whatToDelete=" + parent_id + "&value=" + whatToDelete[0]; 
   	if(r == true){
-    	AJAX(data, true, "post", "../php/Delete.php", true, CheckIfDeleted);
+    	AJAX(data, true, "post", "php/Delete.php", true, CheckIfDeleted);
   	} 
   	else{
     	txt = "Deletion Cancelled!";
@@ -376,10 +376,10 @@ function DeleteRecord(table1, query, callback){ //DELETES depending on the query
 	data += "&query=" + query;
   	if(r == true){
   		if(typeof callback == "function"){
-  			AJAX(data, true, "post", "../php/Delete.php", true, callback);
+  			AJAX(data, true, "post", "php/Delete.php", true, callback);
   		}
   		else{
-  			AJAX(data, true, "post", "../php/Delete.php", true, CheckIfDeleted);
+  			AJAX(data, true, "post", "php/Delete.php", true, CheckIfDeleted);
   		}
   	} 
   	else{
@@ -405,5 +405,5 @@ function SimplifiedQuery(crud,query,searchbox,callback){
 	var data = "crud=" + crud;
 	data += "&query=" + query;
 
-	AJAX(data, true, "post", "../php/Query.php", true, callback);
+	AJAX(data, true, "post", "php/Query.php", true, callback);
 }

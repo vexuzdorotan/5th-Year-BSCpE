@@ -12,6 +12,7 @@ var Search = function(){
 		GetID(document.querySelectorAll("#SearchRoomTable thead td"), 1),
 		null
 	);
+	// console.log("SEARCHING")
 }
 
 var initialValue = null;

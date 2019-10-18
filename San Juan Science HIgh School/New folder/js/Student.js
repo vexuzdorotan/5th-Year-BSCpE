@@ -131,5 +131,5 @@ function UploadPhoto(file){
 	for(const fileToUpload of file.files){
 		formData.append("files[]", fileToUpload);
 	}
-	AJAX_FILES(formData, false, "post", "../php/Upload.php", true, null);
+	AJAX_FILES(formData, false, "post", "php/Upload.php", true, null);
 }
