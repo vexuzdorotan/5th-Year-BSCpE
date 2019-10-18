@@ -21,7 +21,7 @@
         <!--<img src="pictures/JuanSci-Header.jpg" class="logodesign">-->
         <legend class="h4 pl-0 pt-3 mb-0">REPORT ON STUDENT'S PROGRESS IN LEARNING</legend>
         <div class="menu">
-            <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
+            <a href="#">Administrator</a>|<a href="dashboards/Overview.html">Menu</a>|<a href="Portal.html">Logout</a>
         </div>
     </div>
 
@@ -58,7 +58,7 @@
             <label for="">Section Name: <input class="ml-2 sec-name" type="text" id="txt_SectionName" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
             <br />
-            <input type="text" id="txt_StudentNum" style="display: none;" />
+            <input type="text" id="txt_LRNNum" style="display: none;" />
             <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentName" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
         </div>
@@ -229,17 +229,16 @@
                     <li>This page is for ADVISER'S VIEW</li>
                     <li>The purpose of this page is to:
                         <ul>
-                            <li>retrieve grades inserted by OTHER SUBJECT TEACHERS</li>
-                            <li>compute QUARTERLY AVERAGE, FINAL RATING, and REMARKS</li>
-                            <li>insert QUARTERLY AVERAGE, FINAL RATING, and REMARKS to tblstudentgrade</li>
+                            <li>VIEW grades per subject encoded by SUBJECT TEACHERS</li>
+                            <li>VIEW QUARTERLY AVERAGE to award who are among the Top (10) Students</li>
+                            <li>VIEW FINAL RATING and REMARKS.</li>
+                            <li>PRINT Report Card (Form 138)</li>
                         </ul>
                     </li>
-                    <li>The adviser cannot edit the grades encoded by the other subject teachers</li>
+                    <li>The adviser cannot modify the grades encoded by the other subject teachers</li>
                     <li>INPUT inside cells are just using to test computation of AVERAGE, FINAL RATING, and REMARKS.
                     These will be deleted after the TEACHER PER SUBJECT'S VIEW page is done.</li>
-                    <li>"QtrFinalRemark" column on tblstudentgrade values: 0, 1, 65-100</li>
-                    <li>"QtrFinalRemark": if REMARKS = 1 {"PASSED"}; elif REMARKS = 0 {"FAILED"};</li>
-                    <li>MAPEH = <br/>(Music + Arts + PE + Health) / 4</li>
+                    <li>MAPEH = (Music + Arts + PE + Health) / 4</li>
                 </ul>
             </div>
         </div>

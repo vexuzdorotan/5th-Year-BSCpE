@@ -50,7 +50,7 @@ const txt_SectionNum = document.getElementById("txt_SectionNum");
 const txt_Adviser = document.getElementById("txt_Adviser");
 
 const txt_StudentName = document.getElementById("txt_StudentName");
-const txt_StudentNum = document.getElementById("txt_StudentNum");
+const txt_LRNNum = document.getElementById("txt_LRNNum");
 
 const tr = document.querySelectorAll("tbody tr");
 const button = document.querySelectorAll("button");
@@ -90,8 +90,8 @@ openSectionModal.addEventListener("click", function() {
 
 function PickSection(xhttp) {
     CreateTBody(xhttp);
-    var tbody_tr = document.querySelectorAll("#SearchSectionTable tbody tr");
-    for (var i = 0; i < tbody_tr.length; i++) {
+    let tbody_tr = document.querySelectorAll("#SearchSectionTable tbody tr");
+    for (let i = 0; i < tbody_tr.length; i++) {
         tbody_tr[i].addEventListener("click", function() {
             document.querySelector("#SearchSection").value = "";
             // console.log(this);
@@ -116,22 +116,22 @@ function PickSection(xhttp) {
 //STUDENT
 openStudentModal.addEventListener("click", function() {
     this.style.backgroundColor = "";
-    theadID = "StudentNum@FirstName@MiddleName@LastName";
-    theadHTML = "Student Number@First Name@Middle Name@Last Name";
+    theadID = "LRNNum@FirstName@MiddleName@LastName";
+    theadHTML = "LRN Number@First Name@Middle Name@Last Name";
     CreateInput("SearchStudent", "search", modal_body);
     document.querySelector("#SearchStudent").className = "modal-search";
-    CreateTable("SearchStudentTable", theadID, theadHTML, "@", modal_body, 0, "StudentNum");
+    CreateTable("SearchStudentTable", theadID, theadHTML, "@", modal_body, 0, "LRNNum");
     document.querySelector("thead").className = "dark";
     openModal("Student", "Student");
 
     Search = function() {
         SearchWithQuery(
             "Student",
-            "Section",
+            null, // "Section",
             GetID(document.querySelectorAll("#SearchStudentTable thead td"), 0),
             null,
-            "LEFT JOIN",
-            "section.SectionNum = student.SectionNum",
+            null, // "LEFT JOIN",
+            null, // "section.SectionNum = student.SectionNum",
             document.getElementById("SearchStudent"),
             null,
             PickStudent
@@ -144,13 +144,13 @@ openStudentModal.addEventListener("click", function() {
 
 function PickStudent(xhttp) {
     CreateTBody(xhttp);
-    var tbody_tr = document.querySelectorAll("#SearchStudentTable tbody tr");
-    for (var i = 0; i < tbody_tr.length; i++) {
+    let tbody_tr = document.querySelectorAll("#SearchStudentTable tbody tr");
+    for (let i = 0; i < tbody_tr.length; i++) {
         tbody_tr[i].addEventListener("click", function() {
             document.querySelector("#SearchStudent").value = "";
             console.log(this);
             closeModal(modal_body);
-            txt_StudentNum.value = this.childNodes[0].innerHTML;
+            txt_LRNNum.value = this.childNodes[0].innerHTML;
             txt_Student.innerHTML = this.childNodes[3].innerHTML + ", ";
             txt_Student.innerHTML += this.childNodes[1].innerHTML + " ";
             txt_Student.innerHTML += this.childNodes[2].innerHTML;
@@ -170,48 +170,38 @@ function PickStudent(xhttp) {
 }
 
 function RetrieveGrades() {
-    var columnNames = {};
-    columnNames[0] = "GradeID";
-    columnNames[1] = "StudentNum";
-    columnNames[2] = "GradeLevel";
-    columnNames[3] = "SubjectName";
-    columnNames[4] = "QtrFinalRemark";
-    columnNames[5] = "GradeRating";
+    let columnNames = {
+        0: "GradeID",
+        1: "LRNNum",
+        2: "GradeLevel",
+        3: "SubjectName",
+        4: "Quarter",
+        5: "GradeRating"
+    };
 
-    SearchWithoutQuery("tblstudentgrade", txt_StudentNum, columnNames, Retrieved);
-    console.log(txt_StudentNum);
+    SearchWithoutQuery("tblstudentgrade", txt_LRNNum, columnNames, Retrieved);
+    console.log(txt_LRNNum);
 }
 
 function Retrieved(xhttp) {
-    var json;
+    let json;
     // console.log(xhttp.responseText);		
     json = JSON.parse(xhttp.responseText);
     console.log(json);
     console.log(json.length);
 
-    for (var i = 2; i < tr.length + 2; i++) {
-        for (var j = 1; j < tr[0].childElementCount; j++) {
+    for (let i = 2; i < tr.length + 2; i++) {
+        for (let j = 1; j < tr[0].childElementCount; j++) {
             table.rows[i].cells[j].innerHTML = "";
         }
     }
     try {
-        for (var i = 0; i < json.length; i++) {
-            // console.log(table.rows[GetParentRow(json[i][1])]);
-            // console.log(json[i]);
-            table.rows[GetParentRow(json[i][3])].cells[GetParentCol(json[i][4])].innerHTML = json[i][5];
+        for (let i = 0; i < json.length; i++) {
+            table.rows[GetParentRow(json[i][3])].cells[json[i][4]].innerHTML = json[i][5];
         }
     } catch (err) {
         console.log(err);
     }
-}
-
-function GetParentCol(child) {
-    if (child == "q1") return 1;
-    else if (child == "q2") return 2;
-    else if (child == "q3") return 3;
-    else if (child == "q4") return 4;
-    else if (child == "final") return 5;
-    else if (child == "remark") return 6;
 }
 
 function GetParentRow(child) {
@@ -227,7 +217,6 @@ function GetParentRow(child) {
     else if (child == "arts") return 11;
     else if (child == "pe") return 12;
     else if (child == "health") return 13;
-    else if (child == "average") return 14;
 }
 
 for (i = 0; i < fil.length; i++) {

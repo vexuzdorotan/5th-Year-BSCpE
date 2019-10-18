@@ -10,6 +10,8 @@ body {
 }
 .menu{
 	width: 20%;
+	height: 500px;
+	border-right: 5px double maroon;
 	float: left;
 }
 ul{
@@ -58,9 +60,23 @@ a.active:hover{
 	color: #f8f9fa;
 }
 .content{
-	border-left: 5px double maroon;
 	width: 80%;
 	float: right;
+}
+.count a{
+	text-decoration: none;
+	color: black;
+}
+.count a:hover{
+	color: white;
+}
+.option a{
+	text-decoration: none;
+	color: black;
+}
+.option:hover a{
+	text-decoration: none;
+	color: black;
 }
 .number{
 	font-size: 3.75rem;
@@ -71,9 +87,11 @@ a.active:hover{
 	font-size: 1.5rem;
 	font-weight: 500;
 	margin: 0 0 0 1.75rem;
+	color:#f8f9fa;
 }
 .subtitle{
 	margin: 0 0 0 1.75rem;
+	color:#f8f9fa;
 }
 .count{
 	width: 40%;
@@ -84,16 +102,49 @@ a.active:hover{
 	background-position: right;
 	background-repeat: no-repeat;
 	background-position-y: 30px;
+	border: 2px solid black;
+	border-radius: 10px;
+	transition: 0.3s;
+}
+.count:hover{
+	background-color: maroon;
+	color: white;
+}
+.option{
+	margin: 5% 0 0 7%;
+	text-align: center;
+	font-size: 1.25rem;
+	font-weight: 500;
+	float:left;
+}
+.img-opt{
+	height: 120px;
+	transition: ease-out 0.3s;
+}
+.img-opt:hover{
+	height: 150px;
 }
 .student{
 	background-image: url("../pictures/students.png");
 }
+.student:hover{
+	background-image: url("../pictures/students-w.png");
+}
 .teacher{
 	background-image: url("../pictures/teachers.png");
+}
+.teacher:hover{
+	background-image: url("../pictures/teachers-w.png");
 }
 .room{
 	background-image: url("../pictures/rooms.png");
 }
+.room:hover{
+	background-image: url("../pictures/rooms-w.png");
+}
 .section{
 	background-image: url("../pictures/sections.png");
+}
+.section:hover{
+	background-image: url("../pictures/sections-w.png");
 }
