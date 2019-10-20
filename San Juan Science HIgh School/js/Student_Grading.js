@@ -1,46 +1,5 @@
 let i, j, parent_id = "Student";
 
-const fil = document.querySelectorAll("#fil input");
-const filTotal = document.querySelector("#filTotal");
-
-const eng = document.querySelectorAll("#eng input");
-const engTotal = document.querySelector("#engTotal");
-
-const math = document.querySelectorAll("#math input");
-const mathTotal = document.querySelector("#mathTotal");
-
-const sci = document.querySelectorAll("#sci input");
-const sciTotal = document.querySelector("#sciTotal");
-
-const ap = document.querySelectorAll("#ap input");
-const apTotal = document.querySelector("#apTotal");
-
-const esp = document.querySelectorAll("#esp input");
-const espTotal = document.querySelector("#espTotal");
-
-const tle = document.querySelectorAll("#tle input");
-const tleTotal = document.querySelector("#tleTotal");
-
-const mapeh = document.querySelectorAll("#mapeh input");
-const mapehTotal = document.querySelector("#mapehTotal");
-
-const music = document.querySelectorAll("#music input");
-const musicTotal = document.querySelector("#musicTotal");
-
-const arts = document.querySelectorAll("#arts input");
-const artsTotal = document.querySelector("#artsTotal");
-
-const pe = document.querySelectorAll("#pe input");
-const peTotal = document.querySelector("#peTotal");
-
-const health = document.querySelectorAll("#health input");
-const healthTotal = document.querySelector("#healthTotal");
-
-const average = document.querySelectorAll("#average input");
-const averageTotal = document.querySelector("#averageTotal");
-
-// -----
-
 const table = document.querySelector("table");
 const modal_body = document.getElementById("modal-body");
 
@@ -59,7 +18,7 @@ openSectionModal = button[0];
 openStudentModal = button[1];
 
 //functions onLoad
-setAverage();
+// setAverage();
 
 // SECTION
 openSectionModal.addEventListener("click", function() {
@@ -179,7 +138,7 @@ function RetrieveGrades() {
         5: "GradeRating"
     };
 
-    SearchWithoutQuery("tblstudentgrade", txt_LRNNum, columnNames, Retrieved);
+    SearchWithoutQuery("grade", txt_LRNNum, columnNames, Retrieved);
     console.log(txt_LRNNum);
 }
 
@@ -219,189 +178,228 @@ function GetParentRow(child) {
     else if (child == "health") return 13;
 }
 
-for (i = 0; i < fil.length; i++) {
-    fil[i].addEventListener("change", function() {
+// const fil = document.querySelectorAll("#fil input");
+// const filTotal = document.querySelector("#filTotal");
 
-        let filSum = 0;
-        for (j = 0; j < fil.length; j++) {
-            filSum += Number(fil[j].value);
-        }
-        filTotal.textContent = filSum / 4;
-        setAverage();
-    });
-}
+// const eng = document.querySelectorAll("#eng input");
+// const engTotal = document.querySelector("#engTotal");
 
-for (i = 0; i < eng.length; i++) {
-    eng[i].addEventListener("change", function() {
+// const math = document.querySelectorAll("#math input");
+// const mathTotal = document.querySelector("#mathTotal");
 
-        let engSum = 0;
-        for (j = 0; j < eng.length; j++) {
-            engSum += Number(eng[j].value);
-        }
-        engTotal.textContent = engSum / 4;
-        setAverage();
-    });
-}
+// const sci = document.querySelectorAll("#sci input");
+// const sciTotal = document.querySelector("#sciTotal");
 
-for (i = 0; i < math.length; i++) {
-    math[i].addEventListener("change", function() {
+// const ap = document.querySelectorAll("#ap input");
+// const apTotal = document.querySelector("#apTotal");
 
-        let mathSum = 0;
-        for (j = 0; j < math.length; j++) {
-            mathSum += Number(math[j].value);
-        }
-        mathTotal.textContent = mathSum / 4;
-        setAverage();
-    });
-}
+// const esp = document.querySelectorAll("#esp input");
+// const espTotal = document.querySelector("#espTotal");
 
-for (i = 0; i < sci.length; i++) {
-    sci[i].addEventListener("change", function() {
+// const tle = document.querySelectorAll("#tle input");
+// const tleTotal = document.querySelector("#tleTotal");
 
-        let sciSum = 0;
-        for (j = 0; j < sci.length; j++) {
-            sciSum += Number(sci[j].value);
-        }
-        sciTotal.textContent = sciSum / 4;
-        setAverage();
-    });
-}
+// const mapeh = document.querySelectorAll("#mapeh input");
+// const mapehTotal = document.querySelector("#mapehTotal");
 
-for (i = 0; i < ap.length; i++) {
-    ap[i].addEventListener("change", function() {
+// const music = document.querySelectorAll("#music input");
+// const musicTotal = document.querySelector("#musicTotal");
 
-        let apSum = 0;
-        for (j = 0; j < ap.length; j++) {
-            apSum += Number(ap[j].value);
-        }
-        apTotal.textContent = apSum / 4;
-        setAverage();
-    });
-}
+// const arts = document.querySelectorAll("#arts input");
+// const artsTotal = document.querySelector("#artsTotal");
 
-for (i = 0; i < esp.length; i++) {
-    esp[i].addEventListener("change", function() {
+// const pe = document.querySelectorAll("#pe input");
+// const peTotal = document.querySelector("#peTotal");
 
-        let espSum = 0;
-        for (j = 0; j < esp.length; j++) {
-            espSum += Number(esp[j].value);
-        }
-        espTotal.textContent = espSum / 4;
-        setAverage();
-    });
-}
+// const health = document.querySelectorAll("#health input");
+// const healthTotal = document.querySelector("#healthTotal");
 
-for (i = 0; i < tle.length; i++) {
-    tle[i].addEventListener("change", function() {
+// const average = document.querySelectorAll("#average input");
+// const averageTotal = document.querySelector("#averageTotal");
 
-        let tleSum = 0;
-        for (j = 0; j < tle.length; j++) {
-            tleSum += Number(tle[j].value);
-        }
-        tleTotal.textContent = tleSum / 4;
-        setAverage();
-    });
-}
+// for (i = 0; i < fil.length; i++) {
+//     fil[i].addEventListener("change", function() {
 
-function setMapeh() {
-    let mapehSum = 0;
+//         let filSum = 0;
+//         for (j = 0; j < fil.length; j++) {
+//             filSum += Number(fil[j].value);
+//         }
+//         filTotal.textContent = filSum / 4;
+//         setAverage();
+//     });
+// }
 
-    for (i = 0; i < mapeh.length; i++) {
-        mapeh[i].value = (Number(music[i].value) + Number(arts[i].value) +
-            Number(pe[i].value) + Number(health[i].value)) / 4;
-    }
+// for (i = 0; i < eng.length; i++) {
+//     eng[i].addEventListener("change", function() {
 
-    for (j = 0; j < mapeh.length; j++) {
-        mapehSum += Number(mapeh[j].value);
-    }
-    mapehTotal.textContent = mapehSum / 4;
+//         let engSum = 0;
+//         for (j = 0; j < eng.length; j++) {
+//             engSum += Number(eng[j].value);
+//         }
+//         engTotal.textContent = engSum / 4;
+//         setAverage();
+//     });
+// }
 
-    setAverage();
-}
+// for (i = 0; i < math.length; i++) {
+//     math[i].addEventListener("change", function() {
 
-for (i = 0; i < music.length; i++) {
-    music[i].addEventListener("change", function() {
+//         let mathSum = 0;
+//         for (j = 0; j < math.length; j++) {
+//             mathSum += Number(math[j].value);
+//         }
+//         mathTotal.textContent = mathSum / 4;
+//         setAverage();
+//     });
+// }
 
-        let musicSum = 0;
-        for (j = 0; j < music.length; j++) {
-            musicSum += Number(music[j].value);
-        }
-        musicTotal.textContent = musicSum / 4;
-        setMapeh();
-        setAverage();
-    });
-}
+// for (i = 0; i < sci.length; i++) {
+//     sci[i].addEventListener("change", function() {
 
-for (i = 0; i < arts.length; i++) {
-    arts[i].addEventListener("change", function() {
+//         let sciSum = 0;
+//         for (j = 0; j < sci.length; j++) {
+//             sciSum += Number(sci[j].value);
+//         }
+//         sciTotal.textContent = sciSum / 4;
+//         setAverage();
+//     });
+// }
 
-        let artsSum = 0;
-        for (j = 0; j < arts.length; j++) {
-            artsSum += Number(arts[j].value);
-        }
-        artsTotal.textContent = artsSum / 4;
-        setMapeh();
-        setAverage();
-    });
-}
+// for (i = 0; i < ap.length; i++) {
+//     ap[i].addEventListener("change", function() {
 
-for (i = 0; i < pe.length; i++) {
-    pe[i].addEventListener("change", function() {
+//         let apSum = 0;
+//         for (j = 0; j < ap.length; j++) {
+//             apSum += Number(ap[j].value);
+//         }
+//         apTotal.textContent = apSum / 4;
+//         setAverage();
+//     });
+// }
 
-        let peSum = 0;
-        for (j = 0; j < pe.length; j++) {
-            peSum += Number(pe[j].value);
-        }
-        peTotal.textContent = peSum / 4;
-        setMapeh();
-        setAverage();
-    });
-}
+// for (i = 0; i < esp.length; i++) {
+//     esp[i].addEventListener("change", function() {
 
-for (i = 0; i < health.length; i++) {
-    health[i].addEventListener("change", function() {
+//         let espSum = 0;
+//         for (j = 0; j < esp.length; j++) {
+//             espSum += Number(esp[j].value);
+//         }
+//         espTotal.textContent = espSum / 4;
+//         setAverage();
+//     });
+// }
 
-        let healthSum = 0;
-        for (j = 0; j < health.length; j++) {
-            healthSum += Number(health[j].value);
-        }
-        healthTotal.textContent = healthSum / 4;
-        setMapeh();
-        setAverage();
-    });
-}
+// for (i = 0; i < tle.length; i++) {
+//     tle[i].addEventListener("change", function() {
 
-function setAverage() {
-    let averageSum = 0;
+//         let tleSum = 0;
+//         for (j = 0; j < tle.length; j++) {
+//             tleSum += Number(tle[j].value);
+//         }
+//         tleTotal.textContent = tleSum / 4;
+//         setAverage();
+//     });
+// }
 
-    for (i = 0; i < average.length; i++) {
-        average[i].value = (
-            Number(fil[i].value) +
-            Number(eng[i].value) +
-            Number(math[i].value) +
-            Number(sci[i].value) +
-            Number(ap[i].value) +
-            Number(esp[i].value) +
-            Number(tle[i].value) +
-            Number(mapeh[i].value)
-        ) / 8;
-    }
+// function setMapeh() {
+//     let mapehSum = 0;
 
-    for (j = 0; j < average.length; j++) {
-        averageSum += Number(average[j].value);
-    }
-    averageTotal.textContent = averageSum / 4;
-    setRemarks();
-}
+//     for (i = 0; i < mapeh.length; i++) {
+//         mapeh[i].value = (Number(music[i].value) + Number(arts[i].value) +
+//             Number(pe[i].value) + Number(health[i].value)) / 4;
+//     }
 
-function setRemarks() {
-    for (i = 2; i <= 14; i++) {
-        let finalRating = table.rows[i].cells[5].innerHTML;
+//     for (j = 0; j < mapeh.length; j++) {
+//         mapehSum += Number(mapeh[j].value);
+//     }
+//     mapehTotal.textContent = mapehSum / 4;
 
-        if (finalRating >= 75) {
-            table.rows[i].cells[6].innerHTML = "Passed";
-        } else {
-            table.rows[i].cells[6].innerHTML = "Failed";
-        }
-    }
-}
+//     setAverage();
+// }
+
+// for (i = 0; i < music.length; i++) {
+//     music[i].addEventListener("change", function() {
+
+//         let musicSum = 0;
+//         for (j = 0; j < music.length; j++) {
+//             musicSum += Number(music[j].value);
+//         }
+//         musicTotal.textContent = musicSum / 4;
+//         setMapeh();
+//         setAverage();
+//     });
+// }
+
+// for (i = 0; i < arts.length; i++) {
+//     arts[i].addEventListener("change", function() {
+
+//         let artsSum = 0;
+//         for (j = 0; j < arts.length; j++) {
+//             artsSum += Number(arts[j].value);
+//         }
+//         artsTotal.textContent = artsSum / 4;
+//         setMapeh();
+//         setAverage();
+//     });
+// }
+
+// for (i = 0; i < pe.length; i++) {
+//     pe[i].addEventListener("change", function() {
+
+//         let peSum = 0;
+//         for (j = 0; j < pe.length; j++) {
+//             peSum += Number(pe[j].value);
+//         }
+//         peTotal.textContent = peSum / 4;
+//         setMapeh();
+//         setAverage();
+//     });
+// }
+
+// for (i = 0; i < health.length; i++) {
+//     health[i].addEventListener("change", function() {
+
+//         let healthSum = 0;
+//         for (j = 0; j < health.length; j++) {
+//             healthSum += Number(health[j].value);
+//         }
+//         healthTotal.textContent = healthSum / 4;
+//         setMapeh();
+//         setAverage();
+//     });
+// }
+
+// function setAverage() {
+//     let averageSum = 0;
+
+//     for (i = 0; i < average.length; i++) {
+//         average[i].value = (
+//             Number(fil[i].value) +
+//             Number(eng[i].value) +
+//             Number(math[i].value) +
+//             Number(sci[i].value) +
+//             Number(ap[i].value) +
+//             Number(esp[i].value) +
+//             Number(tle[i].value) +
+//             Number(mapeh[i].value)
+//         ) / 8;
+//     }
+
+//     for (j = 0; j < average.length; j++) {
+//         averageSum += Number(average[j].value);
+//     }
+//     averageTotal.textContent = averageSum / 4;
+//     setRemarks();
+// }
+
+// function setRemarks() {
+//     for (i = 2; i <= 14; i++) {
+//         let finalRating = table.rows[i].cells[5].innerHTML;
+
+//         if (finalRating >= 75) {
+//             table.rows[i].cells[6].innerHTML = "Passed";
+//         } else {
+//             table.rows[i].cells[6].innerHTML = "Failed";
+//         }
+//     }
+// }
