@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="float-left">
+        <div class="float-right">
             <input type="text" id="txt_SubjectCode" style="display: none;" />
             <label for="">Subject Code: <input class="ml-2 sec-name" type="text" id="txt_SectionName" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
@@ -103,7 +103,7 @@
                 </table>
             </div>
 
-            <div class="col-3 p-0 m-0">
+            <div class="p-0 mt-3">
                 <p class="h6">Notes:</p>
                 <ul>
                     <li>Import `grade` table to DB first</li>
