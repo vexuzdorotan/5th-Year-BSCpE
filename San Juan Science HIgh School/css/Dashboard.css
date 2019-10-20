@@ -24,6 +24,9 @@ li{
 .main-li{
 	padding: 10px 0 0 0;
 }
+.main-li:hover{
+	color: black;
+}
 .sub-div{
 	width: 80%;
 	float: right;

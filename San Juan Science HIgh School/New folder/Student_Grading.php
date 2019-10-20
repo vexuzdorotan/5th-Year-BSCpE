@@ -7,21 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Student Grading</title>
 
-	<link rel="stylesheet" type="text/css" href="css/modal.css"/>
-	<link rel="stylesheet" type="text/css" href="css/all.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="css/merged-styles.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/all.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/>
 	<link rel="icon" href="pictures/logo.png" />
 </head>
 
 <body>
-    <img src="pictures/logodesign.jpg" class="logodesign">
+    <img src="../pictures/logodesign.jpg" class="logodesign">
 
     <div class="header mb-3">
         <!--<img src="pictures/JuanSci-Header.jpg" class="logodesign">-->
         <legend class="h4 pl-0 pt-3 mb-0">REPORT ON STUDENT'S PROGRESS IN LEARNING</legend>
         <div class="menu">
-            <a href="#">Administrator</a>|<a href="dashboards/Overview.html">Menu</a>|<a href="Portal.html">Logout</a>
+            <a href="#">Administrator</a>|<a href="../dashboards/Students.html">Menu</a>|<a href="Portal.html">Logout</a>
         </div>
     </div>
 
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="float-left">
+        <div class="float-right">
             <input type="text" id="txt_SectionNum" style="display: none;" />
             <label for="">Section Name: <input class="ml-2 sec-name" type="text" id="txt_SectionName" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
@@ -62,7 +62,7 @@
             <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentName" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
         </div>
-        <br /><br /><br /><br />
+        <br/><br/>
         <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
         <p><b>Adviser: </b><span id="txt_Adviser"></span></p>
         <p><b>Student: </b><span id="txt_Student"></span></p>
@@ -219,7 +219,7 @@
                 </table>
             </div>
 
-            <div class="col-3 p-0 m-0">
+            <div class="p-0 mt-3">
                 <p class="h6">Notes:</p>
                 <ul>
                     <li>*added AVERAGE row</li>
@@ -249,11 +249,11 @@
         </div>
     </div>
 
-    <script src="js/ajax.js" type="text/javascript"></script>
-    <script src="js/utility.js" type="text/javascript"></script>
-    <script src="js/cms.js" type="text/javascript"></script>
-    <script src="js/modal.js" type="text/javascript"></script>
-    <script src="js/Student_Grading.js" type="text/javascript"></script>
+    <script src="../js/ajax.js" type="text/javascript"></script>
+    <script src="../js/utility.js" type="text/javascript"></script>
+    <script src="../js/cms.js" type="text/javascript"></script>
+    <script src="../js/modal.js" type="text/javascript"></script>
+    <script src="../js/Student_Grading.js" type="text/javascript"></script>
 </body>
 
 </html>
