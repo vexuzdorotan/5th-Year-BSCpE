@@ -74,7 +74,7 @@ function InsertInfo(){
 		content[select[i].id] = select[i].options[select[i].selectedIndex].text;
 	}
 	console.log(content);
-	// UploadPhoto(imageToUpload);
+	UploadPhoto(imageToUpload);
 	
 	CreateWithPreset(
 		parent_id, 

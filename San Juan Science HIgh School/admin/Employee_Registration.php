@@ -306,7 +306,7 @@
          <label for="lbl_Position">Position: </label>
          <select id="Position">
             <option selected="selected">Teacher</option>
-            <option>?</option>
+            <option>Admin</option>
             <!-- Still an option, positions are still unknown -->
          </select>
       </p>

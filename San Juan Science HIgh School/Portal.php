@@ -1,5 +1,8 @@
+<?php
+	session_start();
+	session_unset();
+?>
 <!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -29,7 +32,7 @@
 			</p>
 			<p class="h6"><label for="account">Log In As:</label>
 				<select name="account">
-					<option>Administrator</option>
+					<option>Admin</option>
 					<option>Employee</option>
 					<option>Student</option>
 				</select>
@@ -44,7 +47,7 @@
 	<div class="footer">
 		<p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
 	</div>
-
-
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/Authenticate.js"></script>
 </body>
 </html>
