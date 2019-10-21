@@ -1,6 +1,9 @@
 var txt_search; //saves content of input type = search 
 var columnIDS; //saves the name of table headers
+var results = []; //saves content for pagination
 
+var eachpage = 10;
+var currentpage = 1;
 //NOTE:
 //columnIDS can be neglected
 //txt_search can be updated and removed however
@@ -64,6 +67,13 @@ var columnIDS; //saves the name of table headers
 
 //parent_id is the table name (sql)
 // elem.childElementCount - counts child elements 
+function SimplifiedQuery(crud,query,searchbox,callback){
+	txt_search = searchbox;	
+	var data = "crud=" + crud;
+	data += "&query=" + query;
+
+	AJAX(data, true, "post", "../php/Query.php", true, callback);
+}
 
 function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCallback, updateCallback){
 	//Inserts to Database depends on the id of the button inside this argument
@@ -185,22 +195,13 @@ function ResetInput(initialValue){//whatToReset - resets the button
 				// console.log(err);
 			}
 		}
-		// if(!(input[i].value === "" || input[i].value === null)){
-		// 	if(Number.isNaN(input[i].value *1)){
-		// 		input[i].value = "";
-		// 	}
-		// 	else{
-		// 		input[i].value = 0;
-		// 	}
-		// }
 		input[i].value = "";
 		input[i].style.backgroundColor = '';
 	}
 	for(var i = 0; i < select.length; i++){
 		select[i].selectedIndex = 0;
 	}
-	// console.log(typeof callback);
-	// callback();
+
 	if(initialValue !== null){
 		initialValue();
 	}
@@ -240,7 +241,7 @@ function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, comp
 	var data;
 	txt_search = searchbox;
 	// columnIDS = GetID(document.querySelectorAll("#SearchRoomTable thead td"), 0);
-	console.log(typeof searchbox);
+	// console.log(typeof searchbox);
 	data = "table1=" + table1;
 	if(typeof searchbox == "object"){
 		data += "&value=" + searchbox.value;
@@ -261,22 +262,37 @@ function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, comp
 //Function to Create Table 
 function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 	try{
-	var json;
+	// var json;
 	var td;
 	var tr;
 	var btn_Edit;
 	var btn_Delete;
 	var class_btn1;
 	var class_btn2;
-	json = JSON.parse(xhttp.responseText);
-	console.log(json);
+
+	results = JSON.parse(xhttp.responseText);
+	// console.log(results);
+
 	var thead_td = document.querySelectorAll("#" + txt_search.id + "Table thead tr td");
 	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;//childElementCount counts child of parent
 	var tbody = document.querySelector("#" + txt_search.id + "Table tbody");
+	var main_body = tbody.parentNode.parentNode;
+	let limit;
+	// console.log(main_body.children.length);
 
+	if(main_body.children.length > 2){
+		main_body.removeChild(main_body.children[2]);
+	}
+	if(eachpage*currentpage < results.length){
+		limit = eachpage*currentpage;
+	}
+	else{
+		limit = results.length;
+	}
 	RemoveChildNodes(tbody);
-	
-	for(var i=0; i < json.length; i++){
+	// console.log(results.length/eachpage);
+	for(var i=eachpage*(currentpage-1); i < limit; i++){//
+	// for(var i=0; i < json.length; i++){
 		tr = document.createElement('tr');
 		for(var j = 0; j < colNum; j++){
 			td = document.createElement('td');
@@ -285,8 +301,8 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 				btn_Edit = document.createElement('button');
 				btn_Edit.innerHTML = "EDIT";
 				btn_Delete.innerHTML = "DELETE";
-				btn_Edit.addEventListener("click", Edit.bind(null, json[i]));
-				btn_Delete.addEventListener("click", Delete.bind(null, json[i])); //Selects ID make sure that first column is ID
+				btn_Edit.addEventListener("click", Edit.bind(null, results[i]));
+				btn_Delete.addEventListener("click", Delete.bind(null, results[i])); //Selects ID make sure that first column is ID
 				td.appendChild(btn_Edit);
 				td.appendChild(btn_Delete);
 				class_btn1 = document.createAttribute("class");
@@ -297,7 +313,7 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 				btn_Edit.setAttributeNode(class_btn2); 
 			}
 			else{
-				td.innerHTML = json[i][j];
+				td.innerHTML = results[i][j];
 			}
 			if(thead_td[j].style.display == "none"){
 				td.style.display = "none";
@@ -306,6 +322,58 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 		}
  		tbody.appendChild(tr);
 	}
+	//PAGINATION
+	var pagination = document.createElement('p');
+	btn_First = document.createElement('button');
+	btn_Last = document.createElement('button');
+	btn_Next = document.createElement('button');
+	btn_Previous = document.createElement('button');
+
+	pagination.appendChild(btn_First);
+	pagination.appendChild(btn_Previous);
+	pagination.appendChild(btn_Next);
+	pagination.appendChild(btn_Last);
+	main_body.appendChild(pagination);
+
+	// console.log(pagination);
+	pagination.style.textAlign = "center";
+	btn_First.innerHTML = "FIRST";
+	btn_Previous.innerHTML = "<";
+	btn_Next.innerHTML = ">";
+	btn_Last.innerHTML = "LAST";
+	// console.log(main_body.children.length);
+	// console.log(main_body.children[main_body.children.length]);
+	btn_First.addEventListener("click", function(){
+		// main_body.removeChild(pagination);
+		console.log("first");
+		currentpage = 1;
+		CreateTBody(xhttp);
+	});
+
+	btn_Previous.addEventListener("click", function(){
+		// main_body.removeChild(pagination);
+		console.log("prev");
+		if(currentpage > 1){
+			currentpage--;
+			CreateTBody(xhttp);
+		}
+	});
+
+	btn_Next.addEventListener("click", function(){
+		// main_body.removeChild(pagination);
+		console.log("next");
+		if(currentpage < Math.ceil(results.length/eachpage)){
+			currentpage++;
+			CreateTBody(xhttp);
+		}
+	});
+
+	btn_Last.addEventListener("click", function(){
+		// main_body.removeChild(pagination);
+		console.log("last");
+		currentpage = Math.ceil(results.length/eachpage);
+		CreateTBody(xhttp);
+	});
 	// console.log(thead_td[2].style.display);
 	}
 	catch(err){
@@ -398,12 +466,4 @@ function CheckIfDeleted(xhttp){
 	else{
 		console.log(xhttp.responseText);
 	}
-}
-
-function SimplifiedQuery(crud,query,searchbox,callback){
-	txt_search = searchbox;	
-	var data = "crud=" + crud;
-	data += "&query=" + query;
-
-	AJAX(data, true, "post", "../php/Query.php", true, callback);
 }

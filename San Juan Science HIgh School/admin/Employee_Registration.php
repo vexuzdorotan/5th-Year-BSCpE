@@ -3,6 +3,13 @@
    // $stmt = $db->prepare("UPDATE employee SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
    // $stmt->execute();
    // $stmt->closeCursor();
+
+?>
+<?php
+    session_start();
+    if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
+        header('Location: ../Portal.php');
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +26,7 @@
 <div class="header mb-3">
       <legend class="h4 pl-0 pt-3 mb-0">EMPLOYEE REGISTRATION</legend>
       <div class="menu">
-         <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="../Portal.html">Logout</a>
+         <a href="#">Administrator</a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
       </div>
    </div>
 <div class="regi-container">

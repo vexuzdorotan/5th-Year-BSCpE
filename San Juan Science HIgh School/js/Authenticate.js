@@ -15,7 +15,7 @@ button[0].addEventListener("click", function(){
 function test(xhttp){
 	// console.log("ok");
 	if(xhttp.responseText != "failed"){
-		window.location.href = xhttp.responseText + "/Dashboard.html";
+		window.location.href = xhttp.responseText + "/Dashboard.php";
 	}
 	else{
 		alert("Wrong username or password");

@@ -41,9 +41,9 @@ buttons[2].addEventListener("click", function(){
 buttons[0].addEventListener("click", function(){
 	buttons[0].style.backgroundColor = '';
 	theadID = "EmployeeNum@Name";
-	theadHTML = "EmployeeNum@Name";
+	theadHTML = "Employee Number@Name";
 	CreateInput("SearchTeacher", "search", modal_body);
-	CreateTable("SearchTeacherTable", theadID, theadHTML, "@", modal_body, 0, "EmployeeNum");
+	CreateTable("SearchTeacherTable", theadID, theadHTML, "@", modal_body, 0, null);
 	openModal("List of Teachers", "Teacher");
 	var searchTeacher = document.getElementById('SearchTeacher'); 
 	// console.log(GetID(document.querySelectorAll("#SearchTeacherTable thead td"), 0));
@@ -126,7 +126,10 @@ buttons[1].addEventListener("click", function(){
 			}
 
 			SimplifiedQuery(crud, query, searchSubject, PickSubject);
+			console.log(query);
 			query = basequery;
+			console.log(query);
+			// console.log("HEY");
 		});
 	}
 	else{

@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
+        header('Location: ../Portal.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,21 +13,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Student Grading</title>
 
-	<link rel="stylesheet" type="text/css" href="css/modal.css"/>
-	<link rel="stylesheet" type="text/css" href="css/all.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="css/merged-styles.css"/>
-	<link rel="icon" href="pictures/logo.png" />
+	<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/all.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/>
+	<link rel="icon" href="../pictures/logo.png" />
 </head>
 
 <body>
-    <img src="pictures/logodesign.jpg" class="logodesign">
+    <img src="../pictures/logodesign.jpg" class="logodesign">
 
     <div class="header mb-3">
         <!--<img src="pictures/JuanSci-Header.jpg" class="logodesign">-->
         <legend class="h4 pl-0 pt-3 mb-0">REPORT ON STUDENT'S PROGRESS IN LEARNING</legend>
         <div class="menu">
-            <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
+            <a href="#">Administrator</a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
     </div>
 
@@ -250,11 +256,11 @@
         </div>
     </div>
 
-    <script src="js/ajax.js" type="text/javascript"></script>
-    <script src="js/utility.js" type="text/javascript"></script>
-    <script src="js/cms.js" type="text/javascript"></script>
-    <script src="js/modal.js" type="text/javascript"></script>
-    <script src="js/Student_Grading.js" type="text/javascript"></script>
+    <script src="../js/ajax.js" type="text/javascript"></script>
+    <script src="../js/utility.js" type="text/javascript"></script>
+    <script src="../js/cms.js" type="text/javascript"></script>
+    <script src="../js/modal.js" type="text/javascript"></script>
+    <script src="../js/Student_Grading.js" type="text/javascript"></script>
 </body>
 
 </html>
