@@ -7,6 +7,7 @@
   width: 100%; /* Full width */
   min-height: 100%; /* Full height */
   max-height: 100%;
+  height: 100%;
   overflow-y: scroll;
   /*overflow: auto;  Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
@@ -15,13 +16,14 @@
 
 /* Modal Content/Box */
 #modal-content{
-  /*min-height: 30%;*/
-  max-height: 97%;
+  /*min-height: 2%;*/
+  /*max-height: 2%;*/
+  height: 75%;
   overflow-y: hidden;
   /*overflow-y: scroll;*/
   background-color: #fefefe;
    /* 15% from the top and centered */
-  margin: 0 auto;
+  margin: 5% auto;
   padding: 1%;
   border: 0.0625em solid #888;
   /*width: 30%;  Could be more or less, depending on screen size */
@@ -36,8 +38,12 @@
   /*padding: 0%;*/
   padding: 0%;
   border-bottom: double 0.5em maroon;
+  height: 12.5%;
 }
 
+#modal-body{
+  height: 70%;
+}
 /*#modal-title{
   float: left;
 }*/
@@ -62,42 +68,11 @@
   font-weight: bold;
 }
 
-/*#txt_QTY{
-  width: 20%;
-  text-align: center;
-  font-size: 140%;
-  padding: 2%;
-  border: 0.1em solid #aaa;
-  border-radius: 1em;
-}
-
-#div_QTY{
-  font-size: 120%;
-  text-align: left;
-}
-
-#div_PRICE{
-  
-}
-*/
 /*MODAL FOOTER*/
 #modal-footer{
-  padding: 3% 2%;
+  /*position: relative;*/
+  height: 17.5%;
+  padding: 0.8% 0%;
   border-top: solid 0.2em #aaa;
+  /*bottom: 0;*/
 }
-
-#qty-modal-footer button{
-  margin-left: 5%;
-  float: right;
-  font-size: 120%;
-}
-
-/*#qty_validity{
-  text-align: right;
-  display: none;
-  color: red;
-}
-
-#qty-btn-BUY{
-  display: none;
-}*/

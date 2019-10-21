@@ -42,9 +42,9 @@
 			</div>
 			<div id= "modal-body">
 			</div>
-			<div class="ml-3 mr-3 mt-0">
-        	<nav aria-label="Page navigation example">
-            	<ul class="pagination justify-content-end">
+			<!-- <div class="ml-3 mr-3 mt-0"> -->
+        	<!-- <nav aria-label="Page navigation example"> -->
+            	<!-- <ul class="pagination justify-content-end">
                     <li class="page-item disabled">
                       <a class="page-link" href="#" tabindex="-1">Previous</a>
                     </li>
@@ -54,9 +54,9 @@
                     <li class="page-item">
                       <a class="page-link maroon" href="#">Next</a>
                     </li>
-                </ul>
-            </nav>
-			</div>
+                </ul> -->
+            <!-- </nav> -->
+			<!-- </div> -->
 			<div id="modal-footer">	
 			</div>
 		</div>

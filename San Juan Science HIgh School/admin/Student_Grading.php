@@ -40,7 +40,7 @@
                 </div>
                 <div id="modal-body">
                 </div>
-                <div class="ml-3 mr-3 mt-0">
+                <!-- <div class="ml-3 mr-3 mt-0">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
                             <li class="page-item disabled">
@@ -54,7 +54,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div> -->
                 <div id="modal-footer">
                 </div>
             </div>

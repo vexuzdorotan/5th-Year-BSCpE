@@ -279,7 +279,9 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 	var main_body = tbody.parentNode.parentNode;
 	let limit;
 	// console.log(main_body.children.length);
-
+	if(document.querySelector("#modal")){
+		document.querySelector("#modal-footer").removeChild(document.querySelector("#modal-footer").firstChild);
+	}
 	if(main_body.children.length > 2){
 		main_body.removeChild(main_body.children[2]);
 	}
@@ -323,20 +325,30 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
  		tbody.appendChild(tr);
 	}
 	//PAGINATION
-	var pagination = document.createElement('p');
+	var pagination = document.createElement('ul');
 	btn_First = document.createElement('button');
 	btn_Last = document.createElement('button');
 	btn_Next = document.createElement('button');
 	btn_Previous = document.createElement('button');
-
 	pagination.appendChild(btn_First);
 	pagination.appendChild(btn_Previous);
 	pagination.appendChild(btn_Next);
 	pagination.appendChild(btn_Last);
-	main_body.appendChild(pagination);
 
-	// console.log(pagination);
-	pagination.style.textAlign = "center";
+	// btn_First.class = "page-item";
+	// btn_Previous.class = "page-item";
+	// btn_Next.class = "page-item";
+	// btn_Last.class = "page-item";
+	if(document.querySelector("#modal")){
+		document.querySelector("#modal-footer").appendChild(pagination);
+	}
+	else{
+		main_body.appendChild(pagination);
+	}
+	// main_body.appendChild(pagination);
+	// pagination.class = "pagination justify-content-end";
+
+	pagination.style.textAlign = "right";
 	btn_First.innerHTML = "FIRST";
 	btn_Previous.innerHTML = "<";
 	btn_Next.innerHTML = ">";
