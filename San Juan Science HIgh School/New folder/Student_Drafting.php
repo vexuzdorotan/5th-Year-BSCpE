@@ -5,8 +5,8 @@
 <html>
 <head>
 	<title>Student</title>
-	<link rel="stylesheet" type="text/css" href="css/modal.css">
-	<link rel="stylesheet" type="text/css" href="css/Entire.css">
+	<link rel="stylesheet" type="text/css" href="../css/modal.css">
+	<link rel="stylesheet" type="text/css" href="../css/Entire.css">
 </head>
 <body>
 	<div id="modal">
@@ -37,10 +37,10 @@
 			<button>&check;</button>
 		</p>
 	</div>
-	<script type="text/javascript" src="js/ajax.js"></script>
-	<script type="text/javascript" src="js/modal.js"></script>
-	<script type="text/javascript" src="js/utility.js"></script>
-	<script type="text/javascript" src="js/cms.js"></script>
-	<script type="text/javascript" src="js/StudentDrafting.js"></script>
+	<script type="text/javascript" src="../js/ajax.js"></script>
+	<script type="text/javascript" src="../js/modal.js"></script>
+	<script type="text/javascript" src="../js/utility.js"></script>
+	<script type="text/javascript" src="../js/cms.js"></script>
+	<script type="text/javascript" src="../js/StudentDrafting.js"></script>
 </body>
 </html>

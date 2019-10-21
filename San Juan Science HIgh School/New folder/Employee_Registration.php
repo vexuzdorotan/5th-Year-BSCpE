@@ -1,5 +1,5 @@
 <?php
-   require 'php/ConnectToDB.php';
+   require '../php/ConnectToDB.php';
    $stmt = $db->prepare("UPDATE employee SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
    $stmt->execute();
    $stmt->closeCursor();
@@ -8,18 +8,18 @@
 <html>
 <head>
 	<title>Employee Registration</title>
-   <link rel="stylesheet" type="text/css" href="css/merged-styles.css">
-   <link rel="stylesheet" type="text/css" href="css/Entire.css">
-   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-   <link rel="icon" href="pictures/logo.png">
+   <link rel="stylesheet" type="text/css" href="../css/merged-styles.css">
+   <link rel="stylesheet" type="text/css" href="../css/Entire.css">
+   <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+   <link rel="icon" href="../pictures/logo.png">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-   <img src="pictures/logodesign.jpg" class="logodesign">
+   <img src="../pictures/logodesign.jpg" class="logodesign">
 <div class="header mb-3">
       <legend class="h4 pl-0 pt-3 mb-0">EMPLOYEE REGISTRATION</legend>
       <div class="menu">
-         <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
+         <a href="#">Administrator</a>|<a href="../dashboards/Employees.html">Menu</a>|<a href="../Portal.html">Logout</a>
       </div>
    </div>
 <div class="regi-container">
@@ -299,7 +299,7 @@
    <div id="SecondCol">
       <div class="photo-div">
          <p><label class="h5 m-0" for="file">Upload Employee's Photo</label></p>
-         <center><p><img src="pictures/faceless.png" id="profile" style="width: 200px; height: 200px" class="photo-upload shadow" ></p></center>
+         <center><p><img src="../pictures/faceless.png" id="profile" style="width: 200px; height: 200px" class="photo-upload shadow" ></p></center>
          <input type="file" id="file" name="file" accept=".gif,.jpg,.jpeg,.png">
       </div>
       <p class="mt-3 mb-3">
@@ -315,7 +315,7 @@
    <div class="footer">
       <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
    </div>
-<script type="text/javascript" src = "js/ajax.js"></script>
-<script type="text/javascript" src = "js/Employee.js"></script>
+<script type="text/javascript" src = "../js/ajax.js"></script>
+<script type="text/javascript" src = "../js/Employee.js"></script>
 </body>
 </html>

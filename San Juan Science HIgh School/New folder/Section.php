@@ -2,17 +2,17 @@
 <html>
 <head>
 	<title>Section</title>
-	<link rel="stylesheet" type="text/css" href="css/modal.css"/>
-	<link rel="stylesheet" type="text/css" href="css/merged-styles.css"/>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-	<link rel="icon" href="pictures\logo.png" />
+	<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+	<link rel="icon" href="../pictures/logo.png" />
 </head>
 <body>
-	<img src="pictures/logodesign.jpg" class="w-100">
+	<img src="../pictures/logodesign.jpg" class="w-100">
 	<div class="header mb-3">
       <legend class="h4 pl-2 pt-3 mb-0">MANAGE SECTIONS</legend>
       <div class="menu">
-         <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
+         <a href="#">Administrator</a>|<a href="../dashboards/Overview.html">Menu</a>|<a href="../Portal.html">Logout</a>
       </div>
    </div>
    <div class="sec-container row">
@@ -82,10 +82,10 @@
      		<p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved<a style="color: black; hover{color:black; text-decoration: none;}" href=#>.</a></p>
    		</div>
 </div>
-	<script type="text/javascript" src="js/ajax.js"></script>
-	<script type="text/javascript" src="js/utility.js"></script>
-	<script type="text/javascript" src="js/cms.js"></script>
-	<script type="text/javascript" src="js/Section.js"></script>
-	<script type="text/javascript" src="js/modal.js"></script>
+	<script type="text/javascript" src="../js/ajax.js"></script>
+	<script type="text/javascript" src="../js/utility.js"></script>
+	<script type="text/javascript" src="../js/cms.js"></script>
+	<script type="text/javascript" src="../js/Section.js"></script>
+	<script type="text/javascript" src="../js/modal.js"></script>
 </body>
 </html>

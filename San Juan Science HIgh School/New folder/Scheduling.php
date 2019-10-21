@@ -13,18 +13,18 @@
 			text-align: center;
 		}
 	</style>
-	<link rel="stylesheet" type="text/css" href="css/modal.css"/>
-	<link rel="stylesheet" type="text/css" href="css/all.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="css/merged-styles.css"/>
-	<link rel="icon" href="pictures/logo.png" />
+	<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/all.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/>
+	<link rel="icon" href="../pictures/logo.png" />
 </head>
 <body>
-	<img src="pictures/logodesign.jpg" class="w-100">
+	<img src="../pictures/logodesign.jpg" class="w-100">
 	<div class="header mb-3">
       <legend class="h4 pl-2 pt-3 mb-0">SCHEDULING</legend>
       <div class="menu">
-         <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
+         <a href="#">Administrator</a>|<a href="../dashboards/Scheduling.html">Menu</a>|<a href="Portal.html">Logout</a>
       </div>
    </div>
 	<div class="room-container">
@@ -170,10 +170,10 @@
 	</table>
 	<!-- <button>SUBMIT</button> -->
 	<button class="rounded-pill">RESET</button>
-<script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/utility.js"></script>
-<script type="text/javascript" src="js/cms.js"></script>
-<script type="text/javascript" src="js/Scheduling.js"></script>
-<script type="text/javascript" src="js/modal.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/utility.js"></script>
+<script type="text/javascript" src="../js/cms.js"></script>
+<script type="text/javascript" src="../js/Scheduling.js"></script>
+<script type="text/javascript" src="../	js/modal.js"></script>
 </body>
 </html>

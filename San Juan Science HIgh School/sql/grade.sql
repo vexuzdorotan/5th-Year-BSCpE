@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2019 at 04:57 PM
+-- Generation Time: Oct 20, 2019 at 09:06 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -25,46 +25,39 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblstudentgrade`
+-- Table structure for table `grade`
 --
 
-CREATE TABLE `tblstudentgrade` (
+CREATE TABLE `grade` (
   `GradeID` int(11) NOT NULL,
-  `StudentNum` int(11) NOT NULL,
+  `LRNNum` bigint(12) NOT NULL,
   `GradeLevel` int(11) NOT NULL,
   `SubjectName` varchar(50) NOT NULL,
-  `QtrFinalRemark` varchar(50) NOT NULL,
+  `Quarter` int(11) NOT NULL,
   `GradeRating` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tblstudentgrade`
+-- Dumping data for table `grade`
 --
 
-INSERT INTO `tblstudentgrade` (`GradeID`, `StudentNum`, `GradeLevel`, `SubjectName`, `QtrFinalRemark`, `GradeRating`) VALUES
-(8, 0, 10, 'sci', 'q1', 74),
-(9, 0, 10, 'sci', 'q2', 74),
-(10, 0, 10, 'sci', 'q3', 74),
-(11, 0, 10, 'sci', 'q4', 74),
-(12, 0, 10, 'sci', 'final', 74),
-(13, 0, 10, 'sci', 'remark', 0),
-(14, 0, 10, 'esp', 'q4', 84),
-(15, 2, 7, 'eng', 'q1', 81),
-(16, 2, 7, 'eng', 'q2', 82),
-(17, 2, 7, 'eng', 'q3', 83),
-(18, 2, 7, 'eng', 'q4', 84),
-(19, 2, 7, 'eng', 'final', 82.5),
-(20, 2, 7, 'eng', 'remark', 1),
-(21, 2, 7, 'health', 'q4', 75);
+INSERT INTO `grade` (`GradeID`, `LRNNum`, `GradeLevel`, `SubjectName`, `Quarter`, `GradeRating`) VALUES
+(155, 567890321425, 7, 'fil', 1, 67),
+(156, 123456789123, 7, 'fil', 1, 69),
+(157, 123456789121, 7, 'fil', 1, 68),
+(158, 147274234724, 7, 'fil', 1, 66),
+(159, 155366694777, 7, 'fil', 1, 70),
+(160, 123456789123, 7, 'fil', 2, 90),
+(161, 147274234724, 7, 'fil', 2, 80);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tblstudentgrade`
+-- Indexes for table `grade`
 --
-ALTER TABLE `tblstudentgrade`
+ALTER TABLE `grade`
   ADD PRIMARY KEY (`GradeID`);
 
 --
@@ -72,10 +65,10 @@ ALTER TABLE `tblstudentgrade`
 --
 
 --
--- AUTO_INCREMENT for table `tblstudentgrade`
+-- AUTO_INCREMENT for table `grade`
 --
-ALTER TABLE `tblstudentgrade`
-  MODIFY `GradeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+ALTER TABLE `grade`
+  MODIFY `GradeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

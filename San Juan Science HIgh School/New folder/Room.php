@@ -2,18 +2,18 @@
 <html>
 <head>
 	<title>Room</title>
-	<link rel="stylesheet" type="text/css" href="css/Entire.css"/>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/merged-styles.css" />
-    <link rel="icon" href="pictures\logo.png" />
+	<link rel="stylesheet" type="text/css" href="../css/Entire.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css" />
+    <link rel="icon" href="../pictures/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<img src="pictures/logodesign.jpg" class="logodesign">
+	<img src="../pictures/logodesign.jpg" class="logodesign">
 	<div class="header mb-3">
       <legend class="h4 pl-2 pt-3 mb-0">MANAGE ROOMS</legend>
       <div class="menu">
-         <a href="#">Administrator</a>|<a href="Dashboard.html">Menu</a>|<a href="Portal.html">Logout</a>
+         <a href="#">Administrator</a>|<a href="../dashboards/Overview.html">Menu</a>|<a href="../Portal.html">Logout</a>
       </div>
    	</div>
    	<div class="room-container row">
@@ -62,9 +62,9 @@
      		<p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
    		</div>
 	</div>
-	<script type="text/javascript" src="js/ajax.js"></script>
-	<script type="text/javascript" src="js/utility.js"></script>
-	<script type="text/javascript" src="js/cms.js"></script>
-	<script type="text/javascript" src="js/Room.js"></script>
+	<script type="text/javascript" src="../js/ajax.js"></script>
+	<script type="text/javascript" src="../js/utility.js"></script>
+	<script type="text/javascript" src="../js/cms.js"></script>
+	<script type="text/javascript" src="../js/Room.js"></script>
 </body>
 </html>  
