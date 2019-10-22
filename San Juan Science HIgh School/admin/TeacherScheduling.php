@@ -10,6 +10,9 @@
 	<title>Scheduling for Teachers</title>
 	<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/Entire.css">
+	<link rel="stylesheet" type="text/css" href="../css/all.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/> -->
 
 	<style type="text/css">
 		#firstCol{

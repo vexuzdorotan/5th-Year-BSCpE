@@ -326,10 +326,10 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 	}
 	//PAGINATION
 	var pagination = document.createElement('ul');
-	btn_First = document.createElement('button');
-	btn_Last = document.createElement('button');
-	btn_Next = document.createElement('button');
-	btn_Previous = document.createElement('button');
+	var btn_First = document.createElement('button');
+	var btn_Last = document.createElement('button');
+	var btn_Next = document.createElement('button');
+	var btn_Previous = document.createElement('button');
 	pagination.appendChild(btn_First);
 	pagination.appendChild(btn_Previous);
 	pagination.appendChild(btn_Next);
