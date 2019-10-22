@@ -330,6 +330,12 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 	var btn_Last = document.createElement('button');
 	var btn_Next = document.createElement('button');
 	var btn_Previous = document.createElement('button');
+	pagination.classList.add("pgn");
+	btn_First.classList.add("pgn-first");
+	btn_Next.classList.add("pgn-next");
+	btn_Previous.classList.add("pgn-next")
+	btn_Last.classList.add("pgn-last");
+
 	pagination.appendChild(btn_First);
 	pagination.appendChild(btn_Previous);
 	pagination.appendChild(btn_Next);
@@ -349,10 +355,11 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 	// pagination.class = "pagination justify-content-end";
 
 	pagination.style.textAlign = "right";
-	btn_First.innerHTML = "FIRST";
+	// console.log(pagination);
+	btn_First.innerHTML = "First";
 	btn_Previous.innerHTML = "<";
 	btn_Next.innerHTML = ">";
-	btn_Last.innerHTML = "LAST";
+	btn_Last.innerHTML = "Last";
 	// console.log(main_body.children.length);
 	// console.log(main_body.children[main_body.children.length]);
 	btn_First.addEventListener("click", function(){
@@ -392,6 +399,10 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 		alert("CANNOT FIND");
 		console.log(xhttp.responseText);
 		console.log(err);
+	}
+
+	function newFunction() {
+		return "dark";
 	}
 	// console.log(xhttp.responseText);
 }

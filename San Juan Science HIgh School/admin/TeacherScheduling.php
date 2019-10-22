@@ -9,11 +9,10 @@
 <head>
 	<title>Scheduling for Teachers</title>
 	<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/Entire.css">
 	<link rel="stylesheet" type="text/css" href="../css/all.css" />
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
-	<!-- <link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/> -->
-
+	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/>
+	<link rel="icon" href="../pictures/logo.png" />
 	<style type="text/css">
 		#firstCol{
 			float: left;
@@ -34,6 +33,14 @@
 	</style>
 </head>
 <body>
+	<img src="../pictures/logodesign.jpg" class="w-100">
+	<div class="header mb-3">
+      <legend class="h4 pl-2 pt-3 mb-0">SCHEDULING FOR TEACHERS</legend>
+      <div class="menu">
+         <a href="#">Administrator</a>|<a href="../dashboards/Scheduling.html">Menu</a>|<a href="Portal.html">Logout</a>
+      </div>
+   </div>
+   <div class="room-container">
 	<div id="modal">
 		<div id="modal-content">
 			<span id="close" onclick="closeModal(document.getElementById('modal-body'));">&times;</span>
@@ -46,20 +53,20 @@
 			</div>
 		</div>
 	</div>
-	<div id="firstCol">
+	<div>
 	<p>
 		<label for="">Teacher: <input type="search" id="txt_TeacherEmployeeNum" style="display: none;" />
 		<input type="search" id="txt_TeacherName" disabled/></label>
-		<button>&check;</button>
+		<button class="modal-button"><i class="far fa-window-restore"></i></button>
 	</p>
 	<p>
 		<label for="">Add Subject:</label>
-		<button>&check;</button>
-	</p>
+		<button class="modal-button"><i class="far fa-window-restore"></i></button>
+	</p><br/>
 	</div>
-	<div id="secondCol">
+	<div class="s-table">
 	<table>
-		<thead>
+		<thead class="dark">
 			<tr>
 				<td>TIME</td>
 				<td>Monday</td>
@@ -162,7 +169,7 @@
 			
 		</tbody>
 	</table>
-	<button>RESET</button>
+	<button class="rounded-pill">RESET</button>
 	</div>
 	<!-- <button>SUBMIT</button> -->
 <script type="text/javascript" src="../js/ajax.js"></script>

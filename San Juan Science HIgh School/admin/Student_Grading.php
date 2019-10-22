@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="float-left">
+        <div class="float-right">
             <input type="text" id="txt_SectionNum" style="display: none;" />
             <label for="">Section Name: <input class="ml-2 sec-name" type="text" id="txt_SectionName" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
@@ -68,13 +68,13 @@
             <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentName" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
         </div>
-        <br /><br /><br /><br />
+        <br /><br /><br />
         <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
         <p><b>Adviser: </b><span id="txt_Adviser"></span></p>
         <p><b>Student: </b><span id="txt_Student"></span></p>
 
-        <div class="row">
-            <div class="col-9 p-0 m-0">
+        <div>
+            <div class="p-0 mt-2">
                 <table id="gradeTable" class="g-table">
                     <thead>
                         <tr>
@@ -225,7 +225,7 @@
                 </table>
             </div>
 
-            <div class="col-3 p-0 m-0">
+            <div class="p-0 mt-3">
                 <p class="h6">Notes:</p>
                 <ul>
                     <li>*added AVERAGE row</li>

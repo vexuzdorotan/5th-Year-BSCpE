@@ -1,15 +1,15 @@
 <?php
-    session_start();
-    if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
-        header('Location: ../Portal.php');
-    }
+session_start();
+if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
+    header('Location: ../Portal.php');
+}
 ?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>JuanSci Dashboard</title>
+    <title>Dashboard - Employees</title>
+    <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="../css/Dashboard.css" />
     <link rel="stylesheet" type="text/css" href="../css/all.css" />
@@ -25,9 +25,9 @@
                 <li><a href="../Home.html" class="main-li"><i class="fas fa-home"></i>Home</a></li>
                 <li><a href="" class="main-li"><i class="fas fa-desktop"></i>Dashboard</a>
                     <div class="sub-div">
-                        <a class="sub-li active" href="#">Overview</a>
+                        <a class="sub-li" href="Dashboard.php">Overview</a>
                         <a class="sub-li" href="Dashboard_1.php">Students</a>
-                        <a class="sub-li" href="Dashboard_2.php">Employees</a>
+                        <a class="sub-li  active" href="#">Employees</a>
                         <a class="sub-li" href="Dashboard_3.php">Schedules</a>
                         <a class="sub-li" href="SubjectCode.php">Subjects</a>
                         <a class="sub-li" href="Section.php">Sections</a>
@@ -38,33 +38,39 @@
             </ul>
         </nav>
         <div class="content">
-            <div class="count student">
-                <p class="number">1,234</p>
-                <p class="title">student</p>
-                <p class="subtitle">Total Students</p>
+            <div class="option">
+                <a href="Employee_Registration.php">
+                    <img src="../pictures/add-employee.png" class="img-opt">
+                    <p>add employee</p>
+                </a>
             </div>
-            <div class="count teacher">
-                <p class="number">56</p>
-                <p class="title">teacher</p>
-                <p class="subtitle">Total Teachers</p>
+            <div class="option">
+                <a href="#">
+                    <img src="../pictures/employees.png" class="img-opt">
+                    <p>list of employees</p>
+                </a>
             </div>
-            <div class="count section">
-                <p class="number">31</p>
-                <p class="title">section</p>
-                <p class="subtitle">Total Sections</p>
+            <div class="option">
+                <a href="#">
+                    <img src="../pictures/teachersz.png" class="img-opt">
+                    <p>list of teachers</p>
+                </a>
             </div>
-            <div class="count room">
-                <p class="number">12</p>
-                <p class="title">room</p>
-                <p class="subtitle">Rooms Available</p>
+        <!---
+            <div class="option">
+                <a href="../admin/">
+                    <img src="../pictures/grade.png" class="img-opt">
+                    <p>add grade</p>
+                </a>
             </div>
-            
+        -->
+
+
         </div>
-       
     </div>
 
 
-
+    <script type="text/javascript" src="../js/Dashboard.js"></script>
 </body>
 
 </html>

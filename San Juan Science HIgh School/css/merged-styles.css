@@ -250,3 +250,34 @@ font-size: 14px;
             margin-top: 20px;
     }	
 }
+.pgn{
+	float: right;
+}
+.pgn-first{
+	border:2px solid maroon;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-right:none;
+	margin-top:10px;
+	background-color:#f8f9fa;
+	color:maroon;
+	font-weight: 500;
+}
+.pgn-next{
+	border:2px solid maroon;
+	border-right:none;
+	margin-top:10px;
+	background-color:#f8f9fa;
+	color:maroon;
+	font-weight: 500;
+}
+.pgn-last{
+	border:2px solid maroon;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-top:10px;
+	background-color:#f8f9fa;
+	color:maroon;
+	font-weight: 500;
+	margin-right: 20px;
+}
