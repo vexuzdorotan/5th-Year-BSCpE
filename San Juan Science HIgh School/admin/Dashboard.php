@@ -3,6 +3,24 @@
     if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
         header('Location: ../Portal.php');
     }
+
+    //Overview INFO
+    require "../php/ConnectToDB.php";
+
+    $stmt = $db->prepare("SELECT COUNT(LRNNum) FROM student");
+    $stmt->execute();
+    $numberOfStudents = $stmt->fetch()[0];
+    $stmt = $db->prepare("SELECT COUNT(EmployeeNum) FROM teacher");
+    $stmt->execute();
+    $numberOfTeachers = $stmt->fetch()[0];
+    $stmt = $db->prepare("SELECT COUNT(SectionNum) FROM section");
+    $stmt->execute();
+    $numberOfSections = $stmt->fetch()[0];
+    $stmt = $db->prepare("SELECT COUNT(RoomNum) FROM room");
+    $stmt->execute();
+    $numberOfRooms = $stmt->fetch()[0];
+    $stmt->closeCursor();
+    // echo $numberOfStudents;
 ?>
 
 <!DOCTYPE html>
@@ -39,22 +57,22 @@
         </nav>
         <div class="content">
             <div class="count student">
-                <p class="number">1,234</p>
+                <p class="number"><?php echo $numberOfStudents;?></p>
                 <p class="title">student</p>
                 <p class="subtitle">Total Students</p>
             </div>
             <div class="count teacher">
-                <p class="number">56</p>
+                <p class="number"><?php echo $numberOfTeachers;?></p>
                 <p class="title">teacher</p>
                 <p class="subtitle">Total Teachers</p>
             </div>
             <div class="count section">
-                <p class="number">31</p>
+                <p class="number"><?php echo $numberOfSections;?></p>
                 <p class="title">section</p>
                 <p class="subtitle">Total Sections</p>
             </div>
             <div class="count room">
-                <p class="number">12</p>
+                <p class="number"><?php echo $numberOfRooms;?></p>
                 <p class="title">room</p>
                 <p class="subtitle">Rooms Available</p>
             </div>
