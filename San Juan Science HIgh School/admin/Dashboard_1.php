@@ -53,7 +53,13 @@
             <div class="option">
                 <a href="Student_Grading.php">
                 <img src="../pictures/grade.png" class="img-opt">
-                <p>grade students</p>
+                <p>view grade students</p>
+                </a>
+            </div>
+            <div class="option">
+                <a href="Create_Grade.php">
+                <img src="../pictures/grade.png" class="img-opt">
+                <p>create grade students</p>
                 </a>
             </div>
             <div class="option">

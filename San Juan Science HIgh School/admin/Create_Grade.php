@@ -1,3 +1,10 @@
+<?php
+    // session_start();
+    // if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
+    //     header('Location: ../Portal.php');
+    // }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,20 +61,29 @@
         </div>
 
         <div class="float-right">
+            <label for="">(TEMP) EmployeeNum:
+                <input type="number" id="txt_EmployeeNum" min="1" value="1" />
+            </label>
+        </div>
+        <br /><br />
+
+        <div class="float-right">
             <input type="text" id="txt_SubjectCode" style="display: none;" />
-            <label for="">Subject Code: <input class="ml-2 sec-name" type="text" id="txt_SectionName" required/></label>
+            <label for="">Subject ID: 
+                <input class="ml-2 sec-name" type="text" id="SubjectCode" required/>
+            </label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
         </div>
         <br /><br />
         <p><b>SECTION: </b><span id="txt_Section"></span></p>
         <p><b>GRADE LEVEL: </b><span id="txt_GradeLevel"></span></p>
         <p><b>SUBJECT: </b><span id="txt_Subject"></span></p>
-        <p><b>CLASS ADVISER: </b><span id="txt_Adviser"></span></p>
         <p><b>SUBJECT TEACHER : </b><span id="txt_SubjTeacher"></span></p>
+        <p><b>CLASS ADVISER: </b><span id="txt_Adviser"></span></p>
 
         <div class="row">
             <div class="col-9 p-0 m-0">            
-                <table id="SearchSubjectCodeTable" class="g-table">
+                <table id="CreateGradeTable" class="g-table">
                     <thead class="dark">
                         <tr>
                             <th id="LRNNum" rowspan="2">NO.</th>
@@ -87,19 +103,6 @@
                     <tbody>
 
                     </tbody>
-
-                    <tbody id="saveQuarter">
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><button>SAVE</button></td>
-                            <td><button>SAVE</button></td>
-                            <td><button>SAVE</button></td>
-                            <td><button>SAVE</button></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
 
@@ -107,10 +110,11 @@
                 <p class="h6">Notes:</p>
                 <ul>
                     <li>Import `grade` table to DB first</li>
-                    <li>Temporary: Grades save for FIL 7 only</li>
-                    <li>Temporary: `student` table for TBody student list</li>
-                    <li>Temporary: SubjectCode Modal disabled</li>
-                    <li>Bug: Empty/Duplicate rows when changing SubjectCode</li>
+                    <li>Temporary: $_SESSION Login as Employee/Teacher not implemented</li>
+                    <li>Waiting: MATH A + MATH B = MATH Weighted Grade in Form 138</li>
+                    <li>Waiting: SCI A + SCI B = SCI Weighted Grade in Form 138</li>
+                    <li>Waiting: RESEARCH Subject where to insert on Form 138?</li>
+                    <li>Waiting: Add MUSIC, ARTS, PE, HEALTH to subject/subjectcode Table </li>
                     <li>Grades in every student per quarter can still update before the deadline of encoding</li>
                 </ul>
             </div>

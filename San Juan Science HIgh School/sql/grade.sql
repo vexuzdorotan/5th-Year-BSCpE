@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2019 at 09:06 PM
+-- Generation Time: Oct 25, 2019 at 06:09 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -32,23 +32,10 @@ CREATE TABLE `grade` (
   `GradeID` int(11) NOT NULL,
   `LRNNum` bigint(12) NOT NULL,
   `GradeLevel` int(11) NOT NULL,
-  `SubjectName` varchar(50) NOT NULL,
+  `SubjectID` varchar(50) NOT NULL,
   `Quarter` int(11) NOT NULL,
   `GradeRating` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `grade`
---
-
-INSERT INTO `grade` (`GradeID`, `LRNNum`, `GradeLevel`, `SubjectName`, `Quarter`, `GradeRating`) VALUES
-(155, 567890321425, 7, 'fil', 1, 67),
-(156, 123456789123, 7, 'fil', 1, 69),
-(157, 123456789121, 7, 'fil', 1, 68),
-(158, 147274234724, 7, 'fil', 1, 66),
-(159, 155366694777, 7, 'fil', 1, 70),
-(160, 123456789123, 7, 'fil', 2, 90),
-(161, 147274234724, 7, 'fil', 2, 80);
 
 --
 -- Indexes for dumped tables
@@ -68,7 +55,7 @@ ALTER TABLE `grade`
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `GradeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `GradeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=463;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
