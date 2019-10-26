@@ -67,14 +67,16 @@ function getSubject(xhttp) {
         tbody_tr[i].addEventListener('click', function() {
             document.querySelector('#searchSubject').value = '';
             closeModal(modal_body);
+
             SectionNum = this.childNodes[0].innerHTML;
             txt_Subject.innerHTML = this.childNodes[1].innerHTML;
             SubjectCode.value = this.childNodes[1].innerHTML;
             txt_Section.innerHTML = this.childNodes[2].innerHTML;
             txt_GradeLevel.innerHTML = this.childNodes[3].innerHTML;
             txt_SubjTeacher.innerHTML = this.childNodes[4].innerHTML;
-            // txt_Adviser.innerHTML = this.childNodes[5].innerHTML;
-            readStudentListDB();
+
+            getAdviserNameDB();
+            getStudentListDB();
         });
 
         tbody_tr[i].addEventListener('mouseover', function() {
@@ -89,7 +91,26 @@ function getSubject(xhttp) {
     }
 }
 
-function readStudentListDB() {
+function getAdviserNameDB() {
+    let query = '';
+
+    query += 'SELECT name ';
+    query += 'FROM teacher ';
+    query += 'WHERE SectionNum IN (' + SectionNum + ') ';
+
+    SimplifiedQuery('SELECT', query, '', function(xhttp) {
+        try {
+            txt_Adviser.innerHTML = JSON.parse(xhttp.responseText)[0][0];
+
+        } catch (err) {
+            alert('CANNOT FIND');
+            console.log(xhttp.responseText);
+            console.log(err);
+        }
+    });
+}
+
+function getStudentListDB() {
     let query = '';
 
     query += 'SELECT student.LRNNum, student.LastName, student.FirstName, student.MiddleName ';
@@ -195,7 +216,37 @@ function tBodyGrade(xhttp) {
                 }
                 tbody.appendChild(tr);
             }
+
             retrieveGradeDB();
+
+            const save1 = document.querySelector('#save1');
+            const save2 = document.querySelector('#save2');
+            const save3 = document.querySelector('#save3');
+            const save4 = document.querySelector('#save4');
+
+            save1.addEventListener('click', function() {
+                Quarter = 1;
+                retrieveGradeDB();
+                checkGrade();
+            });
+
+            save2.addEventListener('click', function() {
+                Quarter = 2;
+                retrieveGradeDB();
+                checkGrade();
+            });
+
+            save3.addEventListener('click', function() {
+                Quarter = 3;
+                retrieveGradeDB();
+                checkGrade();
+            });
+
+            save4.addEventListener('click', function() {
+                Quarter = 4;
+                retrieveGradeDB();
+                checkGrade();
+            });
         } else {
             alert('No enrolled students yet.');
         }
@@ -226,65 +277,46 @@ function retrieveGradeDB() {
     query += 'AND grade.SubjectID IN ("' + txt_Subject.innerHTML + '") ';
     query += 'GROUP BY student.LRNNum ';
 
-    SimplifiedQuery('SELECT', query, '', insertGrade);
+    SimplifiedQuery('SELECT', query, '', saveGradeJSON);
 }
 
-function insertGrade(xhttp) {
+function saveGradeJSON(xhttp) {
     try {
         jsonGrade = JSON.parse(xhttp.responseText);
         console.log(jsonGrade);
-        const q1 = document.querySelectorAll('#q1');
-        const q2 = document.querySelectorAll('#q2');
-        const q3 = document.querySelectorAll('#q3');
-        const q4 = document.querySelectorAll('#q4');
-        const save1 = document.querySelector('#save1');
-        const save2 = document.querySelector('#save2');
-        const save3 = document.querySelector('#save3');
-        const save4 = document.querySelector('#save4');
+        insertGrade();
 
-        for (let i = 0; i < jsonStudent.length; i++) {
-            for (let j = 0; j < jsonGrade.length; j++) {
-                for (let k = 0; k < colNum; k++) {
-                    if (jsonStudent[i][0] == jsonGrade[j][0]) {
-                        if (k == 2)
-                            q1[i].value = jsonGrade[j][3];
-                        else if (k == 3)
-                            q2[i].value = jsonGrade[j][4];
-                        else if (k == 4)
-                            q3[i].value = jsonGrade[j][5];
-                        else if (k == 5)
-                            q4[i].value = jsonGrade[j][6];
-                    }
-                }
-            }
-        }
-
-        save1.addEventListener('click', function() {
-            Quarter = 1;
-            checkGrade();
-        });
-
-        save2.addEventListener('click', function() {
-            Quarter = 2;
-            checkGrade();
-        });
-
-        save3.addEventListener('click', function() {
-            Quarter = 3;
-            checkGrade();
-        });
-
-        save4.addEventListener('click', function() {
-            Quarter = 4;
-            checkGrade();
-        });
-
-        getFinalAndRemark();
     } catch (err) {
         alert('CANNOT FIND');
         console.log(xhttp.responseText);
         console.log(err);
     }
+}
+
+function insertGrade() {
+    const q1 = document.querySelectorAll('#q1');
+    const q2 = document.querySelectorAll('#q2');
+    const q3 = document.querySelectorAll('#q3');
+    const q4 = document.querySelectorAll('#q4');
+
+    for (let i = 0; i < jsonStudent.length; i++) {
+        for (let j = 0; j < jsonGrade.length; j++) {
+            for (let k = 0; k < colNum; k++) {
+                if (jsonStudent[i][0] == jsonGrade[j][0]) {
+                    if (k == 2)
+                        q1[i].value = jsonGrade[j][3];
+                    else if (k == 3)
+                        q2[i].value = jsonGrade[j][4];
+                    else if (k == 4)
+                        q3[i].value = jsonGrade[j][5];
+                    else if (k == 5)
+                        q4[i].value = jsonGrade[j][6];
+                }
+            }
+        }
+    }
+
+    getFinalAndRemark();
 }
 
 function checkGrade() {
@@ -343,14 +375,15 @@ function checkGrade() {
             SimplifiedQuery('INSERT', query, '', fcn = () => { return null });
         }
     }
+
     alert('QUARTER ' + Quarter + ' GRADES SAVED');
-    window.location.reload();
+    console.log('QUARTER ' + Quarter + ' GRADES SAVED');
+    retrieveGradeDB();
 }
 
 function getFinalAndRemark() {
     let average;
     const CreateGradeTable = document.querySelector('#CreateGradeTable');
-
 
     for (let i = 0; i < jsonStudent.length; i++) {
         if (jsonStudent.length > 1) {
