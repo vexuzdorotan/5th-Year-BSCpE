@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2019 at 06:09 PM
+-- Generation Time: Oct 27, 2019 at 03:22 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -34,7 +34,8 @@ CREATE TABLE `grade` (
   `GradeLevel` int(11) NOT NULL,
   `SubjectID` varchar(50) NOT NULL,
   `Quarter` int(11) NOT NULL,
-  `GradeRating` float DEFAULT NULL
+  `GradeRating` float DEFAULT NULL,
+  `DateCreated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -55,7 +56,7 @@ ALTER TABLE `grade`
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `GradeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=463;
+  MODIFY `GradeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1015;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -110,10 +110,7 @@
                 <p class="h6">Notes:</p>
                 <ul>
                     <li>Import `grade` table to DB first</li>
-                    <li>Temporary: $_SESSION Login as Employee/Teacher not implemented</li>
-                    <li>Waiting: MATH A + MATH B = MATH Weighted Grade in Form 138</li>
-                    <li>Waiting: SCI A + SCI B = SCI Weighted Grade in Form 138</li>
-                    <li>Waiting: RESEARCH Subject where to insert on Form 138?</li>
+                    <li>Temporary: $_SESSION Login as Employee/Teacher not implemented for faster QA testing</li>
                     <li>Waiting: Add MUSIC, ARTS, PE, HEALTH to subject/subjectcode Table </li>
                     <li>Grades in every student per quarter can still update before the deadline of encoding</li>
                 </ul>

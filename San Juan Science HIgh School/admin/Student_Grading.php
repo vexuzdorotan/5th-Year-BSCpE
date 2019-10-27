@@ -1,3 +1,10 @@
+<?php
+    // session_start();
+    // if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
+    //     header('Location: ../Portal.php');
+    // }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +29,7 @@
         <div class="menu">
             <a href="#">Administrator</a>|<a href="../dashboards/Overview.html">Menu</a>|<a href="../Portal.html">Logout</a>
         </div>
+
     </div>
 
     <div class="room-container">
@@ -31,8 +39,10 @@
                 <div id="modal-header">
                     <h2 id="modal-title"></h2>
                 </div>
+
                 <div id="modal-body">
                 </div>
+
                 <div class="ml-3 mr-3 mt-0">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
@@ -48,19 +58,24 @@
                         </ul>
                     </nav>
                 </div>
+
                 <div id="modal-footer">
                 </div>
+
             </div>
+
         </div>
+
         <div class="float-right">
             <input type="text" id="txt_SectionNum" style="display: none;" />
-            <label for="">Section Name: <input class="ml-2 sec-name" type="text" id="txt_SectionName" required/></label>
+            <label for="">Adviser Name: <input class="ml-2 sec-name" type="text" id="input_Adviser" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
             <br />
             <input type="text" id="txt_LRNNum" style="display: none;" />
             <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentName" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
         </div>
+
         <br /><br /><br /><br />
         <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
         <p><b>Adviser: </b><span id="txt_Adviser"></span></p>
@@ -73,19 +88,19 @@
                         <tr>
                             <th rowspan="2">LEARNING AREAS</th>
                             <th colspan="4">Quarterly Rating</th>
-                            <th id="final" rowspan="2">FINAL RATING</th>
-                            <th id="remark" rowspan="2">REMARKS</th>
+                            <th rowspan="2">FINAL RATING</th>
+                            <th rowspan="2">REMARKS</th>
                         </tr>
                         <tr>
-                            <th id="q1">1</th>
-                            <th id="q2">2</th>
-                            <th id="q3">3</th>
-                            <th id="q4">4</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr id="fil">
+                        <tr>
                             <td>Filipino</td>
                             <td></td>
                             <td></td>
@@ -95,7 +110,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="eng">
+                        <tr>
                             <td>English</td>
                             <td></td>
                             <td></td>
@@ -105,7 +120,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="math">
+                        <tr>
                             <td>Mathematics</td>
                             <td></td>
                             <td></td>
@@ -115,7 +130,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="sci">
+                        <tr>
                             <td>Science</td>
                             <td></td>
                             <td></td>
@@ -125,7 +140,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="ap">
+                        <tr>
                             <td>Araling Panlipunan (AP)</td>
                             <td></td>
                             <td></td>
@@ -135,7 +150,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="esp">
+                        <tr>
                             <td>Edukasyon sa Pagpapakatao (EsP)</td>
                             <td></td>
                             <td></td>
@@ -145,7 +160,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="tle">
+                        <tr>
                             <td>Technology and Livelihood Education (TLE)</td>
                             <td></td>
                             <td></td>
@@ -155,7 +170,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="mapeh">
+                        <tr>
                             <td>MAPEH</td>
                             <td></td>
                             <td></td>
@@ -165,7 +180,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="music">
+                        <tr>
                             <td>&nbsp Music</td>
                             <td></td>
                             <td></td>
@@ -175,7 +190,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="arts">
+                        <tr>
                             <td>&nbsp Arts</td>
                             <td></td>
                             <td></td>
@@ -185,7 +200,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="pe">
+                        <tr>
                             <td>&nbsp Physical Education</td>
                             <td></td>
                             <td></td>
@@ -195,7 +210,7 @@
                             <td></td>
                         </tr>
 
-                        <tr id="health">
+                        <tr>
                             <td>&nbsp Health</td>
                             <td></td>
                             <td></td>
@@ -205,8 +220,68 @@
                             <td></td>
                         </tr>
 
-                        <tr id="average">
+                        <tr>
                             <td><b>AVERAGE</b></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp Mathematics A</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr> 
+
+                        <tr>
+                            <td>&nbsp Mathematics B</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp Science A</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp Science B</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td id="ResearchFOLA">&nbsp Research/Foreign Language</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -221,30 +296,22 @@
             <div class="p-0 mt-3">
                 <p class="h6">Notes:</p>
                 <ul>
-                    <li>*added AVERAGE row</li>
-                    <li>*added table: grade to database</li>
-                    <li>*added retrieve grades from table: grade</li>
-                    <br />
-                    <li>This page is for ADVISER'S VIEW</li>
-                    <li>The purpose of this page is to:
-                        <ul>
-                            <li>VIEW grades per subject encoded by SUBJECT TEACHERS</li>
-                            <li>VIEW QUARTERLY AVERAGE to award who are among the Top (10) Students</li>
-                            <li>VIEW FINAL RATING and REMARKS.</li>
-                            <li>PRINT Report Card (Form 138)</li>
-                        </ul>
-                    </li>
-                    <li>The adviser cannot modify the grades encoded by the other subject teachers</li>
-                    <li>INPUT inside cells are just using to test computation of AVERAGE, FINAL RATING, and REMARKS.
-                    These will be deleted after the TEACHER PER SUBJECT'S VIEW page is done.</li>
+                    <li>Import `grade` table to DB first</li>
+                    <li>Temporary: $_SESSION Login as Employee/Teacher not implemented for faster QA testing</li>
+                    <li>Waiting: RESEARCH/FOLA Subject where to insert on Form 138?</li>
+                    <li>Waiting: Is HOMEROOM Subject has grading?</li>
+                    <li>Mathematics = (MATH A)(weight) + (MATH B)(weight)</li>
+                    <li>Science = (SCI A)(weight) + (SCI B)(weight)</li>
                     <li>MAPEH = (Music + Arts + PE + Health) / 4</li>
                 </ul>
             </div>
+
         </div>
 
         <div class="footer">
             <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
         </div>
+
     </div>
 
     <script src="../js/ajax.js" type="text/javascript"></script>

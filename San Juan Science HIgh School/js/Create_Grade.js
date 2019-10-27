@@ -75,6 +75,7 @@ function getSubject(xhttp) {
             txt_GradeLevel.innerHTML = this.childNodes[3].innerHTML;
             txt_SubjTeacher.innerHTML = this.childNodes[4].innerHTML;
 
+            console.log(txt_Section.innerHTML + ' ' + txt_Subject.innerHTML + ' selected.');
             getAdviserNameDB();
             getStudentListDB();
         });
@@ -93,6 +94,7 @@ function getSubject(xhttp) {
 
 function getAdviserNameDB() {
     let query = '';
+    txt_Adviser.innerHTML = '';
 
     query += 'SELECT name ';
     query += 'FROM teacher ';
@@ -102,10 +104,10 @@ function getAdviserNameDB() {
         try {
             txt_Adviser.innerHTML = JSON.parse(xhttp.responseText)[0][0];
 
-        } catch (err) {
-            alert('CANNOT FIND');
+        } catch {
+            alert('Section ' + txt_Section.innerHTML + ' does not have an adviser yet.');
             console.log(xhttp.responseText);
-            console.log(err);
+            console.log('Section ' + txt_Section.innerHTML + ' does not have an adviser yet.');
         }
     });
 }
@@ -249,6 +251,7 @@ function tBodyGrade(xhttp) {
             });
         } else {
             alert('No enrolled students yet.');
+            console.log('No enrolled students yet.');
         }
 
     } catch (err) {
@@ -351,6 +354,7 @@ function checkGrade() {
                         }
                     }
                 }
+
                 if (!found) {
                     GradeID = 0;
                     updateGradeDB();
@@ -382,42 +386,33 @@ function checkGrade() {
 }
 
 function getFinalAndRemark() {
-    let average;
+    let finalRating;
     const CreateGradeTable = document.querySelector('#CreateGradeTable');
 
     for (let i = 0; i < jsonStudent.length; i++) {
         if (jsonStudent.length > 1) {
             if (q1[i].value != '' && q2[i].value != '' && q3[i].value != '' && q4[i].value != '') {
-                average = (Number(q1[i].value) + Number(q2[i].value) +
+                finalRating = (Number(q1[i].value) + Number(q2[i].value) +
                     Number(q3[i].value) + Number(q4[i].value)) / 4;
 
                 completeGrade();
-            } else {
-                incompleteGrade();
             }
         } else {
             if (q1.value != '' && q2.value != '' && q3.value != '' && q4.value != '') {
-                average = (Number(q1.value) + Number(q2.value) +
+                finalRating = (Number(q1.value) + Number(q2.value) +
                     Number(q3.value) + Number(q4.value)) / 4;
 
                 completeGrade();
-            } else {
-                incompleteGrade();
             }
         }
 
         function completeGrade() {
-            CreateGradeTable.rows[i + 2].cells[6].innerHTML = average;
+            CreateGradeTable.rows[i + 2].cells[6].innerHTML = finalRating.toFixed(2);
 
-            if (average >= 75)
+            if (finalRating >= 75)
                 CreateGradeTable.rows[i + 2].cells[7].innerHTML = 'Passed';
             else
                 CreateGradeTable.rows[i + 2].cells[7].innerHTML = 'Failed';
-        }
-
-        function incompleteGrade() {
-            CreateGradeTable.rows[i + 2].cells[6].innerHTML = 'N/A';
-            CreateGradeTable.rows[i + 2].cells[7].innerHTML = 'N/A';
         }
     }
 }
