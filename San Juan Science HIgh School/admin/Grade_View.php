@@ -318,7 +318,7 @@
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>
     <script src="../js/modal.js" type="text/javascript"></script>
-    <script src="../js/Student_Grading.js" type="text/javascript"></script>
+    <script src="../js/Grade_View.js" type="text/javascript"></script>
 </body>
 
 </html>

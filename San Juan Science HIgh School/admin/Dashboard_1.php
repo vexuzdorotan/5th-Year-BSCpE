@@ -51,13 +51,13 @@
                 </a>
             </div>
             <div class="option">
-                <a href="Student_Grading.php">
+                <a href="Grade_View.php">
                 <img src="../pictures/grade.png" class="img-opt">
                 <p>view grade students</p>
                 </a>
             </div>
             <div class="option">
-                <a href="Create_Grade.php">
+                <a href="Grade_Update.php">
                 <img src="../pictures/grade.png" class="img-opt">
                 <p>create grade students</p>
                 </a>

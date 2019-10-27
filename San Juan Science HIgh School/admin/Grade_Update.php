@@ -126,7 +126,7 @@
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>
     <script src="../js/modal.js" type="text/javascript"></script>
-    <script src="../js/Create_Grade.js" type="text/javascript"></script>
+    <script src="../js/Grade_Update.js" type="text/javascript"></script>
 </body>
 
 </html>
