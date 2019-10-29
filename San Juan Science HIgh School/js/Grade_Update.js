@@ -407,12 +407,12 @@ function getFinalAndRemark() {
         }
 
         function completeGrade() {
-            CreateGradeTable.rows[i + 2].cells[6].innerHTML = finalRating.toFixed(2);
+            CreateGradeTable.rows[i + 2].cells[6].innerHTML = finalRating.toFixed(0);
 
             if (finalRating >= 75)
-                CreateGradeTable.rows[i + 2].cells[7].innerHTML = 'Passed';
+                CreateGradeTable.rows[i + 2].cells[7].innerHTML = 'PASSED';
             else
-                CreateGradeTable.rows[i + 2].cells[7].innerHTML = 'Failed';
+                CreateGradeTable.rows[i + 2].cells[7].innerHTML = 'FAILED';
         }
     }
 }

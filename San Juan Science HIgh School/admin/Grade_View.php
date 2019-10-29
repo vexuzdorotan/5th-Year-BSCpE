@@ -151,16 +151,6 @@
                         </tr>
 
                         <tr>
-                            <td>Edukasyon sa Pagpapakatao (EsP)</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
                             <td>Technology and Livelihood Education (TLE)</td>
                             <td></td>
                             <td></td>
@@ -181,7 +171,7 @@
                         </tr>
 
                         <tr>
-                            <td>&nbsp Music</td>
+                            <td>&nbsp &nbsp Music</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -191,7 +181,7 @@
                         </tr>
 
                         <tr>
-                            <td>&nbsp Arts</td>
+                            <td>&nbsp &nbsp Arts</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -201,7 +191,7 @@
                         </tr>
 
                         <tr>
-                            <td>&nbsp Physical Education</td>
+                            <td>&nbsp &nbsp Physical Education</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -211,7 +201,47 @@
                         </tr>
 
                         <tr>
-                            <td>&nbsp Health</td>
+                            <td>&nbsp &nbsp Health</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>Edukasyon sa Pagpapakatao (EsP)</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>Mathematics B</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>Science B</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td id="ResearchFOLA">Research/Foreign Language</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -229,66 +259,6 @@
                             <td></td>
                             <td></td>
                         </tr>
-
-                        <tr>
-                            <td>&nbsp</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp Mathematics A</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr> 
-
-                        <tr>
-                            <td>&nbsp Mathematics B</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp Science A</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp Science B</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td id="ResearchFOLA">&nbsp Research/Foreign Language</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -298,10 +268,6 @@
                 <ul>
                     <li>Import `grade` table to DB first</li>
                     <li>Temporary: $_SESSION Login as Employee/Teacher not implemented for faster QA testing</li>
-                    <li>Waiting: RESEARCH/FOLA Subject where to insert on Form 138?</li>
-                    <li>Waiting: Is HOMEROOM Subject has grading?</li>
-                    <li>Mathematics = (MATH A)(weight) + (MATH B)(weight)</li>
-                    <li>Science = (SCI A)(weight) + (SCI B)(weight)</li>
                     <li>MAPEH = (Music + Arts + PE + Health) / 4</li>
                 </ul>
             </div>

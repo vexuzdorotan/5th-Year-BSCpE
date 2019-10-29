@@ -61,9 +61,9 @@ function PickSection(xhttp) {
             txt_Adviser.innerHTML = this.childNodes[3].innerHTML;
 
             if ((txt_GradeLevel.innerHTML == 7) || (txt_GradeLevel.innerHTML == 8))
-                ResearchFOLA.innerHTML = '&nbsp Research';
+                ResearchFOLA.innerHTML = 'Research';
             else
-                ResearchFOLA.innerHTML = '&nbsp Foreign Language';
+                ResearchFOLA.innerHTML = 'Foreign Language';
 
             adviserSelected = true;
         });
@@ -162,14 +162,13 @@ function getGradesDB(xhttp) {
             table.rows[i].cells[j].innerHTML = '';
         }
     }
+
     try {
         for (let i = 0; i < json.length; i++) {
             table.rows[GetParentRow(json[i][3])].cells[json[i][4]].innerHTML = json[i][5];
         }
 
-        getScience();
-        getMath();
-        getMAPEH();
+        // getMAPEH();
         getAverage();
         getFinalAndRemark();
     } catch (err) {
@@ -178,79 +177,41 @@ function getGradesDB(xhttp) {
 }
 
 function GetParentRow(child) {
-    if (child.includes('FIL')) return 2;
-    else if (child.includes('ENG')) return 3;
-    else if (child.includes('MATH')) return 4;
-    else if (child.includes('AP')) return 6;
-    else if (child.includes('ESP')) return 7;
-    else if (child.includes('TLE')) return 8;
-    else if (child.includes('MUSIC')) return 10;
-    else if (child.includes('ARTS')) return 11;
-    else if (child.includes('PE')) return 12;
-    else if (child.includes('HEALTH')) return 13;
-    else if (child.includes('MATH' + txt_GradeLevel.innerHTML + 'A')) return 16;
-    else if (child.includes('MATH' + txt_GradeLevel.innerHTML + 'B')) return 17;
-    else if (child.includes('SCI' + txt_GradeLevel.innerHTML + 'A')) return 18;
-    else if (child.includes('SCI' + txt_GradeLevel.innerHTML + 'B')) return 19;
-    else if (child.includes('RESEARCH')) return 20;
-    else if (child.includes('FOLA')) return 20;
-}
-
-function getMath() {
-    let math;
-    let mathAWeight = 0.5;
-    let mathBWeight = 0.5;
-
-    for (let i = 1; i <= 4; i++) {
-        if (table.rows[16].cells[i].innerHTML != '' &&
-            table.rows[17].cells[i].innerHTML != '') {
-
-            math = (
-                (Number(table.rows[16].cells[i].innerHTML) * mathAWeight) +
-                (Number(table.rows[17].cells[i].innerHTML) * mathBWeight)
-            );
-
-            table.rows[4].cells[i].innerHTML = math.toFixed(0);
-        }
-    }
-}
-
-function getScience() {
-    let science;
-    let sciAWeight = 0.5;
-    let sciBWeight = 0.5;
-
-    for (let i = 1; i <= 4; i++) {
-        if (table.rows[18].cells[i].innerHTML != '' &&
-            table.rows[19].cells[i].innerHTML != '') {
-
-            science = (
-                (Number(table.rows[18].cells[i].innerHTML) * sciAWeight) +
-                (Number(table.rows[19].cells[i].innerHTML) * sciBWeight)
-            );
-
-            table.rows[5].cells[i].innerHTML = science.toFixed(0);
-        }
-    }
+    if (child.includes('FIL' + txt_GradeLevel.innerHTML)) return 2;
+    else if (child.includes('ENG' + txt_GradeLevel.innerHTML)) return 3;
+    else if (child.includes('MATH' + txt_GradeLevel.innerHTML + 'A')) return 4;
+    else if (child.includes('SCI' + txt_GradeLevel.innerHTML + 'A')) return 5;
+    else if (child.includes('AP' + txt_GradeLevel.innerHTML)) return 6;
+    else if (child.includes('TLE' + txt_GradeLevel.innerHTML)) return 7;
+    else if (child.includes('MAPEH' + txt_GradeLevel.innerHTML)) return 8;
+    else if (child.includes('MUSIC' + txt_GradeLevel.innerHTML)) return 9;
+    else if (child.includes('ARTS' + txt_GradeLevel.innerHTML)) return 10;
+    else if (child.includes('PE' + txt_GradeLevel.innerHTML)) return 11;
+    else if (child.includes('HEALTH' + txt_GradeLevel.innerHTML)) return 12;
+    else if (child.includes('ESP' + txt_GradeLevel.innerHTML)) return 13;
+    else if (child.includes('MATH' + txt_GradeLevel.innerHTML + 'B')) return 14;
+    else if (child.includes('SCI' + txt_GradeLevel.innerHTML + 'B')) return 15;
+    else if (child.includes('RESEARCH' + txt_GradeLevel.innerHTML)) return 16;
+    else if (child.includes('FOLA' + txt_GradeLevel.innerHTML)) return 16;
 }
 
 function getMAPEH() {
     let mapeh;
 
     for (let i = 1; i <= 4; i++) {
-        if (table.rows[10].cells[i].innerHTML != '' &&
+        if (table.rows[9].cells[i].innerHTML != '' &&
+            table.rows[10].cells[i].innerHTML != '' &&
             table.rows[11].cells[i].innerHTML != '' &&
-            table.rows[12].cells[i].innerHTML != '' &&
-            table.rows[13].cells[i].innerHTML != '') {
+            table.rows[12].cells[i].innerHTML != '') {
 
             mapeh = (
+                Number(table.rows[9].cells[i].innerHTML) +
                 Number(table.rows[10].cells[i].innerHTML) +
                 Number(table.rows[11].cells[i].innerHTML) +
-                Number(table.rows[12].cells[i].innerHTML) +
-                Number(table.rows[13].cells[i].innerHTML)
+                Number(table.rows[12].cells[i].innerHTML)
             ) / 4;
 
-            table.rows[9].cells[i].innerHTML = mapeh.toFixed(0);
+            table.rows[8].cells[i].innerHTML = mapeh.toFixed(0);
         }
     }
 }
@@ -266,7 +227,10 @@ function getAverage() {
             table.rows[6].cells[i].innerHTML != '' &&
             table.rows[7].cells[i].innerHTML != '' &&
             table.rows[8].cells[i].innerHTML != '' &&
-            table.rows[9].cells[i].innerHTML != '') {
+            table.rows[13].cells[i].innerHTML != '' &&
+            table.rows[14].cells[i].innerHTML != '' &&
+            table.rows[15].cells[i].innerHTML != '' &&
+            table.rows[16].cells[i].innerHTML != '') {
 
             average = (
                 Number(table.rows[2].cells[i].innerHTML) +
@@ -276,10 +240,13 @@ function getAverage() {
                 Number(table.rows[6].cells[i].innerHTML) +
                 Number(table.rows[7].cells[i].innerHTML) +
                 Number(table.rows[8].cells[i].innerHTML) +
-                Number(table.rows[9].cells[i].innerHTML)
-            ) / 8;
+                Number(table.rows[13].cells[i].innerHTML) +
+                Number(table.rows[14].cells[i].innerHTML) +
+                Number(table.rows[15].cells[i].innerHTML) +
+                Number(table.rows[16].cells[i].innerHTML)
+            ) / 11;
 
-            table.rows[14].cells[i].innerHTML = average.toFixed(2);
+            table.rows[17].cells[i].innerHTML = average.toFixed(0);
         }
     }
 }
@@ -300,12 +267,20 @@ function getFinalAndRemark() {
                 Number(table.rows[i].cells[4].innerHTML)
             ) / 4;
 
-            table.rows[i].cells[5].innerHTML = finalRating.toFixed(2);
+            table.rows[i].cells[5].innerHTML = finalRating.toFixed(0);
 
-            if (finalRating >= 75)
-                table.rows[i].cells[6].innerHTML = 'Passed';
-            else
-                table.rows[i].cells[6].innerHTML = 'Failed';
+            if (i != tr.length + 1) {
+                if (finalRating >= 75)
+                    table.rows[i].cells[6].innerHTML = 'PASSED';
+                else
+                    table.rows[i].cells[6].innerHTML = 'FAILED';
+            } else {
+                if (finalRating >= 75)
+                    table.rows[i].cells[6].innerHTML = 'PROMOTED';
+                else
+                    table.rows[i].cells[6].innerHTML = 'RETAINED';
+            }
+
         }
     }
 }
