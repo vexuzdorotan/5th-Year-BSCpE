@@ -12,13 +12,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create Grade</title>
+    <title>Update Grade</title>
 
-	<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/all.css" />
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/>
-	<link rel="icon" href="../pictures/logo.png" />
+    <link rel="stylesheet" type="text/css" href="../css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../css/merged-styles.css" />
+    <link rel="icon" href="../pictures/logo.png" />
 </head>
 
 <body>
@@ -68,21 +68,35 @@
         <br /><br />
 
         <div class="float-right">
-            <input type="text" id="txt_SubjectCode" style="display: none;" />
+            <input type="text" style="display: none;" />
             <label for="">Subject ID: 
-                <input class="ml-2 sec-name" type="text" id="SubjectCode" required/>
+                <input class="ml-2 sec-name" type="text" id="input_SubjectCode" required/>
             </label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
         </div>
         <br /><br />
+
+        <div class="float-right">
+            <label id="labelMAPEH" for="" style="display: none">Selected MAPEH:
+                <select id="selectMAPEH" onchange="setSubMAPEH()">
+                    <option disabled selected value> -- Select MAPEH -- </option>
+                    <option value="MUSIC">MUSIC</option>
+                    <option value="ARTS">ARTS</option>
+                    <option value="PE">PE</option>
+                    <option value="HEALTH">HEALTH</option>
+                </select>
+            </label>
+        </div>
+
+        <br /><br />
         <p><b>SECTION: </b><span id="txt_Section"></span></p>
         <p><b>GRADE LEVEL: </b><span id="txt_GradeLevel"></span></p>
-        <p><b>SUBJECT: </b><span id="txt_Subject"></span></p>
+        <p><b>SUBJECT: </b><span id="txt_SubjectCode"></span></p>
         <p><b>SUBJECT TEACHER : </b><span id="txt_SubjTeacher"></span></p>
         <p><b>CLASS ADVISER: </b><span id="txt_Adviser"></span></p>
 
         <div class="row">
-            <div class="col-9 p-0 m-0">            
+            <div class="col-9 p-0 m-0">
                 <table id="CreateGradeTable" class="g-table">
                     <thead class="dark">
                         <tr>
@@ -93,7 +107,7 @@
                             <th id="remark" rowspan="2">REMARKS</th>
                         </tr>
                         <tr>
-                            <th >FIRST</td>
+                            <th>FIRST</td>
                             <th id="GradeLevel">SECOND</th>
                             <th id="SubjectName">THIRD</th>
                             <th id="Quarter">FOURTH</th>
@@ -111,7 +125,6 @@
                 <ul>
                     <li>Import `grade` table to DB first</li>
                     <li>Temporary: $_SESSION Login as Employee/Teacher not implemented for faster QA testing</li>
-                    <li>Waiting: Add MUSIC, ARTS, PE, HEALTH to subject/subjectcode Table </li>
                     <li>Grades in every student per quarter can still update before the deadline of encoding</li>
                 </ul>
             </div>

@@ -168,7 +168,7 @@ function getGradesDB(xhttp) {
             table.rows[GetParentRow(json[i][3])].cells[json[i][4]].innerHTML = json[i][5];
         }
 
-        // getMAPEH();
+        getMAPEH();
         getAverage();
         getFinalAndRemark();
     } catch (err) {
@@ -183,7 +183,7 @@ function GetParentRow(child) {
     else if (child.includes('SCI' + txt_GradeLevel.innerHTML + 'A')) return 5;
     else if (child.includes('AP' + txt_GradeLevel.innerHTML)) return 6;
     else if (child.includes('TLE' + txt_GradeLevel.innerHTML)) return 7;
-    else if (child.includes('MAPEH' + txt_GradeLevel.innerHTML)) return 8;
+    // else if (child.includes('MAPEH' + txt_GradeLevel.innerHTML)) return 8;
     else if (child.includes('MUSIC' + txt_GradeLevel.innerHTML)) return 9;
     else if (child.includes('ARTS' + txt_GradeLevel.innerHTML)) return 10;
     else if (child.includes('PE' + txt_GradeLevel.innerHTML)) return 11;

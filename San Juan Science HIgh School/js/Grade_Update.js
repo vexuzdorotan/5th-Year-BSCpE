@@ -1,19 +1,23 @@
-let parent_id = 'subject'
 let EmployeeNum;
 let SectionNum;
 let Quarter;
 let jsonStudent;
 let jsonGrade;
+let SubjectCode;
+let parent_id = 'subject';
+let selectMAPEH = document.querySelector('#selectMAPEH');
 let colNum = document.querySelector('table thead tr').childElementCount + 3;
 
+const tbody = document.querySelector('table tbody');
 const txt_Section = document.querySelector('#txt_Section');
-const SubjectCode = document.querySelector('#SubjectCode');
+const input_SubjectCode = document.querySelector('#input_SubjectCode');
 const txt_GradeLevel = document.querySelector('#txt_GradeLevel');
-const txt_subject = document.querySelector('#txt_subject');
+const txt_SubjectCode = document.querySelector('#txt_SubjectCode');
 const txt_Adviser = document.querySelector('#txt_Adviser');
 const txt_SubjTeacher = document.querySelector('#txt_SubjTeacher');
 const modal_body = document.querySelector('#modal-body');
 const button = document.querySelectorAll('button');
+const labelMAPEH = document.querySelector('#labelMAPEH');
 
 // TEMPORARY WHILE NO LOGIN TEACHER
 EmployeeNum = 1;
@@ -69,15 +73,27 @@ function getSubject(xhttp) {
             closeModal(modal_body);
 
             SectionNum = this.childNodes[0].innerHTML;
-            txt_Subject.innerHTML = this.childNodes[1].innerHTML;
-            SubjectCode.value = this.childNodes[1].innerHTML;
+            SubjectCode = this.childNodes[1].innerHTML;
             txt_Section.innerHTML = this.childNodes[2].innerHTML;
             txt_GradeLevel.innerHTML = this.childNodes[3].innerHTML;
             txt_SubjTeacher.innerHTML = this.childNodes[4].innerHTML;
 
-            console.log(txt_Section.innerHTML + ' ' + txt_Subject.innerHTML + ' selected.');
-            getAdviserNameDB();
-            getStudentListDB();
+            input_SubjectCode.value = SubjectCode;
+            txt_SubjectCode.innerHTML = SubjectCode;
+
+            if (!input_SubjectCode.value.includes('MAPEH')) {
+                labelMAPEH.style.display = 'none';
+                RemoveChildNodes(tbody);
+                getAdviserNameDB();
+                getStudentListDB();
+            } else {
+                labelMAPEH.style.display = 'block';
+                selectMAPEH.value = selectMAPEH.options[0].value;
+                RemoveChildNodes(tbody);
+                getAdviserNameDB();
+            }
+
+            console.log(txt_Section.innerHTML + ' ' + SubjectCode + ' selected.');
         });
 
         tbody_tr[i].addEventListener('mouseover', function() {
@@ -90,6 +106,16 @@ function getSubject(xhttp) {
             this.style.color = '';
         });
     }
+}
+
+function setSubMAPEH() {
+    SubjectCode = SectionNum + '-' + selectMAPEH.value + txt_GradeLevel.innerHTML;
+    txt_SubjectCode.innerHTML = input_SubjectCode.value + '/' + SubjectCode;
+
+    RemoveChildNodes(tbody);
+    getStudentListDB();
+
+    console.log(txt_Section.innerHTML + ' ' + SubjectCode + ' selected.');
 }
 
 function getAdviserNameDB() {
@@ -124,8 +150,6 @@ function getStudentListDB() {
 }
 
 function tBodyGrade(xhttp) {
-    const tbody = document.querySelector('table tbody');
-    RemoveChildNodes(tbody);
 
     try {
         let tr, td, input_quarter, button_save;
@@ -144,6 +168,7 @@ function tBodyGrade(xhttp) {
                         input_quarter.setAttribute('type', 'number');
                         input_quarter.setAttribute('min', 65);
                         input_quarter.setAttribute('max', 100);
+                        input_quarter.setAttribute('onKeyDown', 'return false');
 
                         switch (i) {
                             case 1:
@@ -277,7 +302,7 @@ function retrieveGradeDB() {
     query += 'LEFT JOIN grade ON student.LRNNum = grade.LRNNum ';
     query += 'INNER JOIN student_section ON student.LRNNum = student_section.LRNNum ';
     query += 'WHERE student_section.SectionNum IN (' + SectionNum + ') ';
-    query += 'AND grade.SubjectID IN ("' + txt_Subject.innerHTML + '") ';
+    query += 'AND grade.SubjectID IN ("' + SubjectCode + '") ';
     query += 'GROUP BY student.LRNNum ';
 
     SimplifiedQuery('SELECT', query, '', saveGradeJSON);
@@ -371,7 +396,7 @@ function checkGrade() {
             query += 'VALUES ("' + GradeID + '", "';
             query += jsonStudent[i][0] + '", "';
             query += txt_GradeLevel.innerHTML + '", "';
-            query += txt_Subject.innerHTML + '", "';
+            query += SubjectCode + '", "';
             query += Quarter + '", "';
             query += GradeRating + '") ';
             query += 'ON DUPLICATE KEY UPDATE GradeRating = ' + GradeRating;

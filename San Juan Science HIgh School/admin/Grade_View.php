@@ -12,13 +12,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student Grading</title>
+    <title>View Grade</title>
 
-	<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/all.css" />
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/>
-	<link rel="icon" href="../pictures/logo.png" />
+    <link rel="stylesheet" type="text/css" href="../css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../css/merged-styles.css" />
+    <link rel="icon" href="../pictures/logo.png" />
 </head>
 
 <body>
@@ -268,7 +268,6 @@
                 <ul>
                     <li>Import `grade` table to DB first</li>
                     <li>Temporary: $_SESSION Login as Employee/Teacher not implemented for faster QA testing</li>
-                    <li>MAPEH = (Music + Arts + PE + Health) / 4</li>
                 </ul>
             </div>
 
