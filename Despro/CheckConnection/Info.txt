@@ -1,0 +1,11 @@
+Create Project named CheckConnection
+
+*Edit both MainActivity, Android manifest, and activity_main.xml
+(Copy paste the code)
+
+*Create new java class/file named Client.java then copy this Client.java
+
+Compile
+
+Copy MyServer.java
+Compile MyServer.java
