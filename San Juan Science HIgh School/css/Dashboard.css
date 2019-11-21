@@ -81,6 +81,12 @@ a.active:hover{
 	text-decoration: none;
 	color: black;
 }
+.count:hover .subtitle{
+	color:white;
+}
+.count:hover .title{
+	color:white;
+}
 .number{
 	font-size: 3.75rem;
 	font-weight: 500;
@@ -90,12 +96,14 @@ a.active:hover{
 	font-size: 1.5rem;
 	font-weight: 500;
 	margin: 0 0 0 1.75rem;
-	color:#f8f9fa;
+	color:black;
 }
 .subtitle{
 	margin: 0 0 0 1.75rem;
-	color:#f8f9fa;
+	color:black;
 }
+
+
 .count{
 	width: 40%;
 	height: 200px;
@@ -150,4 +158,17 @@ a.active:hover{
 }
 .section:hover{
 	background-image: url("../pictures/sections-w.png");
+}
+@media (max-width: 576px){
+	.my-container{
+		width: 100%;
+	}
+	.count{
+		margin:2%;
+		padding:0;
+		width: 100%;
+	}
+	.menu{
+		display: none;
+	}
 }
