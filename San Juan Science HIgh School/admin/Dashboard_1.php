@@ -63,6 +63,12 @@
                 </a>
             </div>
             <div class="option">
+                <a href="Grade_Values.php">
+                <img src="../pictures/grade.png" class="img-opt">
+                <p>create grade-values students</p>
+                </a>
+            </div>
+            <div class="option">
                 <a href="Student_Drafting.php">
                 <img src="../pictures/drafting.png" class="img-opt">
                 <p>student drafting</p>
