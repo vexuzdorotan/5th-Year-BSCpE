@@ -1,7 +1,7 @@
 let parent_id = 'student';
 let adviserSelected = false;
 
-const table = document.querySelector('table');
+const table = document.querySelector('#gradeTable');
 const modal_body = document.getElementById('modal-body');
 
 const txt_GradeLevel = document.getElementById('txt_GradeLevel');
@@ -14,7 +14,7 @@ const txt_LRNNum = document.getElementById('txt_LRNNum');
 
 const ResearchFOLA = document.querySelector('#ResearchFOLA');
 
-const tr = document.querySelectorAll('tbody tr');
+const tr = document.querySelectorAll('#gradeTable tbody tr');
 const button = document.querySelectorAll('button');
 
 openSectionModal = button[0];
@@ -66,6 +66,21 @@ function PickSection(xhttp) {
                 ResearchFOLA.innerHTML = 'Foreign Language';
 
             adviserSelected = true;
+
+            txt_Student.innerHTML = '';
+            txt_StudentName.value = '';
+
+            for (let i = 2; i < tr.length + 2; i++) {
+                for (let j = 1; j < tr[0].childElementCount; j++) {
+                    table.rows[i].cells[j].innerHTML = '';
+                }
+            }
+
+            for (let i = 1; i <= 4; i++) {
+                for (let j = 0; j <= 6; j++) {
+                    document.querySelectorAll('.grValQ' + i)[j].innerHTML = '';
+                }
+            }
         });
         tbody_tr[i].addEventListener('mouseover', function() {
             this.style.backgroundColor = 'maroon';
@@ -88,7 +103,7 @@ openStudentModal.addEventListener('click', function() {
         document.querySelector('#SearchStudent').className = 'modal-search';
         CreateTable('SearchStudentTable', theadID, theadHTML, '@', modal_body, 0, 'LRNNum');
         document.querySelector('thead').className = 'dark';
-        openModal('Student', 'Student');
+        openModal('Select Student', 'Student');
 
         Search = function() {
             SearchWithQuery(
@@ -126,6 +141,7 @@ function PickStudent(xhttp) {
             txt_StudentName.value = txt_Student.innerHTML;
 
             setGradesDB();
+            setGradesValDB();
         });
         tbody_tr[i].addEventListener('mouseover', function() {
             this.style.backgroundColor = 'maroon';
@@ -155,7 +171,7 @@ function getGradesDB(xhttp) {
     let json;
 
     json = JSON.parse(xhttp.responseText);
-    console.log(json);
+    console.table(json);
 
     for (let i = 2; i < tr.length + 2; i++) {
         for (let j = 1; j < tr[0].childElementCount; j++) {
@@ -283,4 +299,52 @@ function getFinalAndRemark() {
 
         }
     }
+}
+
+//Grade Values
+function setGradesValDB() {
+    let columnNames = {
+        0: 'GradeValID',
+        1: 'LRNNum',
+        2: 'GradeValLevel',
+        3: 'BehaviorID',
+        4: 'Quarter',
+        5: 'GradeValRating'
+    };
+
+    SearchWithoutQuery('grade_values', txt_LRNNum, columnNames, getGradesValDB);
+}
+
+function getGradesValDB(xhttp) {
+    jsonGradeVal = JSON.parse(xhttp.responseText);
+    console.table(jsonGradeVal);
+
+    for (let i = 1; i <= 4; i++) {
+        for (let j = 0; j <= 6; j++) {
+            document.querySelectorAll('.grValQ' + i)[j].innerHTML = '';
+        }
+    }
+
+    try {
+        for (let i = 0; i < jsonGradeVal.length; i++) {
+            document.querySelectorAll('.grValQ' + jsonGradeVal[i][4])[getParentCol(jsonGradeVal[i][3])].innerHTML = jsonGradeVal[i][5];
+        }
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function getParentCol(child) {
+    if (child.includes('1a')) return 0;
+    else if (child.includes('1b')) return 1;
+    else if (child.includes('2a')) return 2;
+    else if (child.includes('2b')) return 3;
+    else if (child.includes('3a')) return 4;
+    else if (child.includes('3b')) return 5;
+    else if (child.includes('4a')) return 6;
+}
+
+function printInner() {
+    window.print();
 }

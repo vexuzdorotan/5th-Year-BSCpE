@@ -1,6 +1,6 @@
 <?php
     // session_start();
-    // if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
+    // if($_SESSION['id'] === null || $_SESSION['access'] != "teacher" || $_SESSION['access'] != "teacher"){
     //     header('Location: ../Portal.php');
     // }
 ?>
@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>View Grade</title>
+    <title>View Grades</title>
 
     <link rel="stylesheet" type="text/css" href="../css/modal.css" />
     <link rel="stylesheet" type="text/css" href="../css/all.css" />
@@ -25,9 +25,10 @@
     <img src="../pictures/logodesign.jpg" class="logodesign">
 
     <div class="header mb-3">
-        <legend class="h4 pl-0 pt-3 mb-0">REPORT ON STUDENT'S PROGRESS IN LEARNING</legend>
+        <legend class="h4 pl-0 pt-3 mb-0">REPORT ON LEARNER'S OBSERVED VALUES, LEARNING PROGRESS AND ACHIEVEMENT</legend>
+        <br /> 
         <div class="menu">
-            <a href="#">Administrator</a>|<a href="../dashboards/Overview.html">Menu</a>|<a href="../Portal.html">Logout</a>
+        <a href="#">Administrator</a>|<a href="../admin/Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
 
     </div>
@@ -80,16 +81,17 @@
         <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
         <p><b>Adviser: </b><span id="txt_Adviser"></span></p>
         <p><b>Student: </b><span id="txt_Student"></span></p>
+        <br /><br />
 
         <div class="row">
             <div class="col-9 p-0 m-0">
-                <table id="gradeTable" class="g-table">
-                    <thead>
+                <table id="gradeTable" class="g-table"><h5>REPORT ON LEARNING PROGRESS AND ACHIEVEMENT</h5>
+                    <thead class="dark">
                         <tr>
-                            <th rowspan="2">LEARNING AREAS</th>
-                            <th colspan="4">Quarterly Rating</th>
-                            <th rowspan="2">FINAL RATING</th>
-                            <th rowspan="2">REMARKS</th>
+                            <th rowspan="2">Learning Areas</th>
+                            <th colspan="4">Quarter</th>
+                            <th rowspan="2">Final Grade</th>
+                            <th rowspan="2">Remarks</th>
                         </tr>
                         <tr>
                             <th>1</th>
@@ -251,7 +253,7 @@
                         </tr>
 
                         <tr>
-                            <td><b>AVERAGE</b></td>
+                            <td><b>Average</b></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -261,13 +263,119 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <br />
+                <table id="gradeValTable" class="g-table"><h5>REPORT ON LEARNER'S OBSERVED VALUES</h5>
+                    <thead class="dark">
+                        <tr>
+                            <th rowspan="2">Core Values</th>
+                            <th rowspan="2">Behavior Statement</th>
+                            <th colspan="4">Quarter</th>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td rowspan="2"><b>1. Maka-Diyos</b></td>
+                            <td>Expresses one's spiritual beliefs while respecting the spiritual beliefs of others</td>
+                            <td class="grValQ1"></td>
+                            <td class="grValQ2"></td>
+                            <td class="grValQ3"></td>
+                            <td class="grValQ4"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Shows adherence to ethical principles by upholding truth</td>
+                            <td class="grValQ1"></td>
+                            <td class="grValQ2"></td>
+                            <td class="grValQ3"></td>
+                            <td class="grValQ4"></td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2"><b>2. Makatao</b></td>
+                            <td>Is sensitive to individual, social, and cultural differences</td>
+                            <td class="grValQ1"></td>
+                            <td class="grValQ2"></td>
+                            <td class="grValQ3"></td>
+                            <td class="grValQ4"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Demonstrates contributions towards solidarity</td>
+                            <td class="grValQ1"></td>
+                            <td class="grValQ2"></td>
+                            <td class="grValQ3"></td>
+                            <td class="grValQ4"></td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2"><b>3. Makakalikasan</b></td>
+                            <td>Cares for the environment and utilizes resources wisely, judiciously, and economically</td>
+                            <td class="grValQ1"></td>
+                            <td class="grValQ2"></td>
+                            <td class="grValQ3"></td>
+                            <td class="grValQ4"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Demonstrates pride in being a Filipino; exercises the right and responsibilities of Filipino citizen</td>
+                            <td class="grValQ1"></td>
+                            <td class="grValQ2"></td>
+                            <td class="grValQ3"></td>
+                            <td class="grValQ4"></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>4. Makabansa</b></td>
+                            <td>Demonstrates appropriate behavior in carrying out activities in the school community, and country</td>
+                            <td class="grValQ1"></td>
+                            <td class="grValQ2"></td>
+                            <td class="grValQ3"></td>
+                            <td class="grValQ4"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="p-0 mt-3">
+                <pre>
+                    <b>Descriptors                 Grade       Remarks</b>
+                    Outstanding                 90-100      Passed
+                    Very Satisfactory           85-89       Passed
+                    Satisfactory                80-84       Passed
+                    Faily Satisfactory          75-79       Passed
+                    Did Not Meet Expectations   Below-75    Failed
+                </pre>
+            </div>
+
+            <div class="p-0 mt-3">
+                <pre>
+                    <b>Marking          Non-numerical Rating</b>
+                    <b> AO</b> -            Always Observed
+                    <b> SO</b> -            Sometimes Observed
+                    <b> RO</b> -            Rarely Observed
+                    <b> NO</b> -            Not Observed
+                </pre>
+            </div>
+
+            <div>
+                <button onclick="printInner()">PRINT INNER PAGE OF FORM 138</button>
             </div>
 
             <div class="p-0 mt-3">
                 <p class="h6">Notes:</p>
                 <ul>
-                    <li>Import `grade` table to DB first</li>
+                    <li>Import `grade` and `grade_values` tables to DB first</li>
                     <li>Temporary: $_SESSION Login as Employee/Teacher not implemented for faster QA testing</li>
+                    <li>if $_SESSION == Teacher, ENABLE SELECTION of Adviser and Student Modals</li>
+                    <li>else if $_SESSION == Student, DISABLE SELECTION of Adviser and Student Modals</li>
                 </ul>
             </div>
 

@@ -1,4 +1,4 @@
-let jsonGrade;
+let jsonGradeVal;
 let GradeValID;
 let BehaviorID;
 let Quarter;
@@ -30,22 +30,22 @@ openStudentModal = button[1];
 
 save1.addEventListener('click', function() {
     Quarter = 1;
-    checkGrade();
+    checkGradeVal();
 });
 
 save2.addEventListener('click', function() {
     Quarter = 2;
-    checkGrade();
+    checkGradeVal();
 });
 
 save3.addEventListener('click', function() {
     Quarter = 3;
-    checkGrade();
+    checkGradeVal();
 });
 
 save4.addEventListener('click', function() {
     Quarter = 4;
-    checkGrade();
+    checkGradeVal();
 });
 
 // SECTION
@@ -157,7 +157,7 @@ function PickStudent(xhttp) {
             txt_Student.innerHTML += this.childNodes[3].innerHTML;
             txt_StudentName.value = txt_Student.innerHTML;
 
-            setGradesDB();
+            setGradesValDB();
         });
         tbody_tr[i].addEventListener('mouseover', function() {
             this.style.backgroundColor = 'maroon';
@@ -170,7 +170,7 @@ function PickStudent(xhttp) {
     }
 }
 
-function setGradesDB() {
+function setGradesValDB() {
     let columnNames = {
         0: 'GradeValID',
         1: 'LRNNum',
@@ -180,12 +180,12 @@ function setGradesDB() {
         5: 'GradeValRating'
     };
 
-    SearchWithoutQuery('grade_values', txt_LRNNum, columnNames, getGradesDB);
+    SearchWithoutQuery('grade_values', txt_LRNNum, columnNames, getGradesValDB);
 }
 
-function getGradesDB(xhttp) {
-    jsonGrade = JSON.parse(xhttp.responseText);
-    console.table(jsonGrade);
+function getGradesValDB(xhttp) {
+    jsonGradeVal = JSON.parse(xhttp.responseText);
+    console.table(jsonGradeVal);
 
     for (let i = 1; i <= 4; i++) {
         for (let j = 0; j <= 6; j++) {
@@ -194,8 +194,8 @@ function getGradesDB(xhttp) {
     }
 
     try {
-        for (let i = 0; i < jsonGrade.length; i++) {
-            document.querySelectorAll('.grValQ' + jsonGrade[i][4])[getParentCol(jsonGrade[i][3])].value = jsonGrade[i][5];
+        for (let i = 0; i < jsonGradeVal.length; i++) {
+            document.querySelectorAll('.grValQ' + jsonGradeVal[i][4])[getParentCol(jsonGradeVal[i][3])].value = jsonGradeVal[i][5];
         }
 
     } catch (err) {
@@ -213,7 +213,7 @@ function getParentCol(child) {
     else if (child.includes('4a')) return 6;
 }
 
-function checkGrade() {
+function checkGradeVal() {
     for (let i = 0; i <= 6; i++) {
         GradeValID = 0;
         GradeValRating = document.querySelectorAll('.grValQ' + Quarter)[i].value;
@@ -243,10 +243,10 @@ function checkGrade() {
                     break;
             }
 
-            for (let j = 0; j < jsonGrade.length; j++) {
-                if (jsonGrade[j][3] == BehaviorID) {
-                    if (jsonGrade[j][4] == Quarter) {
-                        GradeValID = jsonGrade[j][0];
+            for (let j = 0; j < jsonGradeVal.length; j++) {
+                if (jsonGradeVal[j][3] == BehaviorID) {
+                    if (jsonGradeVal[j][4] == Quarter) {
+                        GradeValID = jsonGradeVal[j][0];
                     }
                 }
             }
@@ -256,7 +256,7 @@ function checkGrade() {
 
     alert('QUARTER ' + Quarter + ' GRADES SAVED');
     console.log('QUARTER ' + Quarter + ' GRADES SAVED');
-    setGradesDB();
+    setGradesValDB();
 }
 
 function updateGradeDB() {

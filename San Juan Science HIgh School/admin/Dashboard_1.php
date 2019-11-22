@@ -53,19 +53,19 @@
             <div class="option">
                 <a href="Grade_View.php">
                 <img src="../pictures/grade.png" class="img-opt">
-                <p>view grade students</p>
+                <p>View Grades of Students</p>
                 </a>
             </div>
             <div class="option">
-                <a href="Grade_Update.php">
+                <a href="Grade_Subject.php">
                 <img src="../pictures/grade.png" class="img-opt">
-                <p>create grade students</p>
+                <p>Manage Subject Grades of Students</p>
                 </a>
             </div>
             <div class="option">
                 <a href="Grade_Values.php">
                 <img src="../pictures/grade.png" class="img-opt">
-                <p>create grade-values students</p>
+                <p>Manage Values Grades of Students</p>
                 </a>
             </div>
             <div class="option">

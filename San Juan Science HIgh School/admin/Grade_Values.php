@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Learner's Observed Values</title>
+    <title>Values Grades</title>
 
     <link rel="stylesheet" type="text/css" href="../css/modal.css" />
     <link rel="stylesheet" type="text/css" href="../css/all.css" />
@@ -84,7 +84,7 @@
         <div class="row">
             <div class="col-9 p-0 m-0">
                 <table id="gradeTable" class="g-table">
-                    <thead>
+                    <thead class="dark">
                         <tr>
                             <th rowspan="2">Core Values</th>
                             <th rowspan="2">Behavior Statement</th>
