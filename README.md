@@ -35,6 +35,7 @@ S.Y. 2019 - 2020 | Bachelor of Science in Computer Engineering | Rizal Technolog
 - [Running Command Line in Java](https://stackoverflow.com/questions/8496494/running-command-line-in-java)
 
 ### AI
+- #### [Google Drive: DesPro's AI - PhoneConditionDetection](Hardware%20Thesis/PhoneConditionDetection.ipynb)
 - [TutorialsPoint: Artificial Intelligence Tutorial](https://www.tutorialspoint.com/artificial_intelligence/index.htm)
 - [Neural Network Classification](https://www.guru99.com/deep-learning-tutorial.html)
 - [TensorFlow: Retrain an Image Classifier for New Categories - Inception V3 Model](https://www.tensorflow.org/hub/tutorials/image_retraining)
