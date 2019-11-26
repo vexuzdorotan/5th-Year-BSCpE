@@ -1,8 +1,8 @@
 <?php
-    // session_start();
-    // if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
-    //     header('Location: ../Portal.php');
-    // }
+    session_start();
+    if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
+        header('Location: ../Portal.php');
+    }
 ?>
 
 <!DOCTYPE html>

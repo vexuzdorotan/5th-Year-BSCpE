@@ -33,7 +33,7 @@
 			<p class="h6"><label for="account">Log In As:</label>
 				<select name="account">
 					<option>Admin</option>
-					<option>Employee</option>
+					<option>Teacher</option>
 					<option>Student</option>
 				</select>
 			</p>

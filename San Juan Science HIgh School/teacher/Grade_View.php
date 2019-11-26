@@ -25,15 +25,15 @@
     <img src="../pictures/logodesign.jpg" class="logodesign">
 
     <div class="header mb-3">
-        <legend class="h4 pl-0 pt-3 mb-0">REPORT ON LEARNER'S OBSERVED VALUES, LEARNING PROGRESS AND ACHIEVEMENT</legend>
-        <br /> 
+        <legend class="h4 pl-0 pt-3 mb-0">VIEW STUDENT GRADE</legend>
+
         <div class="menu">
         <a href="#">Administrator</a>|<a href="../admin/Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
 
     </div>
 
-    <div class="room-container">
+    <div class="grade-container">
         <div id="modal">
             <div id="modal-content">
                 <span id="close" onclick="closeModal(document.getElementById('modal-body'));">&times;</span>
@@ -66,25 +66,25 @@
             </div>
 
         </div>
+        <div class="hideen">
+            <div class="float-right">
+                <input type="text" id="txt_SectionNum" style="display: none;" />
+                <label for="">Adviser Name: <input class="ml-2 sec-name" type="text" id="input_Adviser" required/></label>
+                <button class="modal-button"><i class="far fa-window-restore"></i></button>
+                <br />
+                <input type="text" id="txt_LRNNum" style="display: none;" />
+                <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentName" required/></label>
+                <button class="modal-button"><i class="far fa-window-restore"></i></button>
+            </div>
 
-        <div class="float-right">
-            <input type="text" id="txt_SectionNum" style="display: none;" />
-            <label for="">Adviser Name: <input class="ml-2 sec-name" type="text" id="input_Adviser" required/></label>
-            <button class="modal-button"><i class="far fa-window-restore"></i></button>
+            <br /><br /><br />
+            <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
+            <p><b>Adviser: </b><span id="txt_Adviser"></span></p>
+            <p><b>Student: </b><span id="txt_Student"></span></p>
             <br />
-            <input type="text" id="txt_LRNNum" style="display: none;" />
-            <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentName" required/></label>
-            <button class="modal-button"><i class="far fa-window-restore"></i></button>
         </div>
-
-        <br /><br /><br /><br />
-        <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
-        <p><b>Adviser: </b><span id="txt_Adviser"></span></p>
-        <p><b>Student: </b><span id="txt_Student"></span></p>
-        <br /><br />
-
         <div class="row">
-            <div class="col-9 p-0 m-0">
+            <div class="col-6 p-0 m-0">
                 <table id="gradeTable" class="g-table"><h5>REPORT ON LEARNING PROGRESS AND ACHIEVEMENT</h5>
                     <thead class="dark">
                         <tr>
@@ -94,10 +94,10 @@
                             <th rowspan="2">Remarks</th>
                         </tr>
                         <tr>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                            <th>4</th>
+                            <th class="w-25px">1</th>
+                            <th class="w-25px">2</th>
+                            <th class="w-25px">3</th>
+                            <th class="w-25px">4</th>
                         </tr>
                     </thead>
 
@@ -263,20 +263,31 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="p-0 mt-3">
+                    <pre>
+                        <b>Descriptors                 Grade       Remarks</b>
+                        Outstanding                 90-100      Passed
+                        Very Satisfactory           85-89       Passed
+                        Satisfactory                80-84       Passed
+                        Faily Satisfactory          75-79       Passed
+                        Did Not Meet Expectations   Below-75    Failed
+                    </pre>
+                </div>
+            </div>
 
-                <br />
+            <div class="col-6">
                 <table id="gradeValTable" class="g-table"><h5>REPORT ON LEARNER'S OBSERVED VALUES</h5>
                     <thead class="dark">
                         <tr>
-                            <th rowspan="2">Core Values</th>
+                            <th rowspan="2" class="w-25">Core Values</th>
                             <th rowspan="2">Behavior Statement</th>
                             <th colspan="4">Quarter</th>
                         </tr>
                         <tr>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                            <th>4</th>
+                            <th class="w-25px">1</th>
+                            <th class="w-25px">2</th>
+                            <th class="w-25px">3</th>
+                            <th class="w-25px">4</th>
                         </tr>
                     </thead>
 
@@ -342,34 +353,19 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="p-0 mt-3">
+                    <pre>
+                        <b>Marking          Non-numerical Rating</b>
+                        <b> AO</b> -            Always Observed
+                        <b> SO</b> -            Sometimes Observed
+                        <b> RO</b> -            Rarely Observed
+                        <b> NO</b> -            Not Observed
+                    </pre>  
+                </div>
             </div>
+        </div>
 
-            <div class="p-0 mt-3">
-                <pre>
-                    <b>Descriptors                 Grade       Remarks</b>
-                    Outstanding                 90-100      Passed
-                    Very Satisfactory           85-89       Passed
-                    Satisfactory                80-84       Passed
-                    Faily Satisfactory          75-79       Passed
-                    Did Not Meet Expectations   Below-75    Failed
-                </pre>
-            </div>
-
-            <div class="p-0 mt-3">
-                <pre>
-                    <b>Marking          Non-numerical Rating</b>
-                    <b> AO</b> -            Always Observed
-                    <b> SO</b> -            Sometimes Observed
-                    <b> RO</b> -            Rarely Observed
-                    <b> NO</b> -            Not Observed
-                </pre>
-            </div>
-
-            <div>
-                <button onclick="printInner()">PRINT INNER PAGE OF FORM 138</button>
-            </div>
-
-            <div class="p-0 mt-3">
+            <div class="hideen p-0 mt-3">
                 <p class="h6">Notes:</p>
                 <ul>
                     <li>Import `grade` and `grade_values` tables to DB first</li>
@@ -379,9 +375,11 @@
                 </ul>
             </div>
 
-        </div>
+            <div class="hideen text-right">
+                <button onclick="printInner()">PRINT INNER PAGE OF FORM 138</button>
+            </div>
 
-        <div class="footer">
+        <div class="hideen footer">
             <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
         </div>
 

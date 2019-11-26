@@ -50,6 +50,7 @@
                 <p>list of students</p>
                 </a>
             </div>
+            <!--
             <div class="option">
                 <a href="Grade_View.php">
                 <img src="../pictures/grade.png" class="img-opt">
@@ -67,11 +68,11 @@
                 <img src="../pictures/grade.png" class="img-opt">
                 <p>Manage Values Grades of Students</p>
                 </a>
-            </div>
+            </div>-->
             <div class="option">
                 <a href="Student_Drafting.php">
                 <img src="../pictures/drafting.png" class="img-opt">
-                <p>student drafting</p>
+                <p>student assignment</p>
             </div>
 
 
