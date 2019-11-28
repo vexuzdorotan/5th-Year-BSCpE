@@ -74,7 +74,7 @@ table{
     width: fit-content;
 }
 .g-table td{
-    text-align: left;
+	text-align: left;
 }
 .search-student{
     border-top-left-radius: 15px;
@@ -168,6 +168,11 @@ font-size: 14px;
 }
 .room-container{
     width: 65%;
+	margin: auto;
+	font-size: 14px !important;
+}
+.grade-container{
+	width: 80%;
 	margin: auto;
 	font-size: 14px !important;
 }
@@ -280,4 +285,28 @@ font-size: 14px;
 	color:maroon;
 	font-weight: 500;
 	margin-right: 20px;
+}
+.w-25px{
+	width: 25px;
+}
+@media print {
+	@page {size: landscape}
+	.menu{
+		display: none;
+	}
+	.header{
+		display: none;
+	}
+	.logodesign{
+		display: none;
+	}
+	.hideen{
+		display: none;
+	}
+	#modal {
+		display: none;
+	}
+	.grade-container{
+		width: 100%;
+	}
 }

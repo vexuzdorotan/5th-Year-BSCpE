@@ -1,8 +1,8 @@
 <?php
-    // session_start();
-    // if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
-    //     header('Location: ../Portal.php');
-    // }
+    session_start();
+    if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
+        header('Location: ../Portal.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Update Grade</title>
+    <title>Subject Grades</title>
 
     <link rel="stylesheet" type="text/css" href="../css/modal.css" />
     <link rel="stylesheet" type="text/css" href="../css/all.css" />
@@ -25,9 +25,9 @@
     <img src="../pictures/logodesign.jpg" class="logodesign">
 
     <div class="header mb-3">
-        <legend class="h4 pl-0 pt-3 mb-0">GRADING SHEET</legend>
+        <legend class="h4 pl-0 pt-3 mb-0">REPORT ON LEARNING PROGRESS AND ACHIEVEMENT</legend>
         <div class="menu">
-            <a href="#">Administrator</a>|<a href="../dashboards/Overview.html">Menu</a>|<a href="../Portal.html">Logout</a>
+        <a href="#">Administrator</a>|<a href="../admin/Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
     </div>
 
@@ -139,7 +139,7 @@
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>
     <script src="../js/modal.js" type="text/javascript"></script>
-    <script src="../js/Grade_Update.js" type="text/javascript"></script>
+    <script src="../js/Grade_Subject.js" type="text/javascript"></script>
 </body>
 
 </html>

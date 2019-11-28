@@ -67,14 +67,16 @@
                 <p class="subtitle">Total Teachers</p>
             </div>
             <div class="count section">
+                <a href="Section.php">
                 <p class="number"><?php echo $numberOfSections;?></p>
                 <p class="title">section</p>
-                <p class="subtitle">Total Sections</p>
+                <p class="subtitle">Total Sections</p></a>
             </div>
             <div class="count room">
+                <a href="Room.php">
                 <p class="number"><?php echo $numberOfRooms;?></p>
                 <p class="title">room</p>
-                <p class="subtitle">Rooms Available</p>
+                <p class="subtitle">Rooms Available</p></a>
             </div>
             
         </div>
