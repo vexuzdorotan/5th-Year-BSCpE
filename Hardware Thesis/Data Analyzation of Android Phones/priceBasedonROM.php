@@ -80,6 +80,7 @@ function GetPrice($ROM){
 	// echo "Number of phones: " . $i . "<br>";
 	if($i != 0){
 		echo "Average Price of " . $ROM . " phones(".$i.") : <b><u>" . $sum/$i . " EUR</u> as of ". $yearSum/$i."</b><br>";
+		echo("Current value as of " . date("Y") .": <b>" . Depreciate(($sum/$i * 55), $yearSum/$i). "</b><br>");
 	}
 	else{
 		echo "No ".$ROM." RAM phone<br>";
@@ -98,5 +99,20 @@ for($i = 0; $i < count($NewmbROM); $i++){
 // 	// array_push($MP, explode("MP", $row[0])[0]);
 // 	echo($row[0] . "<br>");
 // }
+function Depreciate($value, $yearReleased){
+	$currentYear = (int)date("Y");
+	$currentMonth = (int)date("m");
+	$depreciation = 0.15;
+	$currentYear = $currentYear + $currentMonth/12;
+
+	$value = $value*0.65;
+	for($i = (int)ceil($yearReleased); $i < (int)round($currentYear); $i++){
+		if($i == (int)ceil($yearReleased)){
+			$value = $value * 0.5;
+		}
+		$value = $value * (1-$depreciation);
+	}
+	return $value;
+}
 
 ?>

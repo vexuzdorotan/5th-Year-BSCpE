@@ -28,7 +28,8 @@ function GetPrice($ram){
 	}
 	// echo "Number of phones: " . $i . "<br>";
 	if($i != 0){
-		echo "Average Price of " . $ram . " RAM phones(".$i.") : <b><u>" . $sum/$i . " EUR</u> as of ". $yearSum/$i."</b><br>";
+		echo "Average Price of " . $ram . " RAM phones(".$i.") : <b><u>" . $sum/$i*55 . " PHP</u> as of ". $yearSum/$i."</b><br>";
+		echo("Current value as of " . date("Y") .": <b>" . Depreciate(($sum/$i * 55), $yearSum/$i). "</b><br>");
 	}
 	else{
 		echo "No ".$ram." RAM phone<br>";
@@ -37,5 +38,20 @@ function GetPrice($ram){
 GetPrice("512 MB");
 for($j = 1; $j <= 12; $j++){
 	GetPrice($j . "GB");
+}
+function Depreciate($value, $yearReleased){
+	$currentYear = (int)date("Y");
+	$currentMonth = (int)date("m");
+	$depreciation = 0.15;
+	$currentYear = $currentYear + $currentMonth/12;
+
+	$value = $value*0.65;
+	for($i = (int)ceil($yearReleased); $i < (int)round($currentYear); $i++){
+		if($i == (int)ceil($yearReleased)){
+			$value = $value * 0.5;
+		}
+		$value = $value * (1-$depreciation);
+	}
+	return $value;
 }
 ?>

@@ -38,7 +38,8 @@ function GetPrice($MP){
 	}
 	// echo "Number of phones: " . $i . "<br>";
 	if($i != 0){
-		echo "Average Price of " . $MP . " MP phones(".$i.") : <b><u>" . $sum/$i . " EUR</u> as of ". $yearSum/$i."</b><br>";
+		echo "Average Price of " . $MP . " MP phones(".$i.") : <b><u>" . ($sum/$i * 55). " PHP</u> as of ". $yearSum/$i."</b><br>";
+		echo("Current value as of " . date("Y") .": <b>" . Depreciate(($sum/$i * 55), $yearSum/$i). "</b><br>");
 	}
 	else{
 		echo "No ".$MP." MP phone<br>";
@@ -47,12 +48,25 @@ function GetPrice($MP){
 
 for($i = 0; $i < count($MPs); $i++){
 	GetPrice($MPs[$i]);
+	// echo("Current value as of " . date("Y") .": " . Depreciate($) . "<br>");
 }
-//BASED ON BRAND
-// $stmt = $db->prepare("SELECT Brand, AVG(Price), COUNT(ProductName) FROM productlist WHERE Price LIKE '%EUR%' GROUP BY Brand ORDER BY AVG(Price) DESC");
-// $stmt->execute();
 
-// while($row = $stmt->fetch()){
-// 	echo ("Brand: ". $row[0] . " Average Price(".$row[2]."): " . $row[1] . "<br>");
-// }
+function Depreciate($value, $yearReleased){
+	$currentYear = (int)date("Y");
+	$currentMonth = (int)date("m");
+	$depreciation = 0.15;
+	$currentYear = $currentYear + $currentMonth/12;
+
+	for($i = (int)ceil($yearReleased); $i < (int)round($currentYear); $i++){
+		if($i == (int)ceil($yearReleased)){
+			$value = $value * 0.5;
+		}
+		$value = $value * (1-$depreciation);
+	}
+	return $value;
+}
+
+// print "<br> ".ceil((int)date("m")/12); 
+// echo("<br>");
+// Depreciate("1", "2");
 ?>
