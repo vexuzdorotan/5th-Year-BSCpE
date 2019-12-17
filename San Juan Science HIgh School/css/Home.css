@@ -21,16 +21,13 @@
 }
 .foottext{
     padding: 10px 0px 0px 50px;
-    font-family: Tw Cen MT;
     margin-left: 40px;
 }
 .footlogo{
     font-size: 30px;
     margin-right: 40px;
 }
-.TwCenMT{
-  font-family: Tw Cen MT;
-}
+
 .footer-two{
   width: 100%;
   background: #1c0004;
@@ -107,7 +104,6 @@ a.text-light:hover {
     width:100%;
     margin:auto;
     margin-top: -8px;
-    
 }
 .arr-down {
     margin-left:10px;
@@ -117,7 +113,7 @@ a.text-light:hover {
   position: fixed;
   bottom: 40px; 
   right: 20px; 
-  z-index: 1000 !important;
+  z-index: 100 !important;
   border: none; 
   outline: none; 
   color: maroon; 
@@ -134,18 +130,16 @@ a.text-light:hover {
 }
 .hide{
   display: none !important;
-;
 }
 
 #myBtn:hover {
   background-color: black; 
-  z-index: 98;
+  z-index: 100;
   opacity: 0.8;
 }
 .content-div{
   font-size: 12px !important;
   margin-top: 30px;
-
 }
 .date{
   font-size: 14px !important;

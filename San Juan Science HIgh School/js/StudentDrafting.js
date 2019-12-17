@@ -21,15 +21,19 @@ var state = "";
 
 buttons[0].addEventListener("click", function(){
 	state = "Add";
-	this.style.backgroundColor = "cyan";
+	this.style.backgroundColor = "maroon";
+	this.style.color="white";
 	buttons[1].style.backgroundColor = "";
+	buttons[1].style.color="black";
 	EmptyNode(inputs);
 });
 
 buttons[1].addEventListener("click", function(){
 	state = "Change";
-	this.style.backgroundColor = "cyan";
+	this.style.backgroundColor = "maroon";
+	this.style.color="white";
 	buttons[0].style.backgroundColor = "";
+	buttons[0].style.color="black";
 	for(var i = 0; i < inputs.length; i++){
 		inputs[i].value = "";
 	}
@@ -51,6 +55,7 @@ buttons[2].addEventListener("click", function(){
 		
 		CreateInput("SearchStudent", "search", modal_body);
 		CreateTable("SearchStudentTable", theadID, theadHTML, "@", modal_body, 0, "EmployeeNum@section.SectionNum");
+		document.querySelector("thead").className = "dark";
 		openModal("List of Students", "Student");
 		var searchStudent = document.getElementById('SearchStudent'); 
 		Search = function(){
@@ -103,10 +108,12 @@ function PickStudent(xhttp){
 	var tbody_tr = document.querySelectorAll("#SearchStudentTable tbody tr");
 	for(var i=0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("mouseover", function(){
-			this.style.backgroundColor = 'cyan';
+			this.style.backgroundColor = 'maroon';
+			this.style.color = "white";
 		});
 		tbody_tr[i].addEventListener("mouseout", function(){
 			this.style.backgroundColor = '';
+			this.style.color = "";
 		});
 		tbody_tr[i].addEventListener("click", function(){
 			// txt_TeacherEmployeeNum.value = this.children[0].innerHTML;
@@ -136,6 +143,7 @@ buttons[3].addEventListener("click", function(){
 			theadHTML = "SectionNum@Section Name@Adviser@Population";
 			CreateInput("SearchSection", "search", modal_body);
 			CreateTable("SearchSectionTable", theadID, theadHTML, "@", modal_body, 0, "SectionNum");
+			document.querySelector("thead").className = "dark";
 			openModal("List of Sections", "Section");
 			var searchSection = document.getElementById('SearchSection'); 
 			// console.log(GetID(document.querySelectorAll("#SearchStudentTable thead td"), 0));
@@ -204,10 +212,12 @@ function PickSection(xhttp){
 	var tbody_tr = document.querySelectorAll("#SearchSectionTable tbody tr");
 	for(var i=0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("mouseover", function(){
-			this.style.backgroundColor = 'cyan';
+			this.style.backgroundColor = 'maroon';
+			this.style.color = "white";
 		});
 		tbody_tr[i].addEventListener("mouseout", function(){
 			this.style.backgroundColor = '';
+			this.style.color = "";
 		});
 		tbody_tr[i].addEventListener("click", function(){
 			// txt_TeacherEmployeeNum.value = this.children[0].innerHTML;

@@ -1,8 +1,8 @@
 <?php
-    // session_start();
-    // if($_SESSION['id'] === null || $_SESSION['access'] != "teacher" || $_SESSION['access'] != "teacher"){
-    //     header('Location: ../Portal.php');
-    // }
+     session_start();
+     if($_SESSION['id'] === null || $_SESSION['access'] != "teacher" || $_SESSION['access'] != "teacher"){
+         header('Location: ../Portal.php');
+     }
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
         <legend class="h4 pl-0 pt-3 mb-0">VIEW STUDENT GRADE</legend>
 
         <div class="menu">
-        <a href="#">Administrator</a>|<a href="../admin/Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
+        <a href="#">[Teacher's Name]</a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
 
     </div>
@@ -376,7 +376,7 @@
             </div>
 
             <div class="hideen text-right">
-                <button onclick="printInner()">PRINT INNER PAGE OF FORM 138</button>
+                <button class="btn btn-dark" onclick="printInner()">PRINT INNER PAGE OF FORM 138</button>
             </div>
 
         <div class="hideen footer">

@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/modal.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="..css/all.css" />
 	<link rel="icon" href="../pictures\logo.png" />
 </head>
 <body>

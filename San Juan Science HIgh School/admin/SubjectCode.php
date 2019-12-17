@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/Entire.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="../css/merged-styles.css" />
-	<!-- Room.css must be renamed since it is used by other page -->
+	<link rel="stylesheet" type="text/css" href="../css/all.css" />
     <link rel="icon" href="../pictures/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>

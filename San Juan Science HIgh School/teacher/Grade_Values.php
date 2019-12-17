@@ -1,8 +1,8 @@
 <?php
-    // session_start();
-    // if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
-    //     header('Location: ../Portal.php');
-    // }
+     session_start();
+     if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
+         header('Location: ../Portal.php');
+     }
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
     <div class="header mb-3">
         <legend class="h4 pl-0 pt-3 mb-0">REPORT ON LEARNER'S OBSERVED VALUES</legend>
         <div class="menu">
-            <a href="#">Administrator</a>|<a href="../admin/Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
+            <a href="#">[Teacher's Name]</a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
 
     </div>
@@ -43,7 +43,7 @@
                 <div id="modal-body">
                 </div>
 
-                <div class="ml-3 mr-3 mt-0">
+                <!-- <div class="ml-3 mr-3 mt-0">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
                             <li class="page-item disabled">
@@ -57,7 +57,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div> -->
 
                 <div id="modal-footer">
                 </div>
