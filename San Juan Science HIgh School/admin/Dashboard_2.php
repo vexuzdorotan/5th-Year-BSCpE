@@ -22,7 +22,7 @@ if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
     <div class="my-container">
         <nav class="menu">
             <ul>
-                <li><a href="../Home.html" class="main-li"><i class="fas fa-home"></i>Home</a></li>
+                <!-- <li><a href="../Home.html" class="main-li"><i class="fas fa-home"></i>Home</a></li> -->
                 <li><a href="" class="main-li"><i class="fas fa-desktop"></i>Dashboard</a>
                     <div class="sub-div">
                         <a class="sub-li" href="Dashboard.php">Overview</a>
@@ -35,6 +35,7 @@ if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
                     </div>
                 </li>
                 <li><a href="" class="main-li"><i class="fas fa-cog"></i>Settings</a></li>
+                <li><a href="../portal.php" class="main-li"><i class="fas fa-sign-out-alt" style="transform: rotate(180deg)"></i>Logout</a></li>
             </ul>
         </nav>
         <div class="content">

@@ -64,15 +64,13 @@
 
 /*MODAL BODY*/
 #modal-body{
-  margin: 4% 2%;
+  margin: 4% 2% 0 2%;
   font-weight: bold;
 }
 
 /*MODAL FOOTER*/
 #modal-footer{
   /*position: relative;*/
-  height: 17.5%;
-  padding: 0.8% 0%;
   border-top: solid 0.2em #aaa;
   /*bottom: 0;*/
 }
