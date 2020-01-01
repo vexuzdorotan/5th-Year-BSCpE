@@ -148,5 +148,19 @@ a.text-light:hover {
 }
 .news-img{
   float: left;
-  width: 300px;
+  width: 250px;
+}
+.maroon{
+  color: maroon !important;
+}
+.maroon:hover{
+  color: #343a40 !important;
+}
+@media (max-width: 576px) {
+  .mycontainer{
+    width: 100% !important;
+  }
+  .container{
+    width: 100% !important;
+  }
 }
