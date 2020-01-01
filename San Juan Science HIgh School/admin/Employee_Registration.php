@@ -30,20 +30,21 @@
       </div>
    </div>
 <div class="regi-container">
+   <form>
    <div id = "FirstCol">
    <p class="h5 pb-2">Employees's Name</p>
-   <p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName"/></p>
-   <p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName"/></p>
+   <p><label for="LastName">Last Name: </label><input type="text" id = "LastName" name = "LastName" required/></p>
+   <p><label for="FirstName">First Name: </label><input type="text" id = "FirstName" name = "FirstName" required/></p>
    <p><label for="MiddleName">Middle Name: </label><input type="text" id = "MiddleName" name = "MiddleName"/></p>
-   <p><label for="Birthday" class="h5 pt-2">Birthday </label></p>
+   <p><label for="Birthday" class="h5 pt-2" required>Birthday </label></p>
    <p><input type="date" id = "Birthday" name = "Birthday"/></p>
       
 	<p class="h5 pt-3 pb-2">Address</p>
-      <p><label for="StreetAdd1">Street Address 1: </label><input type="text" id = "StreetAdd1" name = "StreetAdd1"></p>
-      <p><label for="StreetAdd2">Street Address 2: </label><input type="text" id = "StreetAdd2" name = "StreetAdd2"></p>
-      <p><label for="City">City: </label><input type="text" id = "City" name = "City"></p>
-      <p><label for="Province">Province: </label><input type="text" id = "Province" name= " Province"></p>
-      <p style="display: none;"><label for="ZipCode">Zip Code: </label><input type="text" id = "ZipCode" name = "ZipCode"></p>
+      <p><label for="StreetAdd1">Street Address 1: </label><input type="text" id = "Street_Address1" name = "StreetAdd1" required></p>
+      <p><label for="StreetAdd2">Street Address 2: </label><input type="text" id = "Street_Address2" name = "StreetAdd2"></p>
+      <p><label for="City">City: </label><input type="text" id = "City" name = "City" required></p>
+      <p><label for="Province">Province: </label><input type="text" id = "Province" name= " Province" required></p>
+      <!-- <p style="display: none;"><label for="ZipCode">Zip Code: </label><input type="text" id = "ZipCode" name = "ZipCode"></p> -->
       <p><label for="Country">Country: </label>
          <select id = "Country" name = "Country">
       </p>
@@ -297,8 +298,10 @@
    
    <p>
    <label for="Gender" class="h5 pt-3">Gender </label>
-      <input class="ml-3" type="radio" name="Gender" id = "Gender" value="Male" checked="checked"> Male
-         <input class="ml-3" type="radio" name="Gender" id = "Gender" value="Female"> Female</p>
+     <select id="Gender">
+         <option selected="selected">Male</option>
+         <option>Female</option>
+      </select>
 
    
    </div>
@@ -307,7 +310,7 @@
       <div class="photo-div">
          <p><label class="h5 m-0" for="file">Upload Employee's Photo</label></p>
          <center><p><img src="../pictures/faceless.png" id="profile" style="width: 200px; height: 200px" class="photo-upload shadow" ></p></center>
-         <input type="file" id="file" name="file" accept=".gif,.jpg,.jpeg,.png">
+         <input type="file" id="file" name="file" accept=".gif,.jpg,.jpeg,.png" required>
       </div>
       <p class="mt-3 mb-3">
          <label for="lbl_Position">Position: </label>
@@ -319,10 +322,17 @@
       </p>
    <button class="rounded-pill" id = "submitForm" name = "submitForm">SUBMIT</button>
    </div>
+   </form>
+
    <div class="footer">
       <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
    </div>
+   <script type="text/javascript">
+      var user = "<?php echo($_SESSION['access']);?>";
+      // console.log(user);
+   </script>
 <script type="text/javascript" src = "../js/ajax.js"></script>
+<script type="text/javascript" src= "../js/cms.js"></script>
 <script type="text/javascript" src = "../js/Employee.js"></script>
 </body>
 </html>

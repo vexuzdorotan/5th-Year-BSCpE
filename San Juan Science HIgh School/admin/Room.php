@@ -69,6 +69,11 @@
      		<p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
    		</div>
 	</div>
+	<script type="text/javascript">
+		var user = "<?php echo($_SESSION['access']);?>";
+		// console.log(user);
+	</script>
+	
 	<script type="text/javascript" src="../js/ajax.js"></script>
 	<script type="text/javascript" src="../js/utility.js"></script>
 	<script type="text/javascript" src="../js/cms.js"></script>

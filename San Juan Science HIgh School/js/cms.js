@@ -109,7 +109,10 @@ function Create(btn_Create, table2, autoincrement, FK, fieldToUpdate, createCall
 	for(var i = 0; i < select.length; i++){
 		content[select[i].id] = select[i].options[select[i].selectedIndex].text; //getting text of <select> tag under parent_id
 	}
-
+	if(user != null){
+		content["User"] = user;
+	}
+	// content['User'] = 
 	if(error == 0){
 		content = JSON.stringify(content);
 		data += "&content=" + content;
@@ -138,6 +141,10 @@ function CreateWithPreset(table1 , content, autoincrement, callback){
 	data += "&foreignKey=" + null;
 	data += "&fieldToUpdate=" + null;
 	console.log(content);
+	
+	if(user != null){
+		content["User"] = user;
+	}
 	content = JSON.stringify(content)
 	data += "&content=" + content;
 	// console.log(callback);
@@ -260,7 +267,154 @@ function SearchWithQuery(table1, table2, columnNames, correction, whatJoin, comp
 }
 
 //Function to Create Table 
-function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
+// function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
+// 	try{
+// 	// var json;
+// 	var td;
+// 	var tr;
+// 	var btn_Edit;
+// 	var btn_Delete;
+// 	var class_btn1;
+// 	var class_btn2;
+
+// 	results = JSON.parse(xhttp.responseText);
+// 	// console.log(results);
+
+// 	var thead_td = document.querySelectorAll("#" + txt_search.id + "Table thead tr td");
+// 	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;//childElementCount counts child of parent
+// 	var tbody = document.querySelector("#" + txt_search.id + "Table tbody");
+// 	var main_body = tbody.parentNode.parentNode;
+// 	let limit;
+// 	// console.log(main_body.children.length);
+// 	if(document.querySelector("#modal")){
+// 		document.querySelector("#modal-footer").removeChild(document.querySelector("#modal-footer").firstChild);
+// 	}
+// 	if(main_body.children.length > 2){
+// 		main_body.removeChild(main_body.children[2]);
+// 	}
+// 	if(eachpage*currentpage < results.length){
+// 		limit = eachpage*currentpage;
+// 	}
+// 	else{
+// 		limit = results.length;
+// 	}
+// 	RemoveChildNodes(tbody);
+// 	// console.log(results.length/eachpage);
+// 	for(var i=eachpage*(currentpage-1); i < limit; i++){//
+// 	// for(var i=0; i < json.length; i++){
+// 		tr = document.createElement('tr');
+// 		for(var j = 0; j < colNum; j++){
+// 			td = document.createElement('td');
+// 			if(j == colNum-1 && thead_td[colNum-1].innerHTML == ""){
+// 				btn_Delete = document.createElement('button');
+// 				btn_Edit = document.createElement('button');
+// 				btn_Edit.innerHTML = "EDIT";
+// 				btn_Delete.innerHTML = "DELETE";
+// 				btn_Edit.addEventListener("click", Edit.bind(null, results[i]));
+// 				btn_Delete.addEventListener("click", Delete.bind(null, results[i])); //Selects ID make sure that first column is ID
+// 				td.appendChild(btn_Edit);
+// 				td.appendChild(btn_Delete);
+// 				class_btn1 = document.createAttribute("class");
+// 				class_btn2 = document.createAttribute("class");
+// 				class_btn1.value = "btn_Table"; //
+// 				class_btn2.value = "btn_Table";
+// 				btn_Delete.setAttributeNode(class_btn1);
+// 				btn_Edit.setAttributeNode(class_btn2); 
+// 			}
+// 			else{
+// 				td.innerHTML = results[i][j];
+// 			}
+// 			if(thead_td[j].style.display == "none"){
+// 				td.style.display = "none";
+// 			}	
+// 			tr.appendChild(td);
+// 		}
+//  		tbody.appendChild(tr);
+// 	}
+// 	//PAGINATION
+// 	var pagination = document.createElement('ul');
+// 	// var btn_First = document.createElement('button');
+// 	// var btn_Last = document.createElement('button');
+// 	var btn_Next = document.createElement('button');
+// 	var btn_Previous = document.createElement('button');
+// 	pagination.classList.add("pgn");
+// 	// btn_First.classList.add("pgn-first");
+// 	btn_Next.classList.add("pgn-next");
+// 	btn_Previous.classList.add("pgn-prev")
+// 	// btn_Last.classList.add("pgn-last");	
+
+// 	// pagination.appendChild(btn_First);
+// 	pagination.appendChild(btn_Previous);
+// 	pagination.appendChild(btn_Next);
+// 	// pagination.appendChild(btn_Last);
+
+// 	// btn_First.class = "page-item";
+// 	// btn_Previous.class = "page-item";
+// 	// btn_Next.class = "page-item";
+// 	// btn_Last.class = "page-item";
+// 	if(document.querySelector("#modal")){
+// 		document.querySelector("#modal-footer").appendChild(pagination);
+// 	}
+// 	else{
+// 		main_body.appendChild(pagination);
+// 	}
+// 	// main_body.appendChild(pagination);
+// 	// pagination.class = "pagination justify-content-end";
+
+// 	pagination.style.textAlign = "center";
+// 	// console.log(pagination);
+// 	// btn_First.innerHTML = "First";
+// 	btn_Previous.innerHTML = "<i class='fas fa-caret-left'></i>";
+// 	btn_Next.innerHTML = "<i class='fas fa-caret-right'></i>";
+// 	// btn_Last.innerHTML = "Last";
+// 	// console.log(main_body.children.length);
+// 	// console.log(main_body.children[main_body.children.length]);
+// 	// btn_First.addEventListener("click", function(){
+// 	// 	// main_body.removeChild(pagination);
+// 	// 	console.log("first");
+// 	// 	currentpage = 1;
+// 	// 	CreateTBody(xhttp);
+// 	// });
+
+// 	btn_Previous.addEventListener("click", function(){
+// 		// main_body.removeChild(pagination);
+// 		console.log("prev");
+// 		if(currentpage > 1){
+// 			currentpage--;
+// 			CreateTBody(xhttp);
+// 		}
+// 	});
+
+// 	btn_Next.addEventListener("click", function(){
+// 		// main_body.removeChild(pagination);
+// 		console.log("next");
+// 		if(currentpage < Math.ceil(results.length/eachpage)){
+// 			currentpage++;
+// 			CreateTBody(xhttp);
+// 		}
+// 	});
+
+// 	// btn_Last.addEventListener("click", function(){
+// 	// 	// main_body.removeChild(pagination);
+// 	// 	console.log("last");
+// 	// 	currentpage = Math.ceil(results.length/eachpage);
+// 	// 	CreateTBody(xhttp);
+// 	// });
+// 	// console.log(thead_td[2].style.display);
+// 	}
+// 	catch(err){
+// 		alert("CANNOT FIND");
+// 		console.log(xhttp.responseText);
+// 		console.log(err);
+// 	}
+
+// 	function newFunction() {
+// 		return "dark";
+// 	}
+// 	// console.log(xhttp.responseText);
+// }
+//Function to Create Table 
+function CreateTBody(xhttp, cfunction){ //Create Table Body (Imitates result of sql)
 	try{
 	// var json;
 	var td;
@@ -326,55 +480,38 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 	}
 	//PAGINATION
 	var pagination = document.createElement('ul');
-	// var btn_First = document.createElement('button');
-	// var btn_Last = document.createElement('button');
 	var btn_Next = document.createElement('button');
 	var btn_Previous = document.createElement('button');
 	pagination.classList.add("pgn");
-	// btn_First.classList.add("pgn-first");
 	btn_Next.classList.add("pgn-next");
 	btn_Previous.classList.add("pgn-prev")
-	// btn_Last.classList.add("pgn-last");	
 
-	// pagination.appendChild(btn_First);
 	pagination.appendChild(btn_Previous);
 	pagination.appendChild(btn_Next);
-	// pagination.appendChild(btn_Last);
-
-	// btn_First.class = "page-item";
-	// btn_Previous.class = "page-item";
-	// btn_Next.class = "page-item";
-	// btn_Last.class = "page-item";
+	
 	if(document.querySelector("#modal")){
 		document.querySelector("#modal-footer").appendChild(pagination);
 	}
 	else{
 		main_body.appendChild(pagination);
 	}
-	// main_body.appendChild(pagination);
-	// pagination.class = "pagination justify-content-end";
 
 	pagination.style.textAlign = "center";
-	// console.log(pagination);
-	// btn_First.innerHTML = "First";
 	btn_Previous.innerHTML = "<i class='fas fa-caret-left'></i>";
 	btn_Next.innerHTML = "<i class='fas fa-caret-right'></i>";
-	// btn_Last.innerHTML = "Last";
-	// console.log(main_body.children.length);
-	// console.log(main_body.children[main_body.children.length]);
-	// btn_First.addEventListener("click", function(){
-	// 	// main_body.removeChild(pagination);
-	// 	console.log("first");
-	// 	currentpage = 1;
-	// 	CreateTBody(xhttp);
-	// });
 
 	btn_Previous.addEventListener("click", function(){
 		// main_body.removeChild(pagination);
 		console.log("prev");
 		if(currentpage > 1){
 			currentpage--;
-			CreateTBody(xhttp);
+			// CreateTBody(xhttp);
+			if(typeof cfunction === "function"){
+				cfunction(xhttp);
+			}
+			else{
+				CreateTBody(xhttp);		
+			}
 		}
 	});
 
@@ -383,17 +520,15 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 		console.log("next");
 		if(currentpage < Math.ceil(results.length/eachpage)){
 			currentpage++;
-			CreateTBody(xhttp);
+			if(typeof cfunction === "function"){
+				cfunction(xhttp);
+			}
+			else{
+				CreateTBody(xhttp);		
+			}
+			// CreateTBody(xhttp);
 		}
 	});
-
-	// btn_Last.addEventListener("click", function(){
-	// 	// main_body.removeChild(pagination);
-	// 	console.log("last");
-	// 	currentpage = Math.ceil(results.length/eachpage);
-	// 	CreateTBody(xhttp);
-	// });
-	// console.log(thead_td[2].style.display);
 	}
 	catch(err){
 		alert("CANNOT FIND");
@@ -404,7 +539,6 @@ function CreateTBody(xhttp){ //Create Table Body (Imitates result of sql)
 	function newFunction() {
 		return "dark";
 	}
-	// console.log(xhttp.responseText);
 }
 //EDIT AND DELETE IS FUNCTION OF BUTTONS INSIDE TBODY ONLY
 function Edit(whatToEdit){ //whatToEdit is an array 

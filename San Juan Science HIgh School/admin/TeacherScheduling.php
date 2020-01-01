@@ -171,6 +171,10 @@
 	</table>
 	<button class="rounded-pill">RESET</button>
 	</div>
+	<script type="text/javascript">
+		var user = "<?php echo($_SESSION['access']);?>";
+		// console.log(user);
+	</script>
 	<!-- <button>SUBMIT</button> -->
 <script type="text/javascript" src="../js/ajax.js"></script>
 <script type="text/javascript" src="../js/cms.js"></script>

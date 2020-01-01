@@ -8,16 +8,23 @@
 	}
 	else{
 		if(is_numeric($_POST['value'])){
-			$stmt = $db->prepare("DELETE from " . $table1 . " WHERE ". $whatToDelete . "Num = ?");
+			// $stmt = $db->prepare("DELETE from " . $table1 . " WHERE ". $whatToDelete . "Num = ?");
+			$query = "DELETE from " . $table1 . " WHERE ". $whatToDelete . "Num = ?";
+		}
+		else if($_POST['whatToDelete'] == "SubjectCode"){
+			$query = "DELETE from " . $table1 . " WHERE ". $whatToDelete . " = ?";	
 		}
 		else{
-			$stmt = $db->prepare("DELETE from " . $table1 . " WHERE ". $whatToDelete . "Name = ?");
+			$query = "DELETE from " . $table1 . " WHERE ". $whatToDelete . "Name = ?";
+			// $stmt = $db->prepare("DELETE from " . $table1 . " WHERE ". $whatToDelete . "Name = ?");
 		}
+		$stmt = $db->prepare($query);
 		$stmt->bindValue(1, $_POST['value']);
-		// $stmt->execute();
+		$stmt->execute();
 	}
 
 	try{
+		// echo($preparedStatement);
 		$stmt->execute();
 		$stmt->closeCursor();
 	}

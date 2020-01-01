@@ -22,7 +22,9 @@
     $stmt->closeCursor();
     // echo $numberOfStudents;
 ?>
-
+<!-- <script type="text/javascript">
+    console.log("<?php echo($_SESSION['id'])?>".split("-")[0]);
+</script> -->
 <!DOCTYPE html>
 <html>
 

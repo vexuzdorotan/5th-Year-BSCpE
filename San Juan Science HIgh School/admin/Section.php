@@ -36,7 +36,7 @@
 		<input type="search" id="txt_TeacherName" disabled/></label>
 		<button onclick="CreateModal('Available Teachers', 'Teacher')">&check;</button>
 	</p>
-	<p class="mt-2"><label for="">Population: <input type="number" id="Population" disabled value="0"/></label>
+	<!-- <p class="mt-2"><label for="">Population: <input type="number" id="Population" disabled value="0"/></label> -->
 	<label class="ml-2" for="GradeLevel">Grade Level: <select id="GradeLevel" name="GradeLevel">
 		<option selected="selected">7</option>
 		<option>8</option>
@@ -89,6 +89,10 @@
      		<p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved<a style="color: black; hover{color:black; text-decoration: none;}" href=#>.</a></p>
    		</div>
 </div>
+	<script type="text/javascript">
+		var user = "<?php echo($_SESSION['access']);?>";
+		// console.log(user);
+	</script>
 	<script type="text/javascript" src="../js/ajax.js"></script>
 	<script type="text/javascript" src="../js/utility.js"></script>
 	<script type="text/javascript" src="../js/cms.js"></script>

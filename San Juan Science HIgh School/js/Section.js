@@ -194,7 +194,7 @@ function CreateModal(header, title){ //Shows modal in html that is hidden then c
 
 function PickRoom(xhttp){
 	// console.log(xhttp.responseText);
-	CreateTBody(xhttp);
+	CreateTBody(xhttp, PickRoom);
 	var tbody_tr = document.querySelectorAll("#SearchRoomTable tbody tr");
 	// var tbody = document.querySelector("#SearchRoomTable tbody");
 	for(var i = 0; i < tbody_tr.length; i++){
@@ -220,7 +220,7 @@ function PickRoom(xhttp){
 
 function PickAdviser(xhttp){
 	// console.log(xhttp.responseText);
-	CreateTBody(xhttp);
+	CreateTBody(xhttp, PickAdviser);
 	var tbody_tr = document.querySelectorAll("#SearchTeacherTable tbody tr");
 	// var tbody = document.querySelector("#SearchRoomTable tbody");
 	for(var i = 0; i < tbody_tr.length; i++){

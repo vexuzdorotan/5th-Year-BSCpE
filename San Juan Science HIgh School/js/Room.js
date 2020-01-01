@@ -1,3 +1,4 @@
+// console.log(user);
 var searchRoom = document.getElementById("SearchRoom");
 var createRoom = document.getElementById("CreateRoom");
 var resetRoom = document.getElementById("ResetRoom");

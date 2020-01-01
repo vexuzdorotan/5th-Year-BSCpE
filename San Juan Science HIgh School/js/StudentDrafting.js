@@ -104,7 +104,7 @@ buttons[2].addEventListener("click", function(){
 });
 
 function PickStudent(xhttp){
-	CreateTBody(xhttp);
+	CreateTBody(xhttp, PickStudent);
 	var tbody_tr = document.querySelectorAll("#SearchStudentTable tbody tr");
 	for(var i=0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("mouseover", function(){
@@ -168,6 +168,7 @@ buttons[3].addEventListener("click", function(){
 				query += "COUNT(LRNNum) AS Population ";
 				query += "FROM section LEFT JOIN teacher ON teacher.SectionNum = section.SectionNum ";
 				query += "LEFT JOIN student_section ON student_section.SectionNum = section.SectionNum ";
+				query += "WHERE section.GradeLevel =" + txt_GradeLevel.value +" ";
 				crud = "SELECT";
 				basequery = query;
 				nospaces;
@@ -208,7 +209,7 @@ buttons[3].addEventListener("click", function(){
 });
 
 function PickSection(xhttp){
-	CreateTBody(xhttp);
+	CreateTBody(xhttp, PickSection);
 	var tbody_tr = document.querySelectorAll("#SearchSectionTable tbody tr");
 	for(var i=0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("mouseover", function(){
@@ -233,9 +234,21 @@ function PickSection(xhttp){
 			// 	0, 
 			// 	CheckIfCreated
 			// );
-			var crud = "UPDATE";
-			var query = "UPDATE student_section SET SectionNum = " + this.children[0].innerHTML + " WHERE ";
-			query += "LRNNum = " + txt_LRNNum.value + " AND GradeLevel = " + txt_GradeLevel.value;
+			var crud;
+			var query;
+			if(state == "Change"){
+				crud = "UPDATE";
+				query = "UPDATE student_section SET SectionNum = " + this.children[0].innerHTML;
+				query += ", User = '" + user + "' WHERE ";
+				query += "LRNNum = " + txt_LRNNum.value + " AND GradeLevel = " + txt_GradeLevel.value;
+			}
+			else if(state == "Add"){
+				crud = "INSERT";
+				query = "INSERT into student_section";
+				query += "(LRNNum, SectionNum, GradeLevel, User) ";
+				query += "VALUES("+txt_LRNNum.value+", "+this.children[0].innerHTML+", "+txt_GradeLevel.value+", '"+user+"')";
+
+			}
 
 			SimplifiedQuery(crud, query, null, CheckIfUpdated);
 			closeModal(modal_body); 

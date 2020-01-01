@@ -19,7 +19,7 @@ buttons[2].addEventListener("click", function(){
 	if(txt_TeacherEmployeeNum.value != ""){
 		var query = "";
 		var crud = "UPDATE";
-		query += "UPDATE subject SET EmployeeNum = NULL WHERE EmployeeNum = " + txt_TeacherEmployeeNum.value;
+		query += "UPDATE subject SET EmployeeNum = NULL, User = '"+user+"' WHERE EmployeeNum = " + txt_TeacherEmployeeNum.value;
 
 		var r = confirm("Do you want to reset schedule?"); //confirm alert of js
 		var data;
@@ -61,7 +61,7 @@ buttons[0].addEventListener("click", function(){
 });
 
 function PickTeacher(xhttp){
-	CreateTBody(xhttp);
+	CreateTBody(xhttp, PickTeacher);
 	var tbody_tr = document.querySelectorAll("#SearchTeacherTable tbody tr");
 
 	for(var i=0; i < tbody_tr.length; i++){
@@ -140,7 +140,7 @@ buttons[1].addEventListener("click", function(){
 
 function PickSubject(xhttp){
 	// console.log(xhttp);
-	CreateTBody(xhttp);
+	CreateTBody(xhttp, PickSubject);
 	var tbody_tr = document.querySelectorAll("#SearchSubjectTable tbody tr");
 	for(var i = 0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("mouseover", function(){

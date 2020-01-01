@@ -79,7 +79,7 @@ openSectionModal.addEventListener("click", function(){
 });
 
 function PickSection(xhttp){
-	CreateTBody(xhttp);
+	CreateTBody(xhttp, PickSection);
 	var tbody_tr = document.querySelectorAll("#SearchSectionTable tbody tr");
 	for(var i = 0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("click", function(){
@@ -262,7 +262,7 @@ function Get1stRowCell(i, j){
 }
 
 function PickSubjectCode(xhttp){
-	CreateTBody(xhttp);
+	CreateTBody(xhttp, PickSubjectCode);
 	var tbody_tr = document.querySelectorAll("#SearchSubjectCodeTable tbody tr");
 	for(var i = 0; i < tbody_tr.length; i++){
 		tbody_tr[i].addEventListener("click", function(){

@@ -22,6 +22,7 @@
 			$_SESSION['id'] = explode("-", $row[0])[0];
 		}
 		$_SESSION['access'] = $row[2];
+		// $_SESSION['user'] = $row[1];
 		echo $row[2];
 	}
 	else{
