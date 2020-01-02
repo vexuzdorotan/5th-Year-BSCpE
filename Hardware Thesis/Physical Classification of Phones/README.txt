@@ -1,10 +1,24 @@
 TRAINING:
 
-python -m scripts.retrain  --bottleneck_dir=tf_files/bottlenecks  --how_many_training_steps 500 --model_dir=tf_files/models/inception --architecture=inception_v3 --output_graph=tf_files/retrained_graph.pb --output_labels=tf_files/retrained_labels.txt --image_dir=tf_files/DataSet/
+// python -m scripts.retrain  --bottleneck_dir=tf_files/bottlenecks  --how_many_training_steps 500 --model_dir=tf_files/models/inception --architecture=inception_v3 --output_graph=tf_files/retrained_graph.pb --output_labels=tf_files/retrained_labels.txt --image_dir=tf_files/DataSet/
+
+
+python -m scripts.retrain  --bottleneck_dir=tf_files/bottlenecks/PhoneType  --how_many_training_steps 500 --model_dir=tf_files/models/inception --architecture=inception_v3 --output_graph=tf_files/PhoneType.pb --output_labels=tf_files/PhoneType.txt --image_dir=tf_files/DataSet/PhoneType
+
+python -m scripts.retrain  --bottleneck_dir=tf_files/bottlenecks/SmartPhoneClass  --how_many_training_steps 500 --model_dir=tf_files/models/inception --architecture=inception_v3 --output_graph=tf_files/SmartPhoneClass.pb --output_labels=tf_files/SmartPhoneClass.txt --image_dir=tf_files/DataSet/SmartPhoneClass
+
+python -m scripts.retrain  --bottleneck_dir=tf_files/bottlenecks/FeaturePhoneClass  --how_many_training_steps 500 --model_dir=tf_files/models/inception --architecture=inception_v3 --output_graph=tf_files/FeaturePhoneClass.pb --output_labels=tf_files/FeaturePhoneClass.txt --image_dir=tf_files/DataSet/FeaturePhoneClass
 
 TESTING:
 
-python -m scripts.label_image --input_height 299 --input_width 299 --input_layer "Mul" --graph=tf_files/retrained_graph.pb --image=validation/Test_1.png
+// python -m scripts.label_image --input_height 299 --input_width 299 --input_layer "Mul" --graph=tf_files/retrained_graph.pb --image=validation/Test_1.png
+
+
+python -m scripts.label_image --input_height 299 --input_width 299 --input_layer "Mul" --graph=tf_files/PhoneType.pb --image=validation/Test_1.png
+
+python -m scripts.label_image --input_height 299 --input_width 299 --input_layer "Mul" --graph=tf_files/SmartPhoneClass.pb --image=validation/Test_1.png
+
+python -m scripts.label_image --input_height 299 --input_width 299 --input_layer "Mul" --graph=tf_files/FeaturePhoneClass.pb --image=validation/Test_1.png
 
 
 

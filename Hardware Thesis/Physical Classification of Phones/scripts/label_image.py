@@ -71,9 +71,9 @@ def load_labels(label_file):
   return label
 
 if __name__ == "__main__":
-  file_name = "tf_files/flower_photos/daisy/3475870145_685a19116d.jpg"
-  model_file = "tf_files/retrained_graph.pb"
-  label_file = "tf_files/retrained_labels.txt"
+  # file_name = "tf_files/flower_photos/daisy/3475870145_685a19116d.jpg"
+  # model_file = "tf_files/retrained_graph.pb"
+  # label_file = "tf_files/retrained_labels.txt"
   input_height = 224
   input_width = 224
   input_mean = 128
@@ -132,58 +132,53 @@ if __name__ == "__main__":
   results = np.squeeze(results)
 
   top_k = results.argsort()[-5:][::-1]
+
+
+  if str(model_file) == 'tf_files/PhoneType.pb':
+    label_file = "tf_files/PhoneType.txt"
+  elif str(model_file) == 'tf_files/SmartPhoneClass.pb':
+    label_file = "tf_files/SmartPhoneClass.txt"
+  elif str(model_file) == 'tf_files/FeaturePhoneClass.pb':
+    label_file = "tf_files/FeaturePhoneClass.txt"
+
+
   labels = load_labels(label_file)
   ll=[]
   rl=[]
+
   print('\nEvaluation time (1-image): {:.3f}s\n'.format(end-start))
   template = "{} (score={:0.5f})"
   for i in top_k:
-    #print(template.format(labels[i], results[i]))
+    print(template.format(labels[i], results[i]))
     ll.append(labels[i])
     rl.append( results[i])
-  #print(ll,rl)
+  # print(ll,rl)
   max_val = max(rl)
   val_index = 0
   for i in range(0,len(rl)):
     if (max_val == rl[i]):
       val_index = i
-  print(ll[val_index],rl[val_index])
+  # print(ll[val_index], 'is', rl[val_index])
   
-  acc = round((rl[val_index]*100),8)
+  acc = round((rl[val_index]*100),4)
   acc2 = acc,'%'
   
 
   
-  if(ll[val_index]=='Good Phone') :
-      root = tk.Tk()
-      root.title(acc2)
-      logo = tk.PhotoImage(file=file_name)
+  root = tk.Tk()
+  root.title(acc2)
+  logo = tk.PhotoImage(file=file_name)
 
-      w1 = tk.Label(root,text='Detected', image=logo).pack(side="right")
+  w1 = tk.Label(root,text='Detected', image=logo).pack(side="right")
 
-      
+  
 
-      w2 = tk.Label(root, 
-              justify=tk.LEFT,
-              padx = 10, 
-              text=ll[val_index]).pack(side="left")
-      root.mainloop()
-      
-  else:
-      root = tk.Tk()
-      root.title(acc2)
-      logo = tk.PhotoImage(file=file_name)
-
-      w1 = tk.Label(root,text='Detected', image=logo).pack(side="right")
-
-      
-
-      w2 = tk.Label(root, 
-              justify=tk.LEFT,
-              font = ('Comic Sans MS',30),
-              padx = 10, 
-              text='\n This is '+ll[val_index]).pack(side="left")
-      root.mainloop()
+  w2 = tk.Label(root, 
+          justify=tk.LEFT,
+          font = ('Comic Sans MS',30),
+          padx = 10, 
+          text='\n This is '+ll[val_index]).pack(side="left")
+  root.mainloop()
   img = cv.imread(file_name,0)
   img = cv.medianBlur(img,5)
   ret,th1 = cv.threshold(img,127,255,cv.THRESH_BINARY)
