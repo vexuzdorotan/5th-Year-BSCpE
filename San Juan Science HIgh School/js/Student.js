@@ -1,3 +1,5 @@
+console.log(sessionStorage.getItem('LRNNum'));
+
 var std_picture = document.querySelector("#SecondCol img");
 var input_std_picture = document.querySelector("#SecondCol input");
 input_std_picture.addEventListener("change", SeePicture);

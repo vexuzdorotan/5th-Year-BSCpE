@@ -46,7 +46,7 @@
                 </a>
             </div>
             <div class="option">
-                <a href="#">
+                <a href="Student_List.php">
                 <img src="../pictures/students.png" class="img-opt">
                 <p>list of students</p>
                 </a>

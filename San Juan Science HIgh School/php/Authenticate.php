@@ -20,6 +20,11 @@
 		}
 		else{
 			$_SESSION['id'] = explode("-", $row[0])[0];
+		    $stmt = $db->prepare("UPDATE employee SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
+		    $stmt->execute();
+		    $stmt = $db->prepare("UPDATE student SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
+		    $stmt->execute();
+    		$stmt->closeCursor();
 		}
 		$_SESSION['access'] = $row[2];
 		// $_SESSION['user'] = $row[1];

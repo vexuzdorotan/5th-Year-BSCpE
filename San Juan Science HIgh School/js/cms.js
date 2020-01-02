@@ -543,7 +543,8 @@ function CreateTBody(xhttp, cfunction){ //Create Table Body (Imitates result of 
 //EDIT AND DELETE IS FUNCTION OF BUTTONS INSIDE TBODY ONLY
 function Edit(whatToEdit){ //whatToEdit is an array 
 	//JUST copies the table depending on their order
-	console.log(whatToEdit);	
+
+	console.log(whatToEdit);
 	var disabled; 
 	var input = document.querySelectorAll("#" + parent_id + " input");
 	var btn = document.querySelectorAll("#" + parent_id + " button");

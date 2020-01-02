@@ -1,10 +1,4 @@
 <?php
-   // require '../php/ConnectToDB.php';
-   // $stmt = $db->prepare("UPDATE student SET Age = (SELECT FLOOR(DATEDIFF(CURDATE(), Birthday)/365.25))");
-   // $stmt->execute();
-   // $stmt->closeCursor();
-?>
-<?php
     session_start();
     if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
         header('Location: ../Portal.php');
