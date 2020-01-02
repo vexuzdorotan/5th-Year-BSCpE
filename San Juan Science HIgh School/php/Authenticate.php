@@ -5,7 +5,7 @@
 	$password = $_POST['pass'];
 	$access = strtolower($_POST['access']);
 
-	$stmt = $db->prepare("SELECT * FROM access WHERE username = ? AND pass=TO_BASE64(?) AND access = ?");
+	$stmt = $db->prepare("SELECT * FROM access WHERE username = ? AND pass=ENCODE(?, 'secret') AND access = ?");
 	$stmt->bindValue(1, $username);
 	$stmt->bindValue(2, $password);
 	$stmt->bindValue(3, $access);
