@@ -72,9 +72,18 @@
 				<td id="LastName">Last Name</td>
 				<td id="FirstName">First Name</td>
 				<td id="MiddleName">Middle Name</td>
+				<td id="Birthday" style="display: none;"></td>
+				<td id="StreetAdd1" style="display: none;"></td>
+				<td id="StreetAdd2" style="display: none;"></td>
+				<td id="City" style="display: none;"></td>
+				<td id="Province" style="display: none;"></td>
+				<td id="URL_Picture" style="display: none;"></td>
+				<td id="Country" style="display: none;"></td>
 				<!-- <td id="Address">Address</td> -->
-				<td id="Gender">Gender</td>
+				<td id="Gender" style="display: none;">Gender</td>
 				<td id="GradeLevel">Grade Level</td>
+				<td id="Type" style="display: none;"></td>
+
 				
 				<!-- <td id="Population">Population</td> -->
 				<!-- <td>Type</td> -->

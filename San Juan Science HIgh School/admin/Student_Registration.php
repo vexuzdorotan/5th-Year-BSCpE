@@ -3,6 +3,8 @@
     if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
         header('Location: ../Portal.php');
     }
+    // include "../php/ConnectToDB.php";
+    // $stmt = $db->prepare("SELECT * FROM student WHERE LRNNum = " . );
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,5 +1,7 @@
-console.log(sessionStorage.getItem('LRNNum'));
+// console.log(JSON.parse(sessionStorage.getItem('StudentInfo')));
+var studentInfo;
 
+studentInfo = JSON.parse(sessionStorage.getItem('StudentInfo'));
 var std_picture = document.querySelector("#SecondCol img");
 var input_std_picture = document.querySelector("#SecondCol input");
 input_std_picture.addEventListener("change", SeePicture);
@@ -14,7 +16,29 @@ var parent_id = "Student";
 
 
 function SeePicture(){
+	// console.log(input_std_picture.files[0]);
 	std_picture.src = window.URL.createObjectURL(this.files[0]); //Previews the picture 
+}
+
+if(studentInfo != null){
+	console.log(studentInfo);
+	for(var i = 0; i < input.length-1; i++){
+		input[i].value = studentInfo[i];
+	}
+	for(var i = 0; i < select.length; i++){			//Selected option is matched
+		for(var j = 0; j < select[i].options.length; j++){
+			if(select[i].options[j].text == studentInfo[i + input.length]){
+				select[i].selectedIndex = j;
+				break;
+			}
+		}
+	}
+	// input_std_picture.files[0]['name'] = "..\\pictures\\student\\" + studentInfo[input.length-1];
+	// console.log(studentInfo[input.length]);
+	std_picture.src = "..\\pictures\\student\\" + studentInfo[input.length-1];
+	disabled = document.createAttribute("disabled");
+	input_std_picture.setAttributeNode(disabled);
+	
 }
 
 var submitForm = document.getElementById("submitForm");
@@ -49,7 +73,7 @@ function ValidateForm(){ //Validate if Form has no Blanks in every required fiel
 		alert("PLEASE FILL UP");	
 	}
 	else{
-		if(imageToUpload.files[0] == undefined){
+		if(imageToUpload.files[0] == undefined && studentInfo == null){
 			alert("STUDENT'S PICTURE IS NOT UPLOADED");
 		}
 		else{
@@ -65,7 +89,12 @@ function InsertInfo(){
 	
 	for(var i = 0; i < input.length; i++){
 		if(input[i].type == "file"){
-			content["URL_Picture"] = imageToUpload.files[0]['name'];
+			if(studentInfo == null){
+				content["URL_Picture"] = imageToUpload.files[0]['name'];
+			}
+			else{
+				content["URL_Picture"] = studentInfo[input.length-1];
+			}
 		}
 		else{
 			content[input[i].id] = input[i].value;
@@ -76,21 +105,34 @@ function InsertInfo(){
 		content[select[i].id] = select[i].options[select[i].selectedIndex].text;
 	}
 	console.log(content);
-	UploadPhoto(imageToUpload);
 	
-	CreateWithPreset(
-		parent_id, 
-		content, 
-		0, 
-		CheckIfRegistered
-	);
+	if(studentInfo != null){
+		// console.log("aa")
+		UpdateWithPreset(
+			parent_id, 
+			content, 
+			0, 
+			CheckIfUpdated
+		);
+	}
+	else{
+		UploadPhoto(imageToUpload);
+		CreateWithPreset(
+			parent_id, 
+			content, 
+			0, 
+			CheckIfRegistered
+		);
+	}
 	// else{
 	// 	alert("PHOTO NOT UPLOADED");
 	// }
 	// console.log(UploadPhoto(imageToUpload));
 }
 
-
+function CheckIfUpdated(xhttp){
+	console.log(xhttp.responseText);
+}
 function CheckIfRegistered(xhttp){
 	if(xhttp.responseText != "Successful"){
 		var patt = new RegExp("duplicate", "i");

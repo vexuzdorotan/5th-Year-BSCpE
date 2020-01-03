@@ -159,6 +159,32 @@ function CreateWithPreset(table1 , content, autoincrement, callback){
 	}
 }
 
+function UpdateWithPreset(table1 , content, autoincrement, callback){
+	var data;
+	data = "whatToCreate=" + table1;
+	data += "&table2=" + null;
+	data += "&autoincrement=" + autoincrement;
+	data += "&foreignKey=" + null;
+	data += "&fieldToUpdate=" + null;
+	console.log(content);
+	
+	if(user != null){
+		content["User"] = user;
+	}
+	content = JSON.stringify(content)
+	data += "&content=" + content;
+	// console.log(callback);
+	if(callback === null){
+		AJAX(data, false, "post", "../php/Update.php", true, callback);
+	}
+	else if(typeof callback == "function"){
+		AJAX(data, true, "post", "../php/Update.php", true, callback);
+	}
+	else{
+
+	}
+}
+
 function CheckIfCreated(xhttp){ //Can be used however Please initialized Search and ResetInput function and var inititalValue
 	if(xhttp.responseText != "Successful"){
 		var patt = new RegExp("duplicate", "i");
