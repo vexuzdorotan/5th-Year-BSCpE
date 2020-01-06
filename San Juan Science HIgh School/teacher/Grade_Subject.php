@@ -4,8 +4,8 @@
         header('Location: ../Portal.php');
     }
 
-    // $logged_id = $_SESSION['id'];
-    // include '../php/Header_User.php';
+    $logged_id = $_SESSION['id'];
+    include '../php/Header_User.php';
 ?>
 
 <!DOCTYPE html>
@@ -130,12 +130,12 @@
         </div>
     </div>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var EmployeeNum = "<?php echo($_SESSION['id'])?>";
-    </script>
+    </script> -->
 
     
-    <!-- <script>const EmployeeNum = <?php echo $logged_id?></script> -->
+    <script>const EmployeeNum = <?php echo $logged_id?></script>
     <script src="../js/ajax.js" type="text/javascript"></script>
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>
