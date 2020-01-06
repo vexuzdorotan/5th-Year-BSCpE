@@ -21,6 +21,8 @@ function SeePicture(){
 }
 
 if(studentInfo != null){
+	disabled = document.createAttribute("disabled");
+	input[0].setAttributeNode(disabled);
 	console.log(studentInfo);
 	for(var i = 0; i < input.length-1; i++){
 		input[i].value = studentInfo[i];
@@ -38,9 +40,9 @@ if(studentInfo != null){
 	std_picture.src = "..\\pictures\\student\\" + studentInfo[input.length-1];
 	disabled = document.createAttribute("disabled");
 	input_std_picture.setAttributeNode(disabled);
-	
 }
-
+studentInfo = null;
+sessionStorage.removeItem('StudentInfo');
 var submitForm = document.getElementById("submitForm");
 // submitForm.addEventListener("click", ValidateForm.bind(null, "StdReg"));
 submitForm.addEventListener("click", function(event){
@@ -131,7 +133,12 @@ function InsertInfo(){
 }
 
 function CheckIfUpdated(xhttp){
-	console.log(xhttp.responseText);
+	if(xhttp.responseText != "Successful"){
+		console.log(xhttp.responseText);
+	}
+	else{
+		alert("UPDATED");
+	}
 }
 function CheckIfRegistered(xhttp){
 	if(xhttp.responseText != "Successful"){

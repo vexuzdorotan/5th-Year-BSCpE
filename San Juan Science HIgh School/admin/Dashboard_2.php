@@ -46,7 +46,7 @@ if($_SESSION['id'] === null || $_SESSION['access'] != "admin"){
                 </a>
             </div>
             <div class="option">
-                <a href="#">
+                <a href="EmployeeList.php">
                     <img src="../pictures/employees.png" class="img-opt">
                     <p>list of employees</p>
                 </a>

@@ -30,6 +30,9 @@
 			<p class="h6"><label for="Password">Password:</label>
 				<input type="password" name="Password" class="float-right"/>
 			</p>
+			<p class="h6" id="verify" style="display: none;"><label for="VerifyPassword">Verify:</label>
+				<input type="password" name="VerifyPassword" class="float-right"/>
+			</p>
 			<p class="h6"><label for="account">Log In As:</label>
 				<select name="account">
 					<option>Admin</option>
@@ -48,6 +51,7 @@
 		<p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
 	</div>
 <script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/cms.js"></script>
 <script type="text/javascript" src="js/Authenticate.js"></script>
 </body>
 </html>

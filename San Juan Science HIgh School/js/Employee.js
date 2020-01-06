@@ -123,6 +123,10 @@
 // 	//xhr.send(formData);
 // 	AJAX_FILES(formData, false, "post", "../php/Employee.php", true, null);
 // }
+var employeeInfo;
+console.log(employeeInfo);
+employeeInfo = JSON.parse(sessionStorage.getItem('EmployeeInfo'));
+
 var std_picture = document.querySelector("#SecondCol img");
 var input_std_picture = document.querySelector("#SecondCol input");
 input_std_picture.addEventListener("change", SeePicture);
@@ -148,6 +152,31 @@ submitForm.addEventListener("click", function(event){
 });
 // console.log(select[0].checkValidity());
 
+if(employeeInfo != null){
+	console.log(employeeInfo);
+	for(var i = 0; i < input.length-1; i++){
+		input[i].value = employeeInfo[i+1];
+		// console.log(employeeInfo[i + 1]);
+	}
+	for(var i = 0; i < select.length; i++){			//Selected option is matched
+		// console.log(select[i]);
+		// console.log(employeeInfo[i + input.length+1]);
+		for(var j = 0; j < select[i].options.length; j++){
+			if(select[i].options[j].text == employeeInfo[i + input.length+1]){
+				select[i].selectedIndex = j;
+				break;
+			}
+		}
+	}
+	// input_std_picture.files[0]['name'] = "..\\pictures\\student\\" + employeeInfo[input.length-1];
+	console.log(employeeInfo[input.length]);
+	// console.log(EmployeeInfo);
+	std_picture.src = "..\\pictures\\employee\\" + employeeInfo[input.length];
+	disabled = document.createAttribute("disabled");
+	input_std_picture.setAttributeNode(disabled);
+}
+sessionStorage.removeItem('EmployeeInfo');
+employeeInfo = null;
 for(var i = 0; i < input.length; i++){
 	// input[i].autocomplete = "";
 	input[i].addEventListener("change", function(){
@@ -172,7 +201,7 @@ function ValidateForm(){ //Validate if Form has no Blanks in every required fiel
 		alert("PLEASE FILL UP");	
 	}
 	else{
-		if(imageToUpload.files[0] == undefined){
+		if(imageToUpload.files[0] == undefined && employeeInfo == null){
 			alert("EMPLOYEE'S PICTURE IS NOT UPLOADED");
 		}
 		else{
@@ -188,7 +217,12 @@ function InsertInfo(){
 	
 	for(var i = 0; i < input.length; i++){
 		if(input[i].type == "file"){
-			content["URL_Picture"] = imageToUpload.files[0]['name'];
+			if(employeeInfo == null){
+				content["URL_Picture"] = imageToUpload.files[0]['name'];
+			}
+			else{
+				content["URL_Picture"] = employeeInfo[input.length-1];
+			}
 		}
 		else{
 			content[input[i].id] = input[i].value;
@@ -199,14 +233,24 @@ function InsertInfo(){
 		content[select[i].id] = select[i].options[select[i].selectedIndex].text;
 	}
 	console.log(content);
-	UploadPhoto(imageToUpload);
-	
-	CreateWithPreset(
-		parent_id, 
-		content, 
-		0, 
-		CheckIfRegistered
-	);
+	if(employeeInfo != null){
+		// console.log("aa")
+		UpdateWithPreset(
+			parent_id, 
+			content, 
+			0, 
+			CheckIfUpdated
+		);
+	}
+	else{
+		UploadPhoto(imageToUpload);
+		CreateWithPreset(
+			parent_id, 
+			content, 
+			0, 
+			CheckIfRegistered
+		);
+	}
 	// else{
 	// 	alert("PHOTO NOT UPLOADED");
 	// }
@@ -226,6 +270,15 @@ function CheckIfRegistered(xhttp){
 	} 	
 	else{
 		alert("REGISTERED");
+	}
+}
+
+function CheckIfUpdated(xhttp){
+	if(xhttp.responseText != "Successful"){
+		console.log(xhttp.responseText);
+	}
+	else{
+		alert("UPDATED");
 	}
 }
 

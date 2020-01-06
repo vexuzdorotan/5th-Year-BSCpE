@@ -174,14 +174,17 @@ function UpdateWithPreset(table1 , content, autoincrement, callback){
 	content = JSON.stringify(content)
 	data += "&content=" + content;
 	// console.log(callback);
-	if(callback === null){
-		AJAX(data, false, "post", "../php/Update.php", true, callback);
-	}
-	else if(typeof callback == "function"){
-		AJAX(data, true, "post", "../php/Update.php", true, callback);
+	if(window.location.href.search("/Portal.php") != -1){
+		AJAX(data, true, "post", "php/Update.php", true, callback);
+		// console.log("GAG");
 	}
 	else{
-
+		if(callback === null){
+			AJAX(data, false, "post", "../php/Update.php", true, callback);
+		}
+		else if(typeof callback == "function"){
+			AJAX(data, true, "post", "../php/Update.php", true, callback);
+		}
 	}
 }
 
