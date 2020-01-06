@@ -14,11 +14,11 @@ const input_SubjectCode = document.querySelector('#input_SubjectCode');
 const txt_GradeLevel = document.querySelector('#txt_GradeLevel');
 const txt_SubjectCode = document.querySelector('#txt_SubjectCode');
 const txt_Adviser = document.querySelector('#txt_Adviser');
-const txt_SubjTeacher = document.querySelector('#txt_SubjTeacher');
 const modal_body = document.querySelector('#modal-body');
 const button = document.querySelectorAll('button');
 const labelMAPEH = document.querySelector('#labelMAPEH');
 
+// <<<<<<< HEAD
 // TEMPORARY WHILE NO LOGIN TEACHER
 // EmployeeNum = 1;
 // const EmployeeNumTEMP = document.querySelector('#txt_EmployeeNum');
@@ -28,6 +28,8 @@ const labelMAPEH = document.querySelector('#labelMAPEH');
 // EmployeeNum = EmployeeNumTEMP.value;
 // END TEMP
 
+// =======
+// >>>>>>> 422f80bb67b3c752f39e72944b74732545b0c80e
 openSubjectModal = button[0];
 
 openSubjectModal.addEventListener('click', function() {
@@ -77,7 +79,6 @@ function getSubject(xhttp) {
             SubjectCode = this.childNodes[1].innerHTML;
             txt_Section.innerHTML = this.childNodes[2].innerHTML;
             txt_GradeLevel.innerHTML = this.childNodes[3].innerHTML;
-            txt_SubjTeacher.innerHTML = this.childNodes[4].innerHTML;
 
             input_SubjectCode.value = SubjectCode;
             txt_SubjectCode.innerHTML = SubjectCode;

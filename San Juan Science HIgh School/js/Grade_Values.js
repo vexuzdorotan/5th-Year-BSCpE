@@ -1,20 +1,21 @@
+let parent_id = 'student';
+
 let jsonGradeVal;
 let GradeValID;
 let BehaviorID;
 let Quarter;
 let GradeValRating;
-let parent_id = 'student';
-let adviserSelected = false;
+
+let SectionNum;
+let SectionName;
+let GradeLevel;
 
 const table = document.querySelector('table');
 const modal_body = document.getElementById('modal-body');
 
+const txt_SectionName = document.getElementById('txt_SectionName');
 const txt_GradeLevel = document.getElementById('txt_GradeLevel');
-const txt_SectionNum = document.getElementById('txt_SectionNum');
-const txt_Adviser = document.getElementById('txt_Adviser');
-const input_Adviser = document.getElementById('input_Adviser');
-
-const txt_StudentName = document.getElementById('txt_StudentName');
+const txt_StudentModal = document.getElementById('txt_StudentModal');
 const txt_LRNNum = document.getElementById('txt_LRNNum');
 
 const tr = document.querySelectorAll('tbody tr');
@@ -25,8 +26,7 @@ const save2 = document.querySelector('#save2');
 const save3 = document.querySelector('#save3');
 const save4 = document.querySelector('#save4');
 
-openSectionModal = button[0];
-openStudentModal = button[1];
+openStudentModal = button[0];
 
 save1.addEventListener('click', function() {
     Quarter = 1;
@@ -48,99 +48,66 @@ save4.addEventListener('click', function() {
     checkGradeVal();
 });
 
-// SECTION
-openSectionModal.addEventListener('click', function() {
-    this.style.backgroundColor = '';
-    theadID = 'SectionNum@SectionName@GradeLevel@Teacher.Name';
-    theadHTML = 'Section Number@Section Name@Grade Level@Adviser';
-    CreateInput('SearchSection', 'search', modal_body);
-    document.querySelector('#SearchSection').className = 'modal-search';
-    CreateTable('SearchSectionTable', theadID, theadHTML, '@', modal_body, 0, 'SectionNum');
-    document.querySelector('thead').className = 'dark';
-    openModal('Select Adviser', 'Adviser');
-    Search = function() {
-        SearchWithQuery(
-            'Section',
-            'Teacher',
-            GetID(document.querySelectorAll('#SearchSectionTable thead td'), 0),
-            'Adviser=Teacher.Name',
-            'LEFT JOIN',
-            'teacher.SectionNum = section.SectionNum',
-            document.getElementById('SearchSection'),
-            null,
-            PickSection
-        );
-    }
-    Search();
-    document.getElementById('SearchSection').addEventListener('change', Search);
-});
 
-function PickSection(xhttp) {
-    CreateTBody(xhttp);
-    let tbody_tr = document.querySelectorAll('#SearchSectionTable tbody tr');
-    for (let i = 0; i < tbody_tr.length; i++) {
-        tbody_tr[i].addEventListener('click', function() {
-            document.querySelector('#SearchSection').value = '';
+setSectionInfo();
 
-            closeModal(modal_body);
-            txt_SectionNum.value = this.childNodes[0].innerHTML;
-            txt_GradeLevel.innerHTML = this.childNodes[2].innerHTML;
-            input_Adviser.value = this.childNodes[3].innerHTML;
-            txt_Adviser.innerHTML = this.childNodes[3].innerHTML;
+function setSectionInfo() {
+    let query = '';
 
-            adviserSelected = true;
+    query += 'SELECT teacher.SectionNum, section.SectionName, section.GradeLevel ';
+    query += 'FROM teacher ';
+    query += 'LEFT JOIN section ON teacher.SectionNum = section.SectionNum ';
+    query += 'WHERE teacher.EmployeeNum IN (' + EmployeeNum + ') ';
 
-            txt_Student.innerHTML = '';
-            txt_StudentName.value = '';
+    SimplifiedQuery('SELECT', query, '', getSectionInfo);
+}
 
-            for (let i = 1; i <= 4; i++) {
-                for (let j = 0; j <= 6; j++) {
-                    document.querySelectorAll('.grValQ' + i)[j].value = '--';
-                }
-            }
-        });
-        tbody_tr[i].addEventListener('mouseover', function() {
-            this.style.backgroundColor = 'maroon';
-            this.style.color = 'white';
-        });
-        tbody_tr[i].addEventListener('mouseout', function() {
-            this.style.backgroundColor = '';
-            this.style.color = '';
-        });
+function getSectionInfo(xhttp) {
+    try {
+        jsonSectionInfo = JSON.parse(xhttp.responseText);
+        console.log(jsonSectionInfo);
+
+        SectionNum = jsonSectionInfo[0][0]
+        SectionName = jsonSectionInfo[0][1]
+        GradeLevel = jsonSectionInfo[0][2]
+
+        txt_SectionName.innerHTML = SectionName;
+        txt_GradeLevel.innerHTML = GradeLevel;
+
+    } catch (err) {
+        alert('CANNOT FIND');
+        console.log(xhttp.responseText);
+        console.log(err);
     }
 }
 
-//STUDENT
+
 openStudentModal.addEventListener('click', function() {
-    if (adviserSelected) {
-        this.style.backgroundColor = '';
-        theadID = 'LRNNum@LastName@FirstName@MiddleName';
-        theadHTML = 'LRN Number@Last Name@First Name@Middle Name';
-        CreateInput('SearchStudent', 'search', modal_body);
-        document.querySelector('#SearchStudent').className = 'modal-search';
-        CreateTable('SearchStudentTable', theadID, theadHTML, '@', modal_body, 0, 'LRNNum');
-        document.querySelector('thead').className = 'dark';
-        openModal('Select Student', 'Student');
+    this.style.backgroundColor = '';
+    theadID = 'LRNNum@LastName@FirstName@MiddleName';
+    theadHTML = 'LRN Number@Last Name@First Name@Middle Name';
+    CreateInput('SearchStudent', 'search', modal_body);
+    document.querySelector('#SearchStudent').className = 'modal-search';
+    CreateTable('SearchStudentTable', theadID, theadHTML, '@', modal_body, 0, 'LRNNum');
+    document.querySelector('thead').className = 'dark';
+    openModal('Select Student', 'Student');
 
-        Search = function() {
-            SearchWithQuery(
-                'student',
-                'student_section', // 'Section',
-                GetID(document.querySelectorAll('#SearchStudentTable thead td'), 0),
-                null,
-                'LEFT JOIN',
-                'student.LRNNum = student_section.LRNNum',
-                document.getElementById('SearchStudent'),
-                'student_section.SectionNum IN (' + txt_SectionNum.value + ')',
-                PickStudent
-            );
-        }
-        Search();
-
-        document.getElementById('SearchStudent').addEventListener('change', Search);
-    } else {
-        alert('Select adviser first!');
+    Search = function() {
+        SearchWithQuery(
+            'student',
+            'student_section', // 'Section',
+            GetID(document.querySelectorAll('#SearchStudentTable thead td'), 0),
+            null,
+            'LEFT JOIN',
+            'student.LRNNum = student_section.LRNNum',
+            document.getElementById('SearchStudent'),
+            'student_section.SectionNum IN (' + SectionNum + ')',
+            PickStudent
+        );
     }
+    Search();
+
+    document.getElementById('SearchStudent').addEventListener('change', Search);
 });
 
 function PickStudent(xhttp) {
@@ -155,7 +122,7 @@ function PickStudent(xhttp) {
             txt_Student.innerHTML = this.childNodes[1].innerHTML + ', ';
             txt_Student.innerHTML += this.childNodes[2].innerHTML + ' ';
             txt_Student.innerHTML += this.childNodes[3].innerHTML;
-            txt_StudentName.value = txt_Student.innerHTML;
+            txt_StudentModal.value = txt_Student.innerHTML;
 
             setGradesValDB();
         });
@@ -266,7 +233,7 @@ function updateGradeDB() {
     query += '(GradeValID, LRNNum, GradeValLevel, BehaviorID, Quarter, GradeValRating) ';
     query += 'VALUES ("' + GradeValID + '", "';
     query += txt_LRNNum.value + '", "';
-    query += txt_GradeLevel.innerHTML + '", "';
+    query += GradeLevel + '", "';
     query += BehaviorID + '", "';
     query += Quarter + '", "';
     query += GradeValRating + '") ';

@@ -1,8 +1,11 @@
 <?php
     session_start();
-    if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
+    if($_SESSION['id'] === null || $_SESSION['access'] != 'teacher'){
         header('Location: ../Portal.php');
     }
+
+    // $logged_id = $_SESSION['id'];
+    // include '../php/Header_User.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +30,7 @@
     <div class="header mb-3">
         <legend class="h4 pl-0 pt-3 mb-0">REPORT ON LEARNING PROGRESS AND ACHIEVEMENT</legend>
         <div class="menu">
-        <a href="#">[Teacher's Name]</a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
+        <a href="#"><?php echo 'Welcome, ' . $honorific . $fullname?></a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
     </div>
 
@@ -60,6 +63,7 @@
             </div>
         </div>
 
+
         <!-- <div class="float-right">
             <label for="">(TEMP) EmployeeNum:
                 <input type="number" id="txt_EmployeeNum" min="1" value="<?php echo($_SESSION['id'])?>" />
@@ -67,9 +71,10 @@
         </div> -->
         <!-- <br /><br /> -->
 
+
         <div class="float-right">
             <input type="text" style="display: none;" />
-            <label for="">Subject ID: 
+            <label for="">Select Subject: 
                 <input class="ml-2 sec-name" type="text" id="input_SubjectCode" required/>
             </label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
@@ -89,28 +94,27 @@
         </div>
 
         <br /><br />
-        <p><b>SECTION: </b><span id="txt_Section"></span></p>
-        <p><b>GRADE LEVEL: </b><span id="txt_GradeLevel"></span></p>
-        <p><b>SUBJECT: </b><span id="txt_SubjectCode"></span></p>
-        <p><b>SUBJECT TEACHER : </b><span id="txt_SubjTeacher"></span></p>
-        <p><b>CLASS ADVISER: </b><span id="txt_Adviser"></span></p>
+        <p><b>Section Name: </b><span id="txt_Section"></span></p>
+        <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
+        <p><b>Adviser Name: </b><span id="txt_Adviser"></span></p>
+        <p><b>Subject Code: </b><span id="txt_SubjectCode"></span></p>
 
         <div class="row">
             <div class="col-9 p-0 m-0">
                 <table id="CreateGradeTable" class="g-table">
                     <thead class="dark">
                         <tr>
-                            <th id="LRNNum" rowspan="2">NO.</th>
-                            <th id="student" rowspan="2">NAME OF THE STUDENT</th>
-                            <th colspan="4">GRADING PERIOD</th>
-                            <th id="final" rowspan="2">FINAL GRADE</th>
-                            <th id="remark" rowspan="2">REMARKS</th>
+                            <th id="LRNNum" rowspan="2">No.</th>
+                            <th id="student" rowspan="2">Name of the Student</th>
+                            <th colspan="4">Grading Period</th>
+                            <th id="final" rowspan="2">Final Grade</th>
+                            <th id="remark" rowspan="2">Remarks</th>
                         </tr>
                         <tr>
-                            <th>FIRST</td>
-                            <th id="GradeLevel">SECOND</th>
-                            <th id="SubjectName">THIRD</th>
-                            <th id="Quarter">FOURTH</th>
+                            <th>First</td>
+                            <th id="GradeLevel">Second</th>
+                            <th id="SubjectName">Third</th>
+                            <th id="Quarter">Fourth</th>
                         </tr>
                     </thead>
 
@@ -119,24 +123,19 @@
                     </tbody>
                 </table>
             </div>
-
-            <div class="p-0 mt-3">
-                <p class="h6">Notes:</p>
-                <ul>
-                    <li>Import `grade` table to DB first</li>
-                    <li>Temporary: $_SESSION Login as Employee/Teacher not implemented for faster QA testing</li>
-                    <li>Grades in every student per quarter can still update before the deadline of encoding</li>
-                </ul>
-            </div>
         </div>
 
         <div class="footer">
-            <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
+            <p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
         </div>
     </div>
+
     <script type="text/javascript">
         var EmployeeNum = "<?php echo($_SESSION['id'])?>";
     </script>
+
+    
+    <!-- <script>const EmployeeNum = <?php echo $logged_id?></script> -->
     <script src="../js/ajax.js" type="text/javascript"></script>
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>

@@ -3,6 +3,9 @@
      if($_SESSION['id'] === null || $_SESSION['access'] != "teacher" || $_SESSION['access'] != "teacher"){
          header('Location: ../Portal.php');
      }
+
+     $logged_id = $_SESSION['id'];
+     include '../php/Header_User.php';
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +31,7 @@
         <legend class="h4 pl-0 pt-3 mb-0">VIEW STUDENT GRADE</legend>
 
         <div class="menu">
-        <a href="#">[Teacher's Name]</a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
+        <a href="#"><?php echo 'Welcome, ' . $honorific . $fullname?></a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
 
     </div>
@@ -68,19 +71,15 @@
         </div>
         <div class="hideen">
             <div class="float-right">
-                <input type="text" id="txt_SectionNum" style="display: none;" />
-                <label for="">Adviser Name: <input class="ml-2 sec-name" type="text" id="input_Adviser" required/></label>
-                <button class="modal-button"><i class="far fa-window-restore"></i></button>
-                <br />
                 <input type="text" id="txt_LRNNum" style="display: none;" />
-                <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentName" required/></label>
+                <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentModal" required/></label>
                 <button class="modal-button"><i class="far fa-window-restore"></i></button>
             </div>
 
             <br /><br /><br />
+            <p><b>Section Name: </b><span id="txt_SectionName"></span></p>
             <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
-            <p><b>Adviser: </b><span id="txt_Adviser"></span></p>
-            <p><b>Student: </b><span id="txt_Student"></span></p>
+            <p><b>Student Name: </b><span id="txt_Student"></span></p>
             <br />
         </div>
         <div class="row">
@@ -365,26 +364,16 @@
             </div>
         </div>
 
-            <div class="hideen p-0 mt-3">
-                <p class="h6">Notes:</p>
-                <ul>
-                    <li>Import `grade` and `grade_values` tables to DB first</li>
-                    <li>Temporary: $_SESSION Login as Employee/Teacher not implemented for faster QA testing</li>
-                    <li>if $_SESSION == Teacher, ENABLE SELECTION of Adviser and Student Modals</li>
-                    <li>else if $_SESSION == Student, DISABLE SELECTION of Adviser and Student Modals</li>
-                </ul>
-            </div>
-
-            <div class="hideen text-right">
-                <button class="btn btn-dark" onclick="printInner()">PRINT INNER PAGE OF FORM 138</button>
-            </div>
-
-        <div class="hideen footer">
-            <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
+        <div class="hideen text-right">
+            <button class="btn btn-dark" onclick="printInner()">PRINT INNER PAGE OF FORM 138</button>
         </div>
 
+        <div class="hideen footer">
+            <p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
+        </div>
     </div>
 
+    <script>const EmployeeNum = <?php echo $logged_id?></script>
     <script src="../js/ajax.js" type="text/javascript"></script>
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>
