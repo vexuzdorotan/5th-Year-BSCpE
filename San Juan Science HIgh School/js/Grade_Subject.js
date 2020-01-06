@@ -1,4 +1,4 @@
-let EmployeeNum;
+// let EmployeeNum;
 let SectionNum;
 let Quarter;
 let jsonStudent;
@@ -14,18 +14,9 @@ const input_SubjectCode = document.querySelector('#input_SubjectCode');
 const txt_GradeLevel = document.querySelector('#txt_GradeLevel');
 const txt_SubjectCode = document.querySelector('#txt_SubjectCode');
 const txt_Adviser = document.querySelector('#txt_Adviser');
-const txt_SubjTeacher = document.querySelector('#txt_SubjTeacher');
 const modal_body = document.querySelector('#modal-body');
 const button = document.querySelectorAll('button');
 const labelMAPEH = document.querySelector('#labelMAPEH');
-
-// TEMPORARY WHILE NO LOGIN TEACHER
-EmployeeNum = 1;
-const EmployeeNumTEMP = document.querySelector('#txt_EmployeeNum');
-EmployeeNumTEMP.addEventListener('change', function() {
-    EmployeeNum = EmployeeNumTEMP.value;
-});
-// END TEMP
 
 openSubjectModal = button[0];
 
@@ -76,7 +67,6 @@ function getSubject(xhttp) {
             SubjectCode = this.childNodes[1].innerHTML;
             txt_Section.innerHTML = this.childNodes[2].innerHTML;
             txt_GradeLevel.innerHTML = this.childNodes[3].innerHTML;
-            txt_SubjTeacher.innerHTML = this.childNodes[4].innerHTML;
 
             input_SubjectCode.value = SubjectCode;
             txt_SubjectCode.innerHTML = SubjectCode;

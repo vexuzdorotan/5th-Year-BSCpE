@@ -1,15 +1,19 @@
 let parent_id = 'student';
 let adviserSelected = false;
 
+let SectionNum;
+let SectionName;
+let GradeLevel;
+
 const table = document.querySelector('#gradeTable');
 const modal_body = document.getElementById('modal-body');
 
+const txt_SectionName = document.getElementById('txt_SectionName');
 const txt_GradeLevel = document.getElementById('txt_GradeLevel');
 const txt_SectionNum = document.getElementById('txt_SectionNum');
-const txt_Adviser = document.getElementById('txt_Adviser');
 const input_Adviser = document.getElementById('input_Adviser');
 
-const txt_StudentName = document.getElementById('txt_StudentName');
+const txt_StudentModal = document.getElementById('txt_StudentModal');
 const txt_LRNNum = document.getElementById('txt_LRNNum');
 
 const ResearchFOLA = document.querySelector('#ResearchFOLA');
@@ -17,113 +21,84 @@ const ResearchFOLA = document.querySelector('#ResearchFOLA');
 const tr = document.querySelectorAll('#gradeTable tbody tr');
 const button = document.querySelectorAll('button');
 
-openSectionModal = button[0];
-openStudentModal = button[1];
+openStudentModal = button[0];
 
-// SECTION
-openSectionModal.addEventListener('click', function() {
-    this.style.backgroundColor = '';
-    theadID = 'SectionNum@SectionName@GradeLevel@Teacher.Name';
-    theadHTML = 'Section Number@Section Name@Grade Level@Adviser';
-    CreateInput('SearchSection', 'search', modal_body);
-    document.querySelector('#SearchSection').className = 'modal-search';
-    CreateTable('SearchSectionTable', theadID, theadHTML, '@', modal_body, 0, 'SectionNum');
-    document.querySelector('thead').className = 'dark';
-    openModal('Select Adviser', 'Adviser');
-    Search = function() {
-        SearchWithQuery(
-            'Section',
-            'Teacher',
-            GetID(document.querySelectorAll('#SearchSectionTable thead td'), 0),
-            'Adviser=Teacher.Name',
-            'LEFT JOIN',
-            'teacher.SectionNum = section.SectionNum',
-            document.getElementById('SearchSection'),
-            null,
-            PickSection
-        );
-    }
-    Search();
-    document.getElementById('SearchSection').addEventListener('change', Search);
-});
+setSectionInfo();
 
-function PickSection(xhttp) {
-    CreateTBody(xhttp);
-    let tbody_tr = document.querySelectorAll('#SearchSectionTable tbody tr');
-    for (let i = 0; i < tbody_tr.length; i++) {
-        tbody_tr[i].addEventListener('click', function() {
-            document.querySelector('#SearchSection').value = '';
+function setSectionInfo() {
+    let query = '';
 
-            closeModal(modal_body);
-            txt_SectionNum.value = this.childNodes[0].innerHTML;
-            txt_GradeLevel.innerHTML = this.childNodes[2].innerHTML;
-            input_Adviser.value = this.childNodes[3].innerHTML;
-            txt_Adviser.innerHTML = this.childNodes[3].innerHTML;
+    query += 'SELECT teacher.SectionNum, section.SectionName, section.GradeLevel ';
+    query += 'FROM teacher ';
+    query += 'LEFT JOIN section ON teacher.SectionNum = section.SectionNum ';
+    query += 'WHERE teacher.EmployeeNum IN (' + EmployeeNum + ') ';
 
-            if ((txt_GradeLevel.innerHTML == 7) || (txt_GradeLevel.innerHTML == 8))
-                ResearchFOLA.innerHTML = 'Research';
-            else
-                ResearchFOLA.innerHTML = 'Foreign Language';
+    SimplifiedQuery('SELECT', query, '', getSectionInfo);
+}
 
-            adviserSelected = true;
+function getSectionInfo(xhttp) {
+    try {
+        jsonSectionInfo = JSON.parse(xhttp.responseText);
+        console.log(jsonSectionInfo);
 
-            txt_Student.innerHTML = '';
-            txt_StudentName.value = '';
+        SectionNum = jsonSectionInfo[0][0]
+        SectionName = jsonSectionInfo[0][1]
+        GradeLevel = jsonSectionInfo[0][2]
 
-            for (let i = 2; i < tr.length + 2; i++) {
-                for (let j = 1; j < tr[0].childElementCount; j++) {
-                    table.rows[i].cells[j].innerHTML = '';
-                }
-            }
+        txt_SectionName.innerHTML = SectionName;
+        txt_GradeLevel.innerHTML = GradeLevel;
 
-            for (let i = 1; i <= 4; i++) {
-                for (let j = 0; j <= 6; j++) {
-                    document.querySelectorAll('.grValQ' + i)[j].innerHTML = '';
-                }
-            }
-        });
-        tbody_tr[i].addEventListener('mouseover', function() {
-            this.style.backgroundColor = 'maroon';
-            this.style.color = 'white';
-        });
-        tbody_tr[i].addEventListener('mouseout', function() {
-            this.style.backgroundColor = '';
-            this.style.color = '';
-        });
+        ResearchFOLA.innerHTML = ((GradeLevel == 7) || (GradeLevel == 8)) ? 'Research' : 'Foreign Language';
+
+    } catch (err) {
+        alert('CANNOT FIND');
+        console.log(xhttp.responseText);
+        console.log(err);
     }
 }
 
+// txt_Student.innerHTML = '';
+// txt_StudentModal.value = '';
+
+// for (let i = 2; i < tr.length + 2; i++) {
+//     for (let j = 1; j < tr[0].childElementCount; j++) {
+//         table.rows[i].cells[j].innerHTML = '';
+//     }
+// }
+
+// for (let i = 1; i <= 4; i++) {
+//     for (let j = 0; j <= 6; j++) {
+//         document.querySelectorAll('.grValQ' + i)[j].innerHTML = '';
+//     }
+// }
+
 //STUDENT
 openStudentModal.addEventListener('click', function() {
-    if (adviserSelected) {
-        this.style.backgroundColor = '';
-        theadID = 'LRNNum@LastName@FirstName@MiddleName';
-        theadHTML = 'LRN Number@Last Name@First Name@Middle Name';
-        CreateInput('SearchStudent', 'search', modal_body);
-        document.querySelector('#SearchStudent').className = 'modal-search';
-        CreateTable('SearchStudentTable', theadID, theadHTML, '@', modal_body, 0, 'LRNNum');
-        document.querySelector('thead').className = 'dark';
-        openModal('Select Student', 'Student');
+    this.style.backgroundColor = '';
+    theadID = 'LRNNum@LastName@FirstName@MiddleName';
+    theadHTML = 'LRN Number@Last Name@First Name@Middle Name';
+    CreateInput('SearchStudent', 'search', modal_body);
+    document.querySelector('#SearchStudent').className = 'modal-search';
+    CreateTable('SearchStudentTable', theadID, theadHTML, '@', modal_body, 0, 'LRNNum');
+    document.querySelector('thead').className = 'dark';
+    openModal('Select Student', 'Student');
 
-        Search = function() {
-            SearchWithQuery(
-                'student',
-                'student_section', // 'Section',
-                GetID(document.querySelectorAll('#SearchStudentTable thead td'), 0),
-                null,
-                'LEFT JOIN',
-                'student.LRNNum = student_section.LRNNum',
-                document.getElementById('SearchStudent'),
-                'student_section.SectionNum IN (' + txt_SectionNum.value + ')',
-                PickStudent
-            );
-        }
-        Search();
-
-        document.getElementById('SearchStudent').addEventListener('change', Search);
-    } else {
-        alert('Select adviser first!');
+    Search = function() {
+        SearchWithQuery(
+            'student',
+            'student_section',
+            GetID(document.querySelectorAll('#SearchStudentTable thead td'), 0),
+            null,
+            'LEFT JOIN',
+            'student.LRNNum = student_section.LRNNum',
+            document.getElementById('SearchStudent'),
+            'student_section.SectionNum IN (' + SectionNum + ')',
+            PickStudent
+        );
     }
+    Search();
+
+    document.getElementById('SearchStudent').addEventListener('change', Search);
 });
 
 function PickStudent(xhttp) {
@@ -138,7 +113,7 @@ function PickStudent(xhttp) {
             txt_Student.innerHTML = this.childNodes[1].innerHTML + ', ';
             txt_Student.innerHTML += this.childNodes[2].innerHTML + ' ';
             txt_Student.innerHTML += this.childNodes[3].innerHTML;
-            txt_StudentName.value = txt_Student.innerHTML;
+            txt_StudentModal.value = txt_Student.innerHTML;
 
             setGradesDB();
             setGradesValDB();

@@ -3,6 +3,9 @@
      if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
          header('Location: ../Portal.php');
      }
+
+    $logged_id = $_SESSION['id'];
+    include '../php/Header_User.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +30,7 @@
     <div class="header mb-3">
         <legend class="h4 pl-0 pt-3 mb-0">REPORT ON LEARNER'S OBSERVED VALUES</legend>
         <div class="menu">
-            <a href="#">[Teacher's Name]</a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
+        <a href="#"><?php echo 'Welcome, ' . $honorific . $fullname?></a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
 
     </div>
@@ -67,19 +70,15 @@
         </div>
 
         <div class="float-right">
-            <input type="text" id="txt_SectionNum" style="display: none;" />
-            <label for="">Adviser Name: <input class="ml-2 sec-name" type="text" id="input_Adviser" required/></label>
-            <button class="modal-button"><i class="far fa-window-restore"></i></button>
-            <br />
             <input type="text" id="txt_LRNNum" style="display: none;" />
-            <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentName" required/></label>
+            <label for="">Select Student: <input class="ml-2 sec-name" type="text" id="txt_StudentModal" required/></label>
             <button class="modal-button"><i class="far fa-window-restore"></i></button>
         </div>
 
         <br /><br /><br /><br />
+        <p><b>Section Name: </b><span id="txt_SectionName"></span></p>
         <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
-        <p><b>Adviser: </b><span id="txt_Adviser"></span></p>
-        <p><b>Student: </b><span id="txt_Student"></span></p>
+        <p><b>Student Name: </b><span id="txt_Student"></span></p>
 
         <div class="row">
             <div class="col-9 p-0 m-0">
@@ -413,22 +412,15 @@
                 </pre>
             </div>
 
-            <div class="p-0 mt-3">
-                <p class="h6">Notes:</p>
-                <ul>
-                    <li>Import `grade_values` table to DB first</li>
-                    <li>Temporary: $_SESSION Login as Employee/Teacher not implemented for faster QA testing</li>
-                </ul>
-            </div>
-
         </div>
 
         <div class="footer">
-            <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
+            <p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
         </div>
 
     </div>
 
+    <script>const EmployeeNum = <?php echo $logged_id?></script>
     <script src="../js/ajax.js" type="text/javascript"></script>
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>
