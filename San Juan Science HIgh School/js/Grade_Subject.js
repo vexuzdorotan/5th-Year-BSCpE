@@ -1,4 +1,4 @@
-let EmployeeNum;
+// let EmployeeNum;
 let SectionNum;
 let Quarter;
 let jsonStudent;
@@ -20,11 +20,12 @@ const button = document.querySelectorAll('button');
 const labelMAPEH = document.querySelector('#labelMAPEH');
 
 // TEMPORARY WHILE NO LOGIN TEACHER
-EmployeeNum = 1;
-const EmployeeNumTEMP = document.querySelector('#txt_EmployeeNum');
-EmployeeNumTEMP.addEventListener('change', function() {
-    EmployeeNum = EmployeeNumTEMP.value;
-});
+// EmployeeNum = 1;
+// const EmployeeNumTEMP = document.querySelector('#txt_EmployeeNum');
+// EmployeeNumTEMP.addEventListener('change', function() {
+//     EmployeeNum = EmployeeNumTEMP.value;
+// });
+// EmployeeNum = EmployeeNumTEMP.value;
 // END TEMP
 
 openSubjectModal = button[0];

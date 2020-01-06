@@ -60,12 +60,12 @@
             </div>
         </div>
 
-        <div class="float-right">
+        <!-- <div class="float-right">
             <label for="">(TEMP) EmployeeNum:
-                <input type="number" id="txt_EmployeeNum" min="1" value="1" />
+                <input type="number" id="txt_EmployeeNum" min="1" value="<?php echo($_SESSION['id'])?>" />
             </label>
-        </div>
-        <br /><br />
+        </div> -->
+        <!-- <br /><br /> -->
 
         <div class="float-right">
             <input type="text" style="display: none;" />
@@ -134,7 +134,9 @@
             <p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
         </div>
     </div>
-
+    <script type="text/javascript">
+        var EmployeeNum = "<?php echo($_SESSION['id'])?>";
+    </script>
     <script src="../js/ajax.js" type="text/javascript"></script>
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>
