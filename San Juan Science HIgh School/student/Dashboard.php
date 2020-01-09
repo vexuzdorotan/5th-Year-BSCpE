@@ -26,7 +26,7 @@
         </br>
         <div class="row content">
             <div class="col option">
-                <a href="#">
+                <a href="Schedule.php">
                     <img src="../pictures/sched.png" class="img-opt">
                 </a>
                 <p class="label">Check Schedule</p>

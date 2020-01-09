@@ -220,57 +220,57 @@ function Retrieved(xhttp){
 		console.log(err);
 	}
 }
-function GetParentCol(child){ 
-	if(child == "Monday"){
-		return 1;
-	}
-	else if(child == "Tuesday"){
-		return 2;
-	}
-	else if(child == "Wednesday"){
-		return 3;
-	}
-	else if(child == "Thursday"){
-		return 4;
-	}
-	else if(child == "Friday"){
-		return 5;
-	}
-}
+// function GetParentCol(child){ 
+// 	if(child == "Monday"){
+// 		return 1;
+// 	}
+// 	else if(child == "Tuesday"){
+// 		return 2;
+// 	}
+// 	else if(child == "Wednesday"){
+// 		return 3;
+// 	}
+// 	else if(child == "Thursday"){
+// 		return 4;
+// 	}
+// 	else if(child == "Friday"){
+// 		return 5;
+// 	}
+// }
 
-function GetParentRow(child){ //Can be edited to make time dynamic
-	if(child == "6:00-7:00"){
-		return 1;
-	}
-	else if(child == "7:00-8:00"){
-		return 2;
-	}
-	else if(child == "8:00-9:00"){
-		return 3;
-	}
-	else if(child == "9:00-9:20"){
-		return 4;
-	}
-	else if(child == "9:20-10:20"){
-		return 5;
-	}
-	else if(child == "10:20-11:20"){
-		return 6;
-	}
-	else if(child == "11:20-12:20"){
-		return 7;
-	}
-	else if(child == "12:20-1:00"){
-		return 8;
-	}
-	else if(child == "1:00-2:00"){
-		return 9;
-	}
-	else if(child == "2:00-3:00"){
-		return 10;
-	}
-	else if(child == "3:00-4:00"){
-		return 11;
-	}
-}
+// function GetParentRow(child){ //Can be edited to make time dynamic
+// 	if(child == "6:00-7:00"){
+// 		return 1;
+// 	}
+// 	else if(child == "7:00-8:00"){
+// 		return 2;
+// 	}
+// 	else if(child == "8:00-9:00"){
+// 		return 3;
+// 	}
+// 	else if(child == "9:00-9:20"){
+// 		return 4;
+// 	}
+// 	else if(child == "9:20-10:20"){
+// 		return 5;
+// 	}
+// 	else if(child == "10:20-11:20"){
+// 		return 6;
+// 	}
+// 	else if(child == "11:20-12:20"){
+// 		return 7;
+// 	}
+// 	else if(child == "12:20-1:00"){
+// 		return 8;
+// 	}
+// 	else if(child == "1:00-2:00"){
+// 		return 9;
+// 	}
+// 	else if(child == "2:00-3:00"){
+// 		return 10;
+// 	}
+// 	else if(child == "3:00-4:00"){
+// 		return 11;
+// 	}
+// }
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

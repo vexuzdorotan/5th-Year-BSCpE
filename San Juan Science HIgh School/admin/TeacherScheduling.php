@@ -37,7 +37,7 @@
 	<div class="header mb-3">
       <legend class="h4 pl-2 pt-3 mb-0">SCHEDULING FOR TEACHERS</legend>
       <div class="menu">
-         <a href="#">Administrator</a>|<a href="../dashboards/Scheduling.html">Menu</a>|<a href="Portal.html">Logout</a>
+         <a href="#">Administrator</a>|<a href="../dashboards/Scheduling.html">Menu</a>|<a href="../Portal.php">Logout</a>
       </div>
    </div>
    <div class="room-container">
