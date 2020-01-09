@@ -164,6 +164,12 @@ function PickSubject(xhttp){
 	}
 }
 
+for(var i = 1; i < tr.length+1; i++){
+	for(var j = 1; j < tr[0].childElementCount; j++){
+		table.rows[i].cells[j].addEventListener("click", Get1stRowCell.bind(null, i, j));
+	}
+}
+
 function SubjectAssigned(xhttp){
 	if(xhttp.responseText == "Successful"){
 		alert(SubjectID + " is assigned to " + txt_TeacherName.value);
@@ -273,4 +279,34 @@ function Retrieved(xhttp){
 // 		return 11;
 // 	}
 // }
+
+function Get1stRowCell(i, j){
+	
+	parentCol = j;
+	parentRow = i;
+
+	time = table.rows[i].cells[0].innerHTML;
+	day = table.rows[0].cells[j].innerHTML;
+	var subjectID = table.rows[parentRow].cells[parentCol].innerHTML
+	if(subjectID != ""){ //If field is not null, you can DELETE
+		DeleteSched(subjectID);
+		// console.log(parentCol);
+		// console.log(parentRow);
+	}
+}
+
+function DeleteSched(subjectID){
+	var query = "";
+	var crud = "UPDATE";
+	query += "UPDATE subject SET EmployeeNum = NULL, User = '"+user+"' WHERE EmployeeNum = " + txt_TeacherEmployeeNum.value + " AND SubjectID = '" + subjectID + "'";
+
+	var r = confirm("Do you want to delete this?"); //confirm alert of js
+	var data;
+  	if(r == true){
+		SimplifiedQuery(crud, query, null, RetrieveTeacherSchedule);
+	} 
+	else{
+		console.log("Deletion Cancelled!");
+ 	}
+}
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
