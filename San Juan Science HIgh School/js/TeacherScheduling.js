@@ -85,8 +85,8 @@ function PickTeacher(xhttp){
 buttons[1].addEventListener("click", function(){
 	if(txt_TeacherEmployeeNum.value != ''){
 		// theadID = "SubjectID@SubjectCode@SectionNum@SectionName";
-		theadID = "SubjectID@SubjectCode";
-		theadHTML = "Subject ID@Subject Code";
+		theadID = "SubjectID@SubjectCode@Grade Level@SectionName";
+		theadHTML = "Subject ID@Subject Code@Grade Level@Section Name";
 		// theadHTML = "Subject Id@Subject Code@Section Number@Section Name";
 		CreateInput("SearchSubject", "search", modal_body);
 		CreateTable("SearchSubjectTable", theadID, theadHTML, "@", modal_body, 0, null);
@@ -97,8 +97,9 @@ buttons[1].addEventListener("click", function(){
 		searchSubject = document.getElementById('SearchSubject'); 
 		Search = function(){
 			// <<<<<<<<<<<<<<<<<<<<<<<PROBLEM
-			query += "SELECT DISTINCT subject.SubjectID, subject.SubjectCode ";
+			query += "SELECT DISTINCT subject.SubjectID, subject.SubjectCode, section.GradeLevel, section.SectionName ";
 			query += "FROM sched RIGHT JOIN subject ON subject.SubjectID = sched.SubjectID ";
+			query += "INNER JOIN section ON subject.SectionNum = section.SectionNum "
 			query += "WHERE subject.EmployeeNum IS NULL AND NOT(SubjectTime IN (SELECT SubjectTime FROM subject ";
 			query += "INNER JOIN sched ON subject.SubjectID = sched.SubjectID " 
 			query += "WHERE subject.EmployeeNum = '"+txt_TeacherEmployeeNum.value+"') "; 
@@ -115,17 +116,29 @@ buttons[1].addEventListener("click", function(){
 			var nospaces;
 			var content;
 			nospaces = (searchSubject.value).trim();
+			nospaces = nospaces.replace(/ /g, "");
+			// subquery = nospaces.split("AND");
+
+
+			// subquery.map(arr => {
+			// 	arr.split("=");
+			// 	arr.map(a => console.log(a));
+			// });
+
+			
 			content = nospaces.split("=");
 			if(content.length > 1){
+				console.log(content);
 				content[0] = content[0].replace(/ /g, "");
 				content[1] = content[1].trim();
-				query += "AND " + "subject." +content[0] + " LIKE '" + content[1]+ "%'";
+				// query += "AND " + "subject." +content[0] + " LIKE '" + content[1]+ "%'";
 			}
 			else if(content.length == 1){
 				query += "AND " + "subject.SubjectID LIKE '" + content[0]+ "%'";	
 			}
 
 			SimplifiedQuery(crud, query, searchSubject, PickSubject);
+			
 			console.log(query);
 			query = basequery;
 			console.log(query);
