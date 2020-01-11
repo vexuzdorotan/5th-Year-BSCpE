@@ -144,29 +144,25 @@
 	<!-- <script type="text/javascript" src="../js/modal.js"></script> -->
 	<!-- <script type="text/javascript" src="../js/TeacherScheduling.js"></script> -->
 	<script type="text/javascript">
+		var json;
 		var table = document.querySelector("table"); //
 		var tr = document.querySelectorAll("tbody tr"); //
 		function RetrieveTeacherSchedule(){
-			var columnNames = {};
-			// columnNames[3] = "Subject.SubjectCode";
-			columnNames[0] = "SubjectID"; 
-			columnNames[1] = "SubjectTime"; 
-			columnNames[2] = "SubjectDay";
-
-			SearchWithQuery(
-				"Sched",
-				"Subject",
-				columnNames,
+			query = "SELECT subject.SubjectID, SubjectTime, SubjectDay, section.SectionName, subjectcode.SubjectDescription ";
+			query += "FROM subject LEFT JOIN sched ON subject.SubjectID = sched.SubjectID ";
+			query += "LEFT JOIN section ON subject.SectionNum = section.SectionNum ";
+			query += "LEFT JOIN subjectcode ON subjectcode.SubjectCode = subject.SubjectCode ";
+			query += "WHERE EmployeeNum = '<?php echo($_SESSION['id']);?>'";
+			// function SimplifiedQuery(crud,query,searchbox,callback){
+			SimplifiedQuery(
+				"SELECT",
+				query,
 				null,
-				"LEFT JOIN",
-				"subject.SubjectID = sched.SubjectID",
-				'',
-				"EmployeeNum = '"+"<?php echo($_SESSION['id']);?>"+"'",
 				Retrieved
 			);
 		}
 		function Retrieved(xhttp){
-			var json;	
+			// var json;	
 			json = JSON.parse(xhttp.responseText);
 			console.log(json);
 			for(var i = 1; i < tr.length+1; i++){
@@ -177,6 +173,11 @@
 			try{
 				for(var i = 0; i < json.length; i++){
 					table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML = json[i][0];
+					var title = document.createAttribute("title"); //SETTING TITLE
+					title.value = json[i][4] +" Section: " + json[i][3];
+					if(table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML != ""){
+						table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].setAttributeNode(title);
+					}
 				}
 			}
 			catch(err){
@@ -184,21 +185,25 @@
 			}
 		}
 		RetrieveTeacherSchedule();
-		for(var i = 1; i < tr.length+1; i++){
-			for(var j = 1; j < tr[0].childElementCount; j++){
-				table.rows[i].cells[j].addEventListener("click", GetInfo.bind(null, table.rows[i].cells[j]));
-			}
-		}
+		// for(var i = 1; i < tr.length+1; i++){
+		// 	for(var j = 1; j < tr[0].childElementCount; j++){
+		// 		table.rows[i].cells[j].addEventListener("click", GetInfo.bind(null, table.rows[i].cells[j]));
+		// 	}
+		// }
 
-		function GetInfo(subjectID){
-			subjectID = subjectID.innerHTML
-			// alert(subjectID);
-			var sectionNum = subjectID.split("-")[0];
-			var subjectCode = subjectID.split("-")[1];
-			// console.log(sectionNum);
-
-			
-		}
+		// function GetInfo(subjectID){
+		// 	subjectID = subjectID.innerHTML;
+		// 	for(var i = 0; i < json.length; i++){
+		// 		if(json[i][0] = subjectID){
+		// 			// console.log(json[i][4]);
+		// 			var title = document.createAttribute("title");
+		// 			title
+		// 			// json[i][4]//Subject Description
+		// 			// json[i][3]//Section
+		// 			break;
+		// 		}
+		// 	}
+		// }
 	</script>
 </body>
 </html>

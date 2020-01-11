@@ -184,11 +184,7 @@
 			}
 		}
 		RetrieveTeacherSchedule();
-		for(var i = 1; i < tr.length+1; i++){
-			for(var j = 1; j < tr[0].childElementCount; j++){
-				table.rows[i].cells[j].addEventListener("click", Get1stRowCell.bind(null, i, j));
-			}
-		}
+		
 	</script>
 </body>
 </html>
