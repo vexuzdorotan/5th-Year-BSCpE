@@ -144,7 +144,6 @@
 	<!-- <script type="text/javascript" src="../js/modal.js"></script> -->
 	<!-- <script type="text/javascript" src="../js/TeacherScheduling.js"></script> -->
 	<script type="text/javascript">
-		var json;
 		var table = document.querySelector("table"); //
 		var tr = document.querySelectorAll("tbody tr"); //
 		function RetrieveTeacherSchedule(){
@@ -162,7 +161,7 @@
 			);
 		}
 		function Retrieved(xhttp){
-			// var json;	
+			var json;	
 			json = JSON.parse(xhttp.responseText);
 			console.log(json);
 			for(var i = 1; i < tr.length+1; i++){
@@ -174,7 +173,7 @@
 				for(var i = 0; i < json.length; i++){
 					table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML = json[i][0];
 					var title = document.createAttribute("title"); //SETTING TITLE
-					title.value = json[i][4] +" Section: " + json[i][3];
+					title.value = "Subject: " + json[i][4] +" Section: " + json[i][3];
 					if(table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML != ""){
 						table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].setAttributeNode(title);
 					}
@@ -185,25 +184,6 @@
 			}
 		}
 		RetrieveTeacherSchedule();
-		// for(var i = 1; i < tr.length+1; i++){
-		// 	for(var j = 1; j < tr[0].childElementCount; j++){
-		// 		table.rows[i].cells[j].addEventListener("click", GetInfo.bind(null, table.rows[i].cells[j]));
-		// 	}
-		// }
-
-		// function GetInfo(subjectID){
-		// 	subjectID = subjectID.innerHTML;
-		// 	for(var i = 0; i < json.length; i++){
-		// 		if(json[i][0] = subjectID){
-		// 			// console.log(json[i][4]);
-		// 			var title = document.createAttribute("title");
-		// 			title
-		// 			// json[i][4]//Subject Description
-		// 			// json[i][3]//Section
-		// 			break;
-		// 		}
-		// 	}
-		// }
 	</script>
 </body>
 </html>

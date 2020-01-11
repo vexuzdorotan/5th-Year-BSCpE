@@ -132,7 +132,7 @@ function getAdviserNameDB() {
         try {
             txt_Adviser.innerHTML = JSON.parse(xhttp.responseText)[0][0];
 
-        } catch {
+        } catch(err) {
             alert('Section ' + txt_Section.innerHTML + ' does not have an adviser yet.');
             console.log(xhttp.responseText);
             console.log('Section ' + txt_Section.innerHTML + ' does not have an adviser yet.');
@@ -214,9 +214,14 @@ function tBodyGrade(xhttp) {
                         if (i != jsonStudent.length)
                             td.innerHTML = i + 1;
                     } else if (j == 1) {
-                        if (i != jsonStudent.length)
+                        if (i != jsonStudent.length){
+                            if(jsonStudent[i][3] == null){
+                                jsonStudent[i][3] = "";
+                            }
+                            // console.log(jsonStudent[i][3]);
                             td.innerHTML = jsonStudent[i][1] + ', ' +
                             jsonStudent[i][2] + ' ' + jsonStudent[i][3];
+                        }
                     } else if (j == 2) {
                         if (i != jsonStudent.length)
                             setInputGrade(1);
