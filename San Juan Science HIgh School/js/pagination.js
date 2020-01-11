@@ -67,7 +67,7 @@ var pagination = document.createElement('ul');
 	// 	CreateTBody(xhttp);
 	// });
 	// console.log(thead_td[2].style.display);
-	}
+	// }
 	catch(err){
 		alert("CANNOT FIND");
 		console.log(xhttp.responseText);

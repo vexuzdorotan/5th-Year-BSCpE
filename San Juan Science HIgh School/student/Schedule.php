@@ -146,24 +146,42 @@
 	<script type="text/javascript">
 		var table = document.querySelector("table"); //
 		var tr = document.querySelectorAll("tbody tr"); //
-		function RetrieveTeacherSchedule(){
-			var columnNames = {};
+		function RetrieveSectionSchedule(){
+			// var columnNames = {};
 			// columnNames[3] = "Subject.SubjectCode";
-			columnNames[0] = "SubjectID"; 
-			columnNames[1] = "SubjectTime"; 
-			columnNames[2] = "SubjectDay";
+			// columnNames[1] = "SubjectTime"; 
+			// columnNames[2] = "SubjectDay";
+			// columnNames[0] = "Subject.SectionNum";
 
-			SearchWithQuery(
-				"Sched",
-				"Subject",
-				columnNames,
+			// SearchWithQuery(//Can be replaced by JOINING sched and subject
+			// 	"Sched",
+			// 	"Subject",
+			// 	columnNames,
+			// 	null,
+			// 	"LEFT JOIN",
+			// 	"subject.SubjectID = sched.SubjectID",
+			// 	28, //Equivalent to first columnName or columnIDS
+			// 	null,
+			// 	Retrieved
+			// );
+			// function SimplifiedQuery(crud,query,searchbox,callback){
+			console.log('<?php echo($_SESSION['id'])?>');
+			var query;
+			query = "SELECT subject.SubjectCode, sched.SubjectTime, sched.SubjectDay ";
+			query += "FROM subject ";
+			// query += "FROM subject LEFT JOIN student_section ";
+			// query += "ON student_section.SectionNum = subject.SectionNum ";
+			query += "LEFT JOIN sched ON sched.SubjectID = subject.SubjectID "; 
+			query += "LEFT JOIN student_section ";
+			query += "ON student_section.SectionNum = subject.SectionNum ";
+			query += "WHERE student_section.LRNNum = <?php echo($_SESSION['id'])?>";
+			SimplifiedQuery(
+				"SELECT",
+				query,
 				null,
-				"LEFT JOIN",
-				"subject.SubjectID = sched.SubjectID",
-				'',
-				"EmployeeNum = '"+"<?php echo($_SESSION['id']);?>"+"'",
 				Retrieved
 			);
+			// console.log(txt_SectionNum);
 		}
 		function Retrieved(xhttp){
 			var json;	
@@ -183,8 +201,8 @@
 				console.log(err);
 			}
 		}
-		RetrieveTeacherSchedule();
-		
+		RetrieveSectionSchedule();
+
 	</script>
 </body>
 </html>
