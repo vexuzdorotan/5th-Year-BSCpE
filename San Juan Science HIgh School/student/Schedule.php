@@ -167,13 +167,14 @@
 			// function SimplifiedQuery(crud,query,searchbox,callback){
 			console.log('<?php echo($_SESSION['id'])?>');
 			var query;
-			query = "SELECT subject.SubjectCode, sched.SubjectTime, sched.SubjectDay ";
+			query = "SELECT subject.SubjectCode, sched.SubjectTime, sched.SubjectDay, subjectcode.SubjectDescription ";
 			query += "FROM subject ";
 			// query += "FROM subject LEFT JOIN student_section ";
 			// query += "ON student_section.SectionNum = subject.SectionNum ";
 			query += "LEFT JOIN sched ON sched.SubjectID = subject.SubjectID "; 
 			query += "LEFT JOIN student_section ";
 			query += "ON student_section.SectionNum = subject.SectionNum ";
+			query += "LEFT JOIN subjectcode ON subject.SubjectCode = subjectcode.SubjectCode ";
 			query += "WHERE student_section.LRNNum = <?php echo($_SESSION['id'])?>";
 			SimplifiedQuery(
 				"SELECT",
@@ -195,6 +196,11 @@
 			try{
 				for(var i = 0; i < json.length; i++){
 					table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML = json[i][0];
+					if(table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML != ""){
+						var title = document.createAttribute("title"); //SETTING TITLE
+						title.value = json[i][3];
+						table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].setAttributeNode(title);
+					}
 				}
 			}
 			catch(err){

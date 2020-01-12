@@ -172,9 +172,9 @@
 			try{
 				for(var i = 0; i < json.length; i++){
 					table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML = json[i][0];
-					var title = document.createAttribute("title"); //SETTING TITLE
-					title.value = "Subject: " + json[i][4] +" Section: " + json[i][3];
 					if(table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].innerHTML != ""){
+						var title = document.createAttribute("title"); //SETTING TITLE
+						title.value = "Subject: " + json[i][4] +" Section: " + json[i][3];
 						table.rows[GetParentRow(json[i][1])].cells[GetParentCol(json[i][2])].setAttributeNode(title);
 					}
 				}
