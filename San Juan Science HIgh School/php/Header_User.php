@@ -14,7 +14,7 @@
             WHERE LRNNum = ?'
             );
     }
-	$stmt->bindValue(1, $logged_id);
+	$stmt->bindValue(1, $_SESSION['id']);
 	$stmt->execute();
 	$row = $stmt->fetch();
     $stmt->closeCursor();

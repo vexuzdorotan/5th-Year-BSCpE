@@ -2,8 +2,8 @@
 	session_start();
     if($_SESSION['id'] === null || $_SESSION['access'] != "student"){
         header('Location: ../Portal.php');
-    }
-    $logged_id = $_SESSION['id'];
+	}
+	
     include '../php/Header_User.php';
 ?>
 <!DOCTYPE html>

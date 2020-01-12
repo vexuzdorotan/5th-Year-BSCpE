@@ -4,9 +4,9 @@
         header('Location: ../Portal.php');
     }
 
-    $logged_id = $_SESSION['id'];
     include '../php/Header_User.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 

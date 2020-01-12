@@ -1,6 +1,6 @@
 <?php
      session_start();
-     if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
+     if($_SESSION['id'] === null || $_SESSION['access'] != "student"){
          header('Location: ../Portal.php');
      }
 
@@ -27,7 +27,7 @@
     <img src="../pictures/logodesign.jpg" class="logodesign">
 
     <div class="header mb-3">
-        <legend class="h4 pl-0 pt-3 mb-0">ADVISER'S VIEW: STUDENT GRADE</legend>
+        <legend class="h4 pl-0 pt-3 mb-0">STUDENT'S VIEW: STUDENT GRADE</legend>
 
         <div class="menu">
         <a href="#"><?php echo 'Welcome, ' . $honorific . $fullname?></a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
@@ -69,16 +69,9 @@
 
         </div>
         <div class="hideen">
-            <div class="float-right">
-                <input type="text" id="txt_LRNNum" style="display: none;" />
-                <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentModal" required/></label>
-                <button class="modal-button"><i class="far fa-window-restore"></i></button>
-            </div>
-
-            <br /><br /><br />
+            <p><b>Adviser Name: </b><span id="txt_AdviserName"></span></p>
             <p><b>Section Name: </b><span id="txt_SectionName"></span></p>
             <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
-            <p><b>Student Name: </b><span id="txt_Student"></span></p>
             <br />
         </div>
         <div class="row">
@@ -372,12 +365,12 @@
         </div>
     </div>
 
-    <script>let EmployeeNum = <?php echo $_SESSION['id']?></script>
+    <script>let LRNNum = <?php echo $_SESSION['id']?></script>
     <script src="../js/ajax.js" type="text/javascript"></script>
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>
     <script src="../js/modal.js" type="text/javascript"></script>
-    <script src="../js/Grade_View.js" type="text/javascript"></script>
+    <script src="../js/Grade_View_Student.js" type="text/javascript"></script>
 </body>
 
 </html>

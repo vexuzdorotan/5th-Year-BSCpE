@@ -5,10 +5,10 @@ let GradeValID;
 let BehaviorID;
 let Quarter;
 let GradeValRating;
-
 let SectionNum;
 let SectionName;
 let GradeLevel;
+let studentSelected = false;
 
 const table = document.querySelector('table');
 const modal_body = document.getElementById('modal-body');
@@ -29,23 +29,39 @@ const save4 = document.querySelector('#save4');
 openStudentModal = button[0];
 
 save1.addEventListener('click', function() {
-    Quarter = 1;
-    checkGradeVal();
+    if (studentSelected) {
+        Quarter = 1;
+        checkGradeVal();
+    } else {
+        alert('Select student first.')
+    }
 });
 
 save2.addEventListener('click', function() {
-    Quarter = 2;
-    checkGradeVal();
+    if (studentSelected) {
+        Quarter = 2;
+        checkGradeVal();
+    } else {
+        alert('Select student first.')
+    }
 });
 
 save3.addEventListener('click', function() {
-    Quarter = 3;
-    checkGradeVal();
+    if (studentSelected) {
+        Quarter = 3;
+        checkGradeVal();
+    } else {
+        alert('Select student first.')
+    }
 });
 
 save4.addEventListener('click', function() {
-    Quarter = 4;
-    checkGradeVal();
+    if (studentSelected) {
+        Quarter = 4;
+        checkGradeVal();
+    } else {
+        alert('Select student first.')
+    }
 });
 
 
@@ -123,7 +139,7 @@ function PickStudent(xhttp) {
             txt_Student.innerHTML += this.childNodes[2].innerHTML + ' ';
             txt_Student.innerHTML += this.childNodes[3].innerHTML;
             txt_StudentModal.value = txt_Student.innerHTML;
-
+            studentSelected = true;
             setGradesValDB();
         });
         tbody_tr[i].addEventListener('mouseover', function() {

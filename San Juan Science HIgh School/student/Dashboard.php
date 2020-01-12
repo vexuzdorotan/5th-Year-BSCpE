@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if($_SESSION['id'] === null || $_SESSION['access'] != "student"){
+        header('Location: ../Portal.php');
+    }
+
+    include '../php/Header_User.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +30,8 @@
             <a href="../Portal.php" class="header-link float-right">LOGOUT</a>
 			<br/>
 			<p class="h5 mb-1 float-right bd">JuanSci Portal - MAIN MENU</p><br/>
-			<p class="header-text float-right"><span class="name" id="name">[Student's Name]</span></p>
+			<p class="header-text float-right"><span class="name" id="name">
+                <?php echo 'Welcome, ' . $honorific . $fullname?></span></p>
         </div>
         </br>
         <div class="row content">
@@ -44,7 +54,7 @@
     </div>
 
     <div class="footer">
-		<p class="footer-text">© 2019 - San Juan Science High School. All Rights Reserved</p>
+		<p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
 	</div>
     
 
