@@ -304,22 +304,19 @@ font-size: 14px;
 }
 @media print {
 	@page {size: landscape}
-	.menu{
+	.hide-on-print{
 		display: none;
 	}
-	.header{
-		display: none;
-	}
-	.logodesign{
-		display: none;
-	}
-	.hideen{
-		display: none;
-	}
-	#modal {
-		display: none;
+	.w-adjust-print{
+		width: 50px !important;
 	}
 	.grade-container{
 		width: 100%;
+	}
+	pre{
+		border: none;
+	}
+	.legend{
+		font-size: 18px !important;
 	}
 }

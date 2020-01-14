@@ -4,6 +4,19 @@
     background-color: white;
     width: 90%;
 }
+.tight-container{
+    margin: auto;
+    width: 70%;
+    margin-top: 30px;
+}
+.tighter-container{
+    margin: auto;
+    width: 60%;
+    margin-top: 30px;
+}
+.bd-bottom{
+  border-bottom: 3px solid maroon;
+}
 .navbar-brand{
   font-size: 16px !important;
 }
@@ -163,4 +176,35 @@ a.text-light:hover {
   .container{
     width: 100% !important;
   }
+}
+.btn-outline-maroon {
+  color: maroon !important;
+  border-color: maroon !important;
+}
+
+.btn-outline-maroon:hover {
+  color: #fff !important;
+  background-color: maroon;
+  border-color: maroon;
+}
+
+.btn-outline-maroon:focus, .btn-outline-maroon.focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+}
+
+.btn-outline-maroon.disabled, .btn-outline-maroon:disabled {
+  color: maroon;
+  background-color: transparent;
+}
+
+.btn-outline-maroon:not(:disabled):not(.disabled):active, .btn-outline-maroon:not(:disabled):not(.disabled).active,
+.show > .btn-outline-maroon.dropdown-toggle {
+  color: #fff;
+  background-color: maroon;
+  border-color: maroon;
+}
+
+.btn-outline-maroon:not(:disabled):not(.disabled):active:focus, .btn-outline-maroon:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-maroon.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
 }

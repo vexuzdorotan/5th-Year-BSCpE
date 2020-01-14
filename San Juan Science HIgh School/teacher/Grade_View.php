@@ -24,9 +24,9 @@
 </head>
 
 <body>
-    <img src="../pictures/logodesign.jpg" class="logodesign">
+    <img src="../pictures/logodesign.jpg" class="logodesign hide-on-print">
 
-    <div class="header mb-3">
+    <div class="hide-on-print header mb-3">
         <legend class="h4 pl-0 pt-3 mb-0">ADVISER'S VIEW: STUDENT GRADE</legend>
 
         <div class="menu">
@@ -68,14 +68,14 @@
             </div>
 
         </div>
-        <div class="hideen">
-            <div class="float-right">
+        <div class="">
+            <div class="float-right hide-on-print">
                 <input type="text" id="txt_LRNNum" style="display: none;" />
                 <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentModal" required/></label>
                 <button class="modal-button"><i class="far fa-window-restore"></i></button>
             </div>
 
-            <br /><br /><br />
+            <br />
             <p><b>Section Name: </b><span id="txt_SectionName"></span></p>
             <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
             <p><b>Student Name: </b><span id="txt_Student"></span></p>
@@ -83,12 +83,12 @@
         </div>
         <div class="row">
             <div class="col-6 p-0 m-0">
-                <table id="gradeTable" class="g-table"><h5>REPORT ON LEARNING PROGRESS AND ACHIEVEMENT</h5>
+                <table id="gradeTable" class="g-table"><h5 class="legend">REPORT ON LEARNING PROGRESS AND ACHIEVEMENT</h5>
                     <thead class="dark">
                         <tr>
                             <th rowspan="2">Learning Areas</th>
                             <th colspan="4">Quarter</th>
-                            <th rowspan="2">Final Grade</th>
+                            <th rowspan="2" class="w-adjust-print">Final Grade</th>
                             <th rowspan="2">Remarks</th>
                         </tr>
                         <tr>
@@ -274,7 +274,7 @@
             </div>
 
             <div class="col-6">
-                <table id="gradeValTable" class="g-table"><h5>REPORT ON LEARNER'S OBSERVED VALUES</h5>
+                <table id="gradeValTable" class="g-table"><h5 class="legend">REPORT ON LEARNER'S OBSERVED VALUES</h5>
                     <thead class="dark">
                         <tr>
                             <th rowspan="2" class="w-25">Core Values</th>
@@ -363,11 +363,11 @@
             </div>
         </div>
 
-        <div class="hideen text-right">
+        <div class="hide-on-print text-right">
             <button class="btn btn-dark" onclick="printInner()">PRINT INNER PAGE OF FORM 138</button>
         </div>
 
-        <div class="hideen footer">
+        <div class="hide-on-print footer">
             <p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
         </div>
     </div>
