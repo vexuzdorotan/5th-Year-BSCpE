@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2019 at 12:29 PM
+-- Generation Time: Jan 31, 2020 at 03:44 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -25,17 +25,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `grade_values`
+-- Table structure for table `grade_subject`
 --
 
-CREATE TABLE `grade_values` (
-  `GradeValID` int(11) NOT NULL,
+CREATE TABLE `grade_subject` (
+  `GradeID` int(11) NOT NULL,
   `LRNNum` bigint(12) NOT NULL,
-  `GradeValLevel` int(11) NOT NULL,
-  `BehaviorID` varchar(50) NOT NULL,
+  `GradeLevel` int(11) NOT NULL,
+  `SubjectCode` varchar(50) NOT NULL,
   `Quarter` int(11) NOT NULL,
-  `GradeValRating` varchar(50) DEFAULT NULL,
-  `DateCreated` timestamp NOT NULL DEFAULT current_timestamp()
+  `GradeRating` float DEFAULT NULL,
+  `DateCreated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -43,20 +43,20 @@ CREATE TABLE `grade_values` (
 --
 
 --
--- Indexes for table `grade_values`
+-- Indexes for table `grade_subject`
 --
-ALTER TABLE `grade_values`
-  ADD PRIMARY KEY (`GradeValID`);
+ALTER TABLE `grade_subject`
+  ADD PRIMARY KEY (`GradeID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `grade_values`
+-- AUTO_INCREMENT for table `grade_subject`
 --
-ALTER TABLE `grade_values`
-  MODIFY `GradeValID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+ALTER TABLE `grade_subject`
+  MODIFY `GradeID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

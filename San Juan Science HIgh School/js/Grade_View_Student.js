@@ -60,7 +60,7 @@ function getGradesDB() {
         5: 'GradeRating'
     };
 
-    SearchWithoutQuery('grade', LRNNum, columnNames, setGradesDB);
+    SearchWithoutQuery('grade_subject', LRNNum, columnNames, setGradesDB);
 }
 
 function setGradesDB(xhttp) {

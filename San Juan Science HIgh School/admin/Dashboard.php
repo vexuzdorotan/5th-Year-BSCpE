@@ -54,7 +54,7 @@
                         <a class="sub-li" href="Room.php">Rooms</a>
                     </div>
                 </li>
-                <li><a href="" class="main-li"><i class="fas fa-cog"></i>Settings</a></li>
+                <li><a href="Settings.php" class="main-li"><i class="fas fa-cog"></i>Settings</a></li>
                 <li><a href="../portal.php" class="main-li"><i class="fas fa-sign-out-alt" style="transform: rotate(180deg)"></i>Logout</a></li>
             </ul>
         </nav>

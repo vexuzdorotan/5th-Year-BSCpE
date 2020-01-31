@@ -1,29 +1,165 @@
+'use strict';
+
+
+// WILL APPLY MODULE PATTERN LATER
+
+const wrapperGradeViewSubject = (function() {
+
+})();
+
+
+
+const wrapperGradeViewValues = (function() {
+
+})();
+
+
+
+const wrapperGradeViewMain = (function(wrapSubj, wrapVal) {
+
+})(wrapperGradeViewSubject, wrapperGradeViewValues);
+//
+
+
+
 let parent_id = 'student';
-let adviserSelected = false;
 
 let SectionNum;
 let SectionName;
 let GradeLevel;
+let LRNNum;
 
-const table = document.querySelector('#gradeTable');
-const modal_body = document.getElementById('modal-body');
+let trTableGrade;
 
-const txt_SectionName = document.getElementById('txt_SectionName');
-const txt_GradeLevel = document.getElementById('txt_GradeLevel');
-const txt_SectionNum = document.getElementById('txt_SectionNum');
-const input_Adviser = document.getElementById('input_Adviser');
+const modal_body = document.querySelector('#modal-body');
+const modal_button = document.querySelector('.modal-button');
 
-const txt_StudentModal = document.getElementById('txt_StudentModal');
-const txt_LRNNum = document.getElementById('txt_LRNNum');
+let arrSubjCode = [];
 
-const ResearchFOLA = document.querySelector('#ResearchFOLA');
+let objMAPEH = [
+    // Subject Code : Subject Description
+    {
+        'MUSIC 7': 'Music 7',
+        'ARTS 7': 'Arts 7',
+        'PE 7': 'PE 7',
+        'HEALTH 7': 'Health 7',
+    },
 
-const tr = document.querySelectorAll('#gradeTable tbody tr');
-const button = document.querySelectorAll('button');
+    {
+        'MUSIC 8': 'Music 8',
+        'ARTS 8': 'Arts 8',
+        'PE 8': 'PE 8',
+        'HEALTH 8': 'Health 8',
+    },
 
-openStudentModal = button[0];
+    {
+        'MUSIC 9': 'Music 9',
+        'ARTS 9': 'Arts 9',
+        'PE 9': 'PE 9',
+        'HEALTH 9': 'Health 9',
+    },
+    {
+        'MUSIC 10': 'Music 10',
+        'ARTS 10': 'Arts 10',
+        'PE 10': 'PE 10',
+        'HEALTH 10': 'Health 10',
+    }
+];
 
-setSectionInfo();
+function indexGrLvl(grLvl) {
+    switch (grLvl) {
+        case 7:
+            return 0;
+            break;
+        case 8:
+            return 1;
+            break;
+        case 9:
+            return 2;
+            break;
+        case 10:
+            return 3;
+            break;
+    }
+}
+
+
+let createTBodySubj = function(subj) {
+    let tr, td;
+    let columnLen = 7;
+    const tbodySubject = document.querySelector('#tbodySubject');
+
+
+    for (let i = 0; i < subj.length + 1; i++) {
+        tr = document.createElement('tr');
+        for (let j = 0; j < columnLen; j++) {
+            td = document.createElement('td');
+
+            if (i < subj.length) {
+                td.innerHTML = (j == 0) ? subj[i]['SubjectDescription'] : '';
+            } else {
+                td.textContent = (j == 0) ? 'AVERAGE' : '';
+                tr.setAttribute('style', 'font-weight:bold');
+            }
+
+            tr.appendChild(td);
+        }
+        tbodySubject.appendChild(tr);
+
+
+        if (i < subj.length) {
+            arrSubjCode.push(subj[i]['SubjectCode']);
+
+            // finds MAPEH, gets children
+            if (subj[i]['SubjectCode'].includes('MAPEH')) {
+                Object.keys(objMAPEH[indexGrLvl(GradeLevel)]).forEach((key) => {
+                    tr = document.createElement('tr');
+
+                    for (let j = 0; j < columnLen; j++) {
+                        td = document.createElement('td');
+                        td.innerHTML = (j == 0) ? '&nbsp &nbsp' + objMAPEH[indexGrLvl(GradeLevel)][key] : '';
+                        tr.appendChild(td);
+                    }
+
+                    tbodySubject.appendChild(tr);
+
+                    arrSubjCode.push(key);
+                })
+            }
+        }
+    }
+
+    console.log(subj);
+    console.log(arrSubjCode);
+}
+
+
+let setSubjectListDB = function(grLvl) {
+    let query = '';
+
+    query += 'SELECT grade_sortable.OrderNumber, subjectcode.SubjectCode, subjectcode.SubjectDescription ';
+    query += 'FROM subjectcode ';
+    query += 'LEFT JOIN grade_sortable ON subjectcode.SubjectCode = grade_sortable.SubjectCode ';
+    query += 'WHERE subjectcode.GradeLevel IN (' + grLvl + ') ';
+    query += 'GROUP BY grade_sortable.OrderNumber ASC ';
+
+    SimplifiedQuery('SELECT', query, '', getSubjectListDB);
+}
+
+let getSubjectListDB = function(xhttp) {
+    let jsonSubject;
+
+    try {
+        jsonSubject = JSON.parse(xhttp.responseText);
+        createTBodySubj(jsonSubject);
+
+    } catch (err) {
+        alert('CANNOT FIND');
+        console.log(xhttp.responseText);
+        console.log(err);
+    }
+}
+
 
 function setSectionInfo() {
     let query = '';
@@ -38,17 +174,20 @@ function setSectionInfo() {
 
 function getSectionInfo(xhttp) {
     try {
-        jsonSectionInfo = JSON.parse(xhttp.responseText);
-        console.log(jsonSectionInfo);
+        let jsonSecInfo = JSON.parse(xhttp.responseText);
+        const txt_SectionName = document.querySelector('#txt_SectionName');
+        const txt_GradeLevel = document.querySelector('#txt_GradeLevel');
 
-        SectionNum = jsonSectionInfo[0][0]
-        SectionName = jsonSectionInfo[0][1]
-        GradeLevel = jsonSectionInfo[0][2]
+        console.log(jsonSecInfo);
 
-        txt_SectionName.innerHTML = SectionName;
-        txt_GradeLevel.innerHTML = GradeLevel;
+        SectionNum = jsonSecInfo[0][0]
+        SectionName = jsonSecInfo[0][1]
+        GradeLevel = jsonSecInfo[0][2]
 
-        ResearchFOLA.innerHTML = ((GradeLevel == 7) || (GradeLevel == 8)) ? 'Research' : 'Foreign Language';
+        txt_SectionName.textContent = SectionName;
+        txt_GradeLevel.textContent = GradeLevel;
+
+        setSubjectListDB(GradeLevel);
 
     } catch (err) {
         alert('CANNOT FIND');
@@ -57,33 +196,219 @@ function getSectionInfo(xhttp) {
     }
 }
 
-// txt_Student.innerHTML = '';
-// txt_StudentModal.value = '';
 
-// for (let i = 2; i < tr.length + 2; i++) {
-//     for (let j = 1; j < tr[0].childElementCount; j++) {
-//         table.rows[i].cells[j].innerHTML = '';
-//     }
-// }
 
-// for (let i = 1; i <= 4; i++) {
-//     for (let j = 0; j <= 6; j++) {
-//         document.querySelectorAll('.grValQ' + i)[j].innerHTML = '';
-//     }
-// }
+function setGradeSubjDB() {
+    let columnNames = {
+        0: 'GradeID',
+        1: 'LRNNum',
+        2: 'GradeLevel',
+        3: 'SubjectCode',
+        4: 'Quarter',
+        5: 'GradeRating'
+    };
+
+    SearchWithoutQuery('grade_subject', LRNNum, columnNames, getGradeSubjDB);
+}
+
+function clearTBodySubj() {
+    for (let i = 0; i < trTableGrade.length; i++) {
+        for (let j = 1; j <= 6; j++) {
+            trTableGrade[i].cells[j].textContent = '';
+        }
+    }
+}
+
+function getGradeSubjDB(xhttp) {
+    let jsonGradeSubj;
+    trTableGrade = document.querySelectorAll('#tableSubject tbody tr');
+
+    jsonGradeSubj = JSON.parse(xhttp.responseText);
+    console.log(jsonGradeSubj);
+
+    clearTBodySubj();
+
+    try {
+        for (let i = 0; i < jsonGradeSubj.length; i++) {
+            let q = 1;
+
+            for (let j = 0; j < trTableGrade.length; j++) {
+                if (jsonGradeSubj[i]['SubjectCode'] == arrSubjCode[j]) {
+                    trTableGrade[j].cells[jsonGradeSubj[i]['Quarter']].textContent = jsonGradeSubj[i]['GradeRating'];
+                }
+            }
+        }
+
+        getAveMAPEH();
+        calculateFinalWithRemark();
+        calculateAverage();
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function getAveMAPEH() {
+
+    for (let i = 0; i < trTableGrade.length; i++) {
+
+        if (trTableGrade[i].textContent.includes('MAPEH')) {
+            for (let j = 1; j <= 4; j++) {
+                let aveMAPEH = 0;
+                let isMAPEHGradeCompleted = true;
+
+                Object.keys(objMAPEH[indexGrLvl(GradeLevel)]).forEach((key) => {
+                    let childMAPEH = trTableGrade[arrSubjCode.indexOf(key)].cells[j].textContent;
+
+                    if (childMAPEH == '') {
+                        isMAPEHGradeCompleted = false;
+                    } else {
+                        aveMAPEH += Number(childMAPEH);
+                    }
+                })
+
+                if (isMAPEHGradeCompleted) {
+                    trTableGrade[i].cells[j].textContent = (aveMAPEH / 4).toFixed(0);
+                }
+            }
+        }
+    }
+}
+
+
+function calculateFinalWithRemark() {
+    for (let i = 0; i < trTableGrade.length - 1; i++) {
+        let isRowGradeCompleted = true;
+
+        for (let j = 1; j <= 4; j++) {
+            if (trTableGrade[i].cells[j].textContent == '') {
+                isRowGradeCompleted = false
+            }
+        }
+
+        if (isRowGradeCompleted) {
+            let finalRating = 0;
+
+            for (let j = 1; j <= 4; j++) {
+                finalRating += Number(trTableGrade[i].cells[j].textContent);
+            }
+
+            finalRating /= 4;
+            finalRating = finalRating.toFixed(0);
+            trTableGrade[i].cells[5].textContent = finalRating;
+
+            if (finalRating >= 75)
+                trTableGrade[i].cells[6].textContent = 'PASSED';
+            else
+                trTableGrade[i].cells[6].textContent = 'FAILED';
+        }
+    }
+}
+
+function calculateAverage() {
+    let GWA = '';
+
+    for (let i = 1; i <= 5; i++) {
+        let isColGradeCompleted = true;
+
+        for (let j = 0; j < trTableGrade.length - 1; j++) {
+            if (trTableGrade[j].cells[i].textContent == '') {
+                isColGradeCompleted = false;
+            }
+        }
+
+        if (isColGradeCompleted) {
+            let lenChild = 0;
+            let colAverage = 0;
+
+            for (let j = 0; j < trTableGrade.length - 1; j++) {
+                // skip compute of average if child (MAPEH)
+                if (Object.keys(objMAPEH[indexGrLvl(GradeLevel)]).includes(arrSubjCode[j])) {
+                    lenChild++;
+                    continue;
+                } else {
+                    colAverage += Number(trTableGrade[j].cells[i].textContent);
+                }
+            }
+
+            colAverage /= ((trTableGrade.length - 1) - lenChild);
+            colAverage = colAverage.toFixed(0);
+            trTableGrade[trTableGrade.length - 1].cells[i].textContent = colAverage;
+        }
+    }
+
+
+    GWA = Number(trTableGrade[trTableGrade.length - 1].cells[5].textContent);
+
+    if (GWA == '') {
+        trTableGrade[trTableGrade.length - 1].cells[6].textContent = '';
+    } else if (GWA >= 75) {
+        trTableGrade[trTableGrade.length - 1].cells[6].textContent = 'PROMOTED';
+    } else {
+        trTableGrade[trTableGrade.length - 1].cells[6].textContent = 'RETAINED';
+    }
+}
+
+//Grade Values
+function setGradesValDB() {
+    let columnNames = {
+        0: 'GradeValID',
+        1: 'LRNNum',
+        2: 'GradeValLevel',
+        3: 'BehaviorID',
+        4: 'Quarter',
+        5: 'GradeValRating'
+    };
+
+    SearchWithoutQuery('grade_values', LRNNum, columnNames, getGradesValDB);
+}
+
+function getGradesValDB(xhttp) {
+    let jsonGradeVal = JSON.parse(xhttp.responseText);
+    console.log(jsonGradeVal);
+
+    for (let i = 1; i <= 4; i++) {
+        for (let j = 0; j <= 6; j++) {
+            document.querySelectorAll('.grValQ' + i)[j].textContent = '';
+        }
+    }
+
+    try {
+        for (let i = 0; i < jsonGradeVal.length; i++) {
+            document.querySelectorAll('.grValQ' + jsonGradeVal[i][4])[getParentCol(jsonGradeVal[i][3])].textContent = jsonGradeVal[i][5];
+        }
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+function getParentCol(child) {
+    if (child.includes('1a')) return 0;
+    else if (child.includes('1b')) return 1;
+    else if (child.includes('2a')) return 2;
+    else if (child.includes('2b')) return 3;
+    else if (child.includes('3a')) return 4;
+    else if (child.includes('3b')) return 5;
+    else if (child.includes('4a')) return 6;
+}
+
+function printInnerReportCard() {
+    window.print();
+}
+
 
 //STUDENT
-openStudentModal.addEventListener('click', function() {
+modal_button.addEventListener('click', function() {
     this.style.backgroundColor = '';
-    theadID = 'LRNNum@LastName@FirstName@MiddleName';
-    theadHTML = 'LRN Number@Last Name@First Name@Middle Name';
+    let theadID = 'LRNNum@LastName@FirstName@MiddleName';
+    let theadHTML = 'LRN Number@Last Name@First Name@Middle Name';
     CreateInput('SearchStudent', 'search', modal_body);
     document.querySelector('#SearchStudent').className = 'modal-search';
     CreateTable('SearchStudentTable', theadID, theadHTML, '@', modal_body, 0, 'LRNNum');
     document.querySelector('thead').className = 'dark';
     openModal('Select Student', 'Student');
 
-    Search = function() {
+    let Search = function() {
         SearchWithQuery(
             'student',
             'student_section',
@@ -106,16 +431,17 @@ function PickStudent(xhttp) {
     let tbody_tr = document.querySelectorAll('#SearchStudentTable tbody tr');
     for (let i = 0; i < tbody_tr.length; i++) {
         tbody_tr[i].addEventListener('click', function() {
+            const txt_StudentModal = document.querySelector('#txt_StudentModal');
             document.querySelector('#SearchStudent').value = '';
             closeModal(modal_body);
 
-            txt_LRNNum.value = this.childNodes[0].innerHTML;
-            txt_Student.innerHTML = this.childNodes[1].innerHTML + ', ';
-            txt_Student.innerHTML += this.childNodes[2].innerHTML + ' ';
-            txt_Student.innerHTML += this.childNodes[3].innerHTML;
-            txt_StudentModal.value = txt_Student.innerHTML;
+            LRNNum = this.childNodes[0].textContent;
+            txt_StudentName.textContent = this.childNodes[1].textContent + ', ';
+            txt_StudentName.textContent += this.childNodes[2].textContent + ' ';
+            txt_StudentName.textContent += this.childNodes[3].textContent;
+            txt_StudentModal.value = txt_StudentName.textContent;
 
-            setGradesDB();
+            setGradeSubjDB();
             setGradesValDB();
         });
         tbody_tr[i].addEventListener('mouseover', function() {
@@ -129,197 +455,4 @@ function PickStudent(xhttp) {
     }
 }
 
-function setGradesDB() {
-    let columnNames = {
-        0: 'GradeID',
-        1: 'LRNNum',
-        2: 'GradeLevel',
-        3: 'SubjectID',
-        4: 'Quarter',
-        5: 'GradeRating'
-    };
-
-    SearchWithoutQuery('grade', txt_LRNNum, columnNames, getGradesDB);
-}
-
-function getGradesDB(xhttp) {
-    let json;
-
-    json = JSON.parse(xhttp.responseText);
-    console.table(json);
-
-    for (let i = 2; i < tr.length + 2; i++) {
-        for (let j = 1; j < tr[0].childElementCount; j++) {
-            table.rows[i].cells[j].innerHTML = '';
-        }
-    }
-
-    try {
-        for (let i = 0; i < json.length; i++) {
-            table.rows[GetParentRow(json[i][3])].cells[json[i][4]].innerHTML = json[i][5];
-        }
-
-        getMAPEH();
-        getAverage();
-        getFinalAndRemark();
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-function GetParentRow(child) {
-    if (child.includes('FIL' + txt_GradeLevel.innerHTML)) return 2;
-    else if (child.includes('ENG' + txt_GradeLevel.innerHTML)) return 3;
-    else if (child.includes('MATH' + txt_GradeLevel.innerHTML + 'A')) return 4;
-    else if (child.includes('SCI' + txt_GradeLevel.innerHTML + 'A')) return 5;
-    else if (child.includes('AP' + txt_GradeLevel.innerHTML)) return 6;
-    else if (child.includes('TLE' + txt_GradeLevel.innerHTML)) return 7;
-    // else if (child.includes('MAPEH' + txt_GradeLevel.innerHTML)) return 8;
-    else if (child.includes('MUSIC' + txt_GradeLevel.innerHTML)) return 9;
-    else if (child.includes('ARTS' + txt_GradeLevel.innerHTML)) return 10;
-    else if (child.includes('PE' + txt_GradeLevel.innerHTML)) return 11;
-    else if (child.includes('HEALTH' + txt_GradeLevel.innerHTML)) return 12;
-    else if (child.includes('ESP' + txt_GradeLevel.innerHTML)) return 13;
-    else if (child.includes('MATH' + txt_GradeLevel.innerHTML + 'B')) return 14;
-    else if (child.includes('SCI' + txt_GradeLevel.innerHTML + 'B')) return 15;
-    else if (child.includes('RESEARCH' + txt_GradeLevel.innerHTML)) return 16;
-    else if (child.includes('FOLA' + txt_GradeLevel.innerHTML)) return 16;
-}
-
-function getMAPEH() {
-    let mapeh;
-
-    for (let i = 1; i <= 4; i++) {
-        if (table.rows[9].cells[i].innerHTML != '' &&
-            table.rows[10].cells[i].innerHTML != '' &&
-            table.rows[11].cells[i].innerHTML != '' &&
-            table.rows[12].cells[i].innerHTML != '') {
-
-            mapeh = (
-                Number(table.rows[9].cells[i].innerHTML) +
-                Number(table.rows[10].cells[i].innerHTML) +
-                Number(table.rows[11].cells[i].innerHTML) +
-                Number(table.rows[12].cells[i].innerHTML)
-            ) / 4;
-
-            table.rows[8].cells[i].innerHTML = mapeh.toFixed(0);
-        }
-    }
-}
-
-function getAverage() {
-    let average;
-
-    for (let i = 1; i <= 4; i++) {
-        if (table.rows[2].cells[i].innerHTML != '' &&
-            table.rows[3].cells[i].innerHTML != '' &&
-            table.rows[4].cells[i].innerHTML != '' &&
-            table.rows[5].cells[i].innerHTML != '' &&
-            table.rows[6].cells[i].innerHTML != '' &&
-            table.rows[7].cells[i].innerHTML != '' &&
-            table.rows[8].cells[i].innerHTML != '' &&
-            table.rows[13].cells[i].innerHTML != '' &&
-            table.rows[14].cells[i].innerHTML != '' &&
-            table.rows[15].cells[i].innerHTML != '' &&
-            table.rows[16].cells[i].innerHTML != '') {
-
-            average = (
-                Number(table.rows[2].cells[i].innerHTML) +
-                Number(table.rows[3].cells[i].innerHTML) +
-                Number(table.rows[4].cells[i].innerHTML) +
-                Number(table.rows[5].cells[i].innerHTML) +
-                Number(table.rows[6].cells[i].innerHTML) +
-                Number(table.rows[7].cells[i].innerHTML) +
-                Number(table.rows[8].cells[i].innerHTML) +
-                Number(table.rows[13].cells[i].innerHTML) +
-                Number(table.rows[14].cells[i].innerHTML) +
-                Number(table.rows[15].cells[i].innerHTML) +
-                Number(table.rows[16].cells[i].innerHTML)
-            ) / 11;
-
-            table.rows[17].cells[i].innerHTML = average.toFixed(0);
-        }
-    }
-}
-
-function getFinalAndRemark() {
-    let finalRating;
-
-    for (let i = 2; i < tr.length + 2; i++) {
-        if (table.rows[i].cells[1].innerHTML != '' &&
-            table.rows[i].cells[2].innerHTML != '' &&
-            table.rows[i].cells[3].innerHTML != '' &&
-            table.rows[i].cells[4].innerHTML != '') {
-
-            finalRating = (
-                Number(table.rows[i].cells[1].innerHTML) +
-                Number(table.rows[i].cells[2].innerHTML) +
-                Number(table.rows[i].cells[3].innerHTML) +
-                Number(table.rows[i].cells[4].innerHTML)
-            ) / 4;
-
-            table.rows[i].cells[5].innerHTML = finalRating.toFixed(0);
-
-            if (i != tr.length + 1) {
-                if (finalRating >= 75)
-                    table.rows[i].cells[6].innerHTML = 'PASSED';
-                else
-                    table.rows[i].cells[6].innerHTML = 'FAILED';
-            } else {
-                if (finalRating >= 75)
-                    table.rows[i].cells[6].innerHTML = 'PROMOTED';
-                else
-                    table.rows[i].cells[6].innerHTML = 'RETAINED';
-            }
-
-        }
-    }
-}
-
-//Grade Values
-function setGradesValDB() {
-    let columnNames = {
-        0: 'GradeValID',
-        1: 'LRNNum',
-        2: 'GradeValLevel',
-        3: 'BehaviorID',
-        4: 'Quarter',
-        5: 'GradeValRating'
-    };
-
-    SearchWithoutQuery('grade_values', txt_LRNNum, columnNames, getGradesValDB);
-}
-
-function getGradesValDB(xhttp) {
-    jsonGradeVal = JSON.parse(xhttp.responseText);
-    console.table(jsonGradeVal);
-
-    for (let i = 1; i <= 4; i++) {
-        for (let j = 0; j <= 6; j++) {
-            document.querySelectorAll('.grValQ' + i)[j].innerHTML = '';
-        }
-    }
-
-    try {
-        for (let i = 0; i < jsonGradeVal.length; i++) {
-            document.querySelectorAll('.grValQ' + jsonGradeVal[i][4])[getParentCol(jsonGradeVal[i][3])].innerHTML = jsonGradeVal[i][5];
-        }
-
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-function getParentCol(child) {
-    if (child.includes('1a')) return 0;
-    else if (child.includes('1b')) return 1;
-    else if (child.includes('2a')) return 2;
-    else if (child.includes('2b')) return 3;
-    else if (child.includes('3a')) return 4;
-    else if (child.includes('3b')) return 5;
-    else if (child.includes('4a')) return 6;
-}
-
-function printInner() {
-    window.print();
-}
+setSectionInfo();

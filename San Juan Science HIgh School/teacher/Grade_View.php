@@ -78,12 +78,12 @@
             <br />
             <p><b>Section Name: </b><span id="txt_SectionName"></span></p>
             <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
-            <p><b>Student Name: </b><span id="txt_Student"></span></p>
+            <p><b>Student Name: </b><span id="txt_StudentName"></span></p>
             <br />
         </div>
         <div class="row">
             <div class="col-6 p-0 m-0">
-                <table id="gradeTable" class="g-table"><h5 class="legend">REPORT ON LEARNING PROGRESS AND ACHIEVEMENT</h5>
+                <table id="tableSubject" class="g-table"><h5 class="legend">REPORT ON LEARNING PROGRESS AND ACHIEVEMENT</h5>
                     <thead class="dark">
                         <tr>
                             <th rowspan="2">Learning Areas</th>
@@ -99,167 +99,7 @@
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr>
-                            <td>Filipino</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>English</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Mathematics</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Science</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Araling Panlipunan (AP)</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Technology and Livelihood Education (TLE)</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>MAPEH</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp &nbsp Music</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp &nbsp Arts</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp &nbsp Physical Education</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp &nbsp Health</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Edukasyon sa Pagpapakatao (EsP)</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Mathematics B</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Science B</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td id="ResearchFOLA">Research/Foreign Language</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td><b>Average</b></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
+                    <tbody id="tbodySubject"></tbody>
                 </table>
                 <div class="p-0 mt-3">
                     <pre>
@@ -274,7 +114,7 @@
             </div>
 
             <div class="col-6">
-                <table id="gradeValTable" class="g-table"><h5 class="legend">REPORT ON LEARNER'S OBSERVED VALUES</h5>
+                <table id="tableValues" class="g-table"><h5 class="legend">REPORT ON LEARNER'S OBSERVED VALUES</h5>
                     <thead class="dark">
                         <tr>
                             <th rowspan="2" class="w-25">Core Values</th>
@@ -289,7 +129,7 @@
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="tbodyValues">
                         <tr>
                             <td rowspan="2"><b>1. Maka-Diyos</b></td>
                             <td>Expresses one's spiritual beliefs while respecting the spiritual beliefs of others</td>
@@ -364,7 +204,7 @@
         </div>
 
         <div class="hide-on-print text-right">
-            <button class="btn btn-dark" onclick="printInner()">PRINT INNER PAGE OF FORM 138</button>
+            <button class="btn btn-dark" onclick="printInnerReportCard()">PRINT INNER PAGE OF FORM 138</button>
         </div>
 
         <div class="hide-on-print footer">

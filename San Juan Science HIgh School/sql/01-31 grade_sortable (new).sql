@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2019 at 03:22 PM
+-- Generation Time: Jan 31, 2020 at 03:44 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -25,17 +25,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `grade`
+-- Table structure for table `grade_sortable`
 --
 
-CREATE TABLE `grade` (
-  `GradeID` int(11) NOT NULL,
-  `LRNNum` bigint(12) NOT NULL,
-  `GradeLevel` int(11) NOT NULL,
-  `SubjectID` varchar(50) NOT NULL,
-  `Quarter` int(11) NOT NULL,
-  `GradeRating` float DEFAULT NULL,
-  `DateCreated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+CREATE TABLE `grade_sortable` (
+  `SubjectCode` varchar(255) NOT NULL,
+  `OrderNumber` int(2) NOT NULL,
+  `DateCreated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `User` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -43,20 +40,10 @@ CREATE TABLE `grade` (
 --
 
 --
--- Indexes for table `grade`
+-- Indexes for table `grade_sortable`
 --
-ALTER TABLE `grade`
-  ADD PRIMARY KEY (`GradeID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `grade`
---
-ALTER TABLE `grade`
-  MODIFY `GradeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1015;
+ALTER TABLE `grade_sortable`
+  ADD UNIQUE KEY `SubjectCode` (`SubjectCode`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

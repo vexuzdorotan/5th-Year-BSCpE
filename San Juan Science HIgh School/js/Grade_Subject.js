@@ -1,4 +1,21 @@
-// let EmployeeNum;
+// 'use strict';
+
+
+// WILL APPLY MODULE PATTERN LATER
+
+const wrapperGradeSubject = (function() {
+
+})();
+
+
+
+const wrapperGradeViewMain = (function(wrapSubj) {
+
+})(wrapperGradeSubject);
+//
+
+
+
 let SectionNum;
 let Quarter;
 let jsonStudent;
@@ -18,24 +35,12 @@ const modal_body = document.querySelector('#modal-body');
 const button = document.querySelectorAll('button');
 const labelMAPEH = document.querySelector('#labelMAPEH');
 
-// <<<<<<< HEAD
-// TEMPORARY WHILE NO LOGIN TEACHER
-// EmployeeNum = 1;
-// const EmployeeNumTEMP = document.querySelector('#txt_EmployeeNum');
-// EmployeeNumTEMP.addEventListener('change', function() {
-//     EmployeeNum = EmployeeNumTEMP.value;
-// });
-// EmployeeNum = EmployeeNumTEMP.value;
-// END TEMP
-
-// =======
-// >>>>>>> 422f80bb67b3c752f39e72944b74732545b0c80e
 openSubjectModal = button[0];
 
 openSubjectModal.addEventListener('click', function() {
     this.style.backgroundColor = '';
-    theadID = 'SectionNum@SubjectID@SectionName@GradeLevel@teacher.Name';
-    theadHTML = 'Section Num@Subject ID@Section Name@Grade Level@Teacher Name';
+    theadID = 'SectionNum@SubjectCode@SectionName@GradeLevel@teacher.Name';
+    theadHTML = 'Section Num@Subject Code@Section Name@Grade Level@Teacher Name';
 
     CreateInput('searchSubject', 'search', modal_body);
     document.querySelector('#searchSubject').className = 'modal-search';
@@ -49,7 +54,7 @@ openSubjectModal.addEventListener('click', function() {
     Search = function() {
         let query = '';
 
-        query += 'SELECT section.SectionNum, subject.SubjectID, ';
+        query += 'SELECT section.SectionNum, subject.SubjectCode, ';
         query += 'section.SectionName, section.GradeLevel, teacher.Name ';
         query += 'FROM subject ';
         query += 'INNER JOIN section ';
@@ -111,7 +116,7 @@ function getSubject(xhttp) {
 }
 
 function setSubMAPEH() {
-    SubjectCode = SectionNum + '-' + selectMAPEH.value + txt_GradeLevel.innerHTML;
+    SubjectCode = selectMAPEH.value + ' ' + txt_GradeLevel.innerHTML;
     txt_SubjectCode.innerHTML = input_SubjectCode.value + '/' + SubjectCode;
 
     RemoveChildNodes(tbody);
@@ -132,7 +137,7 @@ function getAdviserNameDB() {
         try {
             txt_Adviser.innerHTML = JSON.parse(xhttp.responseText)[0][0];
 
-        } catch(err) {
+        } catch (err) {
             alert('Section ' + txt_Section.innerHTML + ' does not have an adviser yet.');
             console.log(xhttp.responseText);
             console.log('Section ' + txt_Section.innerHTML + ' does not have an adviser yet.');
@@ -214,13 +219,13 @@ function tBodyGrade(xhttp) {
                         if (i != jsonStudent.length)
                             td.innerHTML = i + 1;
                     } else if (j == 1) {
-                        if (i != jsonStudent.length){
-                            if(jsonStudent[i][3] == null){
+                        if (i != jsonStudent.length) {
+                            if (jsonStudent[i][3] == null) {
                                 jsonStudent[i][3] = "";
                             }
                             // console.log(jsonStudent[i][3]);
                             td.innerHTML = jsonStudent[i][1] + ', ' +
-                            jsonStudent[i][2] + ' ' + jsonStudent[i][3];
+                                jsonStudent[i][2] + ' ' + jsonStudent[i][3];
                         }
                     } else if (j == 2) {
                         if (i != jsonStudent.length)
@@ -296,24 +301,44 @@ function tBodyGrade(xhttp) {
 function retrieveGradeDB() {
     let query = '';
 
-    query += 'SELECT student.LRNNum, grade.GradeLevel, grade.SubjectID, ';
-    query += 'COALESCE(SUM(CASE WHEN grade.Quarter = 1 THEN grade.GradeRating END), null) AS Q1, ';
-    query += 'COALESCE(SUM(CASE WHEN grade.Quarter = 2 THEN grade.GradeRating END), null) AS Q2, ';
-    query += 'COALESCE(SUM(CASE WHEN grade.Quarter = 3 THEN grade.GradeRating END), null) AS Q3, ';
-    query += 'COALESCE(SUM(CASE WHEN grade.Quarter = 4 THEN grade.GradeRating END), null) AS Q4, ';
-    query += 'COALESCE(SUM(CASE WHEN grade.Quarter = 1 THEN grade.GradeID END), null) AS IDQ1, ';
-    query += 'COALESCE(SUM(CASE WHEN grade.Quarter = 2 THEN grade.GradeID END), null) AS IDQ2, ';
-    query += 'COALESCE(SUM(CASE WHEN grade.Quarter = 3 THEN grade.GradeID END), null) AS IDQ3, ';
-    query += 'COALESCE(SUM(CASE WHEN grade.Quarter = 4 THEN grade.GradeID END), null) AS IDQ4 ';
+    query += 'SELECT student.LRNNum, grade_subject.GradeLevel, grade_subject.SubjectCode, ';
+    query += 'COALESCE(SUM(CASE WHEN grade_subject.Quarter = 1 THEN grade_subject.GradeRating END), null) AS Q1, ';
+    query += 'COALESCE(SUM(CASE WHEN grade_subject.Quarter = 2 THEN grade_subject.GradeRating END), null) AS Q2, ';
+    query += 'COALESCE(SUM(CASE WHEN grade_subject.Quarter = 3 THEN grade_subject.GradeRating END), null) AS Q3, ';
+    query += 'COALESCE(SUM(CASE WHEN grade_subject.Quarter = 4 THEN grade_subject.GradeRating END), null) AS Q4, ';
+    query += 'COALESCE(SUM(CASE WHEN grade_subject.Quarter = 1 THEN grade_subject.GradeID END), null) AS IDQ1, ';
+    query += 'COALESCE(SUM(CASE WHEN grade_subject.Quarter = 2 THEN grade_subject.GradeID END), null) AS IDQ2, ';
+    query += 'COALESCE(SUM(CASE WHEN grade_subject.Quarter = 3 THEN grade_subject.GradeID END), null) AS IDQ3, ';
+    query += 'COALESCE(SUM(CASE WHEN grade_subject.Quarter = 4 THEN grade_subject.GradeID END), null) AS IDQ4 ';
     query += 'FROM student ';
-    query += 'LEFT JOIN grade ON student.LRNNum = grade.LRNNum ';
+    query += 'LEFT JOIN grade_subject ON student.LRNNum = grade_subject.LRNNum ';
     query += 'INNER JOIN student_section ON student.LRNNum = student_section.LRNNum ';
     query += 'WHERE student_section.SectionNum IN (' + SectionNum + ') ';
-    query += 'AND grade.SubjectID IN ("' + SubjectCode + '") ';
+    query += 'AND grade_subject.SubjectCode IN ("' + SubjectCode + '") ';
     query += 'GROUP BY student.LRNNum ';
 
     SimplifiedQuery('SELECT', query, '', saveGradeJSON);
 }
+
+//  FOR TESTING
+
+// SELECT student.LRNNum, grade_subject.GradeLevel, grade_subject.SubjectCode,
+// COALESCE(SUM(CASE WHEN grade_subject.Quarter = 1 THEN grade_subject.GradeRating END), null) AS Q1,
+// COALESCE(SUM(CASE WHEN grade_subject.Quarter = 2 THEN grade_subject.GradeRating END), null) AS Q2,
+// COALESCE(SUM(CASE WHEN grade_subject.Quarter = 3 THEN grade_subject.GradeRating END), null) AS Q3,
+// COALESCE(SUM(CASE WHEN grade_subject.Quarter = 4 THEN grade_subject.GradeRating END), null) AS Q4,
+// COALESCE(SUM(CASE WHEN grade_subject.Quarter = 1 THEN grade_subject.GradeID END), null) AS IDQ1,
+// COALESCE(SUM(CASE WHEN grade_subject.Quarter = 2 THEN grade_subject.GradeID END), null) AS IDQ2,
+// COALESCE(SUM(CASE WHEN grade_subject.Quarter = 3 THEN grade_subject.GradeID END), null) AS IDQ3,
+// COALESCE(SUM(CASE WHEN grade_subject.Quarter = 4 THEN grade_subject.GradeID END), null) AS IDQ4
+// FROM student
+// LEFT JOIN grade_subject ON student.LRNNum = @@@ 
+// INNER JOIN student_section ON student.LRNNum = student_section.LRNNum
+// WHERE student_section.SectionNum IN (@@@)
+// AND grade_subject.SubjectCode IN ("@@@")
+// GROUP BY student.LRNNum
+
+//
 
 function saveGradeJSON(xhttp) {
     try {
@@ -398,8 +423,8 @@ function checkGrade() {
         function updateGradeDB() {
             let query = '';
 
-            query += 'INSERT INTO grade ';
-            query += '(GradeID, LRNNum, GradeLevel, SubjectID, Quarter, GradeRating) ';
+            query += 'INSERT INTO grade_subject ';
+            query += '(GradeID, LRNNum, GradeLevel, SubjectCode, Quarter, GradeRating) ';
             query += 'VALUES ("' + GradeID + '", "';
             query += jsonStudent[i][0] + '", "';
             query += txt_GradeLevel.innerHTML + '", "';
