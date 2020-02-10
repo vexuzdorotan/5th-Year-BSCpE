@@ -51,29 +51,15 @@
                 <p>list of students</p>
                 </a>
             </div>
-            <!--
-            <div class="option">
-                <a href="Grade_View.php">
-                <img src="../pictures/grade.png" class="img-opt">
-                <p>View Grades of Students</p>
-                </a>
-            </div>
-            <div class="option">
-                <a href="Grade_Subject.php">
-                <img src="../pictures/grade.png" class="img-opt">
-                <p>Manage Subject Grades of Students</p>
-                </a>
-            </div>
-            <div class="option">
-                <a href="Grade_Values.php">
-                <img src="../pictures/grade.png" class="img-opt">
-                <p>Manage Values Grades of Students</p>
-                </a>
-            </div>-->
             <div class="option">
                 <a href="Student_Drafting.php">
                 <img src="../pictures/drafting.png" class="img-opt">
                 <p>student assignment</p>
+            </div>
+            <div class="option">
+                <a href="Student_Record.php">
+                <img src="../pictures/grade.png" class="img-opt">
+                <p>Learner Permanent Record (Formerly Form 137)</p>
             </div>
 
 

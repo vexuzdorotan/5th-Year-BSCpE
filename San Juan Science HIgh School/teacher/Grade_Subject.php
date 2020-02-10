@@ -40,36 +40,14 @@
                 <div id="modal-header">
                     <h2 id="modal-title"></h2>
                 </div>
+
                 <div id="modal-body">
                 </div>
-                <!-- <div class="ml-3 mr-3 mt-0">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link maroon" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link maroon" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link maroon" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link maroon" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div> -->
+                
                 <div id="modal-footer">
                 </div>
             </div>
         </div>
-
-
-        <!-- <div class="float-right">
-            <label for="">(TEMP) EmployeeNum:
-                <input type="number" id="txt_EmployeeNum" min="1" value="<?php echo($_SESSION['id'])?>" />
-            </label>
-        </div> -->
-        <!-- <br /><br /> -->
-
 
         <div class="float-right">
             <input type="text" style="display: none;" />
@@ -125,15 +103,10 @@
         </div>
 
         <div class="footer">
-            <p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
+            <p class="footer-text">© 2020 - San Juan City Science High School. All Rights Reserved</p>
         </div>
     </div>
 
-    <!-- <script type="text/javascript">
-        var EmployeeNum = "<?php echo($_SESSION['id'])?>";
-    </script> -->
-
-    
     <script>let EmployeeNum = <?php echo $_SESSION['id']?></script>
     <script src="../js/ajax.js" type="text/javascript"></script>
     <script src="../js/utility.js" type="text/javascript"></script>

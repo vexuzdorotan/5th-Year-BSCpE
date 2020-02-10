@@ -40,9 +40,9 @@
         </nav>
         <div class="content">
             <div class="option">
-                <a href="Grade_Sortable.php">
+                <a href="Grade_Setting.php">
                 <img src="../pictures/gradesubject.png" class="img-opt">
-                <p>Arrange Subjects of Report Card</p>
+                <p>Report Card Setting</p>
                 </a>
             </div>
         </div>

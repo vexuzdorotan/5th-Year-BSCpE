@@ -54,7 +54,7 @@
                 <p class="label">Grade Students on Values</p>
             </div>
             <div class="col option">
-                <a href="Grade_View.php">
+                <a href="../php/Grade_View.php">
                     <img src="../pictures/print.png" class="img-opt">
                 </a>
                 <p class="label">Print Student Grades</p>

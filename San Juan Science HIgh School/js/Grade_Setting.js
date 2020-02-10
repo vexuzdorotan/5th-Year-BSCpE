@@ -1,13 +1,13 @@
 'use strict';
 
 
-const wrapperGradeSortable = (function() {
+const wrapperGradeSorter = (function() {
     let jsonSubject;
 
-    let DOMstrings = {
-        btnSave: '#btnSave',
-        subjectList: '#subjectList',
+    let setDOMString = {
+        uListSubject: '#uListSubject',
         selectGradeLevel: '#selectGradeLevel',
+        btnSaveSubj: '#btnSaveSubj',
     }
 
     let setSubjectListDB = function(grLvl) {
@@ -19,8 +19,18 @@ const wrapperGradeSortable = (function() {
         query += 'WHERE subjectcode.GradeLevel IN (' + grLvl + ') ';
         query += 'GROUP BY grade_sortable.OrderNumber ASC ';
 
+        // query += 'SELECT subjectcode.SubjectCode, subjectcode.SubjectDescription ';
+        // query += 'FROM subjectcode ';
+        // query += 'WHERE subjectcode.GradeLevel IN (' + grLvl + ') ';
+
         SimplifiedQuery('SELECT', query, '', getSubjectListDB);
     }
+
+    // SELECT grade_sortable.OrderNumber, subjectcode.SubjectCode, subjectcode.SubjectDescription 
+    // FROM subjectcode 
+    // JOIN grade_sortable ON subjectcode.SubjectCode = grade_sortable.SubjectCode 
+    // WHERE subjectcode.GradeLevel IN (' + grLvl + ') 
+    // GROUP BY grade_sortable.OrderNumber ASC 
 
 
     let getSubjectListDB = function(xhttp) {
@@ -29,7 +39,7 @@ const wrapperGradeSortable = (function() {
             console.log(jsonSubject);
 
             createList(jsonSubject);
-            sortSubject(document.querySelector(DOMstrings.subjectList), (item) => console.log(item));
+            sortSubject(document.querySelector(setDOMString.uListSubject), (item) => console.log(item));
 
         } catch (err) {
             alert('CANNOT FIND');
@@ -42,14 +52,14 @@ const wrapperGradeSortable = (function() {
 
         for (let i = 0; i < subj.length; i++) {
             var node = document.createElement("LI");
-            var textnode = document.createTextNode(subj[i][1]);
+            var textnode = document.createTextNode(subj[i]['SubjectCode']);
             node.appendChild(textnode);
-            document.querySelector(DOMstrings.subjectList).appendChild(node);
+            document.querySelector(setDOMString.uListSubject).appendChild(node);
         }
     }
 
     let clearList = function() {
-        const subjectList = document.querySelector(DOMstrings.subjectList);
+        const subjectList = document.querySelector(setDOMString.uListSubject);
 
         while (subjectList.firstChild) {
             subjectList.removeChild(subjectList.firstChild);
@@ -122,13 +132,14 @@ const wrapperGradeSortable = (function() {
 
 
     return {
-        getDOMstrings: function() {
-            return DOMstrings;
+        getDOMString: function() {
+            return setDOMString;
         },
+
 
         saveSubject: function() {
             let orderNumber = 1;
-            let listSubj = document.querySelector(DOMstrings.subjectList).childNodes;
+            let listSubj = document.querySelector(setDOMString.uListSubject).childNodes;
 
             for (let s in listSubj) {
                 if (listSubj.hasOwnProperty(s)) {
@@ -137,34 +148,102 @@ const wrapperGradeSortable = (function() {
                 }
             }
 
-            alert('New Arrangement Saved!')
+            alert('New Arrangement Saved!');
         },
+
 
         selectGradeLevel: function() {
-            let GradeLevel = document.querySelector(DOMstrings.selectGradeLevel).value
+            let GradeLevel = document.querySelector(setDOMString.selectGradeLevel).value
 
             clearList();
+            console.log('Grade ' + GradeLevel + ' selected.')
             setSubjectListDB(GradeLevel);
         },
-
-        setSubjectListDB,
-        sortSubject,
     }
 })();
 
 
 
-const wrapperGradeSortableMain = (function(wrap) {
-    let selectGradeLevel = wrap.selectGradeLevel;
+const wrapperGradeEnabler = (function() {
+    let setDOMString = {
+        selectQuarter: '#selectQuarter',
+        btnSaveQuarter: '#btnSaveQuarter',
+    }
 
-    let setupEventListeners = function() {
-        let DOM = wrap.getDOMstrings();
 
-        document.querySelector(DOM.btnSave).addEventListener('click', saveSubject);
+    let setQuarter = function() {
+        let query = '';
+
+        query += 'SELECT SettingValue ';
+        query += 'FROM admin_settings ';
+        query += 'WHERE SettingName = "quarter_enabled" ';
+
+        SimplifiedQuery('SELECT', query, '', getQuarter);
     };
 
+
+    let getQuarter = function(xhttp) {
+        try {
+            let jsonQuarter = JSON.parse(xhttp.responseText);
+
+            document.querySelector(setDOMString.selectQuarter).value = jsonQuarter[0]['SettingValue'];
+
+        } catch (err) {
+            alert('CANNOT FIND');
+            console.log(xhttp.responseText);
+            console.log(err);
+        }
+    }
+
+
+    return {
+        getDOMString: function() {
+            return setDOMString;
+        },
+
+
+        saveQuarter: function(q) {
+            let query = '';
+
+            query += 'UPDATE admin_settings ';
+            query += 'SET SettingValue ="' + q + '" ';
+            query += 'WHERE SettingName = "quarter_enabled" ';
+
+            SimplifiedQuery('UPDATE', query, '', () => null);
+        },
+
+
+        selectQuarter: function() {
+            setQuarter();
+        },
+    }
+})();
+
+
+
+const wrapperGradeSettingMain = (function(wrapGrSort, wrapGrEn) {
+    let selectGradeLevel = wrapGrSort.selectGradeLevel;
+    let selectQuarter = wrapGrEn.selectQuarter;
+    let DOMGrSort = wrapGrSort.getDOMString();
+    let DOMGrEn = wrapGrEn.getDOMString();
+
+
+    let setupEventListeners = function() {
+        document.querySelector(DOMGrSort.btnSaveSubj).addEventListener('click', saveSubject);
+        document.querySelector(DOMGrEn.btnSaveQuarter).addEventListener('click', saveQuarter);
+    };
+
+
     let saveSubject = function() {
-        wrap.saveSubject();
+        wrapGrSort.saveSubject();
+    };
+
+
+    let saveQuarter = function() {
+        let selectedQuarter = document.querySelector(DOMGrEn.selectQuarter).value;
+
+        wrapGrEn.saveQuarter(selectedQuarter);
+        alert('Enabled Quarter is set to ' + selectedQuarter);
     };
 
 
@@ -173,8 +252,9 @@ const wrapperGradeSortableMain = (function(wrap) {
             console.log('Application has started.');
             setupEventListeners();
             selectGradeLevel();
+            selectQuarter();
         },
     };
-})(wrapperGradeSortable);
+})(wrapperGradeSorter, wrapperGradeEnabler);
 
-wrapperGradeSortableMain.init();
+wrapperGradeSettingMain.init();

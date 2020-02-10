@@ -43,7 +43,7 @@
             </div>  
             
             <div class="col option">
-                <a href="Grade_View.php">
+                <a href="../php/Grade_View.php">
                     <img src="../pictures/print.png" class="img-opt">
                 </a>
                 <p class="label">View Grades</p>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="footer">
-		<p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
+		<p class="footer-text">© 2020 - San Juan City Science High School. All Rights Reserved</p>
 	</div>
     
 

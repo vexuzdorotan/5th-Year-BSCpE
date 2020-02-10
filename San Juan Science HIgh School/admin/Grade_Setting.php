@@ -52,7 +52,7 @@
     <img src="../pictures/logodesign.jpg" class="logodesign hide-on-print">
 
     <div class="hide-on-print header mb-3">
-        <legend class="h4 pl-0 pt-3 mb-0">ARRANGEMENT OF LEARNING AREAS ON THE REPORT CARD</legend>
+        <legend class="h4 pl-0 pt-3 mb-0">SETTINGS ON THE REPORT CARD</legend>
 
         <div class="menu">
         <a href="#"><?php echo 'Welcome, ' . $honorific . $fullname?></a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
@@ -60,21 +60,42 @@
     </div>
 
     <div class="room-container">
-        <div class="float-right">
+        <div class="float-left">
             <label>Selected Grade Level:
-                <select id="selectGradeLevel" onchange="wrapperGradeSortable.selectGradeLevel()">
+                <select id="selectGradeLevel" onchange="wrapperGradeSorter.selectGradeLevel()">
                     <option selected value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
                     <option value="10">10</option>
                 </select>
             </label>
+
+            <div class="row">
+                <ul id="uListSubject"></ul>
+            </div>
+
+            <div class = "col">
+                <button id="btnSaveSubj">SAVE Subject Arrangement</button>
+            </div>
         </div>
 
-        <div class="row">
-            <ul id="subjectList"></ul>
-            <button id="btnSave">SAVE</button>
+        <div class="float-right">
+            <label>Quarter SAVE Button Enabled:
+                <select id="selectQuarter">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </label>
+
+            <div class = "col">
+                <button id="btnSaveQuarter">SAVE Enabled Quarter</button>
+            </div>
         </div>
+
+
 
         <div class="hide-on-print footer">
             <p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
@@ -86,7 +107,7 @@
     <script src="../js/ajax.js" type="text/javascript"></script>
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>
-    <script src="../js/Grade_Sortable.js" type="text/javascript"></script>
+    <script src="../js/Grade_Setting.js" type="text/javascript"></script>
 </body>
 
 </html>

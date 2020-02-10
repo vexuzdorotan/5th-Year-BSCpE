@@ -1,11 +1,13 @@
 <?php
-     session_start();
-     if($_SESSION['id'] === null || $_SESSION['access'] != "teacher"){
-         header('Location: ../Portal.php');
-     }
+    session_start();
+    if($_SESSION['id'] === null  || !($_SESSION['access'] === "teacher" xor $_SESSION['access'] === "student")){
 
-     include '../php/Header_User.php';
+        header('Location: ../Portal.php');
+    }
+
+    include '../php/Header_User.php';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,15 +71,20 @@
 
         </div>
         <div class="">
-            <div class="float-right hide-on-print">
-                <input type="text" id="txt_LRNNum" style="display: none;" />
-                <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentModal" required/></label>
-                <button class="modal-button"><i class="far fa-window-restore"></i></button>
-            </div>
+            <?php if($_SESSION['access'] == "teacher") { ?>
+                <div class="float-right hide-on-print">
+                    <input type="text" id="txt_LRNNum" style="display: none;" />
+                    <label for="">Student Name: <input class="ml-2 sec-name" type="text" id="txt_StudentModal" required/></label>
+                    <button class="modal-button"><i class="far fa-window-restore"></i></button>
+                </div>
+            <?php } ?>
+
 
             <br />
+            <p><b>Adviser Name: </b><span id="txt_AdviserName"></span></p>
             <p><b>Section Name: </b><span id="txt_SectionName"></span></p>
             <p><b>Grade Level: </b><span id="txt_GradeLevel"></span></p>
+            <br />
             <p><b>Student Name: </b><span id="txt_StudentName"></span></p>
             <br />
         </div>
@@ -204,15 +211,43 @@
         </div>
 
         <div class="hide-on-print text-right">
-            <button class="btn btn-dark" onclick="printInnerReportCard()">PRINT INNER PAGE OF FORM 138</button>
+            <?php if($_SESSION['access'] === 'teacher') { ?>
+                <button class="btn btn-dark" onclick="printInnerReportCard()">PRINT INNER PAGE OF FORM 138</button>
+            <?php } ?>
+            
+            <form id="postData" action="Grade_oView.php" method="post" target="_blank">
+                <input type="hidden" name="LRNNum" value="">
+                <input type="hidden" name="schoolYear" value="">
+                <input type="hidden" name="studentName" value="">
+                <input type="hidden" name="studentAge" value="">
+                <input type="hidden" name="studentSex" value="">
+                <input type="hidden" name="gradeLevel" value="">
+                <input type="hidden" name="sectionName" value="">
+                <input type="hidden" name="principalName" value="">
+                <input type="hidden" name="adviserName" value="">
+
+                <?php if($_SESSION['access'] === 'teacher') { ?>
+                    <input type="submit" class="btn btn-dark" value="PRINT OUTER PAGE OF FORM 138" onclick="AddPostData()">
+                <?php } ?>
+            </form>
         </div>
 
         <div class="hide-on-print footer">
-            <p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
+            <p class="footer-text">© 2020 - San Juan City Science High School. All Rights Reserved</p>
         </div>
     </div>
 
-    <script>let EmployeeNum = <?php echo $_SESSION['id']?></script>
+    <script>
+        let accessRole = '<?php echo $_SESSION['access']?>';
+
+        <?php if($_SESSION['access'] === 'teacher') { ?>
+            let LRNNum;
+            let employeeNum = <?php echo $_SESSION['id']?>;
+        <?php } else if($_SESSION['access'] === 'student') { ?>
+            let employeeNum;
+            let LRNNum = <?php echo $_SESSION['id'];
+        } ?>;
+    </script>
     <script src="../js/ajax.js" type="text/javascript"></script>
     <script src="../js/utility.js" type="text/javascript"></script>
     <script src="../js/cms.js" type="text/javascript"></script>

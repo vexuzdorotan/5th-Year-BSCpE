@@ -18,6 +18,8 @@ let Quarter;
 
 let LRNNum;
 
+let quarterSelected;
+
 
 
 const wrapperUIValues = (function() {
@@ -72,9 +74,56 @@ const wrapperUIValues = (function() {
         }
     }
 
+    function enablerQuarter(q) {
+        if (q == quarterSelected) {
+            return false
+        }
+        return true
+    }
+
+
+    let settingQuarter = function() {
+        for (let i = 0; i < 7; i++) {
+            for (let j = 1; j <= 4; j++) {
+                document.querySelectorAll('.grValQ' + j)[i].disabled = enablerQuarter(j);
+            }
+        }
+
+        saveButton.save1.disabled = enablerQuarter(1);
+        saveButton.save2.disabled = enablerQuarter(2);
+        saveButton.save3.disabled = enablerQuarter(3);
+        saveButton.save4.disabled = enablerQuarter(4);
+    };
+
+
+    let setQuarterDB = function() {
+        let query = '';
+
+        query += 'SELECT SettingValue ';
+        query += 'FROM admin_settings ';
+        query += 'WHERE SettingName = "quarter_enabled" ';
+
+        SimplifiedQuery('SELECT', query, '', getQuarter);
+    };
+
+
+    let getQuarter = function(xhttp) {
+        try {
+            let jsonQuarter = JSON.parse(xhttp.responseText);
+            quarterSelected = jsonQuarter[0]['SettingValue'];
+            settingQuarter();
+
+        } catch (err) {
+            alert('CANNOT FIND');
+            console.log(xhttp.responseText);
+            console.log(err);
+        }
+    }
+
     return {
         saveButton,
         clearGrades,
+        setQuarterDB,
         setSectionInfo,
     };
 })();
@@ -280,6 +329,7 @@ const mainController = (function(wrapUI, wrapVal) {
     return {
         init: function() {
             console.log('Application has started.');
+            wrapVal.setQuarterDB();
             wrapVal.setSectionInfo();
             setupEventListeners();
         },

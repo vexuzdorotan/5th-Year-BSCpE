@@ -3,30 +3,19 @@
 
 // WILL APPLY MODULE PATTERN LATER
 
-const wrapperGradeViewSubject = (function() {
+const wrapperStudentRecord = (function() {
 
 })();
 
 
 
-const wrapperGradeViewValues = (function() {
+const wrapperGradeViewMain = (function(wrapRec) {
 
-})();
-
-
-
-const wrapperGradeViewMain = (function(wrapSubj, wrapVal) {
-
-})(wrapperGradeViewSubject, wrapperGradeViewValues);
+})(wrapperStudentRecord);
 //
 
 
 let parent_id = 'student';
-
-// if (accessRole === 'teacher') {
-//     console.log('yo')
-//     let LRNNum;
-// }
 
 
 let schoolYear;
@@ -481,7 +470,7 @@ function printInnerReportCard() {
 //STUDENT
 
 
-if (accessRole === 'teacher') {
+if (accessRole === 'admin') {
     modal_button.addEventListener('click', function() {
         this.style.backgroundColor = '';
         let theadID = 'LRNNum@LastName@FirstName@MiddleName@Age@Gender';
