@@ -1,0 +1,13 @@
+body{
+    background-image: url("../pictures/maroon.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1{
+    font-family: 'Russo One', sans-serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+h3{
+    font-family: 'Righteous', cursive;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
