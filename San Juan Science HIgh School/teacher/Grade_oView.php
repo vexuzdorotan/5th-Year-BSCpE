@@ -8,15 +8,15 @@
 
 
     if(isset($_POST['LRNNum'])){
-        $LRNNum = $_POST['LRNNum'];
-        $schoolYear = $_POST['schoolYear'];
-        $studentName = $_POST['studentName'];
-        $studentAge = $_POST['studentAge'];
-        $studentSex = $_POST['studentSex'];
-        $gradeLevel = $_POST['gradeLevel'];
-        $sectionName = $_POST['sectionName'];
-        $principalName = $_POST['principalName'];
-        $adviserName = $_POST['adviserName'];     
+        $LRNNum = ($_POST['LRNNum'] !== 'undefined') ? $_POST['LRNNum'] : 'N/A';
+        $schoolYear = ($_POST['schoolYear'] !== 'undefined') ? $_POST['schoolYear'] : 'N/A';
+        $studentName = ($_POST['studentName'] !== 'undefined') ? $_POST['studentName'] : 'N/A';
+        $studentAge = ($_POST['studentAge'] !== 'undefined') ? $_POST['studentAge'] : 'N/A';
+        $studentSex = ($_POST['studentSex'] !== 'undefined') ? $_POST['studentSex'] : 'N/A';
+        $gradeLevel = ($_POST['gradeLevel'] !== 'undefined') ? $_POST['gradeLevel'] : 'N/A';
+        $sectionName = ($_POST['sectionName'] !== 'undefined') ? $_POST['sectionName'] : 'N/A';
+        $principalName = ($_POST['principalName'] !== 'undefined') ? $_POST['principalName'] : 'N/A';
+        $adviserName = ($_POST['adviserName'] !== 'undefined') ? $_POST['adviserName'] : 'N/A';     
     }
 ?>
 

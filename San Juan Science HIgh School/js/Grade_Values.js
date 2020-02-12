@@ -12,7 +12,7 @@ let GradeValID;
 let BehaviorID;
 let GradeValRating;
 
-let GradeLevel;
+let gradeLevel;
 let SectionNum;
 let Quarter;
 
@@ -61,11 +61,11 @@ const wrapperUIValues = (function() {
 
             SectionNum = jsonSectionInfo[0][0]
             SectionName = jsonSectionInfo[0][1]
-            GradeLevel = jsonSectionInfo[0][2]
+            gradeLevel = jsonSectionInfo[0][2]
 
             document.querySelector('#txt_LRNNum').innerHTML = LRNNum;
             document.querySelector('#txt_SectionName').innerHTML = SectionName;
-            document.querySelector('#txt_GradeLevel').innerHTML = GradeLevel;
+            document.querySelector('#txt_GradeLevel').innerHTML = gradeLevel;
 
         } catch (err) {
             alert('CANNOT FIND');
@@ -133,16 +133,26 @@ const wrapperUIValues = (function() {
 const wrapperGradeValues = (function() {
 
     let setGradesValDB = function() {
-        let columnNames = {
-            0: 'GradeValID',
-            1: 'LRNNum',
-            2: 'GradeValLevel',
-            3: 'BehaviorID',
-            4: 'Quarter',
-            5: 'GradeValRating'
-        };
+        let query = '';
 
-        SearchWithoutQuery('grade_values', LRNNum, columnNames, getGradesValDB);
+        query += 'SELECT GradeValID, BehaviorID, Quarter, GradeValRating ';
+        query += 'FROM grade_values ';
+        query += 'WHERE LRNNum IN (' + LRNNum + ') ';
+        query += 'AND GradeValLevel IN (' + gradeLevel + ') ';
+
+
+        SimplifiedQuery('SELECT', query, '', getGradesValDB);
+
+        // let columnNames = {
+        //     0: 'GradeValID',
+        //     1: 'LRNNum',
+        //     2: 'GradeValLevel',
+        //     3: 'BehaviorID',
+        //     4: 'Quarter',
+        //     5: 'GradeValRating'
+        // };
+
+        // SearchWithoutQuery('grade_values', LRNNum, columnNames, getGradesValDB);
     }
 
 
@@ -162,7 +172,7 @@ const wrapperGradeValues = (function() {
             }
 
             for (let i = 0; i < jsonGradeVal.length; i++) {
-                document.querySelectorAll('.grValQ' + jsonGradeVal[i][4])[getParentCol(jsonGradeVal[i][3])].value = jsonGradeVal[i][5];
+                document.querySelectorAll('.grValQ' + jsonGradeVal[i]['Quarter'])[getParentCol(jsonGradeVal[i]['BehaviorID'])].value = jsonGradeVal[i]['GradeValRating'];
             }
 
         } catch (err) {
@@ -202,9 +212,9 @@ const wrapperGradeValues = (function() {
                 }
 
                 for (let j = 0; j < jsonGradeVal.length; j++) {
-                    if (jsonGradeVal[j][3] === BehaviorID) {
-                        if (jsonGradeVal[j][4] === Quarter) {
-                            GradeValID = jsonGradeVal[j][0];
+                    if (jsonGradeVal[j]['BehaviorID'] === BehaviorID) {
+                        if (jsonGradeVal[j]['Quarter'] === Quarter) {
+                            GradeValID = jsonGradeVal[j]['GradeValID'];
                         }
                     }
                 }
@@ -225,7 +235,7 @@ const wrapperGradeValues = (function() {
         query += '(GradeValID, LRNNum, GradeValLevel, BehaviorID, Quarter, GradeValRating) ';
         query += 'VALUES ("' + GradeValID + '", "';
         query += LRNNum + '", "';
-        query += GradeLevel + '", "';
+        query += gradeLevel + '", "';
         query += BehaviorID + '", "';
         query += Quarter + '", "';
         query += GradeValRating + '") ';

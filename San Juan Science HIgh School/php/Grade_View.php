@@ -32,7 +32,7 @@
         <legend class="h4 pl-0 pt-3 mb-0">ADVISER'S VIEW: STUDENT GRADE</legend>
 
         <div class="menu">
-        <a href="#"><?php echo 'Welcome, ' . $honorific . $fullname?></a>|<a href="Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
+        <a href="#"><?php echo 'Welcome, ' . $honorific . $fullname?></a>|<a href="../teacher/Dashboard.php">Menu</a>|<a href="../Portal.php">Logout</a>
         </div>
 
     </div>
@@ -215,7 +215,7 @@
                 <button class="btn btn-dark" onclick="printInnerReportCard()">PRINT INNER PAGE OF FORM 138</button>
             <?php } ?>
             
-            <form id="postData" action="Grade_oView.php" method="post" target="_blank">
+            <form id="postData" action="../teacher/Grade_oView.php" method="post" target="_blank">
                 <input type="hidden" name="LRNNum" value="">
                 <input type="hidden" name="schoolYear" value="">
                 <input type="hidden" name="studentName" value="">
@@ -237,15 +237,16 @@
         </div>
     </div>
 
+
     <script>
+        let LRNNum;
+        let employeeNum;
         let accessRole = '<?php echo $_SESSION['access']?>';
 
         <?php if($_SESSION['access'] === 'teacher') { ?>
-            let LRNNum;
-            let employeeNum = <?php echo $_SESSION['id']?>;
+            employeeNum = <?php echo $_SESSION['id']?>;
         <?php } else if($_SESSION['access'] === 'student') { ?>
-            let employeeNum;
-            let LRNNum = <?php echo $_SESSION['id'];
+            LRNNum = <?php echo $_SESSION['id'];
         } ?>;
     </script>
     <script src="../js/ajax.js" type="text/javascript"></script>

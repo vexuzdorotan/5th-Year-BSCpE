@@ -5,6 +5,14 @@
     }
 
     include '../php/Header_User.php';
+
+
+    // check if adviser (if not, hide Print Student Grades)
+    $stmt = $db->prepare('SELECT SectionNum FROM teacher WHERE EmployeeNum = ?');
+    $stmt->bindValue(1, $_SESSION['id']);
+    $stmt->execute();
+    $secNum = $stmt->fetch();
+    $stmt->closeCursor();
 ?>
 
 <!DOCTYPE html>
@@ -53,23 +61,20 @@
                 </a>
                 <p class="label">Grade Students on Values</p>
             </div>
+        <?php if (!empty($secNum[0])) { ?>
             <div class="col option">
                 <a href="../php/Grade_View.php">
                     <img src="../pictures/print.png" class="img-opt">
                 </a>
                 <p class="label">Print Student Grades</p>
             </div>
+        <?php } ?>
         </div>
-
-
     </div>
 
     <div class="footer">
 		<p class="footer-text">© 2020 - San Juan Science High School. All Rights Reserved</p>
 	</div>
-    
-
-
 </body>
 
 </html>

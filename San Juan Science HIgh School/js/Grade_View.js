@@ -277,16 +277,25 @@ function getSectionInfo(xhttp) {
 }
 
 function setGradeSubjDB() {
-    let columnNames = {
-        0: 'GradeID',
-        1: 'LRNNum',
-        2: 'GradeLevel',
-        3: 'SubjectCode',
-        4: 'Quarter',
-        5: 'GradeRating'
-    };
+    let query = '';
 
-    SearchWithoutQuery('grade_subject', LRNNum, columnNames, getGradeSubjDB);
+    query += 'SELECT SubjectCode, Quarter, GradeRating ';
+    query += 'FROM grade_subject ';
+    query += 'WHERE LRNNum IN (' + LRNNum + ') ';
+    query += 'AND GradeLevel IN (' + gradeLevel + ') ';
+
+    SimplifiedQuery('SELECT', query, '', getGradeSubjDB);
+
+    // let columnNames = {
+    //     0: 'GradeID',
+    //     1: 'LRNNum',
+    //     2: 'GradeLevel',
+    //     3: 'SubjectCode',
+    //     4: 'Quarter',
+    //     5: 'GradeRating'
+    // };
+
+    // SearchWithoutQuery('grade_subject', LRNNum, columnNames, getGradeSubjDB);
 }
 
 function clearTBodySubj() {
@@ -308,7 +317,6 @@ function getGradeSubjDB(xhttp) {
 
     try {
         for (let i = 0; i < jsonGradeSubj.length; i++) {
-            let q = 1;
 
             for (let j = 0; j < trTableGrade.length; j++) {
                 if (jsonGradeSubj[i]['SubjectCode'] == arrSubjCode[j]) {
@@ -431,16 +439,14 @@ function calculateAverage() {
 
 //Grade Values
 function setGradeValDB() {
-    let columnNames = {
-        0: 'GradeValID',
-        1: 'LRNNum',
-        2: 'GradeValLevel',
-        3: 'BehaviorID',
-        4: 'Quarter',
-        5: 'GradeValRating'
-    };
+    let query = '';
 
-    SearchWithoutQuery('grade_values', LRNNum, columnNames, getGradesValDB);
+    query += 'SELECT BehaviorID, Quarter, GradeValRating ';
+    query += 'FROM grade_values ';
+    query += 'WHERE LRNNum IN (' + LRNNum + ') ';
+    query += 'AND GradeValLevel IN (' + gradeLevel + ') ';
+
+    SimplifiedQuery('SELECT', query, '', getGradesValDB);
 }
 
 function getGradesValDB(xhttp) {
@@ -455,7 +461,7 @@ function getGradesValDB(xhttp) {
 
     try {
         for (let i = 0; i < jsonGradeVal.length; i++) {
-            document.querySelectorAll('.grValQ' + jsonGradeVal[i][4])[getParentCol(jsonGradeVal[i][3])].textContent = jsonGradeVal[i][5];
+            document.querySelectorAll('.grValQ' + jsonGradeVal[i]['Quarter'])[getParentCol(jsonGradeVal[i]['BehaviorID'])].textContent = jsonGradeVal[i]['GradeValRating'];
         }
 
     } catch (err) {

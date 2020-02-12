@@ -59,7 +59,7 @@
             <div class="option">
                 <a href="Student_Record.php">
                 <img src="../pictures/grade.png" class="img-opt">
-                <p>Learner Permanent Record (Formerly Form 137)</p>
+                <p>Learner's Permanent Record (Formerly Form 137)</p>
             </div>
 
 
