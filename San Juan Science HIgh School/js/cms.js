@@ -454,7 +454,7 @@ function CreateTBody(xhttp, cfunction){ //Create Table Body (Imitates result of 
 	var class_btn2;
 
 	results = JSON.parse(xhttp.responseText);
-	// console.log(results);
+	console.log(results);
 
 	var thead_td = document.querySelectorAll("#" + txt_search.id + "Table thead tr td");
 	var colNum = document.querySelector("#" + txt_search.id + "Table thead tr").childElementCount;//childElementCount counts child of parent

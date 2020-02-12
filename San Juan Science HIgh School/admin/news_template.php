@@ -8,7 +8,7 @@
     <link rel="icon" href="../pictures/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/ootstrap.bundle.min.js"></script>
 </head>
 <body class="bg">
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="arr-to-top fas fa-caret-square-up"></i></button>
@@ -74,60 +74,37 @@
         </div>
         </div>
     </div>
-    <div class="tight-container">
-        <h3 class=" pb-2 mb-4 bd-bottom"><i class="far fa-newspaper pr-2"></i>Latest News and Updates</h3>
-            <div class="container">
-            <ul class="list-unstyled">
-                <li class="media">
-                <img class="news-img mt-1 mb-1 rounded mr-3" src="../pictures\news-1.png" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">List-based media object</h5>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                    <button class="btn btn-outline-maroon btn-sm">
-                        Read More<i class="fas fa-caret-right ml-2"></i></button>
-                </div>
-                </li>
-                <li class="media my-4">
-                <img class="news-img mt-1 mb-1 rounded mr-3" src="../pictures\news-2.png" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">List-based media object</h5>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                    <button class="btn btn-outline-maroon btn-sm">Read More<i class="fas fa-caret-right ml-2"></i></button>
-                </div>
-                </li>
-                <li class="media my-4">
-                <img class="news-img mt-1 mb-1 rounded mr-3" src="../pictures\news-3.png" alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">List-based media object</h5>
-                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                    <button class="btn btn-outline-maroon btn-sm">Read More<i class="fas fa-caret-right ml-2"></i></button>
-                </div>
-                </li>
-                <li class="media">
-                    <img class="news-img mt-1 mb-1 rounded mr-3" src="../pictures\news-1.png" alt="Generic placeholder image">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">List-based media object</h5>
-                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                        <button class="btn btn-outline-maroon btn-sm">Read More<i class="fas fa-caret-right ml-2"></i></button>
-                    </div>
-                    </li>
-            </ul>
-            <nav aria-label="...">
-                <ul class="pagination justify-content-end">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                  </li>
-                  
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
-                </ul>
-              </nav>
+    <!-- ======================CONTENT====================== -->
+    <div class="tighter-container">
+        <div class="card">
+            <img class="card-img-top" src="../pictures/news-2.png" alt="Card image cap">
+            <div class="card-body">
+                <h6 class="card subtitle float-right text-primary border-0">January 01, 2020</h6>
+                <h4 class="card-title">Media Heading</h4>
+                <h6 class="card-subtitle mb-2 text-muted">by Anonymous</h6>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                     nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                      in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+                      officia deserunt mollit anim id est laborum.</p>
+                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
+                          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa 
+                          quae ab illo inventore veritatis et quasi architecto beatae vitae 
+                          dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur 
+                          aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem s
+                          equi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
+                          consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut 
+                          labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis 
+                          nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea 
+                          commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate 
+                          velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo 
+                          voluptas nulla pariatur?</p>
+                <button class="btn btn-outline-primary">Edit Content</button>
+                <button class="btn btn-danger">Delete</button>
+            </div>
+            
         </div>
     </div>
     <div class="row footer-two">
@@ -154,6 +131,9 @@
             <a class="text-light" href="https://web.facebook.com/San-Juan-City-Science-High-School-614122265693169/"><span class="fab fa-facebook-square"></span></a>
         </div>
     </div>
-    <script type="text/javascript" src="../js\Home.js"></script>
+    <!-- <script type="text/javascript" src="../js\Home.js"></script> -->
+    <script type="text/javascript">
+        window.name = "template";
+    </script>
 </body>
 </html>

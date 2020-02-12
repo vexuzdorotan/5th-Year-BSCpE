@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+<?php
+
+?>
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8" />
     <title>HOME - San Juan City Science High School</title>
@@ -110,6 +113,7 @@
             <div class="col-xl-8">
               <h4 class="p-2 pb-3"><i class="far fa-newspaper pr-2"></i>Latest News and Updates</h4>
               <div class="container">
+                <!-- NEWS 1 -->
                 <div class="media container pb-2 mt-2 border-bottom row">
                   <img src="pictures\news-1.png" class="news-img mt-1 mb-1 rounded mr-3" alt="...">
                   <div class="media-body col">
@@ -122,6 +126,7 @@
                       Read More<i class="fas fa-caret-right ml-2"></i></button>
                   </div>
                 </div>
+                <!-- NEWS 2 -->
                 <div class="media container pb-2 mt-2 border-bottom row">
                   <img src="pictures\news-2.png" class="news-img mt-1 mb-1 rounded mr-3" alt="...">
                   <div class="media-body col">
@@ -134,6 +139,7 @@
                       Read More<i class="fas fa-caret-right ml-2"></i></button>
                   </div>
                 </div>
+                <!-- NEWS 3 -->
                 <div class="media container pb-2 mt-2 border-bottom row">
                   <img src="pictures\news-3.png" class="news-img mt-1 mb-1 rounded mr-3" alt="...">
                   <div class="media-body col">
